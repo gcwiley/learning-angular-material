@@ -5,13 +5,13 @@
    .docs-navbar-header {
       // fix this!
       color: mat.get-theme-color($theme, secondary, 10);
-      background-color: mat.get-theme-color($theme, primary, 10);
+      background-color: mat.get-theme-color($theme, primary, 90);
    }
 }
 
 // typography mixin
 @mixin typography($theme) {
-   .footer {
+   .docs-navbar-header {
       font: mat.get-theme-typography($theme, body-medium);
    }
 }

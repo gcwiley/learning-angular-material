@@ -4,7 +4,7 @@
 @mixin color($theme) {
    .hero-details {
       color: mat.get-theme-color($theme, primary, 10);
-      background-color: mat.get-theme-color($theme, primary, 50);
+      // background-color: mat.get-theme-color($theme, primary, 50);
    }
 }
 

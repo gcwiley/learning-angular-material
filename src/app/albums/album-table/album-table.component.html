@@ -14,7 +14,7 @@
    <!-- release date -->
    <ng-container matColumnDef="releaseDate">
       <th mat-header-cell *matHeaderCellDef>Release Date</th>
-      <td mat-cell *matCellDef="let album">{{ album.releaseDate | date: 'medium' }}</td>
+      <td mat-cell *matCellDef="let album">{{ album.releaseDate | date: 'longDate' }}</td>
    </ng-container>
 
    <!-- label -->
@@ -31,8 +31,8 @@
             mat-icon-button
             color="warn"
             (click)="onDeleteAlbum(album.id)"
-            matTooltip="Delete Hero"
-            aria-label="Delete Hero">
+            matTooltip="Delete Album"
+            aria-label="Delete Album">
             <mat-icon>delete</mat-icon>
          </button>
       </td>
@@ -60,7 +60,7 @@
          <a
             mat-icon-button
             color="accent"
-            routerLink="/edit-album/{{ album.id }}"
+            routerLink="/albums/edit/{{ album.id }}"
             matTooltip="Edit Album"
             aria-label="Edit Album">
             <mat-icon>edit</mat-icon>

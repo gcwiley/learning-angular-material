@@ -10,7 +10,7 @@
 // typography mixin
 @mixin typography($theme) {
    .hero-description {
-      font: mat.get-theme-typography($theme, body-medium);
+      font: mat.get-theme-typography($theme, body-large);
    }
 }
 

@@ -3,7 +3,8 @@
 }
 
 .sidenav {
-   width: 230px;
+   width: 240px;
+   border-radius: 0%;
 }
 
 .sidenav .mat-toolbar {
@@ -16,7 +17,7 @@
    z-index: 1;
 }
 
-// Flexbox properties
+// Flexbox properties for admin toolbar
 .spacer {
    flex: 1 1 auto;
 }

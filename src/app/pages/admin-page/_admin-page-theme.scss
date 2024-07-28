@@ -2,12 +2,13 @@
 
 // color mixin
 @mixin color($theme) {
-   .sidenav-container {
+   .sidenav {
       color: mat.get-theme-color($theme, primary, 10);
-    //   background-color: mat.get-theme-color($theme, primary, 10);
+      background-color: mat.get-theme-color($theme, primary, 90);
    }
    .toolbar {
-      background-color: mat.get-theme-color($theme, primary, 70);
+      background-color: mat.get-theme-color($theme, secondary, 70);
+      color: mat.get-theme-color($theme, error, 0);
    }
 }
 

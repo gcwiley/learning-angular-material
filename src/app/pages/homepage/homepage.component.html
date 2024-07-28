@@ -37,29 +37,6 @@
 
    <mat-divider></mat-divider>
 
-   <div class="docs-homepage-featured-components docs-homepage-carousel-row">
-      <div class="docs-homepage-header">
-         <h2>Featured heroes</h2>
-
-         <a mat-button routerLink="/heroes">
-            View all heroes
-            <mat-icon matButtonIcon iconPositionEnd>chevron_right</mat-icon>
-         </a>
-      </div>
-      <app-carousel [aria-label]="'Featured components'">
-         @for (comp of getTopComponents(); track comp) {
-         <a carousel-item class="carousel-item docs-featured-components-carousel-item" routerLink="/heroes">
-            <div class="docs-homepage-img-container">
-               <img src="../../../assets/screenshots/{{ comp }}.scene.png" role="presentation" alt="" />
-            </div>
-            {{ (comp[0].toUpperCase() + comp.slice(1)).replace('-', ' ') }}
-         </a>
-         }
-      </app-carousel>
-   </div>
-
-   <mat-divider></mat-divider>
-
    <div class="docs-homepage-guides docs-homepage-carousel-row">
       <!-- heroes header -->
       <div class="docs-homepage-header">
@@ -70,7 +47,7 @@
             <mat-icon matButtonIcon iconPositionEnd>chevron_right</mat-icon>
          </a>
       </div>
-      <!-- <app-carousel aria-label="Guides">
+      <app-carousel aria-label="Guides">
          @for (hero of recentHeroes; track hero) {
          <a
             carousel-item
@@ -78,14 +55,14 @@
             routerLink="/guide/{{ hero._id }}"
             MatRipple>
             <mat-card class="docs-homepage-guides-card" appearance="outlined">
-               <mat-card-title>{{ hero.title }}</mat-card-title>
+               <mat-card-title>{{ hero.name }}</mat-card-title>
                <mat-card-content class="docs-component-category-list-card-summary">{{
-                  hero.biography
+                  hero.superPower
                }}</mat-card-content>
             </mat-card>
          </a>
          }
-      </app-carousel> -->
+      </app-carousel>
    </div>
 </main>
 

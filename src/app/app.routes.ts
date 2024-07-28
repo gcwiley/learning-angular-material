@@ -27,13 +27,13 @@ export const routes: Routes = [
    // HERO PAGES
    { path: 'heroes', component: HeroGridPageComponent, pathMatch: 'full' },
    { path: 'heroes/:id', component: HeroDetailsPageComponent },
-   { path: 'create-hero', component: HeroCreatePageComponent },
-   { path: 'edit-hero/:id', component: HeroCreatePageComponent },
+   { path: 'heroes/create', component: HeroCreatePageComponent },
+   { path: 'heroes/edit/:id', component: HeroCreatePageComponent },
    // ALBUM PAGES
    { path: 'albums', component: AlbumGridPageComponent, pathMatch: 'full' },
    { path: 'albums/:id', component: AlbumDetailsPageComponent },
-   { path: 'create-album', component: AlbumCreatePageComponent },
-   { path: 'edit-album/:id', component: AlbumCreatePageComponent },
+   { path: 'albums/create', component: AlbumCreatePageComponent },
+   { path: 'albums/edit/:id', component: AlbumCreatePageComponent },
    // not found page - MUST BE VERY LAST!
    { path: '**', component: NotFoundPageComponent },
 ];

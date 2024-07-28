@@ -1,33 +1,43 @@
 <mat-sidenav-container class="sidenav-container">
-   <mat-sidenav
-      #drawer
-      class="sidenav"
-      fixedInViewport
-      [attr.role]="(isHandset$ | async) ? 'dialog' : 'navigation'"
-      [mode]="(isHandset$ | async) ? 'over' : 'side'"
-      [opened]="(isHandset$ | async) === false">
+   <mat-sidenav #drawer opened class="sidenav">
       <mat-toolbar>Menu</mat-toolbar>
       <mat-nav-list>
-         <a mat-list-item href="/">Home</a>
-         <a mat-list-item href="create-album">New Album</a>
-         <a mat-list-item href="create-hero">New Hero</a>
+         <mat-list-item>
+            <a mat-list-item routerLink="">Home</a>
+            <button mat-icon-button matListItemMeta>
+               <mat-icon>home</mat-icon>
+            </button>
+         </mat-list-item>
+         <mat-list-item>
+            <a mat-list-item routerLink="/heroes/create">Create Hero</a>
+            <button mat-icon-button matListItemMeta>
+               <mat-icon>person</mat-icon>
+            </button>
+         </mat-list-item>
+         <mat-list-item>
+            <a mat-list-item routerLink="/albums/create">Create Album</a>
+            <button mat-icon-button matListItemMeta>
+               <mat-icon>album</mat-icon>
+            </button> 
+         </mat-list-item>
       </mat-nav-list>
    </mat-sidenav>
    <mat-sidenav-content>
       <mat-toolbar class="toolbar">
-         <!-- fix this! -->
-         <button
-            type="button"
-            aria-label="Toggle sidenav"
-            mat-icon-button
-            (click)="drawer.toggle()"
-            *ngIf="isHandset$ | async">
+         <!-- side nav toggle button -->
+         <button mat-icon-button aria-label="Toggle sidenav">
             <mat-icon aria-label="Side nav toggle icon">menu</mat-icon>
          </button>
          <!-- title -->
          <span>Admin Dashboard</span>
 
+         <!-- spacer -->
+         <span class="spacer"></span>
+
          <!-- button -->
+         <button mat-icon-button matTooltip="Admin Signin" aria-label="account-menu">
+            <mat-icon>account_circle</mat-icon>
+         </button>
       </mat-toolbar>
       <mat-tab-group>
          <mat-tab label="Album List">

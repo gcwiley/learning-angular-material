@@ -93,12 +93,12 @@ export class AlbumFormComponent implements OnInit {
       if (this.mode === 'create') {
          this.albumService.addAlbum(this.albumForm.value).subscribe(() => {
             // naivates user back to the home page
-            this.router.navigateByUrl('/album-admin');
+            this.router.navigateByUrl('/admin');
          });
       } else {
          this.albumService.updateAlbum(this.id!, this.albumForm.value).subscribe(() => {
             // navigates user back to the home page
-            this.router.navigateByUrl('/album-admin');
+            this.router.navigateByUrl('/admin');
          });
       }
    }

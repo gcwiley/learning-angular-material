@@ -11,15 +11,15 @@ import { MatTooltipModule } from '@angular/material/tooltip';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 
 // import the hero service
-import { HeroService } from 'src/app/services/hero.service';
+import { HeroService } from '../../services/hero.service';
 
 // import the hero interface
-import { Hero } from 'src/app/types/hero.interface';
+import { Hero } from '../../types/hero.interface';
 
 @Component({
-  selector: 'app-hero-list',
-  templateUrl: './hero-list.component.html',
-  styleUrls: ['./hero-list.component.scss'],
+  selector: 'app-hero-table',
+  templateUrl: './hero-table.component.html',
+  styleUrls: ['./hero-table.component.scss'],
   standalone: true,
   imports: [
     CommonModule,
@@ -32,7 +32,7 @@ import { Hero } from 'src/app/types/hero.interface';
     RouterModule,
   ],
 } )
-export class HeroListComponent implements OnInit {
+export class HeroTableComponent implements OnInit {
   isLoadingResults = true;
 
   // set up the data source

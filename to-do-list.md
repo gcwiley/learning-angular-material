@@ -1,10 +1,3 @@
-1. update .gitignore file - post to github
-
-2. add prettier
-
-2. es lint rules
-
-3. update theme code
 
 4. fix footer
 

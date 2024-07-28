@@ -11,15 +11,15 @@ import { MatTooltipModule } from '@angular/material/tooltip';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 
 // import the ablum service
-import { AlbumService } from 'src/app/services/album.service';
+import { AlbumService } from '../../services/album.service';
 
 // import the album interface
-import { Album } from 'src/app/types/album.interface';
+import { Album } from '../../types/album.interface';
 
 @Component({
-   selector: 'app-album-list',
-   templateUrl: './album-list.component.html',
-   styleUrl: './album-list.component.scss',
+   selector: 'app-album-table',
+   templateUrl: './album-table.component.html',
+   styleUrl: './album-table.component.scss',
    standalone: true,
    imports: [
       CommonModule,
@@ -32,7 +32,7 @@ import { Album } from 'src/app/types/album.interface';
       RouterModule,
    ],
 })
-export class AlbumListComponent implements OnInit {
+export class AlbumTableComponent implements OnInit {
    // fix this later
    isLoadingResults = true;
 

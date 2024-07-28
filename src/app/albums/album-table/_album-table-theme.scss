@@ -2,14 +2,14 @@
 
 // color mixin
 @mixin color($theme) {
-   .album-list {
+   .album-table {
       color: mat.get-theme-color($theme, primary, 900);
    }
 }
 
 // typography mixin
 @mixin typography($theme) {
-   .albums-list {
+   .albums-table {
       font: mat.get-theme-typography($theme, subtitle-1);
    }
 }

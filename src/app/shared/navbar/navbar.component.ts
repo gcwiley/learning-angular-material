@@ -2,8 +2,8 @@ import { Component } from '@angular/core';
 import { NgTemplateOutlet, CommonModule } from '@angular/common';
 import { RouterModule, Router } from '@angular/router';
 
-// import angulr fire auth
-import { AngularFireAuth } from '@angular/fire/compat/auth';
+// import the auth service
+import { AuthService } from '../../services/auth.service';
 
 // import the angular material modules
 import { MatIconModule } from '@angular/material/icon';
@@ -31,9 +31,9 @@ import { AppLogoComponent } from '../logo/logo.component';
    ],
 })
 export class NavBarComponent {
-   constructor(public auth: AngularFireAuth, private router: Router) {}
+   constructor(public auth: AuthService, private router: Router) {}
 
-   // signs out the current user
+   // signs out current user
    onClickSignOut(): void {
       this.auth.signOut().then(() => {
          // navigates user to the sign in page

@@ -14,7 +14,8 @@
       </mat-nav-list>
    </mat-sidenav>
    <mat-sidenav-content>
-      <mat-toolbar color="primary">
+      <mat-toolbar class="toolbar">
+         <!-- fix this! -->
          <button
             type="button"
             aria-label="Toggle sidenav"
@@ -23,14 +24,17 @@
             *ngIf="isHandset$ | async">
             <mat-icon aria-label="Side nav toggle icon">menu</mat-icon>
          </button>
+         <!-- title -->
          <span>Admin Dashboard</span>
+
+         <!-- button -->
       </mat-toolbar>
       <mat-tab-group>
          <mat-tab label="Album List">
-            <app-album-list></app-album-list>
+            <app-album-table></app-album-table>
          </mat-tab>
          <mat-tab label="Hero List">
-            <app-hero-list></app-hero-list>
+            <app-hero-table></app-hero-table>
          </mat-tab>
       </mat-tab-group>
    </mat-sidenav-content>

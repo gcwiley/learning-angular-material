@@ -3,7 +3,7 @@
 // color mixin
 @mixin color($theme) {
    .signin-page-container {
-      color: mat.get-theme-color($theme, primary, 200-contrast);
+      color: mat.get-theme-color($theme, primary, 20);
       background-color: mat.get-theme-color($theme, primary, 50);
    }
 }
@@ -11,7 +11,7 @@
 // typography mixin
 @mixin typography($theme) {
    .signin-page-container {
-      font: mat.get-theme-typography($theme, body-1);
+      font: mat.get-theme-typography($theme, body-medium);
    }
 }
 

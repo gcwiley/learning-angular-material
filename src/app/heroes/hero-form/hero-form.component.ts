@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, inject } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormBuilder, Validators, FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { ActivatedRoute, ParamMap, Router } from '@angular/router';
@@ -13,10 +13,10 @@ import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatNativeDateModule } from '@angular/material/core';
 
 // import the hero service
-import { HeroService } from 'src/app/services/hero.service';
+import { HeroService } from '../../services/hero.service';
 
 // import the hero interface
-import { Hero } from 'src/app/types/hero.interface';
+import { Hero } from '../../types/hero.interface';
 
 @Component({
    selector: 'app-hero-form',
@@ -37,12 +37,13 @@ import { Hero } from 'src/app/types/hero.interface';
    ],
 })
 export class HeroFormComponent implements OnInit {
+   formBuilder = inject(FormBuilder)
+   
    public mode = 'create';
    private id!: string | null;
    private hero!: Hero;
 
    constructor(
-      private formBuilder: FormBuilder,
       private router: Router,
       public route: ActivatedRoute,
       private heroService: HeroService

@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, inject } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormBuilder, Validators, FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { ActivatedRoute, ParamMap, Router } from '@angular/router';
@@ -13,13 +13,13 @@ import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatNativeDateModule } from '@angular/material/core';
 
 // import the album service
-import { AlbumService } from 'src/app/services/album.service';
+import { AlbumService } from '../../services/album.service';
 
 // import the album interfaces
-import { Album, AlbumGenre } from 'src/app/types/album.interface';
+import { Album, AlbumGenre } from '../../types/album.interface';
 
-// import the album data values 
-import { ALBUM_GENRES } from 'src/assets/data/album-data';
+// import the album data values
+import { ALBUM_GENRES } from '../../../assets/data/album-data';
 
 @Component({
    selector: 'app-album-form',
@@ -40,18 +40,15 @@ import { ALBUM_GENRES } from 'src/assets/data/album-data';
    ],
 })
 export class AlbumFormComponent implements OnInit {
+   formBuilder = inject(FormBuilder);
+
    public mode = 'create';
    private id!: string | null;
    private album!: Album;
 
    genres: AlbumGenre[] = ALBUM_GENRES;
 
-   constructor(
-      private formBuilder: FormBuilder,
-      private router: Router,
-      public route: ActivatedRoute,
-      private albumService: AlbumService
-   ) {}
+   constructor(private router: Router, public route: ActivatedRoute, private albumService: AlbumService) {}
 
    // create the album form
    albumForm = this.formBuilder.group({

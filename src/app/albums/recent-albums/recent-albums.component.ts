@@ -6,10 +6,10 @@ import { MatListModule } from '@angular/material/list';
 import { MatIconModule } from '@angular/material/icon';
 
 // import the album service
-import { AlbumService } from 'src/app/services/album.service';
+import { AlbumService } from '../../services/album.service';
 
 // import the album interface
-import { Album } from 'src/app/types/album.interface';
+import { Album } from '../../types/album.interface';
 
 @Component({
    selector: 'app-recent-albums',

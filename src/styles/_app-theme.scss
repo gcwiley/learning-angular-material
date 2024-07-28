@@ -3,7 +3,7 @@
 // ALBUM COMPONENT THEMES
 @use '../app/albums/album-details/album-details-theme';
 @use '../app/albums/album-form/album-form-theme';
-@use '../app/albums/album-list/album-list-theme';
+@use '../app/albums/album-table/album-table-theme';
 @use '../app/albums/recent-albums/recent-albums-theme';
 
 // HERO COMPONENT THEMES
@@ -11,9 +11,13 @@
 @use '../app/heroes/hero-details/hero-details-theme';
 @use '../app/heroes/hero-form/hero-form-theme';
 @use '../app/heroes/hero-grid/hero-grid-theme';
-@use '../app/heroes/hero-list/hero-list-theme';
+@use '../app/heroes/hero-table/hero-table-theme';
 @use '../app/heroes/hero-search/hero-search-theme';
 @use '../app/heroes/recent-heroes/recent-heroes-theme';
+
+// PAGES - FIX THIS!
+@use '../app/pages/admin-page/admin-page-theme';
+
 
 // SHARED COMPONENT THEMES
 @use '../app/shared/announcement-banner/announcement-banner-theme';
@@ -42,7 +46,7 @@
    // album components
    @include album-details-theme.theme($theme);
    @include album-form-theme.theme($theme);
-   @include album-list-theme.theme($theme);
+   @include album-table-theme.theme($theme);
    @include recent-albums-theme.theme($theme);
 
    // hero components
@@ -50,9 +54,11 @@
    @include hero-details-theme.theme($theme);
    @include hero-form-theme.theme($theme);
    @include hero-grid-theme.theme($theme);
-   @include hero-list-theme.theme($theme);
+   @include hero-table-theme.theme($theme);
    @include hero-search-theme.theme($theme);
    @include recent-heroes-theme.theme($theme);
+
+   @include admin-page-theme.theme($theme);
 
    // shared components
    @include announcement-banner-theme.theme($theme);

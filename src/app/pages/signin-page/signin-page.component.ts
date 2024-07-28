@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, inject } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormBuilder, Validators, ReactiveFormsModule } from '@angular/forms';
 import { Router } from '@angular/router';
@@ -12,7 +12,7 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
 
 // import the shared components
-import { FooterComponent } from 'src/app/shared';
+import { FooterComponent } from '../../shared';
 
 // import the auth service
 import { AuthService } from '../../services/auth.service';
@@ -35,10 +35,12 @@ import { AuthService } from '../../services/auth.service';
    ],
 })
 export class SigninPageComponent {
+   formBuilder = inject(FormBuilder);
+
    year = new Date().getFullYear();
 
    // inject the router, form builder, and the auth service
-   constructor(private router: Router, private formBuilder: FormBuilder, private authService: AuthService) {}
+   constructor(private router: Router, private authService: AuthService) {}
 
    // create the signin form with email and password fields
    signinForm = this.formBuilder.group({
@@ -50,7 +52,7 @@ export class SigninPageComponent {
    // if successful, navigate admin to the main page
    onSubmitSignIn() {
       this.authService
-         .SigninUserwithEmailAndPassword(this.signinForm.value.email ?? '', this.signinForm.value.password ?? '')
+         .signInWithEmailAndPassword(this.signinForm.value.email ?? '', this.signinForm.value.password ?? '')
          .then(() => {
             // navigates user to the main page
             this.router.navigateByUrl('/');

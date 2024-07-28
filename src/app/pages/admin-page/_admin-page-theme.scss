@@ -1,1 +1,30 @@
-// fix this!
+@use '@angular/material' as mat;
+
+// color mixin
+@mixin color($theme) {
+   .sidenav-container {
+      color: mat.get-theme-color($theme, primary, 10);
+    //   background-color: mat.get-theme-color($theme, primary, 10);
+   }
+   .toolbar {
+      background-color: mat.get-theme-color($theme, primary, 70);
+   }
+}
+
+// typography mixin
+@mixin typography($theme) {
+   .hero-details-container-page {
+      font: mat.get-theme-typography($theme, body-medium);
+   }
+}
+
+// theme mixin
+@mixin theme($theme) {
+   @if mat.theme-has($theme, color) {
+      @include color($theme);
+   }
+
+   @if mat.theme-has($theme, typography) {
+      @include typography($theme);
+   }
+}

@@ -55,7 +55,7 @@ export class AlbumTableComponent implements OnInit {
       });
    }
 
-   // deletes a album
+   // deletes an album
    onDeleteAlbum(id: string): void {
       this.albumService.deleteAlbum(id).subscribe(() => {
          // navigates admin back to the admin page

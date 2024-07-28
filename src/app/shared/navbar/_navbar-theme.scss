@@ -4,15 +4,15 @@
 @mixin color($theme) {
    .docs-navbar-header {
       // fix this!
-      color: mat.get-theme-color($theme, accent, 900);
-      background-color: mat.get-theme-color($theme, primary, 900);
+      color: mat.get-theme-color($theme, secondary, 10);
+      background-color: mat.get-theme-color($theme, primary, 10);
    }
 }
 
 // typography mixin
 @mixin typography($theme) {
    .footer {
-      font: mat.get-theme-typography($theme, body-1);
+      font: mat.get-theme-typography($theme, body-medium);
    }
 }
 

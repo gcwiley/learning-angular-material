@@ -1,10 +1,10 @@
 import { Component } from '@angular/core';
 
 // import the shared components
-import { NavBarComponent, FooterComponent } from 'src/app/shared';
+import { NavBarComponent, FooterComponent } from '../../../shared';
 
 // import the album components
-import { AlbumFormComponent, RecentAlbumsComponent } from 'src/app/albums';
+import { AlbumFormComponent, RecentAlbumsComponent } from '../../../albums';
 
 @Component({
    selector: 'app-album-create-page',

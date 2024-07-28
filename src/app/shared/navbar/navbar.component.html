@@ -11,7 +11,7 @@
 
    <mat-menu #menu="matMenu">
       <!-- If user is signed in -->
-      <ng-container *ngIf="auth.user | async as user; else showSignIn">
+      <ng-container>
 
          <!-- admin dashboard -->
          <a mat-menu-item routerLink="/admin">

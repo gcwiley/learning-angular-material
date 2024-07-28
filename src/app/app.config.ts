@@ -4,13 +4,15 @@ import { ApplicationConfig } from '@angular/core';
 // import the router helper function
 import { provideRouter } from '@angular/router';
 
+// Configures Angular's HttpClient service to be available for injection.
+import { provideHttpClient } from '@angular/common/http';
+
 // import the animation function
 import { provideAnimationsAsync } from '@angular/platform-browser/animations/async';
 
 // import the firebase libraries
 import { initializeApp, provideFirebaseApp } from '@angular/fire/app';
 import { getAuth, provideAuth } from '@angular/fire/auth';
-// install provide functions
 import { getFirestore, provideFirestore } from '@angular/fire/firestore';
 import { getDatabase, provideDatabase } from '@angular/fire/database';
 import { getStorage, provideStorage } from '@angular/fire/storage';
@@ -25,6 +27,8 @@ export const appConfig: ApplicationConfig = {
    providers: [
       // sets up providers necessary to enable Router functionality for the application
       provideRouter(routes),
+      // Configures Angular's HttpClient service to be available for injection.
+      provideHttpClient(),
       //  enable animations in an application
       provideAnimationsAsync(),
       // creates and initializes an firebase app instance

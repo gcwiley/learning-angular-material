@@ -6,7 +6,7 @@ import { RouterModule } from '@angular/router';
 import { MatButtonModule } from '@angular/material/button';
 
 // import the shared components
-import { NavBarComponent, FooterComponent } from 'src/app/shared';
+import { NavBarComponent, FooterComponent } from '../../shared';
 
 @Component({
    selector: 'app-not-found-page',

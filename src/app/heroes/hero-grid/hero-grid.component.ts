@@ -10,13 +10,13 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatButtonModule } from '@angular/material/button';
 
 // import simple truncate pipe
-import { SimpleTruncatePipe } from 'src/app/pipes/simple-truncate.pipe';
+import { SimpleTruncatePipe } from '../../pipes';
 
 // import the hero service
-import { HeroService } from 'src/app/services/hero.service';
+import { HeroService } from '../../services/hero.service';
 
 // import the hero type
-import { Hero } from 'src/app/types/hero.interface';
+import { Hero } from '../../types/hero.interface';
 
 @Component({
    selector: 'app-hero-grid',

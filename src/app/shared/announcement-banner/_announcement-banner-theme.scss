@@ -3,14 +3,14 @@
 // color mixin
 @mixin color($theme) {
    .announcement-banner {
-      color: mat.get-theme-color($theme, warn, 50);
-      background-color: mat.get-theme-color($theme, warn, 30);
+      color: mat.get-theme-color($theme, error, 50);
+      background-color: mat.get-theme-color($theme, error, 30);
    }
 }
 // typography mixin
 @mixin typography($theme) {
    .announcement-banner {
-      font: mat.get-theme-typography($theme, subtitle-1);
+      font: mat.get-theme-typography($theme, body-medium);
    }
 }
 

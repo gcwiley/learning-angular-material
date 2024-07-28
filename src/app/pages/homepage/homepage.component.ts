@@ -14,16 +14,16 @@ import {
    AppLogoComponent,
    SupportComponent,
    FooterComponent,
-} from 'src/app/shared';
+} from '../../shared';
 
 // carousel
-import { CarouselComponent, CarouselItemDirective } from 'src/app/shared/carousel/carousel.component';
+import { CarouselComponent, CarouselItemDirective } from '../../shared';
 
 // import the hero service
-import { HeroService } from 'src/app/services/hero.service';
+import { HeroService } from '../../services/hero.service';
 
 // import the hero interface
-import { Hero } from 'src/app/types/hero.interface';
+import { Hero } from '../../types/hero.interface';
 
 // fix this later
 const TOP_COMPONENTS = ['datepicker', 'input', 'slide-toggle', 'slider', 'button'];

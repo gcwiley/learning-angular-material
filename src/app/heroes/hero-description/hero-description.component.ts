@@ -3,10 +3,10 @@ import { ActivatedRoute } from '@angular/router';
 import { NgIf } from '@angular/common';
 
 // import the hero interface
-import { Hero } from 'src/app/types/hero.interface';
+import { Hero } from '../../types/hero.interface';
 
 // import the hero service
-import { HeroService } from 'src/app/services/hero.service';
+import { HeroService } from '../../services/hero.service';
 
 @Component({
   selector: 'app-hero-description',

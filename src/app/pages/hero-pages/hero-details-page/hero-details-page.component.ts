@@ -5,10 +5,10 @@ import { Breakpoints, BreakpointObserver } from '@angular/cdk/layout';
 import { MatGridListModule } from '@angular/material/grid-list';
 
 // import the shared components
-import { NavBarComponent, FooterComponent } from 'src/app/shared';
+import { NavBarComponent, FooterComponent } from '../../../shared';
 
 // import the hero components
-import { HeroDetailsComponent, HeroDescriptionComponent } from 'src/app/heroes';
+import { HeroDetailsComponent, HeroDescriptionComponent } from '../../../heroes';
 
 @Component({
    selector: 'app-hero-details-page',

@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
 // import the shared components
-import { NavBarComponent, FooterComponent } from 'src/app/shared';
+import { NavBarComponent, FooterComponent } from '../../shared';
 
 @Component({
   selector: 'app-image-gallery-page',

@@ -4,10 +4,10 @@ import { Component } from '@angular/core';
 import { MatDividerModule } from '@angular/material/divider';
 
 // import the shared components
-import { NavBarComponent, FooterComponent } from 'src/app/shared';
+import { NavBarComponent, FooterComponent } from '../../../shared';
 
 // import the hero components
-import { HeroGridComponent } from 'src/app/heroes';
+import { HeroGridComponent } from '../../../heroes';
 
 @Component({
    selector: 'app-hero-grid-page',

@@ -3,10 +3,10 @@ import { ActivatedRoute } from '@angular/router';
 import { NgIf } from '@angular/common';
 
 // import the album interface
-import { Album } from 'src/app/types/album.interface';
+import { Album } from '../../types/album.interface';
 
 // import the album service
-import { AlbumService } from 'src/app/services/album.service';
+import { AlbumService } from '../../services/album.service';
 
 @Component({
    selector: 'app-album-description',

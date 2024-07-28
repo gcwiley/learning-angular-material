@@ -15,10 +15,10 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatTabsModule } from '@angular/material/tabs';
 
 // import the album list component
-import { AlbumListComponent } from 'src/app/albums';
+import { AlbumTableComponent } from '../../albums';
 
 // import the heroes list component
-import { HeroListComponent } from 'src/app/heroes';
+import { HeroTableComponent } from '../../heroes';
 
 @Component({
    selector: 'app-admin-page',
@@ -35,8 +35,8 @@ import { HeroListComponent } from 'src/app/heroes';
       MatButtonModule,
       MatTabsModule,
       RouterModule,
-      AlbumListComponent,
-      HeroListComponent,
+      AlbumTableComponent,
+      HeroTableComponent,
    ],
 })
 export class AdminPageComponent {

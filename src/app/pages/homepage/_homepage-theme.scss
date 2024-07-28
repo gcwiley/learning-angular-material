@@ -1,0 +1,23 @@
+@use '@angular/material' as mat;
+
+// color mixin
+@mixin color($theme) {
+   // sets the background color
+   .docs-header-background {
+      background-color: mat.get-theme-color($theme, accent, 50);
+   }
+
+   // set the color of the header text
+   .docs-header-headline {
+      color: mat.get-theme-color($theme, accent, 90);
+   }
+}
+
+// add type mixin - fix this!
+
+// theme mixin
+@mixin theme($theme) {
+   @if mat.theme-has($theme, color) {
+      @include color($theme);
+   }
+}

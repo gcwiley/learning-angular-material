@@ -1,0 +1,15 @@
+.hero-create-page-container {
+   max-width: 1400px;
+   margin: auto;
+   display: flex;
+   flex-direction: row;
+   min-height: 100vh;
+}
+
+.hero-form {
+   flex-basis: 70%;
+}
+
+.recent-heroes {
+   flex-basis: 30%;
+}

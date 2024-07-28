@@ -1,0 +1,15 @@
+.album-details-page-container {
+   max-width: 1500px;
+   margin: auto;
+   min-height: 100vh;
+   display: flex;
+   flex-direction: row;
+}
+
+.album-description {
+   flex-basis: 70%;
+}
+
+.album-details {
+   flex-basis: 30%;
+}

@@ -1,0 +1,26 @@
+<mat-list *ngIf="hero" class="hero-details mat-elevation-z1" role="list">
+  <span mat-subheader>Hero Details</span>
+  <!-- name -->
+  <mat-list-item lines="2">
+    <span matListItemTitle>Name</span>
+    <span matListItemLine>{{ hero.name }}</span>
+  </mat-list-item>
+
+  <!-- age -->
+  <mat-list-item lines="2">
+    <span matListItemTitle>Age</span>
+    <span matListItemLine>{{ hero.age }}</span>
+  </mat-list-item>
+
+  <!-- superpower -->
+  <mat-list-item lines="2">
+    <span matListItemTitle>Superpower</span>
+    <span matListItemLine>{{ hero.superPower }}</span>
+  </mat-list-item>
+
+  <!-- home planet -->
+  <mat-list-item lines="2">
+    <span matListItemTitle>Home Planet</span>
+    <span matListItemLine>{{ hero.homePlanet }}</span>
+  </mat-list-item>
+</mat-list>

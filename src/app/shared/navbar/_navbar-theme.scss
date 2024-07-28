@@ -1,0 +1,28 @@
+@use '@angular/material' as mat;
+
+// color mixin
+@mixin color($theme) {
+   .docs-navbar-header {
+      // fix this!
+      color: mat.get-theme-color($theme, accent, 900);
+      background-color: mat.get-theme-color($theme, primary, 900);
+   }
+}
+
+// typography mixin
+@mixin typography($theme) {
+   .footer {
+      font: mat.get-theme-typography($theme, body-1);
+   }
+}
+
+// theme mixin
+@mixin theme($theme) {
+   @if mat.theme-has($theme, color) {
+      @include color($theme);
+   }
+
+   @if mat.theme-has($theme, typography) {
+      @include typography($theme);
+   }
+}

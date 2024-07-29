@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { AfterViewInit, Component, ViewChild } from '@angular/core';
 import { Router, RouterModule } from '@angular/router';
 import { CommonModule } from '@angular/common';
 
@@ -9,6 +9,13 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatButtonModule } from '@angular/material/button';
 import { MatTooltipModule } from '@angular/material/tooltip';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
+
+// import mat paginator and mat sort
+import { MatPaginator } from '@angular/material/paginator';
+import { MatSort } from '@angular/material/sort';
+
+// import mat dialog here
+
 
 // import the ablum service
 import { AlbumService } from '../../services/album.service';
@@ -30,10 +37,14 @@ import { Album } from '../../types/album.interface';
       MatTooltipModule,
       MatProgressSpinnerModule,
       RouterModule,
+      MatPaginator,
    ],
 })
-export class AlbumTableComponent implements OnInit {
-   // fix this later
+export class AlbumTableComponent implements AfterViewInit {
+   @ViewChild(MatPaginator) paginator!: MatPaginator;
+   @ViewChild(MatSort) sort!: MatSort;
+
+   // set the loading spinner to true
    isLoadingResults = true;
 
    // set up the data source
@@ -44,7 +55,10 @@ export class AlbumTableComponent implements OnInit {
 
    constructor(private albumService: AlbumService, private router: Router) {}
 
-   ngOnInit(): void {
+   // A callback method that is invoked immediately after Angular has completed initialization of a component's view.
+   ngAfterViewInit(): void {
+      this.dataSource.sort = this.sort;
+      this.dataSource.paginator = this.paginator;
       this.getAlbums();
    }
 
@@ -52,6 +66,7 @@ export class AlbumTableComponent implements OnInit {
    getAlbums(): void {
       this.albumService.getAlbums().subscribe((albums) => {
          this.dataSource.data = albums;
+         this.isLoadingResults = false;
       });
    }
 

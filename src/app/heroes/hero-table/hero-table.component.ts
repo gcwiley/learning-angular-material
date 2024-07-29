@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { AfterViewInit, Component, ViewChild } from '@angular/core';
 import { Router, RouterModule } from '@angular/router';
 import { CommonModule } from '@angular/common';
 
@@ -10,6 +10,10 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatTooltipModule } from '@angular/material/tooltip';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 
+// import mat paginator and mat sort
+import { MatPaginator } from '@angular/material/paginator';
+import { MatSort } from '@angular/material/sort';
+
 // import the hero service
 import { HeroService } from '../../services/hero.service';
 
@@ -17,49 +21,57 @@ import { HeroService } from '../../services/hero.service';
 import { Hero } from '../../types/hero.interface';
 
 @Component({
-  selector: 'app-hero-table',
-  templateUrl: './hero-table.component.html',
-  styleUrls: ['./hero-table.component.scss'],
-  standalone: true,
-  imports: [
-    CommonModule,
-    MatRippleModule,
-    MatTableModule,
-    MatIconModule,
-    MatButtonModule,
-    MatTooltipModule,
-    MatProgressSpinnerModule,
-    RouterModule,
-  ],
-} )
-export class HeroTableComponent implements OnInit {
-  isLoadingResults = true;
+   selector: 'app-hero-table',
+   templateUrl: './hero-table.component.html',
+   styleUrls: ['./hero-table.component.scss'],
+   standalone: true,
+   imports: [
+      CommonModule,
+      MatRippleModule,
+      MatTableModule,
+      MatIconModule,
+      MatButtonModule,
+      MatTooltipModule,
+      MatProgressSpinnerModule,
+      RouterModule,
+      MatPaginator,
+   ],
+})
+export class HeroTableComponent implements AfterViewInit {
+   @ViewChild(MatPaginator) paginator!: MatPaginator;
+   @ViewChild(MatSort) sort!: MatSort;
 
-  // set up the data source
-  dataSource = new MatTableDataSource<Hero>();
+   // set the loading spinner to true
+   isLoadingResults = true;
 
-  // columns to display
-  columnsToDisplay = ['name', 'age', 'homePlanet', 'openHero', 'editHero', 'deleteHero'];
+   // set up the data source
+   dataSource = new MatTableDataSource<Hero>();
 
-  constructor(private heroService: HeroService, private router: Router) {}
+   // columns to display
+   columnsToDisplay = ['name', 'age', 'homePlanet', 'openHero', 'editHero', 'deleteHero'];
 
-  ngOnInit(): void {
-      this.getHeroes()
-  }
+   constructor(private heroService: HeroService, private router: Router) {}
 
-  // gets all heroes from the hero service
-  getHeroes(): void {
-    this.heroService.getHeroes().subscribe((heroes) => {
-      this.dataSource.data = heroes;
-      this.isLoadingResults = false;
-    });
-  }
- 
-  // deletes a hero by ID
-  onDeleteHero(id: string): void {
-    this.heroService.deleteHero(id).subscribe(() => {
-      // navigates admin back to the admin page
-      this.router.navigateByUrl('/admin')
-    })
-  }
+   // a callback method that is invoked immediately after angular has completed initialization of a component's view
+   ngAfterViewInit(): void {
+      this.dataSource.sort = this.sort;
+      this.dataSource.paginator = this.paginator;
+      this.getHeroes();
+   }
+
+   // gets all heroes from the hero service
+   getHeroes(): void {
+      this.heroService.getHeroes().subscribe((heroes) => {
+         this.dataSource.data = heroes;
+         this.isLoadingResults = false;
+      });
+   }
+
+   // deletes a hero by ID
+   onDeleteHero(id: string): void {
+      this.heroService.deleteHero(id).subscribe(() => {
+         // navigates admin back to the admin page
+         this.router.navigateByUrl('/admin');
+      });
+   }
 }

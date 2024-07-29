@@ -87,12 +87,12 @@ export class HeroFormComponent implements OnInit {
       if (this.mode === 'create') {
          this.heroService.addHero(this.heroForm.value).subscribe(() => {
             // navigates user back to the homepage
-            this.router.navigateByUrl('/heroes');
+            this.router.navigateByUrl('/admin');
          });
       } else {
          this.heroService.updateHero(this.id!, this.heroForm.value).subscribe(() => {
             // navigates user back to the homepage
-            this.router.navigateByUrl('/heroes');
+            this.router.navigateByUrl('/admin');
          });
       }
    }

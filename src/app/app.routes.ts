@@ -26,14 +26,14 @@ export const routes: Routes = [
    { path: 'admin', component: AdminPageComponent },
    // HERO PAGES
    { path: 'heroes', component: HeroGridPageComponent, pathMatch: 'full' },
-   { path: 'heroes/:id', component: HeroDetailsPageComponent },
-   { path: 'heroes/create', component: HeroCreatePageComponent },
-   { path: 'heroes/edit/:id', component: HeroCreatePageComponent },
+   { path: 'heroes/:id', component: HeroDetailsPageComponent, pathMatch: 'full' },
+   { path: 'create-hero', component: HeroCreatePageComponent, pathMatch: 'full' },
+   { path: 'edit-hero/:id', component: HeroCreatePageComponent, pathMatch: 'full' },
    // ALBUM PAGES
    { path: 'albums', component: AlbumGridPageComponent, pathMatch: 'full' },
-   { path: 'albums/:id', component: AlbumDetailsPageComponent },
-   { path: 'albums/create', component: AlbumCreatePageComponent },
-   { path: 'albums/edit/:id', component: AlbumCreatePageComponent },
+   { path: 'albums/:id', component: AlbumDetailsPageComponent, pathMatch: 'full' },
+   { path: 'create-album', component: AlbumCreatePageComponent, pathMatch: 'full' },
+   { path: 'edit-album/:id', component: AlbumCreatePageComponent, pathMatch: 'full' },
    // not found page - MUST BE VERY LAST!
    { path: '**', component: NotFoundPageComponent },
 ];

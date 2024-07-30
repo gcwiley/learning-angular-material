@@ -1,6 +1,6 @@
 // define the album interface
 export interface Album {
-   id?: number;
+   id?: string;
    title: string;
    artist: string;
    releaseDate: string;

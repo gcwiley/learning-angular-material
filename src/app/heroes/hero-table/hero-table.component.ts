@@ -1,4 +1,4 @@
-import { AfterViewInit, Component, ViewChild } from '@angular/core';
+import { AfterViewInit, Component, ViewChild, inject, ChangeDetectionStrategy } from '@angular/core';
 import { Router, RouterModule } from '@angular/router';
 import { CommonModule } from '@angular/common';
 
@@ -14,6 +14,9 @@ import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
 
+// import mat dialog here
+import { MatDialog, MatDialogActions, MatDialogClose, MatDialogContent, MatDialogRef, MatDialogTitle } from '@angular/material/dialog';
+
 // import the hero service
 import { HeroService } from '../../services/hero.service';
 
@@ -24,6 +27,7 @@ import { Hero } from '../../types/hero.interface';
    selector: 'app-hero-table',
    templateUrl: './hero-table.component.html',
    styleUrls: ['./hero-table.component.scss'],
+   changeDetection: ChangeDetectionStrategy.OnPush,
    standalone: true,
    imports: [
       CommonModule,
@@ -38,7 +42,12 @@ import { Hero } from '../../types/hero.interface';
    ],
 })
 export class HeroTableComponent implements AfterViewInit {
+   // inject MatDialog
+   readonly dialog = inject(MatDialog);
+
+   // setup pagination for table
    @ViewChild(MatPaginator) paginator!: MatPaginator;
+   // set up sort in table
    @ViewChild(MatSort) sort!: MatSort;
 
    // set the loading spinner to true
@@ -48,7 +57,7 @@ export class HeroTableComponent implements AfterViewInit {
    dataSource = new MatTableDataSource<Hero>();
 
    // columns to display
-   columnsToDisplay = ['name', 'age', 'homePlanet', 'openHero', 'editHero', 'deleteHero'];
+   columnsToDisplay = ['name', 'age', 'homePlanet', 'openHero', 'editHero', 'deleteHero', 'openDialog'];
 
    constructor(private heroService: HeroService, private router: Router) {}
 
@@ -67,6 +76,15 @@ export class HeroTableComponent implements AfterViewInit {
       });
    }
 
+   // open dialog window
+   openDialog(enterAnimationDuration: string, exitAnimationDuration: string): void {
+      this.dialog.open(HeroTableDialogComponent, {
+         width: '250px',
+         enterAnimationDuration,
+         exitAnimationDuration,
+      });
+   }
+
    // deletes a hero by ID
    onDeleteHero(id: string): void {
       this.heroService.deleteHero(id).subscribe(() => {
@@ -74,4 +92,15 @@ export class HeroTableComponent implements AfterViewInit {
          this.router.navigateByUrl('/admin');
       });
    }
+}
+
+@Component({
+   selector: 'app-hero-table-dialog',
+   templateUrl: './hero-table-dialog.html',
+   standalone: true,
+   imports: [MatButtonModule, MatDialogActions, MatDialogClose, MatDialogTitle, MatDialogContent],
+   changeDetection: ChangeDetectionStrategy.OnPush,
+})
+export class HeroTableDialogComponent {
+   readonly dialogRef = inject(MatDialogRef<HeroTableDialogComponent>);
 }

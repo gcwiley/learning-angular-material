@@ -1,4 +1,4 @@
-import { AfterViewInit, Component, ViewChild } from '@angular/core';
+import { AfterViewInit, Component, ViewChild, inject, ChangeDetectionStrategy } from '@angular/core';
 import { Router, RouterModule } from '@angular/router';
 import { CommonModule } from '@angular/common';
 
@@ -15,7 +15,7 @@ import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
 
 // import mat dialog here
-
+import { MatDialog, MatDialogActions, MatDialogClose, MatDialogContent, MatDialogRef, MatDialogTitle } from '@angular/material/dialog';
 
 // import the ablum service
 import { AlbumService } from '../../services/album.service';
@@ -27,6 +27,7 @@ import { Album } from '../../types/album.interface';
    selector: 'app-album-table',
    templateUrl: './album-table.component.html',
    styleUrl: './album-table.component.scss',
+   changeDetection: ChangeDetectionStrategy.OnPush,
    standalone: true,
    imports: [
       CommonModule,
@@ -41,7 +42,12 @@ import { Album } from '../../types/album.interface';
    ],
 })
 export class AlbumTableComponent implements AfterViewInit {
+   // inject MatDialog
+   readonly dialog = inject(MatDialog);
+
+   // setup pagination for table
    @ViewChild(MatPaginator) paginator!: MatPaginator;
+   // set up sort in table
    @ViewChild(MatSort) sort!: MatSort;
 
    // set the loading spinner to true
@@ -51,7 +57,18 @@ export class AlbumTableComponent implements AfterViewInit {
    dataSource = new MatTableDataSource<Album>();
 
    // columns to display
-   columnsToDisplay = ['title', 'artist', 'releaseDate', 'label', 'openAlbum', 'editAlbum', 'deleteAlbum'];
+   columnsToDisplay = [
+      'title',
+      'artist',
+      'releaseDate',
+      'genre',
+      'createdAt',
+      'updatedAt',
+      'openAlbum',
+      'editAlbum',
+      'deleteAlbum',
+      'openDialog',
+   ];
 
    constructor(private albumService: AlbumService, private router: Router) {}
 
@@ -70,6 +87,15 @@ export class AlbumTableComponent implements AfterViewInit {
       });
    }
 
+   // open dialog window
+   openDialog(enterAnimationDuration: string, exitAnimationDuration: string): void {
+      this.dialog.open(AlbumTableDialogComponent, {
+         width: '250px',
+         enterAnimationDuration,
+         exitAnimationDuration,
+      });
+   }
+
    // deletes an album
    onDeleteAlbum(id: string): void {
       this.albumService.deleteAlbum(id).subscribe(() => {
@@ -77,4 +103,15 @@ export class AlbumTableComponent implements AfterViewInit {
          this.router.navigateByUrl('/admin');
       });
    }
+}
+
+@Component({
+   selector: 'app-album-table-dialog',
+   templateUrl: './album-table-dialog.html',
+   standalone: true,
+   imports: [MatButtonModule, MatDialogActions, MatDialogClose, MatDialogTitle, MatDialogContent],
+   changeDetection: ChangeDetectionStrategy.OnPush,
+})
+export class AlbumTableDialogComponent {
+   readonly dialogRef = inject(MatDialogRef<AlbumTableDialogComponent>);
 }

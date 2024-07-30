@@ -65,7 +65,10 @@ export class AlbumService {
 
    // POST: Add a new Album to the server
    addAlbum(newAlbum: Album | object): Observable<Album> {
-      return this.http.post<Album>(this.albumsUrl, newAlbum, this.httpOptions);
+      return this.http.post<Album>(this.albumsUrl, newAlbum, this.httpOptions).pipe(
+         tap((newAlbum: Album) => this.log(`added album with id=${newAlbum.id}`)),
+         catchError(this.handleError<Album>('add Hero'))
+      );
    }
 
    // DELETE: album by Id from the server

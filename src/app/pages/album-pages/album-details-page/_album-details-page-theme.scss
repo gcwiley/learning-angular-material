@@ -2,15 +2,16 @@
 
 // color mixin
 @mixin color($theme) {
-   .support {
-      color: mat.get-theme-color($theme, error, 50);
-      background-color: mat.get-theme-color($theme, error, 30);
+   .album-details-page-container {
+      color: mat.get-theme-color($theme, primary, 900);
+      background-color: mat.get-theme-color($theme, primary, 50);
    }
 }
+
 // typography mixin
 @mixin typography($theme) {
-   .support {
-      font: mat.get-theme-typography($theme, body-medium);
+   .album-details-page-container {
+      font: mat.get-theme-typography($theme, subtitle-1);
    }
 }
 

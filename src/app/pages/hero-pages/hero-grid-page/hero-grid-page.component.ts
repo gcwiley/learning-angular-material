@@ -4,9 +4,9 @@ import { Component } from '@angular/core';
 import { MatDividerModule } from '@angular/material/divider';
 
 // import the shared components
-import { NavBarComponent, FooterComponent } from '../../../shared';
+import { NavBarComponent, AnnouncementBannerComponent, FooterComponent } from '../../../shared';
 
-// import the hero components
+// import the hero grid
 import { HeroGridComponent } from '../../../heroes';
 
 @Component({
@@ -14,6 +14,6 @@ import { HeroGridComponent } from '../../../heroes';
    templateUrl: './hero-grid-page.component.html',
    styleUrls: ['./hero-grid-page.component.scss'],
    standalone: true,
-   imports: [MatDividerModule, NavBarComponent, FooterComponent, HeroGridComponent],
+   imports: [MatDividerModule, NavBarComponent, AnnouncementBannerComponent, FooterComponent, HeroGridComponent],
 })
 export class HeroGridPageComponent {}

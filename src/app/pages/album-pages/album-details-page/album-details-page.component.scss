@@ -1,5 +1,7 @@
+@use '../../../../styles/helpers/constants';
+
 .album-details-page-container {
-   max-width: 1500px;
+   max-width: constants.$max-width;
    margin: auto;
    min-height: 100vh;
    display: flex;
@@ -8,8 +10,10 @@
 
 .album-description {
    flex-basis: 70%;
+   max-width: 70%;
 }
 
 .album-details {
    flex-basis: 30%;
+   max-width: 30%;
 }

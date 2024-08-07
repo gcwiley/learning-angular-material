@@ -9,36 +9,36 @@ import { MatCardModule } from '@angular/material/card';
 import { MatIconModule } from '@angular/material/icon';
 import { MatButtonModule } from '@angular/material/button';
 
-// import the hero service
-import { HeroService } from '../../services/hero.service';
+// import the album service
+import { AlbumService } from '../../services/album.service';
 
-// import the hero type
-import { Hero } from '../../types/hero.interface';
+// import the album type
+import { Album } from '../../types/album.interface';
 
 @Component({
-   selector: 'app-hero-grid',
-   templateUrl: './hero-grid.component.html',
-   styleUrls: ['./hero-grid.component.scss'],
+   selector: 'app-album-grid',
+   templateUrl: './album-grid.component.html',
+   styleUrl: './album-grid.component.scss',
    standalone: true,
    imports: [CommonModule, RouterModule, MatGridListModule, MatCardModule, MatIconModule, MatButtonModule],
 })
-export class HeroGridComponent implements OnInit {
+export class AlbumGridComponent implements OnInit {
    // create the member variables
-   heroes: Hero[] = [];
+   albums: Album[] = [];
 
    // set up the grid list demensions
-   cols = 5; // Amount of columns in the grid list.
+   cols = 5; // amount of columns in the grid list
    rowHeight = '1:1'; // row height
    gutterSize = '0px';
 
    // set up the grid list dimensions
-   colspan = 1; // fix this!
-   rowspan = 1; // fix this!
+   colspans = 1;
+   rowspan = 1;
 
-   constructor(private heroService: HeroService, private breakpointObserver: BreakpointObserver, private router: Router) {}
+   constructor(private albumService: AlbumService, private breakpointObserver: BreakpointObserver, private router: Router) {}
 
    ngOnInit(): void {
-      this.getHeroes();
+      this.getAlbums();
       this.layoutChanges();
    }
 
@@ -62,10 +62,9 @@ export class HeroGridComponent implements OnInit {
          });
    }
 
-   // gets all heroes from the database
-   getHeroes(): void {
-      this.heroService.getHeroes().subscribe((heroes) => {
-         this.heroes = heroes;
+   getAlbums(): void {
+      this.albumService.getAlbums().subscribe((albums) => {
+         this.albums = albums;
       });
    }
 }

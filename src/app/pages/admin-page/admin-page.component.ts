@@ -10,6 +10,7 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatMenuModule } from '@angular/material/menu';
 import { MatButtonModule } from '@angular/material/button';
 import { MatTabsModule } from '@angular/material/tabs';
+import { MatTooltip } from '@angular/material/tooltip';
 
 // import the album list component
 import { AlbumTableComponent } from '../../albums';
@@ -31,9 +32,13 @@ import { HeroTableComponent } from '../../heroes';
       MatMenuModule,
       MatButtonModule,
       MatTabsModule,
+      MatTooltip,
       RouterModule,
       AlbumTableComponent,
       HeroTableComponent,
    ],
 })
-export class AdminPageComponent {}
+export class AdminPageComponent {
+   events: string[] = [];
+   opened!: boolean;
+}

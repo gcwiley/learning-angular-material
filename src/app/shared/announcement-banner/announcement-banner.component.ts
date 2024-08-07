@@ -3,15 +3,12 @@ import { BreakpointObserver, Breakpoints } from '@angular/cdk/layout';
 import { Subject } from 'rxjs';
 import { takeUntil } from 'rxjs/operators';
 
-// import the material modules
-import { MatToolbarModule } from '@angular/material/toolbar';
-
 @Component({
   selector: 'app-announcement-banner',
   templateUrl: './announcement-banner.component.html',
   styleUrls: ['./announcement-banner.component.scss'],
   standalone: true,
-  imports: [MatToolbarModule],
+  imports: [],
 })
 export class AnnouncementBannerComponent implements OnDestroy {
   destroyed = new Subject<void>();

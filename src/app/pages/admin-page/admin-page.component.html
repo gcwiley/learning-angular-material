@@ -1,6 +1,8 @@
 <mat-sidenav-container class="sidenav-container">
-   <mat-sidenav #drawer opened class="sidenav">
+   <mat-sidenav #sidenav mode="side" [(opened)]="opened" (opened)="events.push('open!')" (closed)="events.push('close')" class="sidenav">
+      <!-- sidenav content -->
       <mat-toolbar>Menu</mat-toolbar>
+
       <mat-nav-list>
          <mat-list-item>
             <a mat-list-item routerLink="">Home</a>
@@ -18,14 +20,15 @@
             <a mat-list-item routerLink="/create-album">Create Album</a>
             <button mat-icon-button matListItemMeta>
                <mat-icon>album</mat-icon>
-            </button> 
+            </button>
          </mat-list-item>
       </mat-nav-list>
    </mat-sidenav>
+
    <mat-sidenav-content>
       <mat-toolbar class="toolbar">
          <!-- side nav toggle button -->
-         <button mat-icon-button aria-label="Toggle sidenav">
+         <button mat-icon-button (click)="sidenav.toggle()" aria-label="Toggle sidenav" matTooltip="Toggle Sidenav">
             <mat-icon aria-label="Side nav toggle icon">menu</mat-icon>
          </button>
          <!-- title -->
@@ -34,15 +37,11 @@
          <!-- spacer -->
          <span class="spacer"></span>
 
-         <!-- button -->
+         <!-- button - add menu - fix this! -->
          <button mat-icon-button matTooltip="Admin Signin" aria-label="account-menu">
             <mat-icon>account_circle</mat-icon>
          </button>
 
-         <!-- button -->
-         <button mat-icon-button matTooltip="Admin Signin" aria-label="account-menu">
-            <mat-icon>settings</mat-icon>
-         </button>
       </mat-toolbar>
       <mat-tab-group>
          <mat-tab label="Album List">

@@ -11,6 +11,7 @@ import { MatCardModule } from '@angular/material/card';
 // import the shared components
 import {
    NavBarComponent,
+   AnnouncementBannerComponent,
    AppLogoComponent,
    SupportComponent,
    FooterComponent,
@@ -40,6 +41,7 @@ const TOP_COMPONENTS = ['datepicker', 'input', 'slide-toggle', 'slider', 'button
       MatDividerModule,
       MatCardModule,
       NavBarComponent,
+      AnnouncementBannerComponent,
       FooterComponent,
       SupportComponent,
       CarouselComponent,

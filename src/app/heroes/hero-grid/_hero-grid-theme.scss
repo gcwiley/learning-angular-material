@@ -4,14 +4,13 @@
 @mixin color($theme) {
    .hero-card {
       color: mat.get-theme-color($theme, primary, 50);
-      // background-color: mat.get-theme-color($theme, primary, 50);
    }
 }
 
 // typography mixin
 @mixin typography($theme) {
    .hero-card {
-      font: mat.get-theme-typography($theme, body-medium);
+      font: mat.get-theme-typography($theme, body-small);
    }
 }
 

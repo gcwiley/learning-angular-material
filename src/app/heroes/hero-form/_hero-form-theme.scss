@@ -3,8 +3,7 @@
 // color mixin
 @mixin color($theme) {
    .hero-form {
-      color: mat.get-theme-color($theme, primary, 10);
-      // background-color: mat.get-theme-color($theme, primary, 50);
+      color: mat.get-theme-color($theme, primary, 0);
    }
 }
 

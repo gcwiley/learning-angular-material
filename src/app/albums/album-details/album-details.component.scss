@@ -1,4 +1,6 @@
+@use '../../../styles/helpers/constants';
+
 .album-details {
-   margin: 1rem;
-   padding: 1rem;
+   margin: constants.$margin;
+   padding: constants.$padding;
 }

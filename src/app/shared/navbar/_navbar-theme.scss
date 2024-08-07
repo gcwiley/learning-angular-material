@@ -2,15 +2,15 @@
 
 // color mixin
 @mixin color($theme) {
-   .docs-navbar-header {
-      color: mat.get-theme-color($theme, secondary, 10);
+   .navbar-header {
+      color: mat.get-theme-color($theme, secondary, 0);
       background-color: mat.get-theme-color($theme, primary, 50);
    }
 }
 
 // typography mixin
 @mixin typography($theme) {
-   .docs-navbar-header {
+   .navbar-header {
       font: mat.get-theme-typography($theme, body-large);
    }
 }

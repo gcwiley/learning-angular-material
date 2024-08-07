@@ -19,11 +19,12 @@ export class AuthService {
       return await createUserWithEmailAndPassword(this.auth, email, password);
    }
 
+   // Asynchronously signs in as an anonymous user.
    async signInAnonymously() {
       return await signInAnonymously(this.auth);
    }
 
-   // sign out of application
+   // Signs out the current user.
    async signOut() {
       return await signOut(this.auth);
    }

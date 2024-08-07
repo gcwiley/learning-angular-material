@@ -1,10 +1,22 @@
 
-3. spinner feature in tables
+1. add a spinner feature in both tables
 
-6. add delete dialog box - check material docs
+2. update album grid page - add to album index
 
-8. add image gallery code
+3. refactor auth service and log in page
 
-9. update TypeScript on System
+4. add auth example for angular firebase
+
+5. add delete dialog box - check material docs on how to do this!
+
+6. add image gallery code
+
+7. update TypeScript on System
+
+8. update color palette 
+
+
+
+
 
 

@@ -35,11 +35,10 @@ import { AuthService } from '../../services/auth.service';
    ],
 })
 export class SigninPageComponent {
+   // inject the formBuilder class
    formBuilder = inject(FormBuilder);
 
-   year = new Date().getFullYear();
-
-   // inject the router, form builder, and the auth service
+   // inject the router and the auth service
    constructor(private router: Router, private authService: AuthService) {}
 
    // create the signin form with email and password fields
@@ -49,11 +48,11 @@ export class SigninPageComponent {
    });
 
    // Sign in with email and password
-   // if successful, navigate admin to the main page
    onSubmitSignIn() {
       this.authService
          .signInWithEmailAndPassword(this.signinForm.value.email ?? '', this.signinForm.value.password ?? '')
          .then(() => {
+            window.alert(); // fix this!
             // navigates user to the main page
             this.router.navigateByUrl('/');
          })

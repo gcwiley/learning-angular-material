@@ -1,0 +1,6 @@
+@use '../../../styles/helpers/constants';
+
+.recent-albums {
+   margin: constants.$margin;
+   padding: constants.$padding;
+}

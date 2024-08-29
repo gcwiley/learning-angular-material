@@ -1,0 +1,19 @@
+@use '../../../../styles/helpers/constants';
+
+.hero-create-page-container {
+   max-width: constants.$max-width;
+   margin: auto;
+   display: flex;
+   flex-direction: row;
+   min-height: 100vh;
+}
+
+.hero-form {
+   flex-basis: 70%;
+   max-width: 70%;
+}
+
+.recent-heroes {
+   flex-basis: 30%;
+   max-width: 30%;
+}

@@ -1,0 +1,24 @@
+# comment here
+image: node:latest
+
+pages:
+   cache:
+      paths:
+         - node_modules/
+   stage: deploy
+   script:
+      # installs the angular cli globally
+      - npm install -g @angular/cli@latest
+      # installs the npm packages
+      - npm install
+      # builds the angular app
+      - ng build --base-href=/learning-angular-material/
+      # creates a directory named public
+      - mkdir -p public
+      # moves the angular app within the dist folder into the public folder
+      - mv dist/learning-angular-material/browser/* public/
+   artifacts:
+      paths:
+         - public
+   only:
+      - main

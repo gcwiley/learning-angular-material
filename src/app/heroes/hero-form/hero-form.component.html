@@ -1,0 +1,71 @@
+<form [formGroup]="heroForm" novalidate (ngSubmit)="onSaveHero()">
+   <!-- HERO CARD -->
+   <mat-card class="hero-form" appearance="outlined">
+      <!-- CARD HEADER -->
+      <mat-card-header>
+         <mat-card-title>New Hero</mat-card-title>
+      </mat-card-header>
+
+      <mat-card-content>
+         <!-- HERO NAME (name) -->
+         <mat-form-field class="full-width" appearance="outline">
+            <mat-label>Name</mat-label>
+            <input matInput type="text" formControlName="name" />
+            <mat-error *ngIf="heroForm.controls['name'].hasError('required')">Please enter a superhero name.</mat-error>
+         </mat-form-field>
+
+         <div class="row">
+            <div class="col">
+               <!-- AGE (age) -->
+               <mat-form-field class="full-width" appearance="outline">
+                  <mat-label>Age</mat-label>
+                  <input matInput type="number" formControlName="age" />
+                  <mat-error *ngIf="heroForm.controls['age'].hasError('required')">Please enter an age.</mat-error>
+               </mat-form-field>
+            </div>
+
+            <div class="col">
+               <!-- HOME PLANET (homePlanet)-->
+               <mat-form-field class="full-width" appearance="outline">
+                  <mat-label>Home Planet</mat-label>
+                  <input matInput type="text" formControlName="homePlanet" />
+                  <mat-error *ngIf="heroForm.controls['homePlanet'].hasError('required')"
+                     >Please enter the home planet.</mat-error
+                  >
+               </mat-form-field>
+            </div>
+         </div>
+
+         <div class="row">
+            <div class="col">
+               <!-- SUPER POWER (superPower) -->
+               <mat-form-field class="full-width" appearance="outline">
+                  <mat-label>Super Power</mat-label>
+                  <input matInput type="text" formControlName="superPower" />
+                  <mat-error *ngIf="heroForm.controls['superPower'].hasError('required')"
+                     >Please enter a superpower.</mat-error
+                  >
+               </mat-form-field>
+            </div>
+         </div>
+
+         <div class="row">
+            <div class="col">
+               <!-- BIOGRAPHY (biography)-->
+               <mat-form-field class="full-width" appearance="outline">
+                  <mat-label>Biography</mat-label>
+                  <textarea matInput rows="6" formControlName="biography"></textarea>
+                  <mat-error *ngIf="heroForm.controls['biography'].hasError('required')"
+                     >Please provide a superhero biography.</mat-error
+                  >
+               </mat-form-field>
+            </div>
+         </div>
+      </mat-card-content>
+
+      <mat-card-actions class="card-actions">
+         <button mat-flat-button type="submit" [disabled]="!heroForm.valid">Create</button>
+         <button mat-flat-button type="button" class="button">Clear</button>
+      </mat-card-actions>
+   </mat-card>
+</form>

@@ -1,0 +1,101 @@
+<form [formGroup]="albumForm" novalidate (ngSubmit)="onSaveAlbum()">
+   <mat-card class="album-form" appearance="outlined">
+      <mat-card-header>
+         <mat-card-title>New Album</mat-card-title>
+      </mat-card-header>
+
+      <mat-card-content>
+         <div class="row">
+            <div class="column">
+               <!-- title (title) -->
+               <mat-form-field class="full-width" appearance="outline">
+                  <mat-label>Title</mat-label>
+                  <input matInput type="text" formControlName="title" />
+                  <mat-error *ngIf="albumForm.controls['title'].hasError('required')"
+                     >Please enter an album title.</mat-error
+                  >
+               </mat-form-field>
+            </div>
+         </div>
+
+         <div class="row">
+            <div class="column">
+               <!-- artist (artist) -->
+               <mat-form-field class="full-width" appearance="outline">
+                  <mat-label>Artist</mat-label>
+                  <input matInput type="text" formControlName="artist" />
+                  <mat-error *ngIf="albumForm.controls['artist'].hasError('required')"
+                     >Please enter an artist</mat-error
+                  >
+               </mat-form-field>
+            </div>
+         </div>
+
+         <div class="row">
+            <div class="column">
+               <!-- release date (releaseDate) -->
+               <mat-form-field class="full-width" appearance="outline">
+                  <mat-label>Release Date</mat-label>
+                  <input matInput [matDatepicker]="picker" formControlName="releaseDate" />
+                  <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+                  <mat-datepicker #picker></mat-datepicker>
+                  <mat-error *ngIf="albumForm.controls['releaseDate'].hasError('required')"
+                     >Please enter a date</mat-error
+                  >
+               </mat-form-field>
+            </div>
+
+            <div class="column">
+               <!-- label (label) -->
+               <mat-form-field class="full-width" appearance="outline">
+                  <mat-label>Label</mat-label>
+                  <input matInput type="text" formControlName="label" />
+                  <mat-error *ngIf="albumForm.controls['label'].hasError('required')">Please enter a lable.</mat-error>
+               </mat-form-field>
+            </div>
+         </div>
+
+         <div class="row">
+            <div class="column">
+               <!-- studio (studio) -->
+               <mat-form-field class="full-width" appearance="outline">
+                  <mat-label>Studio</mat-label>
+                  <input matInput type="text" formControlName="studio" />
+                  <mat-error *ngIf="albumForm.controls['studio'].hasError('required')"
+                     >Please enter a studio.</mat-error
+                  >
+               </mat-form-field>
+            </div>
+
+            <div class="column">
+               <!-- genre (genre) -->
+               <mat-form-field class="full-width" appearance="outline">
+                  <mat-label>Genre</mat-label>
+                  <mat-select formControlName="genre">
+                     <mat-option *ngFor="let genre of genres" [value]="genre.value">{{ genre.viewValue }}</mat-option>
+                  </mat-select>
+                  <mat-error *ngIf="albumForm.controls['genre'].hasError('required')">Please enter a genre.</mat-error>
+               </mat-form-field>
+            </div>
+         </div>
+
+         <div class="row">
+            <div class="column">
+               <!-- summary (summary) -->
+               <mat-form-field class="full-width" appearance="outline">
+                  <mat-label>Summary</mat-label>
+                  <textarea matInput rows="6" formControlName="summary" placeholder="About the album."></textarea>
+                  <mat-error *ngIf="albumForm.controls['summary'].hasError('required')"
+                     >Please provide a summary</mat-error
+                  >
+               </mat-form-field>
+            </div>
+         </div>
+      </mat-card-content>
+
+      <mat-card-actions class="card-actions">
+         <button mat-flat-button color="primary" type="submit" [disabled]="!albumForm.valid">Create</button>
+         <button mat-flat-button color="warn" type="button">Clear</button>
+      </mat-card-actions>
+   </mat-card>
+</form>

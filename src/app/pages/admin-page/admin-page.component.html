@@ -1,0 +1,55 @@
+<mat-sidenav-container class="sidenav-container">
+   <mat-sidenav #sidenav mode="side" [(opened)]="opened" (opened)="events.push('open!')" (closed)="events.push('close')" class="sidenav">
+      <!-- sidenav content -->
+      <mat-toolbar>Menu</mat-toolbar>
+
+      <mat-nav-list>
+         <mat-list-item>
+            <a mat-list-item routerLink="">Home</a>
+            <button mat-icon-button matListItemMeta>
+               <mat-icon>home</mat-icon>
+            </button>
+         </mat-list-item>
+         <mat-list-item>
+            <a mat-list-item routerLink="/create-hero">Create Hero</a>
+            <button mat-icon-button matListItemMeta>
+               <mat-icon>person</mat-icon>
+            </button>
+         </mat-list-item>
+         <mat-list-item>
+            <a mat-list-item routerLink="/create-album">Create Album</a>
+            <button mat-icon-button matListItemMeta>
+               <mat-icon>album</mat-icon>
+            </button>
+         </mat-list-item>
+      </mat-nav-list>
+   </mat-sidenav>
+
+   <mat-sidenav-content>
+      <mat-toolbar class="toolbar">
+         <!-- side nav toggle button -->
+         <button mat-icon-button (click)="sidenav.toggle()" aria-label="Toggle sidenav" matTooltip="Toggle Sidenav">
+            <mat-icon aria-label="Side nav toggle icon">menu</mat-icon>
+         </button>
+         <!-- title -->
+         <span>Admin Dashboard</span>
+
+         <!-- spacer -->
+         <span class="spacer"></span>
+
+         <!-- button - add menu - fix this! -->
+         <button mat-icon-button matTooltip="Admin Signin" aria-label="account-menu">
+            <mat-icon>account_circle</mat-icon>
+         </button>
+
+      </mat-toolbar>
+      <mat-tab-group>
+         <mat-tab label="Album List">
+            <app-album-table></app-album-table>
+         </mat-tab>
+         <mat-tab label="Hero List">
+            <app-hero-table></app-hero-table>
+         </mat-tab>
+      </mat-tab-group>
+   </mat-sidenav-content>
+</mat-sidenav-container>

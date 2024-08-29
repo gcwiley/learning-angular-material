@@ -1,0 +1,71 @@
+import { Component, OnInit } from '@angular/core';
+import { NgFor } from '@angular/common';
+import { RouterLink } from '@angular/router';
+
+// import the angular material modules
+import { MatButtonModule } from '@angular/material/button';
+import { MatIconModule } from '@angular/material/icon';
+import { MatDividerModule } from '@angular/material/divider';
+import { MatCardModule } from '@angular/material/card';
+
+// import the shared components
+import {
+   NavBarComponent,
+   AnnouncementBannerComponent,
+   AppLogoComponent,
+   SupportComponent,
+   FooterComponent,
+} from '../../shared';
+
+// carousel
+import { CarouselComponent, CarouselItemDirective } from '../../shared';
+
+// import the hero service
+import { HeroService } from '../../services/hero.service';
+
+// import the hero interface
+import { Hero } from '../../types/hero.interface';
+
+// fix this later
+const TOP_COMPONENTS = ['datepicker', 'input', 'slide-toggle', 'slider', 'button'];
+
+@Component({
+   selector: 'app-homepage',
+   templateUrl: './homepage.component.html',
+   styleUrls: ['./homepage.component.scss'],
+   standalone: true,
+   imports: [
+      RouterLink,
+      MatButtonModule,
+      MatIconModule,
+      MatDividerModule,
+      MatCardModule,
+      NavBarComponent,
+      AnnouncementBannerComponent,
+      FooterComponent,
+      SupportComponent,
+      CarouselComponent,
+      CarouselItemDirective,
+      AppLogoComponent,
+      NgFor,
+   ],
+})
+export class HomepageComponent implements OnInit {
+   recentHeroes!: Hero[];
+
+   constructor(private heroService: HeroService) {}
+
+   ngOnInit(): void {
+      this.getRecentHeroes();
+   }
+
+   // fix this later
+   getRecentHeroes(): void {
+      this.heroService.getRecentlyCreatedHeroes().subscribe((recentHeroes) => (this.recentHeroes = recentHeroes));
+   }
+
+   // fix this later!
+   getTopComponents(): string[] {
+      return TOP_COMPONENTS;
+   }
+}

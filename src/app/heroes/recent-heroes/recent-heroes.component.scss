@@ -1,0 +1,6 @@
+@use '../../../styles/helpers/constants';
+
+.recent-heroes {
+   margin: constants.$margin;
+   padding: constants.$padding;
+}

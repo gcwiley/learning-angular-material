@@ -1,0 +1,6 @@
+@use '../../../styles/helpers/constants';
+
+.album-details {
+   margin: constants.$margin;
+   padding: constants.$padding;
+}

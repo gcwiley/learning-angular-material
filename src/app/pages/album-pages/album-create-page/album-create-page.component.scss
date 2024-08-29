@@ -1,0 +1,18 @@
+@use '../../../../styles/helpers/constants';
+
+.album-create-page-container {
+   max-width: constants.$max-width;
+   margin: auto;
+   display: flex;
+   flex-direction: row;
+}
+
+.album-form {
+   flex-basis: 70%;
+   max-width: 70%;
+}
+
+.recent-albums {
+   flex-basis: 30%;
+   max-width: 30%;
+}

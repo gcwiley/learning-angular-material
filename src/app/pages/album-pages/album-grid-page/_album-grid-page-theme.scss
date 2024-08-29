@@ -1,0 +1,27 @@
+@use '@angular/material' as mat;
+
+// color mixin
+@mixin color($theme) {
+   .album-grid-page-container {
+      color: mat.get-theme-color($theme, primary, 900);
+      background-color: mat.get-theme-color($theme, primary, 50);
+   }
+}
+
+// typography mixin
+@mixin typography($theme) {
+   .album-grid-page-container {
+      font: mat.get-theme-typography($theme, subtitle-1);
+   }
+}
+
+// theme mixin
+@mixin theme($theme) {
+   @if mat.theme-has($theme, color) {
+      @include color($theme);
+   }
+
+   @if mat.theme-has($theme, typography) {
+      @include typography($theme);
+   }
+}

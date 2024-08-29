@@ -1,0 +1,6 @@
+@use '../../../styles/helpers/constants';
+
+.hero-details {
+   margin: constants.$margin;
+   padding: constants.$padding;
+}

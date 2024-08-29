@@ -1,0 +1,75 @@
+@use '@angular/material' as mat;
+
+// ALBUM COMPONENT THEMES
+@use '../app/albums/album-description/album-description-theme';
+@use '../app/albums/album-details/album-details-theme';
+@use '../app/albums/album-form/album-form-theme';
+@use '../app/albums/album-table/album-table-theme';
+@use '../app/albums/recent-albums/recent-albums-theme';
+
+// HERO COMPONENT THEMES
+@use '../app/heroes/hero-description/hero-description-theme';
+@use '../app/heroes/hero-details/hero-details-theme';
+@use '../app/heroes/hero-form/hero-form-theme';
+@use '../app/heroes/hero-grid/hero-grid-theme';
+@use '../app/heroes/hero-search/hero-search-theme';
+@use '../app/heroes/hero-table/hero-table-theme';
+@use '../app/heroes/recent-heroes/recent-heroes-theme';
+
+// PAGES
+@use '../app/pages/admin-page/admin-page-theme';
+// album pages
+@use '../app/pages/album-pages/album-create-page/album-create-page-theme';
+@use '../app/pages/album-pages/album-details-page/album-details-page-theme';
+@use '../app/pages/album-pages/album-grid-page/album-grid-page-theme';
+// hero pages
+@use '../app/pages/hero-pages/hero-create-page/hero-create-page-theme';
+@use '../app/pages/hero-pages/hero-details-page/hero-details-page-theme';
+@use '../app/pages/hero-pages/hero-grid-page/hero-grid-page-theme';
+@use '../app/pages/homepage/homepage-theme';
+@use '../app/pages/image-gallery-page/image-gallery-page-theme';
+@use '../app/pages/not-found-page/not-found-page-theme';
+@use '../app/pages/signin-page/signin-page-theme';
+
+// SHARED COMPONENT THEMES
+@use '../app/shared/announcement-banner/announcement-banner-theme';
+@use '../app/shared/carousel/carousel-theme';
+@use '../app/shared/footer/footer-theme';
+@use '../app/shared/logo/logo-theme';
+@use '../app/shared/navbar/navbar-theme';
+@use '../app/shared/support/support-theme';
+
+// styles for the app that are based on the current theme
+@mixin theme($theme) {
+   // album components
+   @include album-details-theme.theme($theme);
+   @include album-form-theme.theme($theme);
+   @include album-table-theme.theme($theme);
+   @include recent-albums-theme.theme($theme);
+
+   // hero components
+   @include hero-description-theme.theme($theme);
+   @include hero-details-theme.theme($theme);
+   @include hero-form-theme.theme($theme);
+   @include hero-grid-theme.theme($theme);
+   @include hero-table-theme.theme($theme);
+   @include hero-search-theme.theme($theme);
+   @include recent-heroes-theme.theme($theme);
+
+   // page themes
+   @include admin-page-theme.theme($theme);
+   @include hero-create-page-theme.theme($theme);
+   @include hero-details-page-theme.theme($theme);
+   @include homepage-theme.theme($theme);
+   @include image-gallery-page-theme.theme($theme);
+   @include not-found-page-theme.theme($theme);
+   @include signin-page-theme.theme($theme);
+
+   // shared components
+   @include announcement-banner-theme.theme($theme);
+   @include carousel-theme.theme($theme);
+   @include footer-theme.theme($theme);
+   @include logo-theme.theme($theme);
+   @include navbar-theme.theme($theme);
+   @include support-theme.theme($theme);
+}

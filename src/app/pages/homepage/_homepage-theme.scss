@@ -1,0 +1,26 @@
+@use '@angular/material' as mat;
+
+// color mixin
+@mixin color($theme) {
+   .docs-header-background {
+      background-color: mat.get-theme-color($theme, secondary, 10);
+   }
+
+   .docs-header-headline {
+      color: mat.get-theme-color($theme, secondary, 90);
+   }
+}
+
+// typography mixin
+@mixin typography($theme) {
+   .hero-create-page-container {
+      font: mat.get-theme-typography($theme, body-medium);
+   }
+}
+
+// theme mixin
+@mixin theme($theme) {
+   @if mat.theme-has($theme, color) {
+      @include color($theme);
+   }
+}

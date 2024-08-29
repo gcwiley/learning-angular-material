@@ -1,0 +1,72 @@
+<app-navbar></app-navbar>
+<app-announcement-banner></app-announcement-banner>
+
+<header focusOnNavigation class="docs-header-background" aria-label="get started" id="homepage-header">
+   <div class="docs-header-section">
+      <div class="docs-header-headline">
+         <h1 class="mat-h1">My Heroes</h1>
+         <h2>Saving the world, one hero at a time.</h2>
+      </div>
+      <div class="docs-header-start">
+         <a mat-raised-button color="primary" class="docs-button" routerLink="/heroes">My Heroes</a>
+         <a mat-raised-button color="accent" class="docs-button" routerLink="/albums">My Albums</a>
+      </div>
+   </div>
+   <app-logo class="docs-homepage-logo"></app-logo>
+</header>
+
+<main class="docs-homepage-promo">
+   <!-- introduction goes here -->
+   <div class="docs-homepage-row docs-introduction">
+      <div class="docs-homepage-row-column">
+         <h2>High quality</h2>
+         <p>
+            Internationalized and accessible components for everyone. Well tested to ensure performance and reliability.
+         </p>
+         <p>Straightforward APIs with consistent cross platform behaviour.</p>
+      </div>
+      <div class="docs-homepage-row-column">
+         <h2>Versatile</h2>
+         <p>Provide tools that help developers build their own custom components with common interaction patterns.</p>
+         <p>Customizable within the bounds of the Material Design specification.</p>
+      </div>
+      <div class="docs-homepage-row-column">
+         <h2>Frictionless</h2>
+         <p>Built by the Angular team to integrate seamlessly with Angular.</p>
+         <p>Start from scratch or drop into your existing applications.</p>
+      </div>
+   </div>
+
+   <mat-divider></mat-divider>
+
+   <div class="docs-homepage-guides docs-homepage-carousel-row">
+      <!-- heroes header -->
+      <div class="docs-homepage-header">
+         <h2>Heroes</h2>
+
+         <a mat-button routerLink="/heroes">
+            View all heroes
+            <mat-icon matButtonIcon iconPositionEnd>chevron_right</mat-icon>
+         </a>
+      </div>
+      <app-carousel aria-label="Guides">
+         @for (hero of recentHeroes; track hero) {
+         <a
+            carousel-item
+            class="carousel-item docs-homepage-guides-carousel-item"
+            routerLink="/guide/{{ hero.id }}"
+            MatRipple>
+            <mat-card class="docs-homepage-guides-card" appearance="outlined">
+               <mat-card-title>{{ hero.name }}</mat-card-title>
+               <mat-card-content class="docs-component-category-list-card-summary">{{
+                  hero.superPower
+               }}</mat-card-content>
+            </mat-card>
+         </a>
+         }
+      </app-carousel>
+   </div>
+</main>
+
+<app-support></app-support>
+<app-footer></app-footer>

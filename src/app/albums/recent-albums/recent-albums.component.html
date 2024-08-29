@@ -1,0 +1,10 @@
+<mat-list class="recent-albums mat-elevation-z1">
+   <span mat-subheader>Recent Albums</span>
+   @for (album of recentAlbums; track album) {
+   <mat-list-item lines="2">
+      <span matListItemTitle>{{ album.title }}</span>
+      <span matListItemLine>Added: {{ album.createdAt | date }}</span>
+   </mat-list-item>
+   <mat-divider></mat-divider>
+   }
+</mat-list>

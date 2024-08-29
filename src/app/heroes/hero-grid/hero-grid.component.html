@@ -1,0 +1,18 @@
+<mat-grid-list [cols]="cols" [rowHeight]="rowHeight" [gutterSize]="gutterSize">
+   @for (hero of heroes; track hero) {
+   <mat-grid-tile [colspan]="colspan" [rowspan]="rowspan">
+      <mat-card class="hero-card" appearance="raised">
+         <mat-card-header>
+            <mat-card-title>{{ hero.name }}</mat-card-title>
+            <mat-card-subtitle>{{ hero.homePlanet }}</mat-card-subtitle>
+         </mat-card-header>
+
+         <span class="spacer"></span>
+
+         <mat-card-actions>
+            <a mat-button routerLink="/heroes/{{ hero.id }}">OPEN</a>
+         </mat-card-actions>
+      </mat-card>
+   </mat-grid-tile>
+   }
+</mat-grid-list>

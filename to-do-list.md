@@ -6,9 +6,11 @@
 
 4. add image gallery code
 
-5. update color palette
+5. update the color palette
 
-6. Add a clock
+6. Add a clock component
+
+7. deploy to azure!
 
 
 

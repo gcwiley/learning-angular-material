@@ -1,4 +1,6 @@
-# comment here
+# NOTE: use this only when deploying to gitlab pages.
+
+# uses the latest version of node
 image: node:latest
 
 pages:

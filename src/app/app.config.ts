@@ -1,11 +1,11 @@
-// comment here
+// Set of config options available during the application bootstrap operation.
 import { ApplicationConfig } from '@angular/core';
 
 // import the router helper function
 import { provideRouter } from '@angular/router';
 
 // Configures Angular's HttpClient service to be available for injection.
-import { provideHttpClient } from '@angular/common/http';
+import { provideHttpClient, withFetch } from '@angular/common/http';
 
 // import the animation function
 import { provideAnimationsAsync } from '@angular/platform-browser/animations/async';
@@ -28,7 +28,7 @@ export const appConfig: ApplicationConfig = {
       // sets up providers necessary to enable Router functionality for the application
       provideRouter(routes),
       // Configures Angular's HttpClient service to be available for injection.
-      provideHttpClient(),
+      provideHttpClient(withFetch()),
       //  enable animations in an application
       provideAnimationsAsync(),
       // creates and initializes an firebase app instance
@@ -40,6 +40,7 @@ export const appConfig: ApplicationConfig = {
       // Returns the instance of the Realtime Database SDK that is associated with the provided FirebaseApp
       provideDatabase(() => getDatabase()),
       // Gets a FirebaseStorage instance for the given Firebase app.
-      provideStorage(() => getStorage()), provideAnimationsAsync(),
+      provideStorage(() => getStorage()),
+      provideAnimationsAsync(),
    ],
 };

@@ -9,23 +9,22 @@ import { MessageService } from './message.service';
 // import the album interface
 import { Album } from '../types/album.interface';
 
+// set up headers
+const headers = new HttpHeaders().set('Content-Type', 'application/json');
+
 @Injectable({
    providedIn: 'root',
 })
 export class AlbumService {
-   private albumsUrl = '/api/albums'; // URL to web api
+   // URL to web api
+   private albumsUrl = '/api/albums';
 
-   httpOptions = {
-      headers: new HttpHeaders({
-         'Content-Type': 'application/json',
-      }),
-   };
    // inject 'HttpClient" in the Album service
    constructor(private http: HttpClient, private messageService: MessageService) {}
 
    // GET: albums from the database
    getAlbums(): Observable<Album[]> {
-      return this.http.get<Album[]>(this.albumsUrl).pipe(
+      return this.http.get<Album[]>(this.albumsUrl, { headers: headers }).pipe(
          tap(() => this.log('fetched albums')),
          catchError(this.handleError<Album[]>('getAlbums', []))
       );
@@ -44,9 +43,7 @@ export class AlbumService {
          return of([]);
       }
       return this.http.get<Album[]>(`${this.albumsUrl}/?name=${term}`).pipe(
-         tap((x) =>
-            x.length ? this.log(`found albums matching "${term}"`) : this.log(`no albums matching "${term}"`)
-         ),
+         tap((x) => (x.length ? this.log(`found albums matching "${term}"`) : this.log(`no albums matching "${term}"`))),
          catchError(this.handleError<Album[]>('search albums', []))
       );
    }
@@ -65,7 +62,7 @@ export class AlbumService {
 
    // POST: Add a new Album to the server
    addAlbum(newAlbum: Album | object): Observable<Album> {
-      return this.http.post<Album>(this.albumsUrl, newAlbum, this.httpOptions).pipe(
+      return this.http.post<Album>(this.albumsUrl, newAlbum, { headers: headers }).pipe(
          tap((newAlbum: Album) => this.log(`added album with id=${newAlbum.id}`)),
          catchError(this.handleError<Album>('add Hero'))
       );
@@ -75,7 +72,7 @@ export class AlbumService {
    deleteAlbum(id: string): Observable<Album> {
       const url = `${this.albumsUrl}/${id}`;
 
-      return this.http.delete<Album>(url, this.httpOptions).pipe(
+      return this.http.delete<Album>(url, { headers: headers }).pipe(
          tap(() => this.log(`deleted album id=${id}`)),
          catchError(this.handleError<Album>('deleted album'))
       );
@@ -85,7 +82,7 @@ export class AlbumService {
    updateAlbum(id: string, album: Album | object): Observable<object> {
       const url = `${this.albumsUrl}/${id}`;
 
-      return this.http.patch(url, album, this.httpOptions).pipe(
+      return this.http.patch(url, album, { headers: headers }).pipe(
          tap(() => this.log(`updated album id=${id}`)),
          catchError(this.handleError<object>('update album'))
       );

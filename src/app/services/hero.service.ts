@@ -9,23 +9,20 @@ import { MessageService } from './message.service';
 // import the hero interface
 import { Hero } from '../types/hero.interface';
 
+// set up headers
+const headers = new HttpHeaders().set('Content-Type', 'application/json');
+
 @Injectable({ providedIn: 'root' })
-
 export class HeroService {
-   private heroesUrl = '/api/heroes'; // URL to web api
+   // URL to web api
+   private heroesUrl = '/api/heroes';
 
-   httpOptions = {
-      headers: new HttpHeaders({
-         'Content-Type': 'application/json',
-      }),
-   };
-
-   // inject "HttpClient" into the Hero service
+   // inject the "HttpClient" into the Hero service
    constructor(private http: HttpClient, private messageService: MessageService) {}
 
    // GET: all heroes from the server
    getHeroes(): Observable<Hero[]> {
-      return this.http.get<Hero[]>(this.heroesUrl).pipe(
+      return this.http.get<Hero[]>(this.heroesUrl, { headers: headers }).pipe(
          tap(() => this.log('fetched heroes')),
          catchError(this.handleError<Hero[]>('get Heroes', []))
       );
@@ -34,7 +31,7 @@ export class HeroService {
    // GET: a individual hero by ID. Will 404 error if the ID is not found
    getHero(id: string | null): Observable<Hero> {
       const url = `${this.heroesUrl}/${id}`;
-      return this.http.get<Hero>(url).pipe(
+      return this.http.get<Hero>(url, { headers: headers }).pipe(
          tap(() => this.log(`fetched hero id=${id}`)),
          catchError(this.handleError<Hero>(`get Hero id=${id}`))
       );
@@ -71,7 +68,7 @@ export class HeroService {
 
    // POST: add a new hero to the server
    addHero(newHero: Hero | object): Observable<Hero> {
-      return this.http.post<Hero>(this.heroesUrl, newHero, this.httpOptions).pipe(
+      return this.http.post<Hero>(this.heroesUrl, newHero, { headers: headers }).pipe(
          tap((newHero: Hero) => this.log(`added hero with id=${newHero.id}`)),
          catchError(this.handleError<Hero>('add Hero'))
       );
@@ -82,7 +79,7 @@ export class HeroService {
       // create the url
       const url = `${this.heroesUrl}/${id}`;
 
-      return this.http.delete<Hero>(url, this.httpOptions).pipe(
+      return this.http.delete<Hero>(url, { headers: headers }).pipe(
          tap(() => this.log(`deleted hero id=${id}`)),
          catchError(this.handleError<Hero>('delete Hero'))
       );
@@ -93,7 +90,7 @@ export class HeroService {
       // create the url
       const url = `${this.heroesUrl}/${id}`;
 
-      return this.http.patch(url, hero, this.httpOptions).pipe(
+      return this.http.patch(url, hero, { headers: headers }).pipe(
          tap(() => this.log(`updated hero id=${id}`)),
          catchError(this.handleError<object>('update Hero'))
       );

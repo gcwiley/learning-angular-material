@@ -33,7 +33,7 @@ export class AlbumService {
    // GET: album by ID from the database
    getAlbum(id: string | null): Observable<Album> {
       const url = `${this.albumsUrl}/${id}`;
-      return this.http.get<Album>(url);
+      return this.http.get<Album>(url, { headers: headers });
    }
 
    // GET: search albums in the database - SEARCH FIX THIS!!

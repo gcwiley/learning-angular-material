@@ -17,7 +17,7 @@ export class AuthService {
    // injects the auth object
    constructor(private auth: Auth) {}
 
-   // signs in the user with email and password
+   // asynchronously signs in using an email and password.
    async signInWithEmailAndPassword(email: string, password: string) {
       return await signInWithEmailAndPassword(this.auth, email, password);
    }

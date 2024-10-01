@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { ChangeDetectionStrategy, Component, inject, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { Breakpoints, BreakpointObserver } from '@angular/cdk/layout';
 import { Router, RouterModule } from '@angular/router';
@@ -8,6 +8,9 @@ import { MatGridListModule } from '@angular/material/grid-list';
 import { MatCardModule } from '@angular/material/card';
 import { MatIconModule } from '@angular/material/icon';
 import { MatButtonModule } from '@angular/material/button';
+
+// import mat dialog here
+import { MatDialog, MatDialogActions, MatDialogClose, MatDialogContent, MatDialogRef, MatDialogTitle } from '@angular/material/dialog';
 
 // import the hero service
 import { HeroService } from '../../services/hero.service';
@@ -23,6 +26,9 @@ import { Hero } from '../../types/hero.interface';
    imports: [CommonModule, RouterModule, MatGridListModule, MatCardModule, MatIconModule, MatButtonModule],
 })
 export class HeroGridComponent implements OnInit {
+   // inject MatDialog
+   readonly dialog = inject(MatDialog);
+
    // create the member variables
    heroes: Hero[] = [];
 
@@ -68,4 +74,24 @@ export class HeroGridComponent implements OnInit {
          this.heroes = heroes;
       });
    }
+
+   // open dialog window
+   openDialog(enterAnimationDuration: string, exitAnimationDuration: string): void {
+      this.dialog.open(HeroGridDialogComponent, {
+         width: '250px',
+         enterAnimationDuration,
+         exitAnimationDuration,
+      });
+   }
+}
+
+@Component({
+   selector: 'app-hero-grid-dialog',
+   templateUrl: './hero-grid-dialog.html',
+   standalone: true,
+   imports: [MatButtonModule, MatDialogActions, MatDialogClose, MatDialogTitle, MatDialogContent],
+   changeDetection: ChangeDetectionStrategy.OnPush,
+})
+export class HeroGridDialogComponent {
+   readonly dialogRef = inject(MatDialogRef<HeroGridDialogComponent>);
 }

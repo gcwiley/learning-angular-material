@@ -5,7 +5,7 @@ import { Breakpoints, BreakpointObserver } from '@angular/cdk/layout';
 // import the angular material modules
 import { MatGridListModule } from '@angular/material/grid-list';
 
-// import the image type
+// import the image interface
 import { Image } from 'src/app/types/image.interface';
 
 @Component({

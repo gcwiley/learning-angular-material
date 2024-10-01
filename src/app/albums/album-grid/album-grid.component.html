@@ -1,1 +1,22 @@
-<p>album-grid works!</p>
+<mat-grid-list [cols]="cols" [rowHeight]="rowHeight" [gutterSize]="gutterSize">
+   @for (album of albums; track album) {
+   <mat-grid-tile [colspan]="colspan" [rowspan]="rowspan">
+      <mat-card class="album-card" appearance="raised">
+         <mat-card-header>
+            <mat-card-title>{{ album.title }}</mat-card-title>
+            <mat-card-subtitle>{{ album.artist }}</mat-card-subtitle>
+         </mat-card-header>
+
+         <span class="spacer"></span>
+
+         <mat-card-actions>
+            <a mat-button routerLink="/albums/{{ album.id }}">OPEN</a>
+            <span class="spacer"></span>
+            <button mat-icon-button (click)="openDialog('0ms', '0ms')" matTooltip="Open Dialog">
+               <mat-icon>info</mat-icon>
+            </button>
+         </mat-card-actions>
+      </mat-card>
+   </mat-grid-tile>
+   }
+</mat-grid-list>

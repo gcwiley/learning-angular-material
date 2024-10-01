@@ -1,5 +1,7 @@
 # NOTE: use this only when deploying to gitlab pages.
 
+# Important! - make sure the file paths are correct.
+
 # uses the latest version of node
 image: node:latest
 

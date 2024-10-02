@@ -30,6 +30,28 @@ export class AlbumService {
       );
    }
 
+   // this is an example of using native fetch for api calls - use this for other project
+   async getAllAlbums(): Promise<Response | unknown> {
+      // comment
+      const URL = 'www.apple.com';
+      try {
+         const response = await fetch(URL, {
+            headers: {
+               test: 'test',
+            },
+            credentials: 'include',
+            method: 'GET',
+            mode: 'cors',
+            body: JSON.stringify({ username: 'greg' }),
+         });
+         const data = await response.json();
+         return data;
+      } catch (error) {
+         console.log(error);
+         return new Error('Error');
+      }
+   }
+
    // GET: album by ID from the database
    getAlbum(id: string | null): Observable<Album> {
       const url = `${this.albumsUrl}/${id}`;
@@ -55,7 +77,7 @@ export class AlbumService {
 
    // GET: recent album created in database
    getRecentlyCreatedAlbums(): Observable<Album[]> {
-      return this.http.get<Album[]>('/api/recent-albums');
+      return this.http.get<Album[]>('/api/recent-albums', { headers: headers });
    }
 
    // SAVE METHODS

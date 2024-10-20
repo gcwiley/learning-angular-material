@@ -17,7 +17,7 @@ import {
 
 export const routes: Routes = [
    // home page
-   { path: '', component: HomepageComponent },
+   { path: '', component: HomepageComponent, title: 'Home Page' },
    // sign in page
    { path: 'signin', component: SigninPageComponent },
    // image gallery page

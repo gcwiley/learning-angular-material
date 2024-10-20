@@ -102,6 +102,7 @@ export class AlbumService {
 
    // PUT: update the album on the server
    updateAlbum(id: string, album: Album | object): Observable<object> {
+      // create the url
       const url = `${this.albumsUrl}/${id}`;
 
       return this.http.patch(url, album, { headers: headers }).pipe(

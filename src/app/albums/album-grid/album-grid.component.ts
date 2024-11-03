@@ -1,13 +1,14 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ChangeDetectionStrategy, ViewEncapsulation } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { Breakpoints, BreakpointObserver } from '@angular/cdk/layout';
 import { Router, RouterModule } from '@angular/router';
 
 // import the angular material modules
 import { MatGridListModule } from '@angular/material/grid-list';
-import { MatCardModule } from '@angular/material/card';
+import { MatCardModule, MatCardAppearance } from '@angular/material/card';
 import { MatIconModule } from '@angular/material/icon';
 import { MatButtonModule } from '@angular/material/button';
+import { MatCheckboxModule } from '@angular/material/checkbox';
 
 // import the album service
 import { AlbumService } from '../../services/album.service';
@@ -16,15 +17,20 @@ import { AlbumService } from '../../services/album.service';
 import { Album } from '../../types/album.interface';
 
 @Component({
+   standalone: true,
    selector: 'app-album-grid',
    templateUrl: './album-grid.component.html',
    styleUrl: './album-grid.component.scss',
-   standalone: true,
-   imports: [CommonModule, RouterModule, MatGridListModule, MatCardModule, MatIconModule, MatButtonModule],
+   encapsulation: ViewEncapsulation.None,
+   changeDetection: ChangeDetectionStrategy.Default,
+   imports: [CommonModule, RouterModule, MatGridListModule, MatCardModule, MatIconModule, MatButtonModule, MatCheckboxModule],
 })
 export class AlbumGridComponent implements OnInit {
    // create the member variables
    albums: Album[] = [];
+
+   // comment here
+   appearance: MatCardAppearance = 'raised';
 
    // set up the grid list demensions
    cols = 4; // amount of columns in the grid list
@@ -40,6 +46,11 @@ export class AlbumGridComponent implements OnInit {
    ngOnInit(): void {
       this.getAlbums();
       this.layoutChanges();
+   }
+
+   // comment
+   toggleAppearance() {
+      this.appearance = this.appearance === 'raised' ? 'outlined' : 'raised';
    }
 
    // responsive code

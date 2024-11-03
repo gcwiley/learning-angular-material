@@ -19,7 +19,11 @@
             <span>Admin Dashboard</span>
          </a>
 
-         <mat-divider></mat-divider>
+         <!-- about page -->
+         <a mat-menu-item routerLink="/about">
+            <mat-icon>home</mat-icon>
+            <span>About Page</span>
+         </a>
 
          <!-- sign out button -->
          <button mat-menu-item (click)="onClickSignOut()">
@@ -43,7 +47,8 @@
       class="docs-navbar-hide-small"
       href="https://github.com/gcwiley"
       aria-label="GitHub Repository"
-      target="_blank">
+      target="_blank"
+      rel="noopener noreferrer">
       <span matButtonIcon [ngTemplateOutlet]="githubIcon"></span>
       GitHub
    </a>
@@ -53,7 +58,8 @@
       class="docs-navbar-show-small"
       href="https://github.com/gcwiley"
       aria-label="GitHub Repository"
-      target="_blank">
+      target="_blank"
+      rel="noopener noreferrer">
       <ng-container [ngTemplateOutlet]="githubIcon" />
    </a>
 

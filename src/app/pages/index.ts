@@ -1,10 +1,13 @@
+// about page
+export { AboutPageComponent } from './about-page/about-page.component';
+
 // admin page
 export { AdminPageComponent } from './admin-page/admin-page.component';
 
-// ALBUM PAGES
+// album pages
 export { AlbumCreatePageComponent, AlbumDetailsPageComponent, AlbumGridPageComponent } from '../pages/album-pages';
 
-// HERO PAGES
+// hero pages
 export { HeroCreatePageComponent, HeroDetailsPageComponent, HeroGridPageComponent } from '../pages/hero-pages';
 
 // home page

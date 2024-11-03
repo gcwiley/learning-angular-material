@@ -1,7 +1,8 @@
+<mat-checkbox (change)="toggleAppearance()">Use outlined cards</mat-checkbox>
 <mat-grid-list [cols]="cols" [rowHeight]="rowHeight" [gutterSize]="gutterSize">
    @for (album of albums; track album) {
    <mat-grid-tile [colspan]="colspan" [rowspan]="rowspan">
-      <mat-card class="album-card" appearance="raised">
+      <mat-card class="album-card" [appearance]="appearance">
          <mat-card-header>
             <mat-card-title>{{ album.title }}</mat-card-title>
             <mat-card-subtitle>{{ album.artist }}</mat-card-subtitle>

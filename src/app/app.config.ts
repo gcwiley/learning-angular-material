@@ -16,6 +16,7 @@ import { getAuth, provideAuth } from '@angular/fire/auth';
 import { getFirestore, provideFirestore } from '@angular/fire/firestore';
 import { getDatabase, provideDatabase } from '@angular/fire/database';
 import { getStorage, provideStorage } from '@angular/fire/storage';
+import { FIREBASE_OPTIONS } from '@angular/fire/compat';
 
 // import the env variables
 import { environment } from '../environments/environment';
@@ -41,6 +42,7 @@ export const appConfig: ApplicationConfig = {
       provideDatabase(() => getDatabase()),
       // Gets a FirebaseStorage instance for the given Firebase app.
       provideStorage(() => getStorage()),
-      provideAnimationsAsync(),
+      // find out how this works!
+      { provide: FIREBASE_OPTIONS, useValue: environment.firebase },
    ],
 };

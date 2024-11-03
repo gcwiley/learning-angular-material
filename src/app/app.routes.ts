@@ -2,6 +2,7 @@ import { Routes } from '@angular/router';
 
 // import the page components
 import {
+   AboutPageComponent,
    AdminPageComponent,
    AlbumCreatePageComponent,
    AlbumDetailsPageComponent,
@@ -19,11 +20,12 @@ export const routes: Routes = [
    // home page
    { path: '', component: HomepageComponent, title: 'Home Page' },
    // sign in page
-   { path: 'signin', component: SigninPageComponent },
+   { path: 'signin', component: SigninPageComponent, title: 'Sign In' },
    // image gallery page
-   { path: 'image-gallery', component: ImageGalleryPageComponent },
+   { path: 'image-gallery', component: ImageGalleryPageComponent, title: 'Image Gallery' },
    // admin page
-   { path: 'admin', component: AdminPageComponent },
+   { path: 'admin', component: AdminPageComponent, title: 'Admin Dashboard' },
+   { path: 'about', component: AboutPageComponent, title: 'About Page' },
    // HERO PAGES
    { path: 'heroes', component: HeroGridPageComponent, pathMatch: 'full' },
    { path: 'heroes/:id', component: HeroDetailsPageComponent, pathMatch: 'full' },

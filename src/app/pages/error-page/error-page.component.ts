@@ -1,12 +1,15 @@
 import { Component } from '@angular/core';
 
-@Component({
-  selector: 'app-error-page',
-  standalone: true,
-  imports: [],
-  templateUrl: './error-page.component.html',
-  styleUrl: './error-page.component.scss'
-})
-export class ErrorPageComponent {
+// import angular material modules
 
-}
+// import the shared components
+import { NavBarComponent, FooterComponent } from '../../shared';
+
+@Component({
+   standalone: true,
+   selector: 'app-error-page',
+   templateUrl: './error-page.component.html',
+   styleUrl: './error-page.component.scss',
+   imports: [NavBarComponent, FooterComponent],
+})
+export class ErrorPageComponent {}

@@ -7,6 +7,7 @@ import {
    AlbumCreatePageComponent,
    AlbumDetailsPageComponent,
    AlbumGridPageComponent,
+   ErrorPageComponent,
    HeroCreatePageComponent,
    HeroDetailsPageComponent,
    HeroGridPageComponent,
@@ -18,7 +19,8 @@ import {
 
 export const routes: Routes = [
    // home page
-   { path: '', component: HomepageComponent, title: 'Home Page' },
+   // CURRENTY REDIRECT TO ERROR PAGE - FIX THIS!
+   { path: '', component: HomepageComponent, pathMatch: 'full' },
    // sign in page
    { path: 'signin', component: SigninPageComponent, title: 'Sign In' },
    // image gallery page
@@ -36,6 +38,8 @@ export const routes: Routes = [
    { path: 'albums/:id', component: AlbumDetailsPageComponent, pathMatch: 'full' },
    { path: 'create-album', component: AlbumCreatePageComponent, pathMatch: 'full' },
    { path: 'edit-album/:id', component: AlbumCreatePageComponent, pathMatch: 'full' },
+   // error page
+   { path: 'error', component: ErrorPageComponent },
    // not found page - MUST BE VERY LAST!
    { path: '**', component: NotFoundPageComponent },
 ];

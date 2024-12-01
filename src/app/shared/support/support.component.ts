@@ -4,10 +4,10 @@ import { Component } from '@angular/core';
 import { AppLogoComponent } from '../logo/logo.component';
 
 @Component({
+  standalone: true,
   selector: 'app-support',
   templateUrl: './support.component.html',
   styleUrls: ['./support.component.scss'],
-  standalone: true,
   imports: [AppLogoComponent],
 })
 export class SupportComponent {}

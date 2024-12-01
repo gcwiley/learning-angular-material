@@ -1,7 +1,7 @@
 <mat-grid-list [cols]="cols" [rowHeight]="rowHeight" [gutterSize]="gutterSize">
    @for (hero of heroes; track hero) {
    <mat-grid-tile [colspan]="colspan" [rowspan]="rowspan">
-      <mat-card class="hero-card" appearance="raised">
+      <mat-card class="hero-card" appearance="outlined">
          <mat-card-header>
             <mat-card-title>{{ hero.name }}</mat-card-title>
             <mat-card-subtitle>{{ hero.homePlanet }}</mat-card-subtitle>
@@ -14,5 +14,7 @@
          </mat-card-actions>
       </mat-card>
    </mat-grid-tile>
+   } @empty {
+      <p>No Heroes found.</p>
    }
 </mat-grid-list>

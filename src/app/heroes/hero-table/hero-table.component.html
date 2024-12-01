@@ -27,7 +27,7 @@
          <ng-container matColumnDef="deleteHero">
             <th mat-header-cell *matHeaderCellDef>Delete</th>
             <td mat-cell *matCellDef="let hero">
-               <button mat-icon-button color="warn" (click)="onDeleteHero(hero.id)" matTooltip="Delete Hero" aria-label="Delete Hero">
+               <button mat-icon-button (click)="onDeleteHero(hero.id)" matTooltip="Delete Hero" aria-label="Delete Hero">
                   <mat-icon>delete</mat-icon>
                </button>
             </td>
@@ -39,7 +39,6 @@
             <td mat-cell *matCellDef="let hero">
                <button
                   mat-icon-button
-                  color="primary"
                   routerLink="/heroes/{{ hero._id }}"
                   matTooltip="Open Hero page"
                   aria-label="Open Hero page">
@@ -52,7 +51,7 @@
          <ng-container matColumnDef="editHero">
             <th mat-header-cell *matHeaderCellDef>Edit</th>
             <td mat-cell *matCellDef="let Hero">
-               <a mat-icon-button color="accent" routerLink="/edit-hero/{{ Hero.id }}" matTooltip="Edit Hero" aria-label="Edit Hero">
+               <a mat-icon-button routerLink="/edit-hero/{{ Hero.id }}" matTooltip="Edit Hero" aria-label="Edit Hero">
                   <mat-icon>edit</mat-icon>
                </a>
             </td>

@@ -3,8 +3,8 @@
 // color mixin
 @mixin color($theme) {
    .navbar-header {
-      color: mat.get-theme-color($theme, secondary, 0);
-      background-color: mat.get-theme-color($theme, primary, 25);
+      color: mat.get-theme-color($theme, primary, 0);
+      background-color: mat.get-theme-color($theme, primary, 10);
    }
 }
 

@@ -3,13 +3,13 @@ import { Router } from '@angular/router';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 // import the image service
-import { ImageService } from 'src/app/services/image.service';
+import { ImageService } from '../../services/image.service';
 
 @Component({
+   standalone: true,
    selector: 'app-image-upload',
    templateUrl: './image-upload.component.html',
    styleUrls: ['./image-upload.component.scss'],
-   standalone: true,
    imports: [ReactiveFormsModule, FormsModule],
 })
 export class ImageUploadComponent {

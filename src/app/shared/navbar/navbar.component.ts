@@ -15,10 +15,10 @@ import { MatDividerModule } from '@angular/material/divider';
 import { AppLogoComponent } from '../logo/logo.component';
 
 @Component({
+   standalone: true,
    selector: 'app-navbar',
    templateUrl: './navbar.component.html',
    styleUrls: ['./navbar.component.scss'],
-   standalone: true,
    imports: [
       NgTemplateOutlet,
       CommonModule,

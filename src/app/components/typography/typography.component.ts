@@ -5,11 +5,10 @@ import { FormsModule } from '@angular/forms';
 import { MatCheckboxModule } from '@angular/material/checkbox';
 
 @Component({
-   standalone: true,
-   selector: 'app-typography',
-   templateUrl: './typography.component.html',
-   styleUrl: './typography.component.scss',
-   changeDetection: ChangeDetectionStrategy.OnPush,
-   imports: [MatCheckboxModule, FormsModule],
+    selector: 'app-typography',
+    templateUrl: './typography.component.html',
+    styleUrl: './typography.component.scss',
+    changeDetection: ChangeDetectionStrategy.OnPush,
+    imports: [MatCheckboxModule, FormsModule]
 })
 export class TypographyComponent {}

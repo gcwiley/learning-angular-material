@@ -9,10 +9,9 @@ import { MatButtonModule } from '@angular/material/button';
 import { NavBarComponent, FooterComponent } from '../../shared';
 
 @Component({
-   selector: 'app-not-found-page',
-   templateUrl: './not-found-page.component.html',
-   styleUrls: ['./not-found-page.component.scss'],
-   standalone: true,
-   imports: [CommonModule, RouterModule, MatButtonModule, NavBarComponent, FooterComponent],
+    selector: 'app-not-found-page',
+    templateUrl: './not-found-page.component.html',
+    styleUrls: ['./not-found-page.component.scss'],
+    imports: [CommonModule, RouterModule, MatButtonModule, NavBarComponent, FooterComponent]
 })
 export class NotFoundPageComponent {}

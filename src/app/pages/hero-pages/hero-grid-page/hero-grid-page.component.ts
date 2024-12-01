@@ -10,10 +10,9 @@ import { NavBarComponent, AnnouncementBannerComponent, FooterComponent } from '.
 import { HeroGridComponent } from '../../../heroes';
 
 @Component({
-   selector: 'app-hero-grid-page',
-   templateUrl: './hero-grid-page.component.html',
-   styleUrls: ['./hero-grid-page.component.scss'],
-   standalone: true,
-   imports: [MatDividerModule, NavBarComponent, AnnouncementBannerComponent, FooterComponent, HeroGridComponent],
+    selector: 'app-hero-grid-page',
+    templateUrl: './hero-grid-page.component.html',
+    styleUrls: ['./hero-grid-page.component.scss'],
+    imports: [MatDividerModule, NavBarComponent, AnnouncementBannerComponent, FooterComponent, HeroGridComponent]
 })
 export class HeroGridPageComponent {}

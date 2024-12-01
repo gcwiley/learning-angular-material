@@ -15,20 +15,19 @@ import { MatDividerModule } from '@angular/material/divider';
 import { AppLogoComponent } from '../logo/logo.component';
 
 @Component({
-   standalone: true,
-   selector: 'app-navbar',
-   templateUrl: './navbar.component.html',
-   styleUrls: ['./navbar.component.scss'],
-   imports: [
-      NgTemplateOutlet,
-      CommonModule,
-      RouterModule,
-      MatIconModule,
-      MatButtonModule,
-      MatMenuModule,
-      MatDividerModule,
-      AppLogoComponent,
-   ],
+    selector: 'app-navbar',
+    templateUrl: './navbar.component.html',
+    styleUrls: ['./navbar.component.scss'],
+    imports: [
+        NgTemplateOutlet,
+        CommonModule,
+        RouterModule,
+        MatIconModule,
+        MatButtonModule,
+        MatMenuModule,
+        MatDividerModule,
+        AppLogoComponent,
+    ]
 })
 export class NavBarComponent {
    constructor(public auth: AuthService, private router: Router) {}

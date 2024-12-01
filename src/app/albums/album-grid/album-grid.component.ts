@@ -17,13 +17,12 @@ import { AlbumService } from '../../services/album.service';
 import { Album } from '../../types/album.interface';
 
 @Component({
-   standalone: true,
-   selector: 'app-album-grid',
-   templateUrl: './album-grid.component.html',
-   styleUrl: './album-grid.component.scss',
-   encapsulation: ViewEncapsulation.None,
-   changeDetection: ChangeDetectionStrategy.Default,
-   imports: [CommonModule, RouterModule, MatGridListModule, MatCardModule, MatIconModule, MatButtonModule, MatCheckboxModule],
+    selector: 'app-album-grid',
+    templateUrl: './album-grid.component.html',
+    styleUrl: './album-grid.component.scss',
+    encapsulation: ViewEncapsulation.None,
+    changeDetection: ChangeDetectionStrategy.Default,
+    imports: [CommonModule, RouterModule, MatGridListModule, MatCardModule, MatIconModule, MatButtonModule, MatCheckboxModule]
 })
 export class AlbumGridComponent implements OnInit {
    // create the member variables

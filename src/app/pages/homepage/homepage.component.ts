@@ -30,25 +30,24 @@ import { Hero } from '../../types/hero.interface';
 const TOP_COMPONENTS = ['datepicker', 'input', 'slide-toggle', 'slider', 'button'];
 
 @Component({
-   selector: 'app-homepage',
-   templateUrl: './homepage.component.html',
-   styleUrls: ['./homepage.component.scss'],
-   standalone: true,
-   imports: [
-      RouterLink,
-      MatButtonModule,
-      MatIconModule,
-      MatDividerModule,
-      MatCardModule,
-      NavBarComponent,
-      AnnouncementBannerComponent,
-      FooterComponent,
-      SupportComponent,
-      CarouselComponent,
-      CarouselItemDirective,
-      AppLogoComponent,
-      NgFor,
-   ],
+    selector: 'app-homepage',
+    templateUrl: './homepage.component.html',
+    styleUrls: ['./homepage.component.scss'],
+    imports: [
+        RouterLink,
+        MatButtonModule,
+        MatIconModule,
+        MatDividerModule,
+        MatCardModule,
+        NavBarComponent,
+        AnnouncementBannerComponent,
+        FooterComponent,
+        SupportComponent,
+        CarouselComponent,
+        CarouselItemDirective,
+        AppLogoComponent,
+        NgFor,
+    ]
 })
 export class HomepageComponent implements OnInit {
    recentHeroes!: Hero[];

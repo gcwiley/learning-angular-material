@@ -18,21 +18,20 @@ import { FooterComponent } from '../../shared';
 import { AuthService } from '../../services/auth.service';
 
 @Component({
-   selector: 'app-signin-page',
-   templateUrl: './signin-page.component.html',
-   styleUrls: ['./signin-page.component.scss'],
-   standalone: true,
-   imports: [
-      CommonModule,
-      ReactiveFormsModule,
-      MatCardModule,
-      MatInputModule,
-      MatFormFieldModule,
-      MatCheckboxModule,
-      MatButtonModule,
-      MatIconModule,
-      FooterComponent,
-   ],
+    selector: 'app-signin-page',
+    templateUrl: './signin-page.component.html',
+    styleUrls: ['./signin-page.component.scss'],
+    imports: [
+        CommonModule,
+        ReactiveFormsModule,
+        MatCardModule,
+        MatInputModule,
+        MatFormFieldModule,
+        MatCheckboxModule,
+        MatButtonModule,
+        MatIconModule,
+        FooterComponent,
+    ]
 })
 export class SigninPageComponent {
    // inject the formBuilder class

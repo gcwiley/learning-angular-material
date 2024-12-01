@@ -11,11 +11,10 @@ import { HeroService } from '../../services/hero.service';
 import { Hero } from '../../types/hero.interface';
 
 @Component({
-   selector: 'app-recent-heroes',
-   templateUrl: './recent-heroes.component.html',
-   styleUrls: ['./recent-heroes.component.scss'],
-   standalone: true,
-   imports: [CommonModule, MatListModule],
+    selector: 'app-recent-heroes',
+    templateUrl: './recent-heroes.component.html',
+    styleUrls: ['./recent-heroes.component.scss'],
+    imports: [CommonModule, MatListModule]
 })
 export class RecentHeroesComponent implements OnInit {
    recentHeroes!: Hero[];

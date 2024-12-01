@@ -9,11 +9,10 @@ import { Album } from '../../types/album.interface';
 import { AlbumService } from '../../services/album.service';
 
 @Component({
-   selector: 'app-album-description',
-   templateUrl: './album-description.component.html',
-   styleUrl: './album-description.component.scss',
-   standalone: true,
-   imports: [NgIf],
+    selector: 'app-album-description',
+    templateUrl: './album-description.component.html',
+    styleUrl: './album-description.component.scss',
+    imports: [NgIf]
 })
 export class AlbumDescriptionComponent implements OnInit {
    album!: Album;

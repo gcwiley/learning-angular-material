@@ -9,11 +9,10 @@ import { Hero } from '../../types/hero.interface';
 import { HeroService } from '../../services/hero.service';
 
 @Component({
-  selector: 'app-hero-description',
-  templateUrl: './hero-description.component.html',
-  styleUrls: ['./hero-description.component.scss'],
-  standalone: true,
-  imports: [NgIf],
+    selector: 'app-hero-description',
+    templateUrl: './hero-description.component.html',
+    styleUrls: ['./hero-description.component.scss'],
+    imports: [NgIf]
 })
 export class HeroDescriptionComponent implements OnInit {
   hero!: Hero;

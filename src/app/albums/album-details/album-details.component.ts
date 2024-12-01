@@ -12,11 +12,10 @@ import { Album } from '../../types/album.interface';
 import { AlbumService } from '../../services/album.service';
 
 @Component({
-   selector: 'app-album-details',
-   templateUrl: './album-details.component.html',
-   styleUrl: './album-details.component.scss',
-   standalone: true,
-   imports: [CommonModule, MatListModule],
+    selector: 'app-album-details',
+    templateUrl: './album-details.component.html',
+    styleUrl: './album-details.component.scss',
+    imports: [CommonModule, MatListModule]
 })
 export class AlbumDetailsComponent implements OnInit {
    album!: Album | undefined;

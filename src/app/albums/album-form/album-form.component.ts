@@ -22,22 +22,21 @@ import { Album, AlbumGenre } from '../../types/album.interface';
 import { ALBUM_GENRES } from '../../../assets/data/album-data';
 
 @Component({
-   selector: 'app-album-form',
-   templateUrl: './album-form.component.html',
-   styleUrl: './album-form.component.scss',
-   standalone: true,
-   imports: [
-      CommonModule,
-      MatCardModule,
-      MatButtonModule,
-      MatFormFieldModule,
-      MatInputModule,
-      MatSelectModule,
-      MatDatepickerModule,
-      MatNativeDateModule,
-      FormsModule,
-      ReactiveFormsModule,
-   ],
+    selector: 'app-album-form',
+    templateUrl: './album-form.component.html',
+    styleUrl: './album-form.component.scss',
+    imports: [
+        CommonModule,
+        MatCardModule,
+        MatButtonModule,
+        MatFormFieldModule,
+        MatInputModule,
+        MatSelectModule,
+        MatDatepickerModule,
+        MatNativeDateModule,
+        FormsModule,
+        ReactiveFormsModule,
+    ]
 })
 export class AlbumFormComponent implements OnInit {
    formBuilder = inject(FormBuilder);

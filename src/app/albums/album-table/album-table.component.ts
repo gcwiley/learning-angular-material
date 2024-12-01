@@ -24,22 +24,21 @@ import { AlbumService } from '../../services/album.service';
 import { Album } from '../../types/album.interface';
 
 @Component({
-   selector: 'app-album-table',
-   templateUrl: './album-table.component.html',
-   styleUrl: './album-table.component.scss',
-   changeDetection: ChangeDetectionStrategy.OnPush,
-   standalone: true,
-   imports: [
-      CommonModule,
-      MatRippleModule,
-      MatTableModule,
-      MatIconModule,
-      MatButtonModule,
-      MatTooltipModule,
-      MatProgressSpinnerModule,
-      RouterModule,
-      MatPaginator,
-   ],
+    selector: 'app-album-table',
+    templateUrl: './album-table.component.html',
+    styleUrl: './album-table.component.scss',
+    changeDetection: ChangeDetectionStrategy.OnPush,
+    imports: [
+        CommonModule,
+        MatRippleModule,
+        MatTableModule,
+        MatIconModule,
+        MatButtonModule,
+        MatTooltipModule,
+        MatProgressSpinnerModule,
+        RouterModule,
+        MatPaginator,
+    ]
 })
 export class AlbumTableComponent implements AfterViewInit {
    // inject MatDialog
@@ -106,11 +105,10 @@ export class AlbumTableComponent implements AfterViewInit {
 }
 
 @Component({
-   selector: 'app-album-table-dialog',
-   templateUrl: './album-table-dialog.html',
-   standalone: true,
-   imports: [MatButtonModule, MatDialogActions, MatDialogClose, MatDialogTitle, MatDialogContent],
-   changeDetection: ChangeDetectionStrategy.OnPush,
+    selector: 'app-album-table-dialog',
+    templateUrl: './album-table-dialog.html',
+    imports: [MatButtonModule, MatDialogActions, MatDialogClose, MatDialogTitle, MatDialogContent],
+    changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class AlbumTableDialogComponent {
    readonly dialogRef = inject(MatDialogRef<AlbumTableDialogComponent>);

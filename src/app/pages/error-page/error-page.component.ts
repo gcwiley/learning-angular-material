@@ -6,10 +6,9 @@ import { Component } from '@angular/core';
 import { NavBarComponent, FooterComponent } from '../../shared';
 
 @Component({
-   standalone: true,
-   selector: 'app-error-page',
-   templateUrl: './error-page.component.html',
-   styleUrl: './error-page.component.scss',
-   imports: [NavBarComponent, FooterComponent],
+    selector: 'app-error-page',
+    templateUrl: './error-page.component.html',
+    styleUrl: './error-page.component.scss',
+    imports: [NavBarComponent, FooterComponent]
 })
 export class ErrorPageComponent {}

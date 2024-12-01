@@ -7,10 +7,9 @@ import { NavBarComponent, FooterComponent } from '../../shared';
 import { TypographyComponent } from '../../components/typography/typography.component';
 
 @Component({
-   standalone: true,
-   selector: 'app-about-page',
-   templateUrl: './about-page.component.html',
-   styleUrl: './about-page.component.scss',
-   imports: [NavBarComponent, FooterComponent, TypographyComponent],
+    selector: 'app-about-page',
+    templateUrl: './about-page.component.html',
+    styleUrl: './about-page.component.scss',
+    imports: [NavBarComponent, FooterComponent, TypographyComponent]
 })
 export class AboutPageComponent {}

@@ -2,11 +2,10 @@ import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
 @Component({
-  selector: 'app-hero-search',
-  standalone: true,
-  imports: [CommonModule],
-  templateUrl: './hero-search.component.html',
-  styleUrls: ['./hero-search.component.scss']
+    selector: 'app-hero-search',
+    imports: [CommonModule],
+    templateUrl: './hero-search.component.html',
+    styleUrls: ['./hero-search.component.scss']
 })
 export class HeroSearchComponent {
 

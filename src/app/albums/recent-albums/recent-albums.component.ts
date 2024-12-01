@@ -12,11 +12,10 @@ import { AlbumService } from '../../services/album.service';
 import { Album } from '../../types/album.interface';
 
 @Component({
-   selector: 'app-recent-albums',
-   templateUrl: './recent-albums.component.html',
-   styleUrl: './recent-albums.component.scss',
-   standalone: true,
-   imports: [CommonModule, MatListModule, MatIconModule],
+    selector: 'app-recent-albums',
+    templateUrl: './recent-albums.component.html',
+    styleUrl: './recent-albums.component.scss',
+    imports: [CommonModule, MatListModule, MatIconModule]
 })
 export class RecentAlbumsComponent implements OnInit {
    recentAlbums!: Album[];

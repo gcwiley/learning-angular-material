@@ -10,10 +10,9 @@ import { NavBarComponent, AnnouncementBannerComponent, FooterComponent } from '.
 import { AlbumGridComponent } from '../../../albums';
 
 @Component({
-   selector: 'app-album-grid-page',
-   templateUrl: './album-grid-page.component.html',
-   styleUrl: './album-grid-page.component.scss',
-   standalone: true,
-   imports: [MatDividerModule, AlbumGridComponent, NavBarComponent, AnnouncementBannerComponent, FooterComponent],
+    selector: 'app-album-grid-page',
+    templateUrl: './album-grid-page.component.html',
+    styleUrl: './album-grid-page.component.scss',
+    imports: [MatDividerModule, AlbumGridComponent, NavBarComponent, AnnouncementBannerComponent, FooterComponent]
 })
 export class AlbumGridPageComponent {}

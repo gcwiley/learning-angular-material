@@ -12,11 +12,10 @@ import { Hero } from '../../types/hero.interface';
 import { HeroService } from '../../services/hero.service';
 
 @Component({
-  selector: 'app-hero-details',
-  templateUrl: './hero-details.component.html',
-  styleUrls: ['./hero-details.component.scss'],
-  standalone: true,
-  imports: [CommonModule, MatListModule],
+    selector: 'app-hero-details',
+    templateUrl: './hero-details.component.html',
+    styleUrls: ['./hero-details.component.scss'],
+    imports: [CommonModule, MatListModule]
 })
 export class HeroDetailsComponent implements OnInit {
   hero!: Hero | undefined;

@@ -11,11 +11,10 @@ import { NavBarComponent, FooterComponent } from '../../../shared';
 import { HeroDetailsComponent, HeroDescriptionComponent } from '../../../heroes';
 
 @Component({
-   selector: 'app-hero-details-page',
-   templateUrl: './hero-details-page.component.html',
-   styleUrls: ['./hero-details-page.component.scss'],
-   standalone: true,
-   imports: [MatGridListModule, NavBarComponent, FooterComponent, HeroDetailsComponent, HeroDescriptionComponent],
+    selector: 'app-hero-details-page',
+    templateUrl: './hero-details-page.component.html',
+    styleUrls: ['./hero-details-page.component.scss'],
+    imports: [MatGridListModule, NavBarComponent, FooterComponent, HeroDetailsComponent, HeroDescriptionComponent]
 })
 export class HeroDetailsPageComponent implements OnInit {
    // set the default values of the grid list here

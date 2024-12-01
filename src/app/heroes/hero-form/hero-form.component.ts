@@ -19,22 +19,21 @@ import { HeroService } from '../../services/hero.service';
 import { Hero } from '../../types/hero.interface';
 
 @Component({
-   selector: 'app-hero-form',
-   templateUrl: './hero-form.component.html',
-   styleUrls: ['./hero-form.component.scss'],
-   standalone: true,
-   imports: [
-      CommonModule,
-      MatCardModule,
-      MatButtonModule,
-      MatFormFieldModule,
-      MatInputModule,
-      MatSelectModule,
-      MatDatepickerModule,
-      MatNativeDateModule,
-      FormsModule,
-      ReactiveFormsModule,
-   ],
+    selector: 'app-hero-form',
+    templateUrl: './hero-form.component.html',
+    styleUrls: ['./hero-form.component.scss'],
+    imports: [
+        CommonModule,
+        MatCardModule,
+        MatButtonModule,
+        MatFormFieldModule,
+        MatInputModule,
+        MatSelectModule,
+        MatDatepickerModule,
+        MatNativeDateModule,
+        FormsModule,
+        ReactiveFormsModule,
+    ]
 })
 export class HeroFormComponent implements OnInit {
    formBuilder = inject(FormBuilder)

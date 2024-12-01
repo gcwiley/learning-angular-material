@@ -19,24 +19,23 @@ import { AlbumTableComponent } from '../../albums';
 import { HeroTableComponent } from '../../heroes';
 
 @Component({
-   selector: 'app-admin-page',
-   templateUrl: './admin-page.component.html',
-   styleUrl: './admin-page.component.scss',
-   standalone: true,
-   imports: [
-      CommonModule,
-      MatSidenavModule,
-      MatListModule,
-      MatToolbarModule,
-      MatIconModule,
-      MatMenuModule,
-      MatButtonModule,
-      MatTabsModule,
-      MatTooltip,
-      RouterModule,
-      AlbumTableComponent,
-      HeroTableComponent,
-   ],
+    selector: 'app-admin-page',
+    templateUrl: './admin-page.component.html',
+    styleUrl: './admin-page.component.scss',
+    imports: [
+        CommonModule,
+        MatSidenavModule,
+        MatListModule,
+        MatToolbarModule,
+        MatIconModule,
+        MatMenuModule,
+        MatButtonModule,
+        MatTabsModule,
+        MatTooltip,
+        RouterModule,
+        AlbumTableComponent,
+        HeroTableComponent,
+    ]
 })
 export class AdminPageComponent {
    events: string[] = [];

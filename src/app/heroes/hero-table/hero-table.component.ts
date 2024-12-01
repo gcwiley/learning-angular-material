@@ -24,22 +24,21 @@ import { HeroService } from '../../services/hero.service';
 import { Hero } from '../../types/hero.interface';
 
 @Component({
-   selector: 'app-hero-table',
-   templateUrl: './hero-table.component.html',
-   styleUrls: ['./hero-table.component.scss'],
-   changeDetection: ChangeDetectionStrategy.OnPush,
-   standalone: true,
-   imports: [
-      CommonModule,
-      MatRippleModule,
-      MatTableModule,
-      MatIconModule,
-      MatButtonModule,
-      MatTooltipModule,
-      MatProgressSpinnerModule,
-      RouterModule,
-      MatPaginator,
-   ],
+    selector: 'app-hero-table',
+    templateUrl: './hero-table.component.html',
+    styleUrls: ['./hero-table.component.scss'],
+    changeDetection: ChangeDetectionStrategy.OnPush,
+    imports: [
+        CommonModule,
+        MatRippleModule,
+        MatTableModule,
+        MatIconModule,
+        MatButtonModule,
+        MatTooltipModule,
+        MatProgressSpinnerModule,
+        RouterModule,
+        MatPaginator,
+    ]
 })
 export class HeroTableComponent implements AfterViewInit {
    // inject MatDialog
@@ -96,11 +95,10 @@ export class HeroTableComponent implements AfterViewInit {
 }
 
 @Component({
-   selector: 'app-hero-table-dialog',
-   templateUrl: './hero-table-dialog.html',
-   standalone: true,
-   imports: [MatButtonModule, MatDialogActions, MatDialogClose, MatDialogTitle, MatDialogContent],
-   changeDetection: ChangeDetectionStrategy.OnPush,
+    selector: 'app-hero-table-dialog',
+    templateUrl: './hero-table-dialog.html',
+    imports: [MatButtonModule, MatDialogActions, MatDialogClose, MatDialogTitle, MatDialogContent],
+    changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class HeroTableDialogComponent {
    readonly dialogRef = inject(MatDialogRef<HeroTableDialogComponent>);

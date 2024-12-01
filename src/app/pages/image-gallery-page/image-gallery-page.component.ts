@@ -5,10 +5,9 @@ import { CommonModule } from '@angular/common';
 import { NavBarComponent, FooterComponent } from '../../shared';
 
 @Component({
-  selector: 'app-image-gallery-page',
-  templateUrl: './image-gallery-page.component.html',
-  styleUrls: ['./image-gallery-page.component.scss'],
-  standalone: true,
-  imports: [CommonModule, NavBarComponent, FooterComponent],
+    selector: 'app-image-gallery-page',
+    templateUrl: './image-gallery-page.component.html',
+    styleUrls: ['./image-gallery-page.component.scss'],
+    imports: [CommonModule, NavBarComponent, FooterComponent]
 })
 export class ImageGalleryPageComponent {}

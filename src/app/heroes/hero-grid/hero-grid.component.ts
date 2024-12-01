@@ -16,11 +16,10 @@ import { HeroService } from '../../services/hero.service';
 import { Hero } from '../../types/hero.interface';
 
 @Component({
-   selector: 'app-hero-grid',
-   templateUrl: './hero-grid.component.html',
-   styleUrls: ['./hero-grid.component.scss'],
-   standalone: true,
-   imports: [CommonModule, RouterModule, MatGridListModule, MatCardModule, MatIconModule, MatButtonModule],
+    selector: 'app-hero-grid',
+    templateUrl: './hero-grid.component.html',
+    styleUrls: ['./hero-grid.component.scss'],
+    imports: [CommonModule, RouterModule, MatGridListModule, MatCardModule, MatIconModule, MatButtonModule]
 })
 export class HeroGridComponent implements OnInit {
    // create the member variables

@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { NgIf } from '@angular/common';
 
@@ -9,23 +9,25 @@ import { Hero } from '../../types/hero.interface';
 import { HeroService } from '../../services/hero.service';
 
 @Component({
-    selector: 'app-hero-description',
-    templateUrl: './hero-description.component.html',
-    styleUrls: ['./hero-description.component.scss'],
-    imports: [NgIf]
+   standalone: true,
+   selector: 'app-hero-description',
+   templateUrl: './hero-description.component.html',
+   styleUrls: ['./hero-description.component.scss'],
+   changeDetection: ChangeDetectionStrategy.OnPush,
+   imports: [NgIf],
 })
 export class HeroDescriptionComponent implements OnInit {
-  hero!: Hero;
+   hero!: Hero;
 
-  constructor(private route: ActivatedRoute, private heroService: HeroService) {}
+   constructor(private route: ActivatedRoute, private heroService: HeroService) {}
 
-  ngOnInit(): void {
-    this.getHero();
-  }
+   ngOnInit(): void {
+      this.getHero();
+   }
 
-  // GET hero by ID
-  getHero(): void {
-    const id = this.route.snapshot.paramMap.get('id')!;
-    this.heroService.getHero(id).subscribe((hero) => (this.hero = hero));
-  }
+   // GET hero by ID
+   getHero(): void {
+      const id = this.route.snapshot.paramMap.get('id')!;
+      this.heroService.getHero(id).subscribe((hero) => (this.hero = hero));
+   }
 }

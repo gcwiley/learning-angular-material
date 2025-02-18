@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { CommonModule } from '@angular/common';
 
@@ -12,9 +12,11 @@ import { Hero } from '../../types/hero.interface';
 import { HeroService } from '../../services/hero.service';
 
 @Component({
+    standalone: true,
     selector: 'app-hero-details',
     templateUrl: './hero-details.component.html',
     styleUrls: ['./hero-details.component.scss'],
+    changeDetection: ChangeDetectionStrategy.OnPush,
     imports: [CommonModule, MatListModule]
 })
 export class HeroDetailsComponent implements OnInit {

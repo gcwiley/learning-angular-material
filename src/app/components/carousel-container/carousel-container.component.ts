@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { ChangeDetectionStrategy, Component } from '@angular/core';
 import { RouterLink } from '@angular/router';
 
 // import the angular material modules
@@ -18,6 +18,7 @@ import { CarouselComponent } from '../carousel/carousel.component';
    selector: 'app-carousel-container',
    templateUrl: './carousel-container.component.html',
    styleUrl: './carousel-container.component.scss',
+   changeDetection: ChangeDetectionStrategy.OnPush,
    imports: [RouterLink, MatButtonModule, MatRipple, MatIconModule, MatCardModule, CarouselComponent],
 })
 export class CarouselContainerComponent {

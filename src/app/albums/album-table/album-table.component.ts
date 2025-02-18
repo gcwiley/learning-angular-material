@@ -24,6 +24,7 @@ import { AlbumService } from '../../services/album.service';
 import { Album } from '../../types/album.interface';
 
 @Component({
+   standalone: true,
     selector: 'app-album-table',
     templateUrl: './album-table.component.html',
     styleUrl: './album-table.component.scss',
@@ -86,15 +87,6 @@ export class AlbumTableComponent implements AfterViewInit {
       });
    }
 
-   // open dialog window
-   openDialog(enterAnimationDuration: string, exitAnimationDuration: string): void {
-      this.dialog.open(AlbumTableDialogComponent, {
-         width: '250px',
-         enterAnimationDuration,
-         exitAnimationDuration,
-      });
-   }
-
    // deletes an album
    onDeleteAlbum(id: string): void {
       this.albumService.deleteAlbum(id).subscribe(() => {
@@ -104,12 +96,3 @@ export class AlbumTableComponent implements AfterViewInit {
    }
 }
 
-@Component({
-    selector: 'app-album-table-dialog',
-    templateUrl: './album-table-dialog.html',
-    imports: [MatButtonModule, MatDialogActions, MatDialogClose, MatDialogTitle, MatDialogContent],
-    changeDetection: ChangeDetectionStrategy.OnPush
-})
-export class AlbumTableDialogComponent {
-   readonly dialogRef = inject(MatDialogRef<AlbumTableDialogComponent>);
-}

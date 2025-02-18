@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { NgIf } from '@angular/common';
 
@@ -9,9 +9,11 @@ import { Album } from '../../types/album.interface';
 import { AlbumService } from '../../services/album.service';
 
 @Component({
+   standalone: true,
     selector: 'app-album-description',
     templateUrl: './album-description.component.html',
     styleUrl: './album-description.component.scss',
+    changeDetection: ChangeDetectionStrategy.OnPush,
     imports: [NgIf]
 })
 export class AlbumDescriptionComponent implements OnInit {

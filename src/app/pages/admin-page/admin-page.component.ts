@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { ChangeDetectionStrategy, Component } from '@angular/core';
 import { RouterModule } from '@angular/router';
 import { CommonModule } from '@angular/common';
 
@@ -19,9 +19,11 @@ import { AlbumTableComponent } from '../../albums';
 import { HeroTableComponent } from '../../heroes';
 
 @Component({
+    standalone: true,
     selector: 'app-admin-page',
     templateUrl: './admin-page.component.html',
     styleUrl: './admin-page.component.scss',
+    changeDetection: ChangeDetectionStrategy.OnPush,
     imports: [
         CommonModule,
         MatSidenavModule,

@@ -24,6 +24,7 @@ import { HeroService } from '../../services/hero.service';
 import { Hero } from '../../types/hero.interface';
 
 @Component({
+   standalone: true,
     selector: 'app-hero-table',
     templateUrl: './hero-table.component.html',
     styleUrls: ['./hero-table.component.scss'],
@@ -92,14 +93,4 @@ export class HeroTableComponent implements AfterViewInit {
          this.router.navigateByUrl('/admin');
       });
    }
-}
-
-@Component({
-    selector: 'app-hero-table-dialog',
-    templateUrl: './hero-table-dialog.html',
-    imports: [MatButtonModule, MatDialogActions, MatDialogClose, MatDialogTitle, MatDialogContent],
-    changeDetection: ChangeDetectionStrategy.OnPush
-})
-export class HeroTableDialogComponent {
-   readonly dialogRef = inject(MatDialogRef<HeroTableDialogComponent>);
 }

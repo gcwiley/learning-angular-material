@@ -1,5 +1,4 @@
-import { Component, OnInit } from '@angular/core';
-import { NgFor } from '@angular/common';
+import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
 import { Breakpoints, BreakpointObserver } from '@angular/cdk/layout';
 
 // import the angular material modules
@@ -13,7 +12,8 @@ import { Image } from '../../types/image.interface';
    selector: 'app-image-grid-page',
    templateUrl: './image-grid.component.html',
    styleUrls: ['./image-grid.component.scss'],
-   imports: [NgFor, MatGridListModule],
+   changeDetection: ChangeDetectionStrategy.OnPush,
+   imports: [MatGridListModule],
 })
 export class ImageGridComponent implements OnInit {
    // create member variables

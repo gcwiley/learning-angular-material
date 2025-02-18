@@ -1,12 +1,12 @@
-import { Component } from '@angular/core';
+import { ChangeDetectionStrategy, Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
 @Component({
-    selector: 'app-hero-search',
-    imports: [CommonModule],
-    templateUrl: './hero-search.component.html',
-    styleUrls: ['./hero-search.component.scss']
+   standalone: true,
+   selector: 'app-hero-search',
+   templateUrl: './hero-search.component.html',
+   styleUrls: ['./hero-search.component.scss'],
+   changeDetection: ChangeDetectionStrategy.OnPush,
+   imports: [CommonModule],
 })
-export class HeroSearchComponent {
-
-}
+export class HeroSearchComponent {}

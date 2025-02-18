@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { Breakpoints, BreakpointObserver } from '@angular/cdk/layout';
 import { Router, RouterModule } from '@angular/router';
@@ -16,9 +16,11 @@ import { HeroService } from '../../services/hero.service';
 import { Hero } from '../../types/hero.interface';
 
 @Component({
+   standalone: true,
     selector: 'app-hero-grid',
     templateUrl: './hero-grid.component.html',
     styleUrls: ['./hero-grid.component.scss'],
+    changeDetection: ChangeDetectionStrategy.OnPush,
     imports: [CommonModule, RouterModule, MatGridListModule, MatCardModule, MatIconModule, MatButtonModule]
 })
 export class HeroGridComponent implements OnInit {

@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { ChangeDetectionStrategy, Component } from '@angular/core';
 import { NgTemplateOutlet, CommonModule } from '@angular/common';
 import { RouterModule, Router } from '@angular/router';
 
@@ -15,27 +15,29 @@ import { MatDividerModule } from '@angular/material/divider';
 import { AppLogoComponent } from '../logo/logo.component';
 
 @Component({
-    selector: 'app-navbar',
-    templateUrl: './navbar.component.html',
-    styleUrls: ['./navbar.component.scss'],
-    imports: [
-        NgTemplateOutlet,
-        CommonModule,
-        RouterModule,
-        MatIconModule,
-        MatButtonModule,
-        MatMenuModule,
-        MatDividerModule,
-        AppLogoComponent,
-    ]
+   standalone: true,
+   selector: 'app-navbar',
+   templateUrl: './navbar.component.html',
+   styleUrls: ['./navbar.component.scss'],
+   changeDetection: ChangeDetectionStrategy.OnPush,
+   imports: [
+      NgTemplateOutlet,
+      CommonModule,
+      RouterModule,
+      MatIconModule,
+      MatButtonModule,
+      MatMenuModule,
+      MatDividerModule,
+      AppLogoComponent,
+   ],
 })
 export class NavBarComponent {
-   constructor(public auth: AuthService, private router: Router) {}
+   constructor(public authService: AuthService, private router: Router) {}
 
    // signs out current user
    onClickSignOut(): void {
-      this.auth.signOut().then(() => {
-         // navigates user to the sign in page
+      this.authService.signOut().subscribe(() => {
+         // redirects user to signin page
          this.router.navigateByUrl('/signin');
       });
    }

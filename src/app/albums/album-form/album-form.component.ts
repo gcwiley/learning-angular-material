@@ -1,4 +1,4 @@
-import { Component, OnInit, inject } from '@angular/core';
+import { ChangeDetectionStrategy, Component, OnInit, inject } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormBuilder, Validators, FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { ActivatedRoute, ParamMap, Router } from '@angular/router';
@@ -22,9 +22,11 @@ import { Album, AlbumGenre } from '../../types/album.interface';
 import { ALBUM_GENRES } from '../../../assets/data/album-data';
 
 @Component({
+   standalone: true,
     selector: 'app-album-form',
     templateUrl: './album-form.component.html',
     styleUrl: './album-form.component.scss',
+    changeDetection: ChangeDetectionStrategy.OnPush,
     imports: [
         CommonModule,
         MatCardModule,

@@ -7,3 +7,4 @@ export { HomepageComponent } from './homepage/homepage.component';
 export { ImageGalleryPageComponent } from './image-gallery-page/image-gallery-page.component';
 export { NotFoundPageComponent } from './not-found-page/not-found-page.component';
 export { SigninPageComponent } from './signin-page/signin-page.component';
+export { SignupPageComponent } from './signup-page/signup-page.component';

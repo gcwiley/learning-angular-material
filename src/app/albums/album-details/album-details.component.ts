@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { CommonModule } from '@angular/common';
 
@@ -12,10 +12,12 @@ import { Album } from '../../types/album.interface';
 import { AlbumService } from '../../services/album.service';
 
 @Component({
-    selector: 'app-album-details',
-    templateUrl: './album-details.component.html',
-    styleUrl: './album-details.component.scss',
-    imports: [CommonModule, MatListModule]
+   standalone: true,
+   selector: 'app-album-details',
+   templateUrl: './album-details.component.html',
+   styleUrl: './album-details.component.scss',
+   changeDetection: ChangeDetectionStrategy.OnPush,
+   imports: [CommonModule, MatListModule],
 })
 export class AlbumDetailsComponent implements OnInit {
    album!: Album | undefined;

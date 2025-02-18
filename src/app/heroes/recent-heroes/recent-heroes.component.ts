@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
 // import angular material modules
@@ -11,9 +11,11 @@ import { HeroService } from '../../services/hero.service';
 import { Hero } from '../../types/hero.interface';
 
 @Component({
+   standalone: true,
     selector: 'app-recent-heroes',
     templateUrl: './recent-heroes.component.html',
     styleUrls: ['./recent-heroes.component.scss'],
+    changeDetection: ChangeDetectionStrategy.OnPush,
     imports: [CommonModule, MatListModule]
 })
 export class RecentHeroesComponent implements OnInit {

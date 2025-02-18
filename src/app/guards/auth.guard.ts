@@ -2,7 +2,7 @@
 This code defines a angular authentication guard (AuthGuard) and related utilties for controlling access to routes based on user authentication status.
 */
 
-// imports necessary modules from angular core
+// imports necessary modules
 import { Injectable } from '@angular/core';
 import { Auth, user } from '@angular/fire/auth';
 import { ActivatedRouteSnapshot, CanActivate, Router, RouterStateSnapshot } from '@angular/router';

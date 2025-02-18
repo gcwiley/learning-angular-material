@@ -4,7 +4,7 @@ import { Component } from '@angular/core';
 import { NavBarComponent, FooterComponent } from '../../shared';
 
 // import the typography component - as a test
-import { TypographyComponent } from '../../components/typography/typography.component';
+import { TypographyComponent } from '../../../test/typography/typography.component';
 
 @Component({
     selector: 'app-about-page',

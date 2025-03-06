@@ -43,7 +43,7 @@ export class SigninPageComponent {
       password: ['', Validators.required],
    });
 
-   // Sign in with email and password
+   // sign in with email and password
    public onSubmitSignIn(): void {
       this.authService.signInWithEmailAndPassword(this.signinForm.value.email!, this.signinForm.value.password!).subscribe(() => {
          // redirects user to homepage

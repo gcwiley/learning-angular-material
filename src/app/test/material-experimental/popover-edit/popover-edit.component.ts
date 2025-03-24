@@ -1,5 +1,8 @@
 import { Component, inject } from '@angular/core';
 import { DataSource } from '@angular/cdk/collections';
+import { FormValueContainer, CdkPopoverEditModule } from '@angular/cdk-experimental/popover-edit';
+import { NgForm, FormsModule } from '@angular/forms';
+import { MatSnackBar } from '@angular/material/snack-bar';
 
 export type ElementType = 'Metal' | 'Semimetal' | 'Nonmental';
 

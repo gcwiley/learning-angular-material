@@ -1,10 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { Observable, of } from 'rxjs';
-import { catchError, tap } from 'rxjs/operators';
-
-// import the message service
-import { MessageService } from './message.service';
+import { catchError, Observable, of, throwError } from 'rxjs';
 
 // import the album interface
 import { Album } from '../types/album.interface';
@@ -16,46 +12,24 @@ const headers = new HttpHeaders().set('Content-Type', 'application/json');
    providedIn: 'root',
 })
 export class AlbumService {
-   // URL to web api
-   private albumsUrl = '/api/albums';
+   private albumsUrl = '/api/albums'; // URL to web api
 
-   // inject 'HttpClient" in the Album service
-   constructor(private http: HttpClient, private messageService: MessageService) {}
+   // inject 'HttpClient" in the album service
+   constructor(private http: HttpClient) {}
 
    // GET: albums from the database
    getAlbums(): Observable<Album[]> {
-      return this.http.get<Album[]>(this.albumsUrl, { headers: headers }).pipe(
-         tap(() => this.log('fetched albums')),
-         catchError(this.handleError<Album[]>('getAlbums', []))
-      );
-   }
-
-   // this is an example of using native fetch for api calls - use this for other project
-   async getAllAlbums(): Promise<Response | unknown> {
-      // comment
-      const URL = 'www.apple.com';
-      try {
-         const response = await fetch(URL, {
-            headers: {
-               test: 'test',
-            },
-            credentials: 'include',
-            method: 'GET',
-            mode: 'cors',
-            body: JSON.stringify({ username: 'greg' }),
-         });
-         const data = await response.json();
-         return data;
-      } catch (error) {
-         console.log(error);
-         return new Error('Error');
-      }
+      return this.http
+         .get<Album[]>(this.albumsUrl, { headers: headers })
+         .pipe(catchError(this.handleError));
    }
 
    // GET: album by ID from the database
-   getAlbum(id: string | null): Observable<Album> {
+   getAlbumById(id: string | null): Observable<Album> {
       const url = `${this.albumsUrl}/${id}`;
-      return this.http.get<Album>(url, { headers: headers });
+      return this.http
+         .get<Album>(url, { headers: headers })
+         .pipe(catchError(this.handleError));
    }
 
    // GET: search albums in the database - SEARCH FIX THIS!!
@@ -64,73 +38,59 @@ export class AlbumService {
          // if no search term, return empty hero array
          return of([]);
       }
-      return this.http.get<Album[]>(`${this.albumsUrl}/?name=${term}`).pipe(
-         tap((x) => (x.length ? this.log(`found albums matching "${term}"`) : this.log(`no albums matching "${term}"`))),
-         catchError(this.handleError<Album[]>('search albums', []))
-      );
+      return this.http
+         .get<Album[]>(`${this.albumsUrl}/?name=${term}`)
+         .pipe(catchError(this.handleError));
    }
 
    // GET: album count from database
    getAlbumCount(): Observable<number> {
-      return this.http.get<number>('/api/album-count');
+      return this.http
+         .get<number>('/api/album-count')
+         .pipe(catchError(this.handleError));
    }
 
    // GET: recent album created in database
    getRecentlyCreatedAlbums(): Observable<Album[]> {
-      return this.http.get<Album[]>('/api/recent-albums', { headers: headers });
+      return this.http
+         .get<Album[]>('/api/recent-albums', { headers: headers })
+         .pipe(catchError(this.handleError));
    }
 
    // SAVE METHODS
 
    // POST: Add a new Album to the server
    addAlbum(newAlbum: Album | object): Observable<Album> {
-      return this.http.post<Album>(this.albumsUrl, newAlbum, { headers: headers }).pipe(
-         tap((newAlbum: Album) => this.log(`added album with id=${newAlbum.id}`)),
-         catchError(this.handleError<Album>('add Hero'))
-      );
+      return this.http
+         .post<Album>(this.albumsUrl, newAlbum, {
+            headers: headers,
+         })
+         .pipe(catchError(this.handleError));
    }
 
    // DELETE: album by Id from the server
-   deleteAlbum(id: string): Observable<Album> {
+   deleteAlbumById(id: string): Observable<Album> {
       const url = `${this.albumsUrl}/${id}`;
-
-      return this.http.delete<Album>(url, { headers: headers }).pipe(
-         tap(() => this.log(`deleted album id=${id}`)),
-         catchError(this.handleError<Album>('deleted album'))
-      );
+      return this.http
+         .delete<Album>(url, { headers: headers })
+         .pipe(catchError(this.handleError));
    }
 
-   // PUT: update the album on the server
-   updateAlbum(id: string, album: Album | object): Observable<object> {
-      // create the url
+   // PUT: update the album on the database
+   updateAlbumById(id: string, album: Album | object): Observable<object> {
       const url = `${this.albumsUrl}/${id}`;
-
-      return this.http.patch(url, album, { headers: headers }).pipe(
-         tap(() => this.log(`updated album id=${id}`)),
-         catchError(this.handleError<object>('update album'))
-      );
+      return this.http
+         .patch(url, album, { headers: headers })
+         .pipe(catchError(this.handleError));
    }
 
-   // Handle HTTP operation that failed
-   // let the app continue
-   // @param operation - name of the operation that failed
-   // @param result - optional value to return as the observable result
-
-   private handleError<T>(operation = 'operation', result?: T) {
-      return (error: Error): Observable<T> => {
-         // TODO: send the error to remote logging infrastructure
-         console.error(error); // log to console instead
-
-         // TODO: better job of transforming error for user consumption
-         this.log(`${operation} failed: ${error.message}`);
-
-         // let the app keep running by return an empty result
-         return of(result as T);
-      };
-   }
-
-   // Log a AlbumService message with the MessageService
-   private log(message: string) {
-      this.messageService.add(`AlbumService: ${message}`);
+   // private method the centralizes error handling
+   private handleError(error: Error): Observable<never> {
+      // NOTE: use a logging service instead of console.error
+      // replace this with a more robust logging mechcanism - a dedicated logging service
+      // logs error to console
+      console.error('There was an error', error);
+      // throws the error again, so the subscriber can catch it and handle the error
+      return throwError(() => error);
    }
 }

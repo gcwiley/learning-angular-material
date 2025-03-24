@@ -4,7 +4,7 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
 import { NavBarComponent, FooterComponent } from '../../components';
 
 // import the typography component - as a test
-import { TypographyComponent } from '../../../test/typography/typography.component';
+import { TypographyComponent } from '../../test/typography/typography.component';
 
 @Component({
     standalone: true,

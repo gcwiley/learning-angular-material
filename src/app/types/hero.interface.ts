@@ -1,6 +1,6 @@
 // define the hero interface
 export interface Hero {
-  id?: string;
+  id: string;
   name: string;
   age: string;
   homePlanet: string;
@@ -9,3 +9,5 @@ export interface Hero {
   createdAt: string;
   updatedAt: string;
 }
+
+export type HeroInput = Omit<Hero, 'id'>

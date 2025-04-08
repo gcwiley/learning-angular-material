@@ -11,5 +11,7 @@ import { HeroService } from '../services/hero.service';
   selector: '[appHeroDelete]',
 })
 export class HeroDeleteDirective {
+  // sets upa required input that expects a string value and provides an alias 'appHeroDelete' to used when the directive is being used.
+  public id = input
   constructor() {}
 }

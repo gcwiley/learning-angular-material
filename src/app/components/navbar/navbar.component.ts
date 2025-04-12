@@ -1,8 +1,8 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
-import { NgTemplateOutlet, CommonModule } from '@angular/common';
+import { CommonModule } from '@angular/common';
 import { RouterModule, Router } from '@angular/router';
 
-// import the auth service
+// import auth service
 import { AuthService } from '../../services/auth.service';
 
 // import the angular material modules
@@ -21,7 +21,6 @@ import { AppLogoComponent } from '../logo/logo.component';
    styleUrls: ['./navbar.component.scss'],
    changeDetection: ChangeDetectionStrategy.OnPush,
    imports: [
-      NgTemplateOutlet,
       CommonModule,
       RouterModule,
       MatIconModule,
@@ -35,8 +34,8 @@ export class NavBarComponent {
    constructor(public authService: AuthService, private router: Router) {}
 
    // signs out current user
-   onClickSignOut(): void {
-      this.authService.signOut().subscribe(() => {
+   public onClickSignOut(): void {
+      this.authService.signOutUser().subscribe(() => {
          // redirects user to signin page
          this.router.navigateByUrl('/signin');
       });

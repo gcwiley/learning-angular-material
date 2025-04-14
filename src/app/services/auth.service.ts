@@ -53,7 +53,7 @@ export class AuthService {
     );
   }
 
-  // Asynchronously signs in as an anonymous user.
+  // asynchronously signs in as an anonymous user.
   public signInAnonymously(): Observable<UserCredential> {
     return from(signInAnonymously(this.auth)).pipe(catchError(this.handleError));
   }

@@ -2,14 +2,12 @@ import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { CommonModule } from '@angular/common';
 
-// import the angular material modules
+// angular material
 import { MatListModule } from '@angular/material/list';
 
-// import the hero interface
-import { Hero } from '../../types/hero.interface';
-
-// import the hero service
+// hero service and interface
 import { HeroService } from '../../services/hero.service';
+import { Hero } from '../../types/hero.interface';
 
 @Component({
     standalone: true,
@@ -31,6 +29,6 @@ export class HeroDetailsComponent implements OnInit {
   // GET hero by ID
   getHero(): void {
     const id = this.route.snapshot.paramMap.get('id')!;
-    this.heroService.getHero(id).subscribe((hero) => (this.hero = hero));
+    this.heroService.getHeroById(id).subscribe((hero) => (this.hero = hero));
   }
 }

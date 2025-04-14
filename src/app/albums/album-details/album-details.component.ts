@@ -24,13 +24,13 @@ export class AlbumDetailsComponent implements OnInit {
 
    constructor(private route: ActivatedRoute, private albumService: AlbumService) {}
 
-   ngOnInit(): void {
+   public ngOnInit(): void {
       this.getAlbum();
    }
 
    // GET album by ID
-   getAlbum(): void {
+   public getAlbum(): void {
       const id = this.route.snapshot.paramMap.get('id')!;
-      this.albumService.getAlbum(id).subscribe((album) => (this.album = album));
+      this.albumService.getAlbumById(id).subscribe((album) => (this.album = album));
    }
 }

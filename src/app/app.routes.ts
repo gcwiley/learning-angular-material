@@ -18,10 +18,8 @@ export const routes: Routes = [
    {
       path: 'create-hero',
       title: 'Create Hero',
-      // before the user navigates away from this route, the guard will be executed to check if it is allowed
-      // this prevents accidential navigation away from an unsaved form.
       canDeactivate: [CanDeactivateGuardService],
-      // lazy load the component when the route is activated
+      canActivate: [authGuard],
       loadComponent: () =>
          import(
             './pages/hero-pages/hero-create-page/hero-create-page.component'

@@ -1,4 +1,4 @@
-import { AfterViewInit, Component, ViewChild, inject, ChangeDetectionStrategy } from '@angular/core';
+import { AfterViewInit, Component, ViewChild, ChangeDetectionStrategy } from '@angular/core';
 import { Router, RouterModule } from '@angular/router';
 import { CommonModule } from '@angular/common';
 
@@ -13,9 +13,6 @@ import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 // import mat paginator and mat sort
 import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
-
-// import mat dialog here
-import { MatDialog, MatDialogActions, MatDialogClose, MatDialogContent, MatDialogRef, MatDialogTitle } from '@angular/material/dialog';
 
 // import the hero service
 import { HeroService } from '../../services/hero.service';
@@ -42,9 +39,7 @@ import { Hero } from '../../types/hero.interface';
     ]
 })
 export class HeroTableComponent implements AfterViewInit {
-   // inject MatDialog
-   readonly dialog = inject(MatDialog);
-
+   
    // setup pagination for table
    @ViewChild(MatPaginator) paginator!: MatPaginator;
    // set up sort in table
@@ -77,18 +72,9 @@ export class HeroTableComponent implements AfterViewInit {
       });
    }
 
-   // open dialog window
-   openDialog(enterAnimationDuration: string, exitAnimationDuration: string): void {
-      this.dialog.open(HeroTableDialogComponent, {
-         width: '250px',
-         enterAnimationDuration,
-         exitAnimationDuration,
-      });
-   }
-
    // deletes a hero by ID
    onDeleteHero(id: string): void {
-      this.heroService.deleteHero(id).subscribe(() => {
+      this.heroService.deleteHeroById(id).subscribe(() => {
          // navigates admin back to the admin page
          this.router.navigateByUrl('/admin');
       });

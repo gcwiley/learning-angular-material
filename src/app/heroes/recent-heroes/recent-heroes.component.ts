@@ -1,13 +1,11 @@
 import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
-// import angular material modules
+// angular material
 import { MatListModule } from '@angular/material/list';
 
-// import the hero service
+// hero service and interface
 import { HeroService } from '../../services/hero.service';
-
-// import the hero interface
 import { Hero } from '../../types/hero.interface';
 
 @Component({
@@ -23,11 +21,11 @@ export class RecentHeroesComponent implements OnInit {
 
    constructor(private heroService: HeroService) {}
 
-   ngOnInit(): void {
+   public ngOnInit(): void {
       this.getRecentHeroes();
    }
 
-   getRecentHeroes(): void {
+   public getRecentHeroes(): void {
       this.heroService.getRecentlyCreatedHeroes().subscribe((recentHeroes) => (this.recentHeroes = recentHeroes));
    }
 }

@@ -8,17 +8,16 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatDividerModule } from '@angular/material/divider';
 import { MatCardModule } from '@angular/material/card';
 
-// import the shared components
+// shared components
 import {
    NavBarComponent,
    AnnouncementBannerComponent,
    AppLogoComponent,
-   SupportComponent,
    FooterComponent,
-} from '../../shared';
+} from '../../components/index';
 
 // carousel
-import { CarouselComponent, CarouselItemDirective } from '../../shared';
+import { CarouselComponent, CarouselItemDirective } from '../../components/index';
 
 // import the hero service
 import { HeroService } from '../../services/hero.service';
@@ -42,7 +41,6 @@ const TOP_COMPONENTS = ['datepicker', 'input', 'slide-toggle', 'slider', 'button
         NavBarComponent,
         AnnouncementBannerComponent,
         FooterComponent,
-        SupportComponent,
         CarouselComponent,
         CarouselItemDirective,
         AppLogoComponent,

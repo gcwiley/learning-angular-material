@@ -12,10 +12,8 @@ import { MatSelectModule } from '@angular/material/select';
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatNativeDateModule } from '@angular/material/core';
 
-// import the album service
+// album service and interface
 import { AlbumService } from '../../services/album.service';
-
-// import the album interfaces
 import { Album, AlbumGenre } from '../../types/album.interface';
 
 // import the album data values
@@ -68,7 +66,7 @@ export class AlbumFormComponent implements OnInit {
          if (paramMap.has('id')) {
             this.mode = 'edit';
             this.id = paramMap.get('id');
-            this.albumService.getAlbum(this.id).subscribe((album) => {
+            this.albumService.getAlbumById(this.id).subscribe((album) => {
                this.album = album;
                // overrides the value of initial form controls
                this.albumForm.setValue({
@@ -97,7 +95,7 @@ export class AlbumFormComponent implements OnInit {
             this.router.navigateByUrl('/admin');
          });
       } else {
-         this.albumService.updateAlbum(this.id!, this.albumForm.value).subscribe(() => {
+         this.albumService.updateAlbumById(this.id!, this.albumForm.value).subscribe(() => {
             // navigates user back to the home page
             this.router.navigateByUrl('/admin');
          });

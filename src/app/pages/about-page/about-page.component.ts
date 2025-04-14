@@ -1,6 +1,6 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
 
-// import the shared components
+// shared components
 import { NavBarComponent, FooterComponent } from '../../components';
 
 // import the typography component - as a test

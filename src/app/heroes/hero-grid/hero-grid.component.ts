@@ -3,7 +3,7 @@ import { CommonModule } from '@angular/common';
 import { Breakpoints, BreakpointObserver } from '@angular/cdk/layout';
 import { Router, RouterModule } from '@angular/router';
 
-// import the angular material modules
+// material modules
 import { MatGridListModule } from '@angular/material/grid-list';
 import { MatCardModule } from '@angular/material/card';
 import { MatIconModule } from '@angular/material/icon';
@@ -11,8 +11,6 @@ import { MatButtonModule } from '@angular/material/button';
 
 // import the hero service
 import { HeroService } from '../../services/hero.service';
-
-// import the hero type
 import { Hero } from '../../types/hero.interface';
 
 @Component({
@@ -33,8 +31,8 @@ export class HeroGridComponent implements OnInit {
    gutterSize = '0px';
 
    // set up the grid list dimensions
-   colspan = 1; // fix this!
-   rowspan = 1; // fix this!
+   colspan = 1; 
+   rowspan = 1;
 
    constructor(private heroService: HeroService, private breakpointObserver: BreakpointObserver, private router: Router) {}
 

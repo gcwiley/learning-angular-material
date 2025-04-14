@@ -10,3 +10,36 @@
 .spacer {
    flex: 1 1 auto;
 }
+
+
+// use this for post grid
+:host, .post-grid-container {
+   display: flex;
+   flex-direction: column;
+   flex-grow: 1;
+}
+
+.post-card {
+   margin-top: 1rem;
+   margin-bottom: 1rem;
+   padding: 1rem;
+}
+
+.mat-mdc-card-subtitle {
+   padding-bottom: .5rem
+}
+
+.spacer {
+   flex: 1 1 auto;
+}
+
+.more-button {
+   position: absolite;
+   top: 5px;
+   right: 10px
+}
+
+.card-footer {
+   margin-top: 1rem;
+   padding: 1rem;
+}

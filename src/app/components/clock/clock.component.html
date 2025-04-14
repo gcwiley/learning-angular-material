@@ -1,1 +1,12 @@
-<p>clock works!</p>
+<mat-toolbar class="clock">
+  <p>{{ currentTime | date : 'EEEE, d MMMM y' : 'GMT-5' }}</p>
+  <span class="flex-spacer"></span>
+  <mat-chip-set>
+    @for (zone of timeZones; track zone) {
+    <mat-chip>
+      <strong>{{ zone.label }}</strong>
+      {{ currentTime | date : 'HH:mm a z' : zone.offset }}
+    </mat-chip>
+    }
+  </mat-chip-set>
+</mat-toolbar>mat-toolbar>

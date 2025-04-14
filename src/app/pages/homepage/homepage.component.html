@@ -1,22 +1,26 @@
 <header>
-   <app-navbar aria-label="Navigation Menu"/>
    <app-announcement-banner aria-label="Announcement Banner" />
+   <app-navbar aria-label="Navigation Menu" />
 </header>
 
-<header focusOnNavigation class="docs-header-background" aria-label="get started" id="homepage-header">
-   <div class="docs-header-section">
-      <div class="docs-header-headline">
-         <h1 class="mat-h1">My Heroes</h1>
-         <h2>Saving the world, one hero at a time.</h2>
-      </div>
-      <div class="docs-header-start">
-         <a mat-raised-button class="docs-button" routerLink="/heroes">My Heroes</a>
-         <a mat-raised-button class="docs-button" routerLink="/albums">My Albums</a>
-      </div>
-   </div>
-   <app-logo class="docs-homepage-logo" />
-</header>
+<!-- clock and action bar section -->
+<section>
+   <app-clock aria-label="current time" />
+   <app-action-bar aria-label="user action bar" />
+</section>
 
-<main class="docs-homepage-promo"></main>
+<main>
+<!-- post list section -->
+   <article>
+      <h2 id="post-list-title">Current Posts</h2>
+      <app-post-grid aria-label="post grid" />
+   </article>
 
-<app-footer />
+<!--    recent posts section -->
+   <aside class="recent-posts" aria-labelledby="recent-posts-title">
+      <app-calendar aria-label="post calendar" />
+      <h2 id="recent-posts-title">Recent Posts</h2>
+      <app-recent-posts aria-label="recent posts list" />
+</main>
+
+<app-footer aria-label="site footer" />

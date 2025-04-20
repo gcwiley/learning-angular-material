@@ -2,10 +2,10 @@ import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { NgIf } from '@angular/common';
 
-// import the hero interface
+// hero interface
 import { Hero } from '../../types/hero.interface';
 
-// import the hero service
+// hero service
 import { HeroService } from '../../services/hero.service';
 
 @Component({
@@ -28,6 +28,6 @@ export class HeroDescriptionComponent implements OnInit {
    // GET hero by ID
    getHero(): void {
       const id = this.route.snapshot.paramMap.get('id')!;
-      this.heroService.getHero(id).subscribe((hero) => (this.hero = hero));
+      this.heroService.getHeroById(id).subscribe((hero) => (this.hero = hero));
    }
 }

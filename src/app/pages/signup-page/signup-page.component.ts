@@ -2,7 +2,7 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
 import { FormBuilder, Validators, ReactiveFormsModule } from '@angular/forms';
 import { Router } from '@angular/router';
 
-// import the angular material modules
+// angular material
 import { MatCardModule } from '@angular/material/card';
 import { MatInputModule } from '@angular/material/input';
 import { MatFormFieldModule } from '@angular/material/form-field';
@@ -10,14 +10,14 @@ import { MatCheckboxModule } from '@angular/material/checkbox';
 import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
 
-// import the shared components
+// shared components
 import {
    NavBarComponent,
    AnnouncementBannerComponent,
    FooterComponent,
 } from '../../components';
 
-// import the auth service
+// auth service
 import { AuthService } from '../../services/auth.service';
 
 @Component({

@@ -3,13 +3,13 @@ import { CommonModule } from '@angular/common';
 import { Breakpoints, BreakpointObserver } from '@angular/cdk/layout';
 import { Router, RouterModule } from '@angular/router';
 
-// material modules
+// angular material
 import { MatGridListModule } from '@angular/material/grid-list';
 import { MatCardModule } from '@angular/material/card';
 import { MatIconModule } from '@angular/material/icon';
 import { MatButtonModule } from '@angular/material/button';
 
-// import the hero service
+// hero service
 import { HeroService } from '../../services/hero.service';
 import { Hero } from '../../types/hero.interface';
 

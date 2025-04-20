@@ -2,10 +2,10 @@ import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { NgIf } from '@angular/common';
 
-// import the album interface
+// album interface
 import { Album } from '../../types/album.interface';
 
-// import the album service
+// album service
 import { AlbumService } from '../../services/album.service';
 
 @Component({

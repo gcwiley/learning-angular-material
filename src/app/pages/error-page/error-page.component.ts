@@ -1,14 +1,14 @@
 import { Component } from '@angular/core';
 
-// import angular material modules
+// angular material
 
 // import the shared components
-import { NavBarComponent, FooterComponent } from '../../shared';
+import { NavBarComponent, AnnouncementBannerComponent, FooterComponent } from '../../components';
 
 @Component({
     selector: 'app-error-page',
     templateUrl: './error-page.component.html',
     styleUrl: './error-page.component.scss',
-    imports: [NavBarComponent, FooterComponent]
+    imports: [NavBarComponent, AnnouncementBannerComponent, FooterComponent]
 })
 export class ErrorPageComponent {}

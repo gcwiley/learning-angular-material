@@ -1,11 +1,14 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { Subscription, interval } from 'rxjs';
 
+// angular material
+import { MatToolbarModule } from '@angular/material/toolbar';
+
 @Component({
   selector: 'app-clock',
-  imports: [],
   templateUrl: './clock.component.html',
   styleUrl: './clock.component.scss',
+  imports: [MatToolbarModule],
 })
 export class ClockComponent implements OnInit, OnDestroy {
   // stores the current time as a Date object

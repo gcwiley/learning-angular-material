@@ -1,18 +1,19 @@
-import { Component } from '@angular/core';
+import { ChangeDetectionStrategy, Component } from '@angular/core';
 
-// import the angular material modules
+// angular material
 import { MatDividerModule } from '@angular/material/divider';
 
-// import the shared components
-import { NavBarComponent, AnnouncementBannerComponent, FooterComponent } from '../../../shared';
+// shared components
+import { NavBarComponent, AnnouncementBannerComponent, FooterComponent } from '../../../components';
 
-// import the album list
+// album components
 import { AlbumGridComponent } from '../../../albums';
 
 @Component({
     selector: 'app-album-grid-page',
     templateUrl: './album-grid-page.component.html',
     styleUrl: './album-grid-page.component.scss',
+    changeDetection: ChangeDetectionStrategy.OnPush,
     imports: [MatDividerModule, AlbumGridComponent, NavBarComponent, AnnouncementBannerComponent, FooterComponent]
 })
 export class AlbumGridPageComponent {}

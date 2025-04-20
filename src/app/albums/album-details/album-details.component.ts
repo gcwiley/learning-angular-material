@@ -2,13 +2,13 @@ import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { CommonModule } from '@angular/common';
 
-// import the angular material modules
+// angular material
 import { MatListModule } from '@angular/material/list';
 
-//  import the album interface
+//  album interface
 import { Album } from '../../types/album.interface';
 
-// import the album service
+// album service
 import { AlbumService } from '../../services/album.service';
 
 @Component({

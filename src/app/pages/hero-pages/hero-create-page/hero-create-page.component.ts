@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 
 // import the shared components
-import { NavBarComponent, FooterComponent } from '../../../shared';
+import { NavBarComponent, FooterComponent } from '../../../components';
 
 // import the hero components
 import { HeroFormComponent, RecentHeroesComponent } from '../../../heroes';

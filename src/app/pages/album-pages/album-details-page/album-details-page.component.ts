@@ -2,37 +2,46 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, RouterModule } from '@angular/router';
 import { CommonModule } from '@angular/common';
 
-// import the shared components
-import { NavBarComponent, FooterComponent } from '../../../shared';
+// shared components
+import { NavBarComponent, AnnouncementBannerComponent, FooterComponent } from '../../../components';
 
-// import the album components
+// album components
 import { AlbumDescriptionComponent, AlbumDetailsComponent } from '../../../albums';
 
-// import the album interface
+// album interface
 import { Album } from '../../../types/album.interface';
 
-// import the album service
+// album service
 import { AlbumService } from '../../../services/album.service';
 
 @Component({
-    selector: 'app-album-details-page',
-    templateUrl: './album-details-page.component.html',
-    styleUrl: './album-details-page.component.scss',
-    imports: [RouterModule, CommonModule, NavBarComponent, FooterComponent, AlbumDescriptionComponent, AlbumDetailsComponent]
+  standalone: true,
+  selector: 'app-album-details-page',
+  templateUrl: './album-details-page.component.html',
+  styleUrl: './album-details-page.component.scss',
+  imports: [
+    RouterModule,
+    CommonModule,
+    NavBarComponent,
+    AnnouncementBannerComponent,
+    FooterComponent,
+    AlbumDescriptionComponent,
+    AlbumDetailsComponent,
+  ],
 })
 export class AlbumDetailsPageComponent implements OnInit {
-   album!: Album | undefined;
+  album!: Album | undefined;
 
-   // inject the album and router services
-   constructor(private route: ActivatedRoute, private albumService: AlbumService) {}
+  // inject the album and router services
+  constructor(private route: ActivatedRoute, private albumService: AlbumService) {}
 
-   ngOnInit(): void {
-      this.getAlbum();
-   }
+  ngOnInit(): void {
+    this.getAlbum();
+  }
 
-   // GET Album by id
-   getAlbum(): void {
-      const id = this.route.snapshot.paramMap.get('id')!;
-      this.albumService.getAlbum(id).subscribe((album) => (this.album = album));
-   }
+  // GET Album by id
+  getAlbum(): void {
+    const id = this.route.snapshot.paramMap.get('id')!;
+    this.albumService.getAlbumById(id).subscribe((album) => (this.album = album));
+  }
 }

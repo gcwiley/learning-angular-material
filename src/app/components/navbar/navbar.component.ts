@@ -2,16 +2,16 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterModule, Router } from '@angular/router';
 
-// import auth service
+// auth service
 import { AuthService } from '../../services/auth.service';
 
-// import the angular material modules
+// angular material 
 import { MatIconModule } from '@angular/material/icon';
 import { MatButtonModule } from '@angular/material/button';
 import { MatMenuModule } from '@angular/material/menu';
 import { MatDividerModule } from '@angular/material/divider';
 
-// import the angular logo
+// angular logo
 import { AppLogoComponent } from '../logo/logo.component';
 
 @Component({

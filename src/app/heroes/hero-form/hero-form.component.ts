@@ -3,7 +3,7 @@ import { CommonModule } from '@angular/common';
 import { FormBuilder, Validators, FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { ActivatedRoute, ParamMap, Router } from '@angular/router';
 
-// import angular material modules
+// angular material
 import { MatCardModule } from '@angular/material/card';
 import { MatButtonModule } from '@angular/material/button';
 import { MatFormFieldModule } from '@angular/material/form-field';
@@ -12,10 +12,10 @@ import { MatSelectModule } from '@angular/material/select';
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatNativeDateModule } from '@angular/material/core';
 
-// import the hero service
+// hero service
 import { HeroService } from '../../services/hero.service';
 
-// import the hero interface
+// hero interface
 import { Hero } from '../../types/hero.interface';
 
 @Component({
@@ -65,7 +65,7 @@ export class HeroFormComponent implements OnInit {
          if (paramMap.has('id')) {
             this.mode = 'edit';
             this.id = paramMap.get('id');
-            this.heroService.getHero(this.id).subscribe((hero) => {
+            this.heroService.getHeroById(this.id).subscribe((hero) => {
                this.hero = hero;
                // overrides values of initial form controls
                this.heroForm.setValue({
@@ -91,7 +91,7 @@ export class HeroFormComponent implements OnInit {
             this.router.navigateByUrl('/admin');
          });
       } else {
-         this.heroService.updateHero(this.id!, this.heroForm.value).subscribe(() => {
+         this.heroService.updateHeroById(this.id!, this.heroForm.value).subscribe(() => {
             // navigates user back to the homepage
             this.router.navigateByUrl('/admin');
          });

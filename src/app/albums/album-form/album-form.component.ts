@@ -3,7 +3,7 @@ import { CommonModule } from '@angular/common';
 import { FormBuilder, Validators, FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { ActivatedRoute, ParamMap, Router } from '@angular/router';
 
-// import the angular material modules
+// angular material
 import { MatCardModule } from '@angular/material/card';
 import { MatButtonModule } from '@angular/material/button';
 import { MatFormFieldModule } from '@angular/material/form-field';
@@ -16,7 +16,7 @@ import { MatNativeDateModule } from '@angular/material/core';
 import { AlbumService } from '../../services/album.service';
 import { Album, AlbumGenre } from '../../types/album.interface';
 
-// import the album data values
+// album data values
 import { ALBUM_GENRES } from '../../../assets/data/album-data';
 
 @Component({

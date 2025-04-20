@@ -2,22 +2,20 @@ import { AfterViewInit, Component, ViewChild, ChangeDetectionStrategy } from '@a
 import { Router, RouterModule } from '@angular/router';
 import { CommonModule } from '@angular/common';
 
-// import the angular material modules
+// angular material
 import { MatRippleModule } from '@angular/material/core';
 import { MatTableModule, MatTableDataSource } from '@angular/material/table';
 import { MatIconModule } from '@angular/material/icon';
 import { MatButtonModule } from '@angular/material/button';
 import { MatTooltipModule } from '@angular/material/tooltip';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
-
-// import mat paginator and mat sort
 import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
 
-// import the hero service
+// hero service
 import { HeroService } from '../../services/hero.service';
 
-// import the hero interface
+// hero interface
 import { Hero } from '../../types/hero.interface';
 
 @Component({

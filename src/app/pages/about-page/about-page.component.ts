@@ -1,17 +1,14 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
 
 // shared components
-import { NavBarComponent, FooterComponent } from '../../components';
-
-// import the typography component - as a test
-import { TypographyComponent } from '../../test/typography/typography.component';
+import { NavBarComponent, AnnouncementBannerComponent, FooterComponent } from '../../components';
 
 @Component({
-    standalone: true,
-    selector: 'app-about-page',
-    templateUrl: './about-page.component.html',
-    styleUrl: './about-page.component.scss',
-    changeDetection: ChangeDetectionStrategy.OnPush,
-    imports: [NavBarComponent, FooterComponent, TypographyComponent]
+  standalone: true,
+  selector: 'app-about-page',
+  templateUrl: './about-page.component.html',
+  styleUrl: './about-page.component.scss',
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  imports: [NavBarComponent, AnnouncementBannerComponent, FooterComponent],
 })
 export class AboutPageComponent {}

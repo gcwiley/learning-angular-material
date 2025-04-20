@@ -1,15 +1,23 @@
-import { Component } from '@angular/core';
+import { ChangeDetectionStrategy, Component } from '@angular/core';
 
-// import the shared components
-import { NavBarComponent, FooterComponent } from '../../../shared';
+// shared components
+import { NavBarComponent, AnnouncementBannerComponent, FooterComponent } from '../../../components';
 
-// import the album components
+// album components
 import { AlbumFormComponent, RecentAlbumsComponent } from '../../../albums';
 
 @Component({
-    selector: 'app-album-create-page',
-    templateUrl: './album-create-page.component.html',
-    styleUrl: './album-create-page.component.scss',
-    imports: [NavBarComponent, FooterComponent, AlbumFormComponent, RecentAlbumsComponent]
+  standalone: true,
+  selector: 'app-album-create-page',
+  templateUrl: './album-create-page.component.html',
+  styleUrl: './album-create-page.component.scss',
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  imports: [
+    NavBarComponent,
+    AnnouncementBannerComponent,
+    FooterComponent,
+    AlbumFormComponent,
+    RecentAlbumsComponent,
+  ],
 })
 export class AlbumCreatePageComponent {}

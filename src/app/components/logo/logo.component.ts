@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, Component, HostBinding } from '@angular/core';
+import { ChangeDetectionStrategy, Component } from '@angular/core';
 
 @Component({
   standalone: true,
@@ -6,9 +6,6 @@ import { ChangeDetectionStrategy, Component, HostBinding } from '@angular/core';
   templateUrl: './logo.component.html',
   styleUrls: ['./logo.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
+  imports: [],
 })
-export class AppLogoComponent {
-  // use the host binding decorator
-  @HostBinding('attr.aria-hidden')
-  ariaHidden = true;
-}
+export class AppLogoComponent {}

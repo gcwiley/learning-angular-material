@@ -42,7 +42,7 @@ export const appConfig: ApplicationConfig = {
       provideDatabase(() => getDatabase()),
       // Gets a FirebaseStorage instance for the given Firebase app.
       provideStorage(() => getStorage()),
-      // find out how this works!
+      // sets up the necessary providers to get all angular firebase functionalities up and running.
       { provide: FIREBASE_OPTIONS, useValue: environment.firebase },
    ],
 };

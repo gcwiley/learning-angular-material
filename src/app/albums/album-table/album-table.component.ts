@@ -14,13 +14,10 @@ import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
 
-// import mat dialog here
-import { MatDialog, MatDialogActions, MatDialogClose, MatDialogContent, MatDialogRef, MatDialogTitle } from '@angular/material/dialog';
-
-// import the ablum service
+// ablum service
 import { AlbumService } from '../../services/album.service';
 
-// import the album interface
+// album interface
 import { Album } from '../../types/album.interface';
 
 @Component({

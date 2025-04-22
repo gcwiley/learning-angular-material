@@ -1,14 +1,14 @@
 @use '../../../styles/helpers/constants';
 
 .home-page-container {
-   max-width: constants.$max-width; // contrains the width to 1400 pixels
-   marging: auto; // centers the content on the page
+   max-width: constants.$max-width; // contrains the width to 1300 pixels
+   margin: auto; // centers the content on the page
    display: flex; // set up flexbox layout for the container
    flex-direction: row;
    min-height: 100vh;
 }
 
-.post-list {
+.post-grid {
    flex-basis: 70%;
    max-width: 70%;
    margin-right: 2rem;

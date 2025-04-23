@@ -1,14 +1,14 @@
 import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { Observable, EMPTY } from 'rxjs';
 
-// import angular material modules
+
+// angular material
 import { MatListModule } from '@angular/material/list';
 import { MatIconModule } from '@angular/material/icon';
 
-// import the album service
+// album service and interface
 import { AlbumService } from '../../services/album.service';
-
-// import the album interface
 import { Album } from '../../types/album.interface';
 
 @Component({

@@ -1,4 +1,11 @@
 <section class="album-description" *ngIf="album">
-   <h2>{{ album.title }}</h2>
-   <p>{{ album.summary }}</p>
+  <h2>{{ album.title }}</h2>
+  <p>{{ album.summary }}</p>
 </section>
+
+@if (album) {
+<section>
+  <h2>{{ album.title }}</h2>
+  <p>{{ album.summary }}</p>
+</section>
+}

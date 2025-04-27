@@ -4,8 +4,6 @@ import { Component } from '@angular/core';
   selector: 'app-post-form',
   imports: [],
   templateUrl: './post-form.component.html',
-  styleUrl: './post-form.component.scss'
+  styleUrl: './post-form.component.scss',
 })
-export class PostFormComponent {
-
-}
+export class PostFormComponent {}

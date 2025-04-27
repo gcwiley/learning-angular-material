@@ -4,8 +4,6 @@ import { Component } from '@angular/core';
   selector: 'app-post-table',
   imports: [],
   templateUrl: './post-table.component.html',
-  styleUrl: './post-table.component.scss'
+  styleUrl: './post-table.component.scss',
 })
-export class PostTableComponent {
-
-}
+export class PostTableComponent {}

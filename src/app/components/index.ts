@@ -1,5 +1,5 @@
 export { ActionBarComponent } from './action-bar/action-bar.component';
-export { AnnouncementBannerComponent } from '../components/announcement-banner/announcement-banner.component';
+export { AnnouncementBarComponent } from './announcement-banner/announcement-bar.component';
 export { AuthStatusComponent } from './auth-status/auth-status.component';
 export { CalendarComponent } from './calendar/calendar.component';
 export {

@@ -18,5 +18,5 @@ import { }
   imports: [CommonModule, MatListModule, MatIconModule],
 })
 export class RecentPostsComponent implements OnInit {
-  public recentPosts$!: Obser
+  public recentPosts$!:
 }

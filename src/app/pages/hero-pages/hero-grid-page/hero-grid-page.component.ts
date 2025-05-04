@@ -1,10 +1,10 @@
-import { Component } from '@angular/core';
+import { ChangeDetectionStrategy, Component } from '@angular/core';
 
-// import the angular material modules
+// angular material 
 import { MatDividerModule } from '@angular/material/divider';
 
-// import the shared components
-import { NavBarComponent, AnnouncementBannerComponent, FooterComponent } from '../../../shared';
+// shared components
+import { NavBarComponent, AnnouncementBarComponent, FooterComponent } from '../../../components';
 
 // import the hero grid
 import { HeroGridComponent } from '../../../heroes';
@@ -13,6 +13,7 @@ import { HeroGridComponent } from '../../../heroes';
     selector: 'app-hero-grid-page',
     templateUrl: './hero-grid-page.component.html',
     styleUrls: ['./hero-grid-page.component.scss'],
-    imports: [MatDividerModule, NavBarComponent, AnnouncementBannerComponent, FooterComponent, HeroGridComponent]
+    changeDetection: ChangeDetectionStrategy.OnPush,
+    imports: [MatDividerModule, NavBarComponent, AnnouncementBarComponent, FooterComponent, HeroGridComponent]
 })
 export class HeroGridPageComponent {}

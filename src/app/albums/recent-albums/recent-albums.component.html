@@ -6,7 +6,7 @@
       <span matListItemLine>Added: {{ album.createdAt | date }}</span>
    </mat-list-item>
    <mat-divider />
-   } @empty {
+   } @else {
    <mat-list-item lines="1">
       <span matListItemTitle>No Recent Albums</span>
    </mat-list-item>

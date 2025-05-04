@@ -1,11 +1,11 @@
-import { Component, OnInit } from '@angular/core';
+import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
 import { Breakpoints, BreakpointObserver } from '@angular/cdk/layout';
 
 // angular material
 import { MatGridListModule } from '@angular/material/grid-list';
 
 // shared components
-import { NavBarComponent, AnnouncementBannerComponent, FooterComponent } from '../../../components';
+import { NavBarComponent, AnnouncementBarComponent, FooterComponent } from '../../../components';
 
 // hero components
 import { HeroDetailsComponent, HeroDescriptionComponent } from '../../../heroes';
@@ -15,10 +15,11 @@ import { HeroDetailsComponent, HeroDescriptionComponent } from '../../../heroes'
   selector: 'app-hero-details-page',
   templateUrl: './hero-details-page.component.html',
   styleUrls: ['./hero-details-page.component.scss'],
+  changeDetection: ChangeDetectionStrategy.OnPush,
   imports: [
     MatGridListModule,
     NavBarComponent,
-    AnnouncementBannerComponent,
+    AnnouncementBarComponent,
     FooterComponent,
     HeroDetailsComponent,
     HeroDescriptionComponent,

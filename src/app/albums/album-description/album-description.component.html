@@ -1,11 +1,5 @@
-<section class="album-description" *ngIf="album">
+<section class="album-description">
   <h2>{{ album.title }}</h2>
   <p>{{ album.summary }}</p>
 </section>
 
-@if (album) {
-<section>
-  <h2>{{ album.title }}</h2>
-  <p>{{ album.summary }}</p>
-</section>
-}

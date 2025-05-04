@@ -18,7 +18,7 @@ import { MatIconModule } from '@angular/material/icon';
 // import the shared components
 import {
    NavBarComponent,
-   AnnouncementBannerComponent,
+   AnnouncementBarComponent,
    FooterComponent,
 } from '../../components';
 

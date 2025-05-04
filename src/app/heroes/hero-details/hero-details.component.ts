@@ -18,7 +18,7 @@ import { Hero } from '../../types/hero.interface';
     imports: [CommonModule, MatListModule]
 })
 export class HeroDetailsComponent implements OnInit {
-  hero!: Hero | undefined;
+  hero!: Hero
 
   constructor(private route: ActivatedRoute, private heroService: HeroService) {}
 

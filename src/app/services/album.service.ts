@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { catchError, Observable, of, throwError } from 'rxjs';
 
-// import the album interface
+// album interface
 import { Album, AlbumInput } from '../types/album.interface';
 
 // set up headers

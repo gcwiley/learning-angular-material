@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { catchError, Observable, of, throwError } from 'rxjs';
 
-// import the hero interface
+// hero interface
 import { Hero, HeroInput } from '../types/hero.interface';
 
 // set up headers
@@ -74,7 +74,6 @@ export class HeroService {
   public updateHeroById(id: string, body: Partial<Hero>): Observable<object> {
     // create the url
     const url = `${this.heroesUrl}/${id}`;
-
     return this.http.patch(url, body, { headers: headers }).pipe(catchError(this.handleError));
   }
 
@@ -83,7 +82,7 @@ export class HeroService {
     // NOTE: use a logging service instead of console.error
     // replace this with a more robust logging mechcanism - a dedicated logging service
     // logs error to console
-    console.error('There was an error', error);
+    console.error('There was an error:', error);
     // throws the error again, so the subscriber can catch it and handle the error
     return throwError(() => error);
   }

@@ -5,10 +5,8 @@ import { CommonModule } from '@angular/common';
 // angular material
 import { MatListModule } from '@angular/material/list';
 
-//  album interface
+//  album interface and service
 import { Album } from '../../types/album.interface';
-
-// album service
 import { AlbumService } from '../../services/album.service';
 
 @Component({
@@ -20,7 +18,7 @@ import { AlbumService } from '../../services/album.service';
    imports: [CommonModule, MatListModule],
 })
 export class AlbumDetailsComponent implements OnInit {
-   album!: Album | undefined;
+   album!: Album;
 
    constructor(private route: ActivatedRoute, private albumService: AlbumService) {}
 

@@ -16,13 +16,11 @@
 @use '../app/heroes/hero-table/hero-table-theme';
 @use '../app/heroes/recent-heroes/recent-heroes-theme';
 
-// PAGES
+// PAGE THEMES
 @use '../app/pages/admin-page/admin-page-theme';
-// album pages
 @use '../app/pages/album-pages/album-create-page/album-create-page-theme';
 @use '../app/pages/album-pages/album-details-page/album-details-page-theme';
 @use '../app/pages/album-pages/album-grid-page/album-grid-page-theme';
-// hero pages
 @use '../app/pages/hero-pages/hero-create-page/hero-create-page-theme';
 @use '../app/pages/hero-pages/hero-details-page/hero-details-page-theme';
 @use '../app/pages/hero-pages/hero-grid-page/hero-grid-page-theme';
@@ -30,6 +28,9 @@
 @use '../app/pages/image-gallery-page/image-gallery-page-theme';
 @use '../app/pages/not-found-page/not-found-page-theme';
 @use '../app/pages/signin-page/signin-page-theme';
+
+// POST THEMES - fix this!
+
 
 // SHARED COMPONENT THEMES
 @use '../app/shared/announcement-banner/announcement-banner-theme';

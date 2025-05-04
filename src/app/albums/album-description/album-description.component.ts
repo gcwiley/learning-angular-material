@@ -1,12 +1,12 @@
-import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
-import { NgIf } from '@angular/common';
+import { ChangeDetectionStrategy, Component, OnInit, OnDestroy } from '@angular/core';
+import { ActivatedRoute, RouterModule } from '@angular/router';
+import { CommonModule } from '@angular/common';
+import { Subject } from 'rxjs';
+import { takeUntil } from 'rxjs';
 
-// album interface
-import { Album } from '../../types/album.interface';
-
-// album service
+// album service and interface
 import { AlbumService } from '../../services/album.service';
+import { Album } from '../../types/album.interface';
 
 @Component({
    standalone: true,
@@ -14,7 +14,7 @@ import { AlbumService } from '../../services/album.service';
     templateUrl: './album-description.component.html',
     styleUrl: './album-description.component.scss',
     changeDetection: ChangeDetectionStrategy.OnPush,
-    imports: [NgIf]
+    imports: []
 })
 export class AlbumDescriptionComponent implements OnInit {
    album!: Album;
@@ -25,7 +25,6 @@ export class AlbumDescriptionComponent implements OnInit {
       this.getAlbum();
    }
 
-   // GET: album by id
    public getAlbum(): void {
       const id = this.route.snapshot.paramMap.get('id')!;
       this.albumService.getAlbumById(id).subscribe((album) => (this.album = album));

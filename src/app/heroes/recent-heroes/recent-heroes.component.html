@@ -1,13 +1,15 @@
-<mat-list class="recent-heroes mat-elevation-z1">
-   <span mat-subheader>Recent Heroes</span>
-   @for (hero of recentHeroes; track hero.id) {
-   <mat-list-item lines="2">
-      <span matListItemTitle>{{ hero.name }}</span>
-      <span matListItemLine>Added: {{ hero.createdAt | date }}</span>
-   </mat-list-item>
-   } @empty {
-   <mat-list-item lines="1">
-      <span matListItemTitle>No Recent Heroes</span>
-   </mat-list-item>
-   }
+<mat-list class="recent-heroes">
+  <span mat-subheader>Recent Heroes</span>
+  @if (recentHeroes$ | async; as heroes) {
+  <!-- use the @for loop to iterate over this array -->
+  @for (hero of heroes; track hero) {
+  <mat-list-item lines="2">
+    <span matListItemTitle>{{ hero.name }}</span>
+    <span matListItemLine>Added: {{ hero.createdAt | date }}</span>
+  </mat-list-item>
+  } } @else {
+  <mat-list-item lines="1">
+    <span matListItemTitle>No Recent Heroes</span>
+  </mat-list-item>
+  }
 </mat-list>

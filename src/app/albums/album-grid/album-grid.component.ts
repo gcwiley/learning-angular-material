@@ -3,20 +3,19 @@ import { CommonModule } from '@angular/common';
 import { Breakpoints, BreakpointObserver } from '@angular/cdk/layout';
 import { Router, RouterModule } from '@angular/router';
 
-// import the angular material modules
+// angular material
 import { MatGridListModule } from '@angular/material/grid-list';
 import { MatCardModule, MatCardAppearance } from '@angular/material/card';
 import { MatIconModule } from '@angular/material/icon';
 import { MatButtonModule } from '@angular/material/button';
 import { MatCheckboxModule } from '@angular/material/checkbox';
 
-// import the album service
+// album service and interface
 import { AlbumService } from '../../services/album.service';
-
-// import the album type
 import { Album } from '../../types/album.interface';
 
 @Component({
+   standalone: true,
     selector: 'app-album-grid',
     templateUrl: './album-grid.component.html',
     styleUrl: './album-grid.component.scss',
@@ -47,7 +46,6 @@ export class AlbumGridComponent implements OnInit {
       this.layoutChanges();
    }
 
-   // comment
    toggleAppearance() {
       this.appearance = this.appearance === 'raised' ? 'outlined' : 'raised';
    }

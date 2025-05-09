@@ -7,7 +7,8 @@ import { MatListModule } from '@angular/material/list';
 import { MatIconModule } from '@angular/material/icon';
 
 // post service and interface
-import { }
+import { PostService } from '../../services/post.service';
+import { Post } from '../../types/post.interface';
 
 @Component({
   standalone: true,
@@ -18,5 +19,12 @@ import { }
   imports: [CommonModule, MatListModule, MatIconModule],
 })
 export class RecentPostsComponent implements OnInit {
-  public recentPosts$!:
+  public recentPosts$!: Observable<Post[]>;
+
+  constructor(private postService: PostService) {}
+
+  public ngOnInit(): void {
+      // get the observable stream of recently added posts
+      this.recentPosts$ = 
+  }
 }

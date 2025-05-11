@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
-// import the image service
+// image service
 import { ImageService } from '../../services/image.service';
 
 @Component({

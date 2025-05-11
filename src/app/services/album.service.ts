@@ -19,15 +19,13 @@ export class AlbumService {
 
   // GET: albums from the database - GET ALBUMS
   public getAlbums(): Observable<Album[]> {
-    return this.http
-      .get<Album[]>(this.albumsUrl, { headers: headers })
-      .pipe(catchError(this.handleError));
+    return this.http.get<Album[]>(this.albumsUrl).pipe(catchError(this.handleError));
   }
 
   // GET: album by ID from the database - GET ALBUM BY ID
   public getAlbumById(id: string): Observable<Album> {
     const url = `${this.albumsUrl}/${id}`;
-    return this.http.get<Album>(url, { headers: headers }).pipe(catchError(this.handleError));
+    return this.http.get<Album>(url).pipe(catchError(this.handleError));
   }
 
   // GET: search albums in the database - SEARCH FIX THIS!!
@@ -49,7 +47,7 @@ export class AlbumService {
   // GET: recent album created in database - RECENT ALBUMS
   public getRecentlyCreatedAlbums(): Observable<Album[]> {
     return this.http
-      .get<Album[]>('/api/recent-albums', { headers: headers })
+      .get<Album[]>('/api/recent-albums')
       .pipe(catchError(this.handleError));
   }
 

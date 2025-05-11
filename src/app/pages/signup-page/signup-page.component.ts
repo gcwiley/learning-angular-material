@@ -13,7 +13,7 @@ import { MatIconModule } from '@angular/material/icon';
 // shared components
 import {
    NavBarComponent,
-   AnnouncementBannerComponent,
+   AnnouncementBarComponent,
    FooterComponent,
 } from '../../components';
 
@@ -35,7 +35,7 @@ import { AuthService } from '../../services/auth.service';
       MatButtonModule,
       MatIconModule,
       NavBarComponent,
-      AnnouncementBannerComponent,
+      AnnouncementBarComponent,
       FooterComponent,
    ],
 })

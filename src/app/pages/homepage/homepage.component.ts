@@ -11,7 +11,7 @@ import { MatCardModule } from '@angular/material/card';
 // shared components
 import {
   NavBarComponent,
-  AnnouncementBannerComponent,
+  AnnouncementBarComponent,
   ClockComponent,
   CalendarComponent,
   AppLogoComponent,
@@ -34,7 +34,7 @@ import { PostGridComponent, RecentPostsComponent } from '../../posts';
     MatDividerModule,
     MatCardModule,
     NavBarComponent,
-    AnnouncementBannerComponent,
+    AnnouncementBarComponent,
     CalendarComponent,
     ActionBarComponent,
     ClockComponent,

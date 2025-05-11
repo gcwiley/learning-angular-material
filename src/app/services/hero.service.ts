@@ -18,14 +18,14 @@ export class HeroService {
   // GET: all heroes from the server - GET HEREOS
   public getHeroes(): Observable<Hero[]> {
     return this.http
-      .get<Hero[]>(this.heroesUrl, { headers: headers })
+      .get<Hero[]>(this.heroesUrl)
       .pipe(catchError(this.handleError));
   }
 
   // GET: a individual hero by ID. Will 404 error if the ID is not found
   public getHeroById(id: string): Observable<Hero> {
     const url = `${this.heroesUrl}/${id}`;
-    return this.http.get<Hero>(url, { headers: headers }).pipe(catchError(this.handleError));
+    return this.http.get<Hero>(url).pipe(catchError(this.handleError));
   }
 
   // GET heroes whose name contains search term - SEARCH HERO
@@ -39,17 +39,17 @@ export class HeroService {
       .pipe(catchError(this.handleError));
   }
 
-  // GET: hero the count from database
+  // GET: count the heroes from database  - HERO COUNT
   public getHeroesCount(): Observable<number> {
     return this.http.get<number>('/api/hero-count').pipe(catchError(this.handleError));
   }
 
-  // GET: recent heroes added - RECENT HEREOS
+  // GET: recent heroes added - RECENT HEROES
   public getRecentlyCreatedHeroes(): Observable<Hero[]> {
     return this.http.get<Hero[]>('/api/recent-heroes').pipe(catchError(this.handleError));
   }
 
-  // GET: featured heroes for carousel - FEATURED HEREOS
+  // GET: featured heroes for carousel - FEATURED HEROES
   public getFeaturedHeroes(): Observable<Hero[]> {
     return this.http.get<Hero[]>('/api/favorite-heroes').pipe(catchError(this.handleError));
   }

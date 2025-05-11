@@ -7,7 +7,7 @@ import {
 } from '@angular/forms';
 import { Router } from '@angular/router';
 
-// import angular material modules
+// angular material
 import { MatCardModule } from '@angular/material/card';
 import { MatInputModule } from '@angular/material/input';
 import { MatFormFieldModule } from '@angular/material/form-field';
@@ -15,7 +15,7 @@ import { MatCheckboxModule } from '@angular/material/checkbox';
 import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
 
-// import the shared components
+// shared components
 import {
    NavBarComponent,
    AnnouncementBarComponent,
@@ -41,7 +41,7 @@ import { AuthService } from '../../services/auth.service';
       MatButtonModule,
       MatIconModule,
       NavBarComponent,
-      AnnouncementBannerComponent,
+      AnnouncementBarComponent,
       FooterComponent,
    ],
 })

@@ -2,14 +2,14 @@
 
 // color mixin
 @mixin color($theme) {
-   .carousel-container {
+   .clock {
       color: mat.get-theme-color($theme, error, 50);
       background-color: mat.get-theme-color($theme, error, 30);
    }
 }
 // typography mixin
 @mixin typography($theme) {
-   .carousel-container {
+   .clock {
       font: mat.get-theme-typography($theme, body-medium);
    }
 }

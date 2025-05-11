@@ -55,7 +55,7 @@ export class AlbumDetailsComponent implements OnInit, OnDestroy {
         },
         error: (error) => {
           this.hasError = true;
-          console.error('Error fetching film details:', error);
+          console.error('Error fetching album details:', error);
         },
       });
   }

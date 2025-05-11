@@ -19,7 +19,7 @@ import { Hero } from '../../types/hero.interface';
   imports: [CommonModule, MatListModule, MatIconModule],
 })
 export class RecentHeroesComponent implements OnInit {
-  recentHeroes$!: Observable<Hero[]>;
+  public recentHeroes$!: Observable<Hero[]>;
 
   constructor(private heroService: HeroService) {}
 

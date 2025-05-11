@@ -34,9 +34,14 @@ export class PostDetailsComponent implements OnInit, OnDestroy {
     private postService: PostService
   ) {}
 
-  public ngOnInit(): void {}
+  public ngOnInit(): void {
+    this.getPostById();
+  }
 
-  public ngOnDestroy(): void {}
+  public ngOnDestroy(): void {
+    this.destroy$.next();
+    this.destroy$.complete();
+  }
 
   public getPostById(): void {
     const id = this.route.snapshot.paramMap.get('id');
@@ -44,6 +49,16 @@ export class PostDetailsComponent implements OnInit, OnDestroy {
       console.error('Post ID not found in route paramaters.');
       this.hasError = true;
       this.isLoading = false;
+      return;
     }
+    this.postService.getPostById(id).pipe(takeUntil(this.destroy$)).subscribe({
+      next: (post) => {
+        this.post = post;
+      },
+      error: (error) => {
+        this.hasError = true;
+        console.error('Error fetching post details:', error)
+      }
+    })
   }
 }

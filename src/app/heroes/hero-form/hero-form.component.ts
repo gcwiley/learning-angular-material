@@ -38,13 +38,12 @@ import { Hero } from '../../types/hero.interface';
     ]
 })
 export class HeroFormComponent implements OnInit {
-   formBuilder = inject(FormBuilder)
-   
    public mode = 'create';
-   private id!: string | null;
+   private id!: string;
    private hero!: Hero;
 
    constructor(
+      private formBuilder: FormBuilder,
       private router: Router,
       public route: ActivatedRoute,
       private heroService: HeroService
@@ -64,7 +63,7 @@ export class HeroFormComponent implements OnInit {
       this.route.paramMap.subscribe((paramMap: ParamMap) => {
          if (paramMap.has('id')) {
             this.mode = 'edit';
-            this.id = paramMap.get('id');
+            this.id = paramMap.get('id')!;
             this.heroService.getHeroById(this.id).subscribe((hero) => {
                this.hero = hero;
                // overrides values of initial form controls
@@ -79,11 +78,11 @@ export class HeroFormComponent implements OnInit {
             });
          } else {
             this.mode = 'create';
-            this.id = null;
          }
       });
    }
 
+   // save a new hero
    onSaveHero(): void {
       if (this.mode === 'create') {
          this.heroService.addHero(this.heroForm.value).subscribe(() => {

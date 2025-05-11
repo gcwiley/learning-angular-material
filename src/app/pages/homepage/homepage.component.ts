@@ -1,6 +1,4 @@
 import { Component } from '@angular/core';
-import { NgFor } from '@angular/common';
-import { RouterLink } from '@angular/router';
 
 // angular material
 import { MatButtonModule } from '@angular/material/button';
@@ -14,7 +12,6 @@ import {
   AnnouncementBarComponent,
   ClockComponent,
   CalendarComponent,
-  AppLogoComponent,
   ActionBarComponent,
   AuthStatusComponent,
   FooterComponent,
@@ -28,7 +25,6 @@ import { PostGridComponent, RecentPostsComponent } from '../../posts';
   templateUrl: './homepage.component.html',
   styleUrls: ['./homepage.component.scss'],
   imports: [
-    RouterLink,
     MatButtonModule,
     MatIconModule,
     MatDividerModule,
@@ -39,11 +35,9 @@ import { PostGridComponent, RecentPostsComponent } from '../../posts';
     ActionBarComponent,
     ClockComponent,
     FooterComponent,
-    AppLogoComponent,
     AuthStatusComponent,
     PostGridComponent,
     RecentPostsComponent,
-    NgFor,
   ],
 })
 export class HomepageComponent {}

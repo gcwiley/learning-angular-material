@@ -4,6 +4,7 @@
 @use '../app/albums/album-description/album-description-theme';
 @use '../app/albums/album-details/album-details-theme';
 @use '../app/albums/album-form/album-form-theme';
+@use '../app/albums/album-grid/album-grid-theme';
 @use '../app/albums/album-table/album-table-theme';
 @use '../app/albums/recent-albums/recent-albums-theme';
 
@@ -12,7 +13,6 @@
 @use '../app/heroes/hero-details/hero-details-theme';
 @use '../app/heroes/hero-form/hero-form-theme';
 @use '../app/heroes/hero-grid/hero-grid-theme';
-@use '../app/heroes/hero-search/hero-search-theme';
 @use '../app/heroes/hero-table/hero-table-theme';
 @use '../app/heroes/recent-heroes/recent-heroes-theme';
 
@@ -29,16 +29,26 @@
 @use '../app/pages/not-found-page/not-found-page-theme';
 @use '../app/pages/signin-page/signin-page-theme';
 
-// POST THEMES - fix this!
-
+// POST THEMES
+@use '../app/posts/post-description/post-description-theme';
+@use '../app/posts/post-details/post-details-theme';
+@use '../app/posts/post-form/post-form-theme';
+@use '../app/posts/post-grid/post-grid-theme';
+@use '../app/posts/post-table/post-table-theme';
+@use '../app/posts/recent-posts/recent-posts-theme';
 
 // SHARED COMPONENT THEMES
-@use '../app/shared/announcement-banner/announcement-banner-theme';
-@use '../app/shared/carousel/carousel-theme';
-@use '../app/shared/footer/footer-theme';
-@use '../app/shared/logo/logo-theme';
-@use '../app/shared/navbar/navbar-theme';
-@use '../app/shared/support/support-theme';
+@use '../app/components/action-bar/action-bar-theme';
+@use '../app/components/announcement-banner/announcement-bar-theme';
+@use '../app/components/auth-status/auth-status-theme';
+@use '../app/components/calendar/calendar-theme';
+@use '../app/components/carousel/carousel-theme';
+@use '../app/components/carousel-container/carousel-container-theme';
+@use '../app/components/clock/clock-theme';
+@use '../app/components/confirm-dialog/confirm-dialog-theme';
+@use '../app/components/footer/footer-theme';
+@use '../app/components/logo/logo-theme';
+@use '../app/components/navbar/navbar-theme';
 
 // styles for the app that are based on the current theme
 @mixin theme($theme) {
@@ -54,7 +64,6 @@
    @include hero-form-theme.theme($theme);
    @include hero-grid-theme.theme($theme);
    @include hero-table-theme.theme($theme);
-   @include hero-search-theme.theme($theme);
    @include recent-heroes-theme.theme($theme);
 
    // page themes
@@ -65,6 +74,13 @@
    @include image-gallery-page-theme.theme($theme);
    @include not-found-page-theme.theme($theme);
    @include signin-page-theme.theme($theme);
+
+   @include post-description-theme.theme($theme);
+   @include post-details-theme.theme($theme);
+   @include post-form-theme.theme($theme);
+   @include post-grid-theme.theme($theme);
+   @include post-table-theme.theme($theme);
+   @include recent-posts-theme.theme($theme);
 
    // shared components
    @include announcement-banner-theme.theme($theme);

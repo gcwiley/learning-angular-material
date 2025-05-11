@@ -25,6 +25,11 @@ export class RecentPostsComponent implements OnInit {
 
   public ngOnInit(): void {
       // get the observable stream of recently added posts
-      this.recentPosts$ = 
+      this.recentPosts$ = this.postService.getRecentlyCreatedPosts().pipe(
+        catchError((error) => {
+          console.error('Error getting recent posts:', error);
+          return of([]);
+        })
+      )
   }
 }

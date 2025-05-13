@@ -39,12 +39,12 @@ export class PostService {
       .pipe(catchError(this.handleError));
   }
 
-  // GET: count the heroes from database  - Post COUNT
+  // GET: count the heroes from database  - GET COUNT
   public getPostsCount(): Observable<number> {
     return this.http.get<number>('/api/post-count').pipe(catchError(this.handleError));
   }
 
-  // GET: recent heroes added - RECENT POSTS
+  // GET: recent heroes added - GET RECENT POSTS
   public getRecentlyCreatedPosts(): Observable<Post[]> {
     return this.http.get<Post[]>('/api/recent-posts').pipe(catchError(this.handleError));
   }

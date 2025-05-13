@@ -28,7 +28,7 @@ export class AlbumService {
     return this.http.get<Album>(url).pipe(catchError(this.handleError));
   }
 
-  // GET: search albums in the database - SEARCH FIX THIS!!
+  // GET: search albums in the database - SEARCH ALBUMS
   public searchAlbums(term: string): Observable<Album[]> {
     if (!term.trim()) {
       // if no search term, return empty hero array
@@ -39,16 +39,14 @@ export class AlbumService {
       .pipe(catchError(this.handleError));
   }
 
-  // GET: album count from database - ALBUM COUNT
+  // GET: album count from database - GET ALBUM COUNT
   public getAlbumCount(): Observable<number> {
     return this.http.get<number>('/api/album-count').pipe(catchError(this.handleError));
   }
 
-  // GET: recent album created in database - RECENT ALBUMS
+  // GET: recent album created in database - GET RECENT ALBUMS
   public getRecentlyCreatedAlbums(): Observable<Album[]> {
-    return this.http
-      .get<Album[]>('/api/recent-albums')
-      .pipe(catchError(this.handleError));
+    return this.http.get<Album[]>('/api/recent-albums').pipe(catchError(this.handleError));
   }
 
   // SAVE METHODS
@@ -62,7 +60,7 @@ export class AlbumService {
       .pipe(catchError(this.handleError));
   }
 
-  // DELETE: album by Id from the server
+  // DELETE: album by Id from the server - DELETE ALBUM
   public deleteAlbumById(id: string): Observable<Album> {
     const url = `${this.albumsUrl}/${id}`;
     return this.http.delete<Album>(url, { headers: headers }).pipe(catchError(this.handleError));

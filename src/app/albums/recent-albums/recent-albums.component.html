@@ -1,14 +1,15 @@
-<mat-list class="recent-albums mat-elevation-z1">
-   <span mat-subheader>Recent Albums</span>
-   @for (album of recentAlbums; track album.id) {
-   <mat-list-item lines="2">
-      <span matListItemTitle>{{ album.title }}</span>
-      <span matListItemLine>Added: {{ album.createdAt | date }}</span>
-   </mat-list-item>
-   <mat-divider />
-   } @else {
-   <mat-list-item lines="1">
-      <span matListItemTitle>No Recent Albums</span>
-   </mat-list-item>
-   }
+<mat-list class="recent-albums">
+  <span mat-subheader>Recent Heroes</span>
+  @if (recentAlbums$ | async; as albums) {
+  <!-- use the @for loop to iterate over this array -->
+  @for (album of albums; track album) {
+  <mat-list-item lines="2">
+    <span matListItemTitle>{{ album.title }}</span>
+    <span matListItemLine>Added: {{ album.createdAt | date }}</span>
+  </mat-list-item>
+  } } @else {
+  <mat-list-item lines="1">
+    <span matListItemTitle>No Recent Albums</span>
+  </mat-list-item>
+  }
 </mat-list>

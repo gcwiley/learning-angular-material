@@ -1,5 +1,6 @@
 @use '@angular/material' as mat;
 
+
 // ALBUM COMPONENT THEMES
 @use '../app/albums/album-description/album-description-theme';
 @use '../app/albums/album-details/album-details-theme';
@@ -7,6 +8,19 @@
 @use '../app/albums/album-grid/album-grid-theme';
 @use '../app/albums/album-table/album-table-theme';
 @use '../app/albums/recent-albums/recent-albums-theme';
+
+// SHARED COMPONENT THEMES
+@use '../app/components/action-bar/action-bar-theme';
+@use '../app/components/announcement-bar/announcement-bar-theme';
+@use '../app/components/auth-status/auth-status-theme';
+@use '../app/components/calendar/calendar-theme';
+@use '../app/components/carousel/carousel-theme';
+@use '../app/components/carousel-container/carousel-container-theme';
+@use '../app/components/clock/clock-theme';
+@use '../app/components/confirm-dialog/confirm-dialog-theme';
+@use '../app/components/footer/footer-theme';
+@use '../app/components/logo/logo-theme';
+@use '../app/components/navbar/navbar-theme';
 
 // HERO COMPONENT THEMES
 @use '../app/heroes/hero-description/hero-description-theme';
@@ -17,6 +31,7 @@
 @use '../app/heroes/recent-heroes/recent-heroes-theme';
 
 // PAGE THEMES
+@use '../app/pages/about-page/about-page-theme.scss';
 @use '../app/pages/admin-page/admin-page-theme';
 @use '../app/pages/album-pages/album-create-page/album-create-page-theme';
 @use '../app/pages/album-pages/album-details-page/album-details-page-theme';
@@ -37,22 +52,10 @@
 @use '../app/posts/post-table/post-table-theme';
 @use '../app/posts/recent-posts/recent-posts-theme';
 
-// SHARED COMPONENT THEMES
-@use '../app/components/action-bar/action-bar-theme';
-@use '../app/components/announcement-banner/announcement-bar-theme';
-@use '../app/components/auth-status/auth-status-theme';
-@use '../app/components/calendar/calendar-theme';
-@use '../app/components/carousel/carousel-theme';
-@use '../app/components/carousel-container/carousel-container-theme';
-@use '../app/components/clock/clock-theme';
-@use '../app/components/confirm-dialog/confirm-dialog-theme';
-@use '../app/components/footer/footer-theme';
-@use '../app/components/logo/logo-theme';
-@use '../app/components/navbar/navbar-theme';
-
 // styles for the app that are based on the current theme
 @mixin theme($theme) {
    // album components
+   @include album-description-theme.theme($theme);
    @include album-details-theme.theme($theme);
    @include album-form-theme.theme($theme);
    @include album-table-theme.theme($theme);
@@ -75,6 +78,7 @@
    @include not-found-page-theme.theme($theme);
    @include signin-page-theme.theme($theme);
 
+   // post themes
    @include post-description-theme.theme($theme);
    @include post-details-theme.theme($theme);
    @include post-form-theme.theme($theme);
@@ -83,10 +87,9 @@
    @include recent-posts-theme.theme($theme);
 
    // shared components
-   @include announcement-banner-theme.theme($theme);
+   @include announcement-bar-theme.theme($theme);
    @include carousel-theme.theme($theme);
    @include footer-theme.theme($theme);
    @include logo-theme.theme($theme);
    @include navbar-theme.theme($theme);
-   @include support-theme.theme($theme);
 }

@@ -1,1 +1,76 @@
+<form [formGroup]="postForm" novalidate (ngSubmit)="onSavePost()">
+  <!-- PROJECT CARD -->
+  <mat-card class="post-form" appearance="outlined">
+    <!-- CARD HEADER -->
+    <mat-card-header>
+      <mat-card-title>New Post</mat-card-title>
+    </mat-card-header>
+
+    <!-- CARD CONTENT -->
+    <mat-card-content>
+      <!-- PROJECT TITLE (title)-->
+      <mat-form-field class="full-width" appearance="outline">
+        <mat-label>Title</mat-label>
+        <input matInput type="text" formControlName="title" placeholder="title" />
+        @if (this.postForm.controls['title'].hasError('required')) {
+        <mat-error>Please enter a post title.</mat-error>
+        }
+      </mat-form-field>
+
+      <div class="row">
+        <div class="col">
+          <!-- PR CATEGORY (category) -->
+          <mat-form-field class="full-width" appearance="outline">
+            <mat-label>Category</mat-label>
+            <mat-select formControlName="category">
+              <mat-option *ngFor="let category of categories" [value]="category.value">{{
+                category.viewValue
+              }}</mat-option>
+            </mat-select>
+          </mat-form-field>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col">
+          <!-- DATE (date)-->
+          <mat-form-field class="full-width" appearance="outline">
+            <mat-label>Date</mat-label>
+            <input
+              matInput
+              [matDatepicker]="picker"
+              formControlName="date"
+              placeholder="Start Date" />
+            <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+            <mat-datepicker #picker></mat-datepicker>
+          </mat-form-field>
+        </div>
+      </div>
+
+      
+      <div class="row">
+        <div class="col">
+          <!-- BODY (body)-->
+          <mat-form-field class="full-width" appearance="outline">
+            <mat-label>Description</mat-label>
+            <textarea
+              matInput
+              rows="6"
+              formControlName="body"
+              title="Body"></textarea>
+          </mat-form-field>
+        </div>
+      </div>
+    </mat-card-content>
+
+    <mat-card-actions class="card-actions">
+      @if (this.mode === 'create') {
+      <button mat-flat-button type="submit" [disabled]="!postForm.valid">Create</button>
+      } @else {
+      <button mat-flat-button type="submit" [disabled]="!postForm.valid">Update</button>
+      }
+      <button mat-flat-button type="button">Clear</button>
+    </mat-card-actions>
+  </mat-card>
+</form>
 

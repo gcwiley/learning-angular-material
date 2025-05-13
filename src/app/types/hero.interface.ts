@@ -3,6 +3,7 @@ export interface Hero {
   id: string;
   name: string;
   age: string;
+  dateOfBirth: string;
   homePlanet: string;
   superPower: string;
   biography: string;

@@ -4,7 +4,7 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
 import { MatDividerModule } from '@angular/material/divider';
 
 // shared components
-import { NavBarComponent, AnnouncementBannerComponent, FooterComponent } from '../../../components';
+import { NavBarComponent, AnnouncementBarComponent, FooterComponent } from '../../../components';
 
 // album components
 import { AlbumGridComponent } from '../../../albums';
@@ -14,6 +14,6 @@ import { AlbumGridComponent } from '../../../albums';
     templateUrl: './album-grid-page.component.html',
     styleUrl: './album-grid-page.component.scss',
     changeDetection: ChangeDetectionStrategy.OnPush,
-    imports: [MatDividerModule, AlbumGridComponent, NavBarComponent, AnnouncementBannerComponent, FooterComponent]
+    imports: [MatDividerModule, AlbumGridComponent, NavBarComponent, AnnouncementBarComponent, FooterComponent]
 })
 export class AlbumGridPageComponent {}

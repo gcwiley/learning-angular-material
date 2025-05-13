@@ -2,10 +2,8 @@ import { Directive, EventEmitter, HostListener, Output, input } from '@angular/c
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { filter, first, switchMap } from 'rxjs';
 
-// import the album service
+// album and confirm dialog service
 import { AlbumService } from '../services/album.service';
-
-// import the confirm dialog service
 import { CustomConfirmDialog, CustomConfirmDialogService } from '../services/custom-confirm-dialog.service';
 
 @Directive({
@@ -35,7 +33,7 @@ export class AlbumDeleteDirective {
             // filters the dialog's result, so that it's true only if the dialog result is true
             filter((res) => !!res),
             // this maps the true result to a new observable that calls 'deleteAlbumById'
-            switchMap(() => this.albumService.deleteAlbum(this.id()))
+            switchMap(() => this.albumService.deleteAlbumById(this.id()))
          )
          .subscribe({
             next: () => {

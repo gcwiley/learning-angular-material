@@ -1,9 +1,4 @@
-import {
-  ChangeDetectionStrategy,
-  Component,
-  OnInit,
-  OnDestroy,
-} from '@angular/core';
+import { ChangeDetectionStrategy, Component, OnInit, OnDestroy } from '@angular/core';
 import { ActivatedRoute, RouterModule } from '@angular/router';
 import { DatePipe } from '@angular/common';
 import { Subject } from 'rxjs';
@@ -29,10 +24,7 @@ export class PostDetailsComponent implements OnInit, OnDestroy {
   public hasError = false;
   public isLoading = false;
 
-  constructor(
-    private route: ActivatedRoute,
-    private postService: PostService
-  ) {}
+  constructor(private route: ActivatedRoute, private postService: PostService) {}
 
   public ngOnInit(): void {
     this.getPostById();
@@ -51,14 +43,17 @@ export class PostDetailsComponent implements OnInit, OnDestroy {
       this.isLoading = false;
       return;
     }
-    this.postService.getPostById(id).pipe(takeUntil(this.destroy$)).subscribe({
-      next: (post) => {
-        this.post = post;
-      },
-      error: (error) => {
-        this.hasError = true;
-        console.error('Error fetching post details:', error)
-      }
-    })
+    this.postService
+      .getPostById(id)
+      .pipe(takeUntil(this.destroy$))
+      .subscribe({
+        next: (post) => {
+          this.post = post;
+        },
+        error: (error) => {
+          this.hasError = true;
+          console.error('Error fetching post details:', error);
+        },
+      });
   }
 }

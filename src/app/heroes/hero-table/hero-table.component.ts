@@ -12,10 +12,8 @@ import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
 
-// hero service
+// hero service and interface
 import { HeroService } from '../../services/hero.service';
-
-// hero interface
 import { Hero } from '../../types/hero.interface';
 
 @Component({

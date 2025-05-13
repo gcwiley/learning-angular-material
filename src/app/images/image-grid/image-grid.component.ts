@@ -1,7 +1,7 @@
 import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
 import { Breakpoints, BreakpointObserver } from '@angular/cdk/layout';
 
-// import the angular material modules
+// angular material
 import { MatGridListModule } from '@angular/material/grid-list';
 
 // import the image interface

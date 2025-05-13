@@ -12,3 +12,9 @@ export interface Post {
 }
 
 export type PostInput = Omit<Post, 'id'>
+
+// define the post category interface
+export interface PostCategory {
+    value: string;
+    viewValue: string;
+}

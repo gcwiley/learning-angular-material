@@ -1,4 +1,4 @@
-import { AfterViewInit, Component, ViewChild, inject, ChangeDetectionStrategy } from '@angular/core';
+import { AfterViewInit, Component, ViewChild, ChangeDetectionStrategy } from '@angular/core';
 import { Router, RouterModule } from '@angular/router';
 import { CommonModule } from '@angular/common';
 
@@ -39,9 +39,6 @@ import { Album } from '../../types/album.interface';
     ]
 })
 export class AlbumTableComponent implements AfterViewInit {
-   // inject MatDialog
-   readonly dialog = inject(MatDialog);
-
    // setup pagination for table
    @ViewChild(MatPaginator) paginator!: MatPaginator;
    // set up sort in table
@@ -81,14 +78,6 @@ export class AlbumTableComponent implements AfterViewInit {
       this.albumService.getAlbums().subscribe((albums) => {
          this.dataSource.data = albums;
          this.isLoadingResults = false;
-      });
-   }
-
-   // deletes an album
-   onDeleteAlbum(id: string): void {
-      this.albumService.deleteAlbum(id).subscribe(() => {
-         // navigates admin back to the admin page
-         this.router.navigateByUrl('/admin');
       });
    }
 }

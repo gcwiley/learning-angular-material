@@ -3,7 +3,7 @@ import { ActivatedRoute, RouterModule } from '@angular/router';
 import { CommonModule } from '@angular/common';
 
 // shared components
-import { NavBarComponent, AnnouncementBannerComponent, FooterComponent } from '../../../components';
+import { NavBarComponent, AnnouncementBarComponent, FooterComponent } from '../../../components';
 
 // album components
 import { AlbumDescriptionComponent, AlbumDetailsComponent } from '../../../albums';
@@ -23,7 +23,7 @@ import { AlbumService } from '../../../services/album.service';
     RouterModule,
     CommonModule,
     NavBarComponent,
-    AnnouncementBannerComponent,
+    AnnouncementBarComponent,
     FooterComponent,
     AlbumDescriptionComponent,
     AlbumDetailsComponent,

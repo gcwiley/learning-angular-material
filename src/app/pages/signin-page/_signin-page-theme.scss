@@ -3,8 +3,8 @@
 // color mixin
 @mixin color($theme) {
    .signin-page-container {
-      color: mat.get-theme-color($theme, primary, 20);
-      background-color: mat.get-theme-color($theme, primary, 95);
+      color: mat.get-theme-color($theme, primary, 40);
+      background-color: mat.get-theme-color($theme, primary, 40);
    }
 }
 

@@ -12,6 +12,12 @@
     <span matListItemLine>{{ hero.age }}</span>
   </mat-list-item>
 
+  <!-- date of birth -->
+  <mat-list-item lines="2" role="listitem">
+    <span matListItemTitle>Birth Day</span>
+    <span matListItemLine>{{ hero.dateOfBirth | date }}</span>
+  </mat-list-item>
+
   <!-- superpower -->
   <mat-list-item lines="2" role="listitem">
     <span matListItemTitle>Superpower</span>

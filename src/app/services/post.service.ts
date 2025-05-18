@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { HttpClient, HttpErrorResponse, HttpHeaders } from '@angular/common/http';
 import { catchError, Observable, of, throwError } from 'rxjs';
 
 // post interface
@@ -41,12 +41,12 @@ export class PostService {
 
   // GET: count the heroes from database  - GET COUNT
   public getPostsCount(): Observable<number> {
-    return this.http.get<number>('/api/post-count').pipe(catchError(this.handleError));
+    return this.http.get<number>('/api/posts/count').pipe(catchError(this.handleError));
   }
 
   // GET: recent heroes added - GET RECENT POSTS
   public getRecentlyCreatedPosts(): Observable<Post[]> {
-    return this.http.get<Post[]>('/api/recent-posts').pipe(catchError(this.handleError));
+    return this.http.get<Post[]>('/api/posts/count').pipe(catchError(this.handleError));
   }
 
   // SAVE METHODS
@@ -60,14 +60,12 @@ export class PostService {
 
   // DELETE a post by ID from the server - DELETE POST
   public deletePostById(id: string): Observable<Post> {
-    // create the url
     const url = `${this.postsUrl}/${id}`;
     return this.http.delete<Post>(url, { headers: headers }).pipe(catchError(this.handleError));
   }
 
   // PUT: update the hero in the database - UPDATE POST
   public updatePostById(id: string, body: Partial<Post>): Observable<object> {
-    // create the url
     const url = `${this.postsUrl}/${id}`;
     return this.http.patch(url, body, { headers: headers }).pipe(catchError(this.handleError));
   }
@@ -76,5 +74,19 @@ export class PostService {
   private handleError(error: Error): Observable<never> {
     console.error('There was an error:', error);
     return throwError(() => error);
+  }
+
+  // enhanced error handler - HANDLE ERROR
+  private handleErrorTest(error: HttpErrorResponse): Observable<never> {
+    let errorMessage = 'An unknown error occurred!';
+    if (error.error instanceof ErrorEvent) {
+      // client-side/network error
+      errorMessage = `A client-side error occurred: ${error.error.message}`;
+    } else {
+      // backend error
+      errorMessage = `Backend returned code ${error.status}, body was ${JSON.stringify(error.error)}`
+    }
+    console.error('There was an error:', errorMessage);
+    return throwError(() => new Error(errorMessage))
   }
 }

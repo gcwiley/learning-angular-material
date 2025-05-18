@@ -3,14 +3,14 @@
 // color mixin
 @mixin color($theme) {
    .auth-status {
-      color: mat.get-theme-color($theme, error, 0);
-      background-color: mat.get-theme-color($theme, error, 80);
+      color: mat.get-theme-color($theme, primary, 40);
+      background-color: mat.get-theme-color($theme, primary, 20);
    }
 }
 // typography mixin
 @mixin typography($theme) {
    .auth-status {
-      font: mat.get-theme-typography($theme, body-medium);
+      font: mat.get-theme-typography($theme, body-large);
    }
 }
 

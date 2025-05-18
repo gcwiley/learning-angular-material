@@ -2,14 +2,14 @@
 
 // color mixin
 @mixin color($theme) {
-   .announcement-bar {
-      color: mat.get-theme-color($theme, error, 0);
-      background-color: mat.get-theme-color($theme, error, 80);
+   .action-bar {
+      color: mat.get-theme-color($theme, primary, 0);
+      background-color: mat.get-theme-color($theme, primary, 80);
    }
 }
 // typography mixin
 @mixin typography($theme) {
-   .announcement-bar {
+   .action-bar {
       font: mat.get-theme-typography($theme, body-medium);
    }
 }

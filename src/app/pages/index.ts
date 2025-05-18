@@ -6,5 +6,6 @@ export { HeroCreatePageComponent, HeroDetailsPageComponent, HeroGridPageComponen
 export { HomepageComponent } from './homepage/homepage.component';
 export { ImageGalleryPageComponent } from './image-gallery-page/image-gallery-page.component';
 export { NotFoundPageComponent } from './not-found-page/not-found-page.component';
+export { PostCreatePageComponent, PostDetailsPageComponent, PostGridPageComponent } from './post-pages';
 export { SigninPageComponent } from './signin-page/signin-page.component';
 export { SignupPageComponent } from './signup-page/signup-page.component';

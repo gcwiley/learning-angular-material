@@ -2,15 +2,16 @@
 
 // color mixin
 @mixin color($theme) {
-   .image-grid {
-      color: mat.get-theme-color($theme, primary, 50);
+   .post-grid-page-container {
+      color: mat.get-theme-color($theme, primary, 900);
+      background-color: mat.get-theme-color($theme, primary, 50);
    }
 }
 
 // typography mixin
 @mixin typography($theme) {
-   .image-grid {
-      font: mat.get-theme-typography($theme, body-small);
+   .post-grid-page-container {
+      font: mat.get-theme-typography($theme, subtitle-1);
    }
 }
 

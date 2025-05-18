@@ -1,6 +1,7 @@
 import { Routes } from '@angular/router';
 import { authGuard } from './guards/auth.guard';
 import { CanDeactivateGuardService } from './guards/can-deactivate.guard';
+import { makeStateKey } from '@angular/core';
 
 export const routes: Routes = [
   // about page
@@ -30,7 +31,25 @@ export const routes: Routes = [
       ),
   },
   // album pages - album details page
-  // fix this later!
+  {
+    path: 'albums/:id',
+    title: 'Album Details',
+    canActivate: [authGuard],
+    loadComponent: () =>
+      import('./pages/album-pages/album-details-page/album-details-page.component').then(
+        (m) => m.AlbumDetailsPageComponent
+      ),
+  },
+  // album pages - album grid page
+  {
+    path: 'albums',
+    title: 'Albums Page',
+    canActivate: [authGuard],
+    loadComponent: () =>
+      import('./pages/album-pages/album-grid-page/album-grid-page.component').then(
+        (m) => m.AlbumGridPageComponent
+      ),
+  },
   // homepage
   {
     path: '',
@@ -40,12 +59,38 @@ export const routes: Routes = [
     loadComponent: () =>
       import('./pages/homepage/homepage.component').then((m) => m.HomepageComponent),
   },
+  // post pages - post create page
+  {
+    path: 'create-post',
+    title: 'Create Post',
+    canActivate: [authGuard],
+    loadComponent: () => import('./pages/post-pages/post-create-page/post-create-page.component').then(
+      (m) => m.PostCreatePageComponent
+    )
+  },
+  // post pages - post details page
+  {
+    path: 'posts/:id',
+    title: 'Post Details',
+    canActivate: [authGuard],
+    loadComponent: () => import('./pages/post-pages/post-details-page/post-details-page.component').then(
+      (makeStateKey)
+    )
+  }
+  // sign in page
   {
     path: 'signin',
     title: 'Sign In',
     loadComponent: () =>
       import('./pages/signin-page/signin-page.component').then((m) => m.SigninPageComponent),
   },
+  // sign up page
+  {
+    path: 'signup',
+    title: 'Sign Up',
+    loadComponent: () => import('./pages/signup-page/signup-page.component').then((m) => m.SignupPageComponent),
+  },
+  // create hero page
   {
     path: 'create-hero',
     title: 'Create Hero',

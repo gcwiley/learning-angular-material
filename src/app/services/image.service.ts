@@ -8,7 +8,12 @@ import { Observable } from 'rxjs';
 export class ImageService {
   constructor(private http: HttpClient) {}
 
+  // comment here
   public uploadImage(formData: FormData): Observable<void> {
     return this.http.post<void>('/api/upload', formData);
   }
+
+  // comment here!
+  
+
 }

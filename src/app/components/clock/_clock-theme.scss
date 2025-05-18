@@ -3,14 +3,14 @@
 // color mixin
 @mixin color($theme) {
    .clock {
-      color: mat.get-theme-color($theme, error, 50);
-      background-color: mat.get-theme-color($theme, error, 30);
+      color: mat.get-theme-color($theme, primary, 30);
+      background-color: mat.get-theme-color($theme, primary, 90);
    }
 }
 // typography mixin
 @mixin typography($theme) {
    .clock {
-      font: mat.get-theme-typography($theme, body-medium);
+      font: mat.get-theme-typography($theme, body-large);
    }
 }
 

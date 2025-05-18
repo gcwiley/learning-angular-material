@@ -2,9 +2,9 @@
 
 // color mixin
 @mixin color($theme) {
-   .navbar-header {
-      color: mat.get-theme-color($theme, primary, 0);
-      background-color: mat.get-theme-color($theme, primary, 10);
+   .navbar {
+      color: mat.get-theme-color($theme, primary, 100);
+      background-color: mat.get-theme-color($theme, primary, 40);
    }
 }
 

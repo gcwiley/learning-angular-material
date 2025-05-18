@@ -1,6 +1,5 @@
 @use '@angular/material' as mat;
 
-
 // ALBUM COMPONENT THEMES
 @use '../app/albums/album-description/album-description-theme';
 @use '../app/albums/album-details/album-details-theme';
@@ -19,6 +18,7 @@
 @use '../app/components/clock/clock-theme';
 @use '../app/components/confirm-dialog/confirm-dialog-theme';
 @use '../app/components/footer/footer-theme';
+@use '../app/components/hero/hero-theme';
 @use '../app/components/logo/logo-theme';
 @use '../app/components/navbar/navbar-theme';
 
@@ -54,42 +54,49 @@
 
 // styles for the app that are based on the current theme
 @mixin theme($theme) {
-   // album components
-   @include album-description-theme.theme($theme);
-   @include album-details-theme.theme($theme);
-   @include album-form-theme.theme($theme);
-   @include album-table-theme.theme($theme);
-   @include recent-albums-theme.theme($theme);
+  // album components
+  @include album-description-theme.theme($theme);
+  @include album-details-theme.theme($theme);
+  @include album-form-theme.theme($theme);
+  @include album-table-theme.theme($theme);
+  @include recent-albums-theme.theme($theme);
 
-   // hero components
-   @include hero-description-theme.theme($theme);
-   @include hero-details-theme.theme($theme);
-   @include hero-form-theme.theme($theme);
-   @include hero-grid-theme.theme($theme);
-   @include hero-table-theme.theme($theme);
-   @include recent-heroes-theme.theme($theme);
+  // shared components
+  @include action-bar-theme.theme($theme);
+  @include announcement-bar-theme.theme($theme);
+  @include auth-status-theme.theme($theme);
+  @include calendar-theme.theme($theme);
+  @include carousel-theme.theme($theme);
+  @include carousel-container-theme.theme($theme);
+  @include clock-theme.theme($theme);
+  @include confirm-dialog-theme.theme($theme);
+  @include footer-theme.theme($theme);
+  @include hero-theme.theme($theme);
+  @include logo-theme.theme($theme);
+  @include navbar-theme.theme($theme);
 
-   // page themes
-   @include admin-page-theme.theme($theme);
-   @include hero-create-page-theme.theme($theme);
-   @include hero-details-page-theme.theme($theme);
-   @include homepage-theme.theme($theme);
-   @include image-gallery-page-theme.theme($theme);
-   @include not-found-page-theme.theme($theme);
-   @include signin-page-theme.theme($theme);
+  // hero components
+  @include hero-description-theme.theme($theme);
+  @include hero-details-theme.theme($theme);
+  @include hero-form-theme.theme($theme);
+  @include hero-grid-theme.theme($theme);
+  @include hero-table-theme.theme($theme);
+  @include recent-heroes-theme.theme($theme);
 
-   // post themes
-   @include post-description-theme.theme($theme);
-   @include post-details-theme.theme($theme);
-   @include post-form-theme.theme($theme);
-   @include post-grid-theme.theme($theme);
-   @include post-table-theme.theme($theme);
-   @include recent-posts-theme.theme($theme);
+  // page themes
+  @include admin-page-theme.theme($theme);
+  @include hero-create-page-theme.theme($theme);
+  @include hero-details-page-theme.theme($theme);
+  @include homepage-theme.theme($theme);
+  @include image-gallery-page-theme.theme($theme);
+  @include not-found-page-theme.theme($theme);
+  @include signin-page-theme.theme($theme);
 
-   // shared components
-   @include announcement-bar-theme.theme($theme);
-   @include carousel-theme.theme($theme);
-   @include footer-theme.theme($theme);
-   @include logo-theme.theme($theme);
-   @include navbar-theme.theme($theme);
+  // post themes
+  @include post-description-theme.theme($theme);
+  @include post-details-theme.theme($theme);
+  @include post-form-theme.theme($theme);
+  @include post-grid-theme.theme($theme);
+  @include post-table-theme.theme($theme);
+  @include recent-posts-theme.theme($theme);
 }

@@ -41,12 +41,12 @@ export class AlbumService {
 
   // GET: album count from database - GET ALBUM COUNT
   public getAlbumCount(): Observable<number> {
-    return this.http.get<number>('/api/album-count').pipe(catchError(this.handleError));
+    return this.http.get<number>('/api/albums/count').pipe(catchError(this.handleError));
   }
 
   // GET: recent album created in database - GET RECENT ALBUMS
   public getRecentlyCreatedAlbums(): Observable<Album[]> {
-    return this.http.get<Album[]>('/api/recent-albums').pipe(catchError(this.handleError));
+    return this.http.get<Album[]>('/api/albums/recent').pipe(catchError(this.handleError));
   }
 
   // SAVE METHODS

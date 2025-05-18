@@ -10,7 +10,7 @@
 // typography mixin
 @mixin typography($theme) {
    .announcement-bar {
-      font: mat.get-theme-typography($theme, body-large);
+      font: mat.get-theme-typography($theme, body-medium);
    }
 }
 

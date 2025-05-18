@@ -41,12 +41,12 @@ export class HeroService {
 
   // GET: count the heroes from database  - HERO COUNT
   public getHeroesCount(): Observable<number> {
-    return this.http.get<number>('/api/hero-count').pipe(catchError(this.handleError));
+    return this.http.get<number>('/api/heroes/count').pipe(catchError(this.handleError));
   }
 
   // GET: recent heroes added - RECENT HEROES
   public getRecentlyCreatedHeroes(): Observable<Hero[]> {
-    return this.http.get<Hero[]>('/api/recent-heroes').pipe(catchError(this.handleError));
+    return this.http.get<Hero[]>('/api/heroes/recent').pipe(catchError(this.handleError));
   }
 
   // GET: featured heroes for carousel - FEATURED HEROES
@@ -72,7 +72,6 @@ export class HeroService {
 
   // PUT: update the hero in the database - UPDATE HERO
   public updateHeroById(id: string, body: Partial<Hero>): Observable<object> {
-    // create the url
     const url = `${this.heroesUrl}/${id}`;
     return this.http.patch(url, body, { headers: headers }).pipe(catchError(this.handleError));
   }

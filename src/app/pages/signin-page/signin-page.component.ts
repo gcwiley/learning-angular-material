@@ -20,7 +20,7 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatSnackBar } from '@angular/material/snack-bar';
 
 // shared components
-import { AnnouncementBarComponent, FooterComponent } from '../../components';
+import { AnnouncementBarComponent, AuthStatusComponent, FooterComponent } from '../../components';
 
 // auth service
 import { AuthService } from '../../services/auth.service';
@@ -47,6 +47,7 @@ const ERROR_MESSAGES = {
     MatButtonModule,
     MatIconModule,
     AnnouncementBarComponent,
+    AuthStatusComponent,
     FooterComponent,
     FormsModule,
   ],

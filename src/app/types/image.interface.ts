@@ -1,10 +1,14 @@
 // define the image interface
 export interface Image {
-   id: string;
-   title: string;
-   description: string;
-   date: string;
-   url: string;
-   createdAt: string;
-   updatedAt: string;
+  id: string;
+  name: string;
+  url: string;
+  mimetype: string;
+  size: string;
+  description: string;
+  uploadedBy: string;
+  createdAt: string;
+  updatedAt: string;
 }
+
+export type ImageInput = Omit<Image, 'id'>;

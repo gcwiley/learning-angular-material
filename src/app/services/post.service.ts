@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient, HttpErrorResponse, HttpHeaders } from '@angular/common/http';
 import { catchError, Observable, of, throwError } from 'rxjs';
 
-// post interface
+// post interfaces
 import { Post, PostInput } from '../types/post.interface';
 
 // set up headers
@@ -58,26 +58,20 @@ export class PostService {
       .pipe(catchError(this.handleError));
   }
 
-  // DELETE a post by ID from the server - DELETE POST
+  // DELETE: a post by ID from the server - DELETE POST BY ID
   public deletePostById(id: string): Observable<Post> {
     const url = `${this.postsUrl}/${id}`;
     return this.http.delete<Post>(url, { headers: headers }).pipe(catchError(this.handleError));
   }
 
-  // PUT: update the hero in the database - UPDATE POST
+  // PUT: update the hero in the database - UPDATE POST BY ID
   public updatePostById(id: string, body: Partial<Post>): Observable<object> {
     const url = `${this.postsUrl}/${id}`;
     return this.http.patch(url, body, { headers: headers }).pipe(catchError(this.handleError));
   }
 
-  // private method that centralizes error handling - HANDLE ERROR
-  private handleError(error: Error): Observable<never> {
-    console.error('There was an error:', error);
-    return throwError(() => error);
-  }
-
-  // enhanced error handler - HANDLE ERROR
-  private handleErrorTest(error: HttpErrorResponse): Observable<never> {
+  // enhanced error handler that centralized error handling - HANDLE ERROR
+  private handleError(error: HttpErrorResponse): Observable<never> {
     let errorMessage = 'An unknown error occurred!';
     if (error.error instanceof ErrorEvent) {
       // client-side/network error

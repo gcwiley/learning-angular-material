@@ -10,8 +10,10 @@
          <!-- HERO NAME (name) -->
          <mat-form-field class="full-width" appearance="outline">
             <mat-label>Name</mat-label>
-            <input matInput type="text" formControlName="name" />
-            <mat-error *ngIf="heroForm.controls['name'].hasError('required')">Please enter a superhero name.</mat-error>
+            <input matInput type="text" formControlName="name" placeholder="name"/>
+            @if (this.heroForm.controls['name'].hasError('required')) {
+               <mat-error>Please enter a name.</mat-error>
+            }
          </mat-form-field>
 
          <div class="row">
@@ -20,6 +22,7 @@
                <mat-form-field class="full-width" appearance="outline">
                   <mat-label>Age</mat-label>
                   <input matInput type="number" formControlName="age" />
+                  <!-- fix this -->
                   <mat-error *ngIf="heroForm.controls['age'].hasError('required')">Please enter an age.</mat-error>
                </mat-form-field>
             </div>
@@ -29,6 +32,7 @@
                <mat-form-field class="full-width" appearance="outline">
                   <mat-label>Home Planet</mat-label>
                   <input matInput type="text" formControlName="homePlanet" />
+                  <!-- fix this! -->
                   <mat-error *ngIf="heroForm.controls['homePlanet'].hasError('required')"
                      >Please enter the home planet.</mat-error
                   >
@@ -42,6 +46,7 @@
                <mat-form-field class="full-width" appearance="outline">
                   <mat-label>Super Power</mat-label>
                   <input matInput type="text" formControlName="superPower" />
+                  <!-- fix this! -->
                   <mat-error *ngIf="heroForm.controls['superPower'].hasError('required')"
                      >Please enter a superpower.</mat-error
                   >
@@ -55,6 +60,7 @@
                <mat-form-field class="full-width" appearance="outline">
                   <mat-label>Biography</mat-label>
                   <textarea matInput rows="6" formControlName="biography"></textarea>
+                  <!-- fix this! -->
                   <mat-error *ngIf="heroForm.controls['biography'].hasError('required')"
                      >Please provide a superhero biography.</mat-error
                   >
@@ -64,6 +70,7 @@
       </mat-card-content>
 
       <mat-card-actions class="card-actions">
+      <!-- fix this! -->
          <button mat-flat-button type="submit" [disabled]="!heroForm.valid">Create</button>
          <button mat-flat-button type="button" class="button">Clear</button>
       </mat-card-actions>

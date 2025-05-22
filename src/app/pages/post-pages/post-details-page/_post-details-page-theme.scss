@@ -4,7 +4,7 @@
 @mixin color($theme) {
    .post-details-page-container {
       color: mat.get-theme-color($theme, primary, 10);
-      // background-color: mat.get-theme-color($theme, primary, 50);
+      background-color: mat.get-theme-color($theme, primary, 50);
    }
 }
 

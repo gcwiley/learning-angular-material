@@ -4,7 +4,7 @@ import { FormBuilder, Validators, FormsModule, ReactiveFormsModule } from '@angu
 import { ActivatedRoute, ParamMap, Router } from '@angular/router';
 
 // rxjs
-// import { first } from 'rxjs';
+import { first } from 'rxjs';
 
 // angular material
 import { MatCardModule } from '@angular/material/card';
@@ -44,14 +44,6 @@ export class HeroFormComponent implements OnInit {
   private id!: string;
   private hero!: Hero;
 
-  constructor(
-    private formBuilder: FormBuilder,
-    private router: Router,
-    public route: ActivatedRoute,
-    private heroService: HeroService,
-    private snackBar: MatSnackBar
-  ) {}
-
   // create the hero form
   heroForm = this.formBuilder.group({
     name: ['', Validators.required],
@@ -60,6 +52,15 @@ export class HeroFormComponent implements OnInit {
     superPower: ['', Validators.required],
     biography: ['', Validators.required],
   });
+
+  constructor(
+    private formBuilder: FormBuilder,
+    private router: Router,
+    public route: ActivatedRoute,
+    private heroService: HeroService,
+    private snackBar: MatSnackBar
+  ) {}
+
 
   public ngOnInit(): void {
     // find out if we have a "id" or not
@@ -85,7 +86,7 @@ export class HeroFormComponent implements OnInit {
     });
   }
 
-  // save a new hero
+  // saves a new hero
   public onSaveHero(): void {
     if (this.mode === 'create') {
       this.heroService.addHero(this.heroForm.value as HeroInput).subscribe(() => {

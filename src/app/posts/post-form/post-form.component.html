@@ -26,7 +26,7 @@
               <mat-option *ngFor="let category of categories" [value]="category.value">{{
                 category.viewValue
               }}</mat-option>
-              
+              <!-- fix this -->
             </mat-select>
           </mat-form-field>
         </div>
@@ -41,10 +41,10 @@
               matInput
               [matDatepicker]="picker"
               formControlName="date"
-              placeholder="Start Date" />
+              placeholder="Date" />
             <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
             <mat-datepicker #picker></mat-datepicker>
-            <!-- error checking -->
+            <!-- error checking fix this -->
           </mat-form-field>
         </div>
       </div>

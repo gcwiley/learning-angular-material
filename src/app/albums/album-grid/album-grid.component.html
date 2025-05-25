@@ -1,19 +1,18 @@
-<mat-checkbox (change)="toggleAppearance()">Use outlined cards</mat-checkbox>
 <mat-grid-list [cols]="cols" [rowHeight]="rowHeight" [gutterSize]="gutterSize">
-   @for (album of albums; track album) {
-   <mat-grid-tile [colspan]="colspan" [rowspan]="rowspan">
-      <mat-card class="album-card" [appearance]="appearance">
-         <mat-card-header>
-            <mat-card-title>{{ album.title }}</mat-card-title>
-            <mat-card-subtitle>{{ album.artist }}</mat-card-subtitle>
-         </mat-card-header>
+  @for (album of albums; track album) {
+  <mat-grid-tile [colspan]="colspan" [rowspan]="rowspan">
+    <mat-card class="album-card" [appearance]="appearance">
+      <mat-card-header>
+        <mat-card-title>{{ album.title }}</mat-card-title>
+        <mat-card-subtitle>{{ album.artist }}</mat-card-subtitle>
+      </mat-card-header>
 
-         <span class="spacer"></span>
+      <span class="spacer"></span>
 
-         <mat-card-actions>
-            <a mat-button routerLink="/albums/{{ album.id }}">OPEN</a>
-         </mat-card-actions>
-      </mat-card>
-   </mat-grid-tile>
-   }
+      <mat-card-actions>
+        <a mat-button routerLink="/albums/{{ album.id }}">OPEN</a>
+      </mat-card-actions>
+    </mat-card>
+  </mat-grid-tile>
+  }
 </mat-grid-list>

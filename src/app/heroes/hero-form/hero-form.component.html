@@ -12,7 +12,7 @@
             <mat-label>Name</mat-label>
             <input matInput type="text" formControlName="name" placeholder="name"/>
             @if (this.heroForm.controls['name'].hasError('required')) {
-               <mat-error>Please enter a name.</mat-error>
+               <mat-error>Please enter a hero name.</mat-error>
             }
          </mat-form-field>
 
@@ -45,6 +45,7 @@
                <!-- SUPER POWER (superPower) -->
                <mat-form-field class="full-width" appearance="outline">
                   <mat-label>Super Power</mat-label>
+                  <!-- fix this -->
                   <input matInput type="text" formControlName="superPower" />
                   <!-- fix this! -->
                   <mat-error *ngIf="heroForm.controls['superPower'].hasError('required')"

@@ -22,7 +22,7 @@ import { Hero } from '../../types/hero.interface';
     imports: [CommonModule, RouterModule, MatGridListModule, MatCardModule, MatIconModule, MatButtonModule]
 })
 export class HeroGridComponent implements OnInit {
-   // create the member variables
+   // create the member variables - fix this
    heroes: Hero[] = [];
 
    // set up the grid list demensions

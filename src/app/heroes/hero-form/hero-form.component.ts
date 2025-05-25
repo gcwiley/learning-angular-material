@@ -47,9 +47,9 @@ export class HeroFormComponent implements OnInit {
   // create the hero form
   heroForm = this.formBuilder.group({
     name: ['', Validators.required],
-    age: ['', Validators.required],
-    homePlanet: ['', Validators.required],
-    superPower: ['', Validators.required],
+    alterEgo: ['', Validators.required],
+    placeOfOrigin: ['', Validators.required],
+    abilities: ['', Validators.required],
     biography: ['', Validators.required],
   });
 
@@ -60,7 +60,6 @@ export class HeroFormComponent implements OnInit {
     private heroService: HeroService,
     private snackBar: MatSnackBar
   ) {}
-
 
   public ngOnInit(): void {
     // find out if we have a "id" or not
@@ -74,9 +73,9 @@ export class HeroFormComponent implements OnInit {
           this.heroForm.setValue({
             // set value for every form control
             name: this.hero.name,
-            age: this.hero.age,
-            homePlanet: this.hero.homePlanet,
-            superPower: this.hero.superPower,
+            alterEgo: this.hero.alterEgo,
+            placeOfOrigin: this.hero.placeOfOrgin,
+            abilities: this.hero.abilities,
             biography: this.hero.biography,
           });
         });
@@ -89,19 +88,48 @@ export class HeroFormComponent implements OnInit {
   // saves a new hero
   public onSaveHero(): void {
     if (this.mode === 'create') {
-      this.heroService.addHero(this.heroForm.value as HeroInput).subscribe(() => {
-        // navigates user back to the homepage
-        this.router.navigateByUrl('/admin');
-      });
+      this.heroService
+        .addHero(this.heroForm.value as HeroInput)
+        .pipe(first())
+        .subscribe({
+          next: (hero) => {
+            // reset the hero form
+            this.heroForm.reset(hero);
+            // display a success message
+            this.snackBar.open('Hero created', 'CLOSE', {
+              duration: 5000,
+            });
+            // navigates user back to homepage
+            this.router.navigateByUrl('/');
+          },
+          error: () => {
+            this.snackBar.open('Error creating hero', 'CLOSE', {
+              duration: 5000,
+            });
+          },
+        });
     } else {
-      this.heroService.updateHeroById(this.id!, this.heroForm.value as HeroInput).subscribe(() => {
-        // navigates user back to the homepage
-        this.router.navigateByUrl('/admin');
+      this.heroService.updateHeroById(this.id!, this.heroForm.value as HeroInput).subscribe({
+        next: (hero) => {
+          // reset the hero form
+          this.heroForm.reset(hero);
+          // display a success message
+          this.snackBar.open('Hero updated', 'CLOSE', {
+            duration: 5000,
+          });
+          // navigates user back to homepage
+          this.router.navigateByUrl('/');
+        },
+        error: () => {
+          this.snackBar.open('Error updating hero.', 'CLOSE', {
+            duration: 5000,
+          });
+        },
       });
     }
   }
 
-  // reset the form
+  // reset the hero form
   public onReset(event: Event): void {
     event.preventDefault();
     this.heroForm.reset();

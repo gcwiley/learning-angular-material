@@ -1,23 +1,23 @@
 <header>
+  <app-auth-status  />
   <app-announcement-bar />
   <app-navbar />
 </header>
 
 <section>
   <app-clock  />
-  <app-auth-status  />
   <app-action-bar  />
 </section>
 
 <main class="home-page-container">
   <!-- post grid section -->
-  <article class="post-grid" aria-labelledby="post-grid-title">
+  <article class="post-grid">
     <h2 id="post-grid-title">Current Posts</h2>
     <app-post-grid aria-label="post grid" />
   </article>
 
   <!-- recent posts section -->
-  <aside class="recent-posts" aria-labelledby="recent-posts-title">
+  <aside class="recent-posts">
     <app-calendar aria-label="post calendar" />
     <h2 id="recent-posts-title">Recent Posts</h2>
     <app-recent-posts aria-label="recent posts list" />

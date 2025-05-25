@@ -1,7 +1,9 @@
-import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
-import { CommonModule } from '@angular/common';
-import { Breakpoints, BreakpointObserver } from '@angular/cdk/layout';
-import { Router, RouterModule } from '@angular/router';
+import { ChangeDetectionStrategy, Component, inject, OnDestroy, OnInit } from '@angular/core';
+import { CommonModule, AsyncPipe } from '@angular/common';
+import { Breakpoints, BreakpointObserver, BreakpointState } from '@angular/cdk/layout';
+import { RouterModule } from '@angular/router';
+import { Observable, Subject } from 'rxjs';
+import { map, takeUntil } from 'rxjs/operators';
 
 // angular material
 import { MatGridListModule } from '@angular/material/grid-list';
@@ -9,62 +11,84 @@ import { MatCardModule } from '@angular/material/card';
 import { MatIconModule } from '@angular/material/icon';
 import { MatButtonModule } from '@angular/material/button';
 
-// hero service
+// hero service and interface
 import { HeroService } from '../../services/hero.service';
 import { Hero } from '../../types/hero.interface';
 
 @Component({
-   standalone: true,
-    selector: 'app-hero-grid',
-    templateUrl: './hero-grid.component.html',
-    styleUrls: ['./hero-grid.component.scss'],
-    changeDetection: ChangeDetectionStrategy.OnPush,
-    imports: [CommonModule, RouterModule, MatGridListModule, MatCardModule, MatIconModule, MatButtonModule]
+  standalone: true,
+  selector: 'app-hero-grid',
+  templateUrl: './hero-grid.component.html',
+  styleUrls: ['./hero-grid.component.scss'],
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  imports: [
+    CommonModule,
+    RouterModule,
+    MatGridListModule,
+    MatCardModule,
+    MatIconModule,
+    MatButtonModule,
+    AsyncPipe
+  ],
 })
-export class HeroGridComponent implements OnInit {
-   // create the member variables - fix this
-   heroes: Hero[] = [];
+export class HeroGridComponent implements OnInit, OnDestroy {
+  // dependencies
+  private heroService = inject(HeroService);
+  private breakpointObserver = inject(BreakpointObserver);
 
-   // set up the grid list demensions
-   cols = 5; // Amount of columns in the grid list.
-   rowHeight = '1:1'; // row height
-   gutterSize = '0px';
+  // observables for AsycePipe
+  public heroes!: Observable<Hero[]>;
+  // observable for column based on breakpoints
+  public cols!: Observable<number>;
 
-   // set up the grid list dimensions
-   colspan = 1; 
-   rowspan = 1;
+  // static grid properties
+  rowHeight = '1:1';
+  gutterSize = '0px';
+  colspan = 2;
+  rowspan = 1;
 
-   constructor(private heroService: HeroService, private breakpointObserver: BreakpointObserver, private router: Router) {}
+  // lifecycle management - subject to manage subscription cleanup
+  private destroy = new Subject<void>();
 
-   ngOnInit(): void {
-      this.getHeroes();
-      this.layoutChanges();
-   }
+  public ngOnInit(): void {
+    this.heroes = this.heroService.getHeroes().pipe();
 
-   // responsive code
-   layoutChanges(): void {
-      this.breakpointObserver
-         .observe([Breakpoints.TabletPortrait, Breakpoints.TabletLandscape, Breakpoints.HandsetPortrait, Breakpoints.HandsetLandscape])
-         .subscribe((result) => {
-            const breakpoints = result.breakpoints;
+    this.cols = this.breakpointObserver
+      .observe([
+        // define breakpoints to observe
+        Breakpoints.XSmall,
+        Breakpoints.Small,
+        Breakpoints.Medium,
+        Breakpoints.Large,
+        Breakpoints.XLarge,
+      ])
+      .pipe(
+        takeUntil(this.destroy),
+        map((state: BreakpointState) => {
+          // map breakpoint state to number of columns
+          if (state.breakpoints[Breakpoints.XSmall]) {
+            return 1; // e.g. handset portrait
+          }
+          if (state.breakpoints[Breakpoints.Small]) {
+            return 2; // e.g. handset landscape / tablet portrait
+          }
+          if (state.breakpoints[Breakpoints.Medium]) {
+            return 3; // e.g. tablet landscape
+          }
+          // default for large/x-large or none of the above match
+          return 5;
+        })
+      );
+  }
 
-            // check to see if viewport is in table portrait mode
-            if (breakpoints[Breakpoints.TabletPortrait]) {
-               this.cols = 1;
-            } else if (breakpoints[Breakpoints.HandsetPortrait]) {
-               this.cols = 1;
-            } else if (breakpoints[Breakpoints.HandsetLandscape]) {
-               this.cols = 1;
-            } else if (breakpoints[Breakpoints.TabletLandscape]) {
-               this.cols = 2;
-            }
-         });
-   }
+  public ngOnDestroy(): void {
+    // signal component destruction
+    this.destroy.next();
+    this.destroy.complete();
+  }
 
-   // gets all heroes from the database
-   getHeroes(): void {
-      this.heroService.getHeroes().subscribe((heroes) => {
-         this.heroes = heroes;
-      });
-   }
+  // optional: if you need to track items for *ngFor preformance
+  public trackByHeroId(index: number, hero: Hero): string {
+    return hero.id;
+  }
 }

@@ -1,7 +1,6 @@
 import { Routes } from '@angular/router';
 import { authGuard } from './guards/auth.guard';
 import { CanDeactivateGuardService } from './guards/can-deactivate.guard';
-import { makeStateKey } from '@angular/core';
 
 export const routes: Routes = [
   // about page
@@ -74,9 +73,9 @@ export const routes: Routes = [
     title: 'Post Details',
     canActivate: [authGuard],
     loadComponent: () => import('./pages/post-pages/post-details-page/post-details-page.component').then(
-      (makeStateKey)
+      (m) => m.PostDetailsPageComponent
     )
-  }
+  },
   // sign in page
   {
     path: 'signin',

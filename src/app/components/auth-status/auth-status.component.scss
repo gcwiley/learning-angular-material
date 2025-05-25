@@ -1,0 +1,10 @@
+@use '../../../styles/helpers/constants';
+
+.auth-status-banner-content {
+  max-width: constants.$max-width;
+  margin: auto;
+  padding: .5rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}

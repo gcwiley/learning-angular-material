@@ -1,6 +1,5 @@
 import { ChangeDetectionStrategy, Component, OnInit, OnDestroy } from '@angular/core';
 import { ActivatedRoute, RouterModule } from '@angular/router';
-import { DatePipe } from '@angular/common';
 import { Subject } from 'rxjs';
 import { takeUntil } from 'rxjs';
 
@@ -17,7 +16,7 @@ import { Hero } from '../../types/hero.interface';
   templateUrl: './hero-details.component.html',
   styleUrls: ['./hero-details.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
-  imports: [RouterModule, DatePipe, MatListModule],
+  imports: [RouterModule, MatListModule],
 })
 export class HeroDetailsComponent implements OnInit, OnDestroy {
   hero!: Hero; // initialisze explicitly

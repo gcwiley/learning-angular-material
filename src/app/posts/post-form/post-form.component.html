@@ -1,14 +1,11 @@
 <form [formGroup]="postForm" novalidate (ngSubmit)="onSavePost()">
-  <!-- PROJECT CARD -->
   <mat-card class="post-form" appearance="outlined">
-    <!-- CARD HEADER -->
     <mat-card-header>
       <mat-card-title>New Post</mat-card-title>
     </mat-card-header>
 
-    <!-- CARD CONTENT -->
     <mat-card-content>
-      <!-- POST TITLE (title)-->
+      <!-- post title -->
       <mat-form-field class="full-width" appearance="outline">
         <mat-label>Title</mat-label>
         <input matInput type="text" formControlName="title" placeholder="title" />
@@ -19,14 +16,16 @@
 
       <div class="row">
         <div class="col">
-          <!-- POST CATEGORY (category) -->
+          <!-- post category -->
           <mat-form-field class="full-width" appearance="outline">
             <mat-label>Category</mat-label>
             <mat-select formControlName="category">
               <mat-option *ngFor="let category of categories" [value]="category.value">{{
                 category.viewValue
               }}</mat-option>
-              <!-- fix this -->
+              @if (this.postForm.controls['category'].hasError('required')) {
+                <mat-error>Please select a post category.</mat-error>
+              }
             </mat-select>
           </mat-form-field>
         </div>
@@ -34,7 +33,7 @@
 
       <div class="row">
         <div class="col">
-          <!-- DATE (date)-->
+          <!-- date -->
           <mat-form-field class="full-width" appearance="outline">
             <mat-label>Date</mat-label>
             <input
@@ -44,15 +43,16 @@
               placeholder="Date" />
             <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
             <mat-datepicker #picker></mat-datepicker>
-            <!-- error checking fix this -->
+            @if (this.postForm.controls['date'].hasError('required')) {
+                <mat-error>Please select a date.</mat-error>
+              }
           </mat-form-field>
         </div>
       </div>
 
-      
       <div class="row">
         <div class="col">
-          <!-- BODY (body)-->
+          <!-- body -->
           <mat-form-field class="full-width" appearance="outline">
             <mat-label>Description</mat-label>
             <textarea
@@ -60,6 +60,9 @@
               rows="6"
               formControlName="body"
               title="Body"></textarea>
+              @if (this.postForm.controls['body'].hasError('required')) {
+                <mat-error>Please provide content for your post.</mat-error>
+              }
           </mat-form-field>
         </div>
       </div>

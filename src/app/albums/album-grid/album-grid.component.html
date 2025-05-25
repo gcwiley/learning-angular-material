@@ -1,18 +1,32 @@
-<mat-grid-list [cols]="cols" [rowHeight]="rowHeight" [gutterSize]="gutterSize">
-  @for (album of albums; track album) {
-  <mat-grid-tile [colspan]="colspan" [rowspan]="rowspan">
-    <mat-card class="album-card" [appearance]="appearance">
+<mat-grid-list [cols]="cols | async" [rowHeight]="rowHeight" [gutterSize]="gutterSize">
+  <!-- Use async pipe for projects and add trackBy -->
+  <mat-grid-tile
+    *ngFor="let album of albums | async; trackBy: trackByAlbumId"
+    [colspan]="colspan"
+    [rowspan]="rowspan">
+    <mat-card appearance="outlined" class="project-card">
       <mat-card-header>
         <mat-card-title>{{ album.title }}</mat-card-title>
-        <mat-card-subtitle>{{ album.artist }}</mat-card-subtitle>
       </mat-card-header>
-
-      <span class="spacer"></span>
-
+      <mat-card-content>
+        <p>{{ album.summary }}</p>
+      </mat-card-content>
       <mat-card-actions>
-        <a mat-button routerLink="/albums/{{ album.id }}">OPEN</a>
+        <button mat-button>OPEN</button>
       </mat-card-actions>
     </mat-card>
   </mat-grid-tile>
-  }
 </mat-grid-list>
+
+<!-- Handle loading/empty states (optional but recommended) -->
+
+@if ((albums | async) === null) {
+<ng-container>
+  <p>Loading heroes...</p>
+  <!-- add angular material spinner -->
+</ng-container>
+} @if ((albums | async)?.length === 0) {
+<ng-container>
+  <p>No Albums found.</p>
+</ng-container>
+}

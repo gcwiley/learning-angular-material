@@ -2,10 +2,9 @@
 export interface Hero {
   id: string;
   name: string;
-  age: string;
-  dateOfBirth: string;
-  homePlanet: string;
-  superPower: string;
+  alterEgo: string;
+  placeOfOrgin: string;
+  abilities: string;
   biography: string;
   createdAt: string;
   updatedAt: string;

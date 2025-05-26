@@ -1,4 +1,8 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
+import { RouterModule } from '@angular/router';
+
+// angular material
+import { MatButtonModule } from '@angular/material/button';
 
 @Component({
   standalone: true,
@@ -6,6 +10,6 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
   templateUrl: './hero.component.html',
   styleUrl: './hero.component.scss',
   changeDetection: ChangeDetectionStrategy.OnPush,
-  imports: [],
+  imports: [RouterModule, MatButtonModule],
 })
 export class HeroComponent {}

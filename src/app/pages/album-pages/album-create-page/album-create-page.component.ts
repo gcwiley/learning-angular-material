@@ -1,7 +1,7 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
 
 // shared components
-import { NavBarComponent, AnnouncementBarComponent, FooterComponent } from '../../../components';
+import { NavBarComponent, AnnouncementBarComponent, AuthStatusComponent, FooterComponent } from '../../../components';
 
 // album components
 import { AlbumFormComponent, RecentAlbumsComponent } from '../../../albums';
@@ -16,6 +16,7 @@ import { AlbumFormComponent, RecentAlbumsComponent } from '../../../albums';
     NavBarComponent,
     AnnouncementBarComponent,
     FooterComponent,
+    AuthStatusComponent,
     AlbumFormComponent,
     RecentAlbumsComponent,
   ],

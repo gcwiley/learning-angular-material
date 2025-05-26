@@ -3,7 +3,8 @@
 // color mixin
 @mixin color($theme) {
    .album-form {
-      color: mat.get-theme-color($theme, primary, 10);
+      color: mat.get-theme-color($theme, primary, 0);
+      background-color: mat.get-theme-color($theme, primary, 100);
    }
 }
 

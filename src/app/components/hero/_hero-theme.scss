@@ -6,11 +6,17 @@
       color: mat.get-theme-color($theme, error, 50);
       background-color: mat.get-theme-color($theme, error, 30);
    }
+   .title {
+      color: mat.get-theme-color($theme, primary, 100);
+   }
 }
 // typography mixin
 @mixin typography($theme) {
-   .hero {
-      font: mat.get-theme-typography($theme, body-medium);
+   .title {
+      font: mat.get-theme-typography($theme, body-large);
+   }
+   .subtitle {
+      font: mat.get-theme-typography($theme, body-large);
    }
 }
 

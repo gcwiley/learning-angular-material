@@ -1,0 +1,6 @@
+@use '../../../styles/helpers/constants';
+
+.recent-posts {
+  margin: constants.$margin;
+  padding: constants.$padding;
+}

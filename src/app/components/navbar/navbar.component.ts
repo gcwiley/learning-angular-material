@@ -35,7 +35,7 @@ import { AppLogoComponent } from '../logo/logo.component';
 export class NavBarComponent {
    constructor(public authService: AuthService, private router: Router) {}
 
-   // signs out current user
+   // signs out current user - fix this!
    public onClickSignOut(): void {
       this.authService.signOutUser().subscribe(() => {
          // redirects user to signin page

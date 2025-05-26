@@ -3,8 +3,8 @@
 // color mixin
 @mixin color($theme) {
    .recent-albums {
-      color: mat.get-theme-color($theme, primary, 50);
-      // background-color: mat.get-theme-color($theme, primary, 50);
+      color: mat.get-theme-color($theme, primary, 0);
+      background-color: mat.get-theme-color($theme, primary, 50);
    }
 }
 

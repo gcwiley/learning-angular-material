@@ -2,16 +2,20 @@
 
 // color mixin
 @mixin color($theme) {
-   .navbar {
+   .navbar-container {
       color: mat.get-theme-color($theme, primary, 100);
       background-color: mat.get-theme-color($theme, primary, 40);
    }
+   .icon {
+      color: aliceblue;
+   }
+
 }
 
 // typography mixin
 @mixin typography($theme) {
-   .navbar-header {
-      font: mat.get-theme-typography($theme, body-large);
+   .title {
+      font: mat.get-theme-typography($theme, display-small);
    }
 }
 

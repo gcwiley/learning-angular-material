@@ -111,23 +111,23 @@ export class PostFormComponent implements OnInit {
           },
           error: () => {
             this.snackBar.open('Error creating post', 'CLOSE', {
-              duration: 3000,
+              duration: 5000,
             });
           },
         });
     } else {
       this.postService.updatePostById(this.id!, this.postForm.value as PostInput).subscribe({
         next: (post) => {
-          // reset the form
+          // reset the post form
           this.postForm.reset(post);
           // display a success message
           this.snackBar.open('Post updated', 'CLOSE', {
-            duration: 3000,
+            duration: 5000,
           });
         },
         error: () => {
           this.snackBar.open('Error updating post.', 'CLOSE', {
-            duration: 3000,
+            duration: 5000,
           });
         },
       });

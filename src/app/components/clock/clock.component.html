@@ -1,12 +1,14 @@
-<mat-toolbar class="clock" aria-label="Clock">
-  <p>{{ currentTime | date : 'EEEE, d MMMM y' : 'GMT-5' }}</p>
-  <span class="flex-spacer"></span>
-  <mat-chip-set>
-    @for (zone of timeZones; track zone) {
-    <mat-chip>
-      <strong>{{ zone.label }}</strong>
-      {{ currentTime | date : 'HH:mm a z' : zone.offset }}
-    </mat-chip>
-    }
-  </mat-chip-set>
-</mat-toolbar>
+<div class="clock-banner" aria-label="Clock Banner">
+  <div class="clock-banner-content">
+    <p>{{ currentTime | date : 'EEEE, d MMMM y' : 'GMT-5' }}</p>
+    <span class="flex-spacer"></span>
+    <mat-chip-set>
+      @for (zone of timeZones; track zone) {
+      <mat-chip>
+        <strong>{{ zone.label }}</strong>
+        {{ currentTime | date : 'HH:mm a z' : zone.offset }}
+      </mat-chip>
+      }
+    </mat-chip-set>
+  </div>
+</div>

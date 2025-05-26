@@ -3,10 +3,11 @@ import { DatePipe } from '@angular/common';
 import { Subscription, interval } from 'rxjs';
 
 // angular material
-import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatChipsModule } from '@angular/material/chips';
+import { MatToolbarModule } from '@angular/material/toolbar';
 
 @Component({
+  standalone: true,
   selector: 'app-clock',
   templateUrl: './clock.component.html',
   styleUrl: './clock.component.scss',
@@ -26,14 +27,14 @@ export class ClockComponent implements OnInit, OnDestroy {
   ];
 
   // set up the clock update interval of 1 second
-  ngOnInit(): void {
+  public ngOnInit(): void {
     this.timeSubscription = interval(1000).subscribe(() => {
       this.currentTime = new Date();
     });
   }
 
   // clean up the subscription when the component is destoyed
-  ngOnDestroy(): void {
+  public ngOnDestroy(): void {
     this.timeSubscription?.unsubscribe();
   }
 }

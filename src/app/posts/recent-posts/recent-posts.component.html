@@ -1,1 +1,15 @@
-
+<mat-list class="recent-posts" aria-label="Recent Posts">
+  <span mat-subheader>Recent Posts</span>
+  @if (recentPosts$ | async; as posts) {
+  <!-- use the @for loop to iterate over this array -->
+  @for (post of posts; track post) {
+  <mat-list-item lines="2">
+    <span matListItemTitle>{{ post.title }}</span>
+    <span matListItemLine>{{ post.author }}</span>
+  </mat-list-item>
+  } } @else {
+  <mat-list-item lines="1">
+    <span matListItemTitle>No Recent Posts</span>
+  </mat-list-item>
+  }
+</mat-list>

@@ -1,25 +1,26 @@
 @use '../../../styles/helpers/constants';
 
-.footer {
-  height: 6rem; // sets the height of the footer
-}
-
 .footer-content {
   max-width: constants.$max-width;
   margin: auto;
+  padding: 1rem;
   display: flex;
-  justify-content: space-between;
   align-items: center;
+}
+
+.flex-spacer {
+  flex: 1 1 auto;
 }
 
 .footer-copyright {
   display: flex;
   align-items: center;
+  padding: 1rem;
 }
 
 .footer-copyright a {
   text-decoration: none;
-  margin-right: 0.5rem;
+  margin-right: 1rem;
 }
 
 .footer-logos a {

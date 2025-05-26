@@ -33,9 +33,13 @@ export class AuthStatusComponent {
 
   // signs out current user
   public onClickSignOut(): void {
-    this.authService.signOutUser().subscribe(() => {
-      // redirects user to signin page
-      this.router.navigateByUrl('/signin');
+    this.authService.signOutUser().subscribe({
+      next: () => {
+        this.router.navigateByUrl('/signin');
+      },
+      error: (error) => {
+        console.error('Error signing out:', error);
+      },
     });
   }
 }

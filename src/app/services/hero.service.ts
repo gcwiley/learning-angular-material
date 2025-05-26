@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { HttpClient, HttpHeaders, HttpErrorResponse } from '@angular/common/http';
 import { catchError, Observable, of, throwError } from 'rxjs';
 
 // hero interface
@@ -76,13 +76,19 @@ export class HeroService {
     return this.http.patch(url, body, { headers: headers }).pipe(catchError(this.handleError));
   }
 
-  // private method that centralizes error handling - HANDLE ERROR - fix this!
-  private handleError(error: Error): Observable<never> {
-    // NOTE: use a logging service instead of console.error
-    // replace this with a more robust logging mechcanism - a dedicated logging service
-    // logs error to console
-    console.error('There was an error:', error);
-    // throws the error again, so the subscriber can catch it and handle the error
-    return throwError(() => error);
+  // enhanced error handler that centralized error handling - HANDLE ERROR
+  private handleError(error: HttpErrorResponse): Observable<never> {
+    let errorMessage = 'An unknown error occurred!';
+    if (error.error instanceof ErrorEvent) {
+      // client-side/network error
+      errorMessage = `A client-side error occurred: ${error.error.message}`;
+    } else {
+      // backend error
+      errorMessage = `Backend returned code ${error.status}, body was ${JSON.stringify(
+        error.error
+      )}`;
+    }
+    console.error('There was an error:', errorMessage);
+    return throwError(() => new Error(errorMessage));
   }
 }

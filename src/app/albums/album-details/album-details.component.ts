@@ -29,7 +29,7 @@ export class AlbumDetailsComponent implements OnInit, OnDestroy {
   constructor(private route: ActivatedRoute, private albumService: AlbumService) {}
 
   public ngOnInit(): void {
-    this.getAlbum();
+    this.getAlbumById();
   }
 
   public ngOnDestroy(): void {
@@ -37,8 +37,7 @@ export class AlbumDetailsComponent implements OnInit, OnDestroy {
     this.destroy$.complete();
   }
 
-  // GET album by ID
-  public getAlbum(): void {
+  public getAlbumById(): void {
     const id = this.route.snapshot.paramMap.get('id');
     if (!id) {
       console.error('Album ID not found in route parameter.');

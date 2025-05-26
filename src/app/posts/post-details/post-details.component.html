@@ -1,13 +1,18 @@
-<mat-list class="album-details" role="list">
-   <span mat-subheader>Album Details</span>
-   <!-- date -->
-   <mat-list-item lines="2" role="listitem">
-      <span matListItemTitle>Date</span>
-      <span matListItemLine>{{ post.date | date }}</span>
-   </mat-list-item>
-   <!-- category -->
-   <mat-list-item lines="2" role="listitem">
-      <span matListItemTitle>Category</span>
-      <span matListItemLine>{{ post.category }}</span>
-   </mat-list-item>
+<mat-list class="album-details" role="list" aria-label="Post Details">
+  <span mat-subheader>Post Details</span>
+  <!-- date -->
+  <mat-list-item lines="2" role="listitem">
+    <span matListItemTitle>Date</span>
+    <span matListItemLine>{{ post.date | date }}</span>
+  </mat-list-item>
+  <!-- author -->
+  <mat-list-item lines="2" role="listitem">
+    <span matListItemTitle>Author</span>
+    <span matListItemLine>{{ post.author }}</span>
+  </mat-list-item>
+  <!-- category -->
+  <mat-list-item lines="2" role="listitem">
+    <span matListItemTitle>Category</span>
+    <span matListItemLine>{{ post.category }}</span>
+  </mat-list-item>
 </mat-list>

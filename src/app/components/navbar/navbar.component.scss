@@ -1,52 +1,14 @@
-.navbar-header {
-   display: flex;
-   flex-wrap: wrap;
-   align-items: center;
-   padding: 8px 16px; // sets the size
+@use '../../../styles/helpers/constants';
 
-   > .mat-mdc-button {
-      &:last-child {
-         margin-left: auto;
-      }
-   }
+.navbar-content {
+  max-width: constants.$max-width;
+  margin: auto;
+  // padding: 0.5rem;
+  display: flex;
+  align-items: center;
 }
 
-.mat-mdc-icon-button {
-   color: inherit;
-}
-
-mat-raised-button {
-   margin-left: .5rem;
-}
-
-.github-logo, // sets size of navbar icons
-app-logo {
-   margin-right: 8px;
-   width: 24px;
-   height: 24px;
-}
-
-
+// sets up space between items within nav bar 
 .flex-spacer {
-   // creates space in navbar
-   flex-grow: 1;
-}
-
-.docs-navbar-show-small {
-   display: none;
-}
-
-// rules for when the device is detected to be on a small screen
-@media (max-width: 720px) {
-   .docs-navbar-hide-small {
-      display: none;
-   }
-
-   .docs-navbar-show-small {
-      display: block;
-   }
-
-   .github-logo {
-      margin: 0;
-   }
+   flex: 1 1 auto;
 }

@@ -20,6 +20,7 @@
           <mat-form-field class="full-width" appearance="outline">
             <mat-label>Category</mat-label>
             <mat-select formControlName="category">
+              <!-- fix this! -->
               <mat-option *ngFor="let category of categories" [value]="category.value">{{
                 category.viewValue
               }}</mat-option>

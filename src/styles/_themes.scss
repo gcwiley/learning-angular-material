@@ -1,7 +1,7 @@
 @use 'sass:map';
 @use '@angular/material' as mat;
 
-// define the color palette
+// define the color palette - fix this!
 $_palettes: (
    primary: (
       0: #000000,
@@ -11,7 +11,7 @@ $_palettes: (
       30: #00458f,
       35: #0050a5,
       40: #005cbb,
-      50: #0074e9,
+      50: #0D47A1,
       60: #438fff,
       70: #7cabff,
       80: #abc7ff,
@@ -105,10 +105,10 @@ $_palettes: (
    ),
    error: (
       0: #000000,
-      10: #410000,
-      20: #690100,
-      25: #7e0007,
-      30: #93000a,
+      10: #FFEBEE,
+      20: #FFCDD2,
+      25: #EF9A9A,
+      30: #E57373,
       35: #a80710,
       40: #ba1a1a,
       50: #de3730,

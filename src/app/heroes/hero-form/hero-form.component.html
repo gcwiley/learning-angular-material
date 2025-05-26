@@ -18,7 +18,7 @@
         <div class="col">
           <!-- alter ego -->
           <mat-form-field class="full-width" appearance="outline">
-            <mat-label>Age</mat-label>
+            <mat-label>Alter Ego</mat-label>
             <input matInput type="text" formControlName="alterEgo" placeholder="Alter Ego" />
             @if (this.heroForm.controls['alterEgo'].hasError('required')) {
             <mat-error>Please provide an alter ego.</mat-error>
@@ -62,7 +62,7 @@
             <mat-label>Biography</mat-label>
             <textarea
               matInput
-              rows="6"
+              rows="8"
               formControlName="biography"
               placeholder="Biography"></textarea>
             @if (this.heroForm.controls['biography'].hasError('required')) {

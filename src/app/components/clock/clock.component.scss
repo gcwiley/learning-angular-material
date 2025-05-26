@@ -1,7 +1,13 @@
 @use '../../../styles/helpers/constants';
 
-// fix this!
+.clock-banner-content {
+  max-width: constants.$max-width;
+  margin: auto;
+  display: flex;
+  align-items: center;
+}
 
+// sets up space between items within clock banner
 .flex-spacer {
   flex: 1 1 auto;
 }

@@ -2,14 +2,14 @@
 
 // color mixin
 @mixin color($theme) {
-   .clock {
+   .clock-banner {
       color: mat.get-theme-color($theme, primary, 30);
       background-color: mat.get-theme-color($theme, primary, 90);
    }
 }
 // typography mixin
 @mixin typography($theme) {
-   .clock {
+   .clock-banner {
       font: mat.get-theme-typography($theme, body-large);
    }
 }

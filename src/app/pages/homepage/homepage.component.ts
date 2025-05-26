@@ -12,8 +12,8 @@ import {
   AnnouncementBarComponent,
   ClockComponent,
   CalendarComponent,
-  ActionBarComponent,
   AuthStatusComponent,
+  HeroComponent,
   FooterComponent,
 } from '../../components/index';
 
@@ -32,10 +32,10 @@ import { PostGridComponent, RecentPostsComponent } from '../../posts';
     NavBarComponent,
     AnnouncementBarComponent,
     CalendarComponent,
-    ActionBarComponent,
     ClockComponent,
     FooterComponent,
     AuthStatusComponent,
+    HeroComponent,
     PostGridComponent,
     RecentPostsComponent,
   ],

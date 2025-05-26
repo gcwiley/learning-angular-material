@@ -23,10 +23,10 @@
               <mat-option *ngFor="let category of categories" [value]="category.value">{{
                 category.viewValue
               }}</mat-option>
-              @if (this.postForm.controls['category'].hasError('required')) {
+            </mat-select>
+            @if (this.postForm.controls['category'].hasError('required')) {
                 <mat-error>Please select a post category.</mat-error>
               }
-            </mat-select>
           </mat-form-field>
         </div>
       </div>
@@ -57,7 +57,7 @@
             <mat-label>Description</mat-label>
             <textarea
               matInput
-              rows="6"
+              rows="8"
               formControlName="body"
               title="Body"></textarea>
               @if (this.postForm.controls['body'].hasError('required')) {

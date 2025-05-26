@@ -1,6 +1,6 @@
 import { Injectable, NgZone } from '@angular/core';
 
-// import angular material modules
+// angular material
 import { MatSnackBar } from '@angular/material/snack-bar';
 
 @Injectable({

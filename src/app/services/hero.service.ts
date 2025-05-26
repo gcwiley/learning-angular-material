@@ -28,7 +28,7 @@ export class HeroService {
     return this.http.get<Hero>(url).pipe(catchError(this.handleError));
   }
 
-  // GET heroes whose name contains search term - SEARCH HERO
+  // GET: heroes whose name contains search term - SEARCH HERO
   public searchHeroes(term: string): Observable<Hero[]> {
     if (!term.trim()) {
       // if no search term, return an empty hero arrary
@@ -63,20 +63,20 @@ export class HeroService {
       .pipe(catchError(this.handleError));
   }
 
-  // DELETE a hero by ID from the server - DELETE HERO
+  // DELETE: a hero by ID from the server - DELETE HERO BY ID
   public deleteHeroById(id: string): Observable<Hero> {
     // create the url
     const url = `${this.heroesUrl}/${id}`;
     return this.http.delete<Hero>(url, { headers: headers }).pipe(catchError(this.handleError));
   }
 
-  // PUT: update the hero in the database - UPDATE HERO
+  // PUT: update the hero in the database - UPDATE HERO BY ID
   public updateHeroById(id: string, body: Partial<Hero>): Observable<object> {
     const url = `${this.heroesUrl}/${id}`;
     return this.http.patch(url, body, { headers: headers }).pipe(catchError(this.handleError));
   }
 
-  // private method that centralizes error handling - HANDLE ERROR
+  // private method that centralizes error handling - HANDLE ERROR - fix this!
   private handleError(error: Error): Observable<never> {
     // NOTE: use a logging service instead of console.error
     // replace this with a more robust logging mechcanism - a dedicated logging service

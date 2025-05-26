@@ -26,6 +26,7 @@ app-logo {
    height: 24px;
 }
 
+
 .flex-spacer {
    // creates space in navbar
    flex-grow: 1;
@@ -47,13 +48,5 @@ app-logo {
 
    .github-logo {
       margin: 0;
-   }
-}
-
-theme-picker {
-   display: none;
-
-   @media (min-width: 328px) {
-      display: block;
    }
 }

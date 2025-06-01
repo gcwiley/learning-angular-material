@@ -9,10 +9,8 @@ import { MatCardModule } from '@angular/material/card';
 // shared components
 import {
   NavBarComponent,
-  AnnouncementBarComponent,
   ClockComponent,
   CalendarComponent,
-  AuthStatusComponent,
   HeroComponent,
   FooterComponent,
 } from '../../components/index';
@@ -30,11 +28,9 @@ import { PostGridComponent, RecentPostsComponent } from '../../posts';
     MatDividerModule,
     MatCardModule,
     NavBarComponent,
-    AnnouncementBarComponent,
     CalendarComponent,
     ClockComponent,
     FooterComponent,
-    AuthStatusComponent,
     HeroComponent,
     PostGridComponent,
     RecentPostsComponent,

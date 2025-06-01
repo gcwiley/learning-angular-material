@@ -3,8 +3,6 @@ import { Component } from '@angular/core';
 // shared components
 import {
   NavBarComponent,
-  AnnouncementBarComponent,
-  AuthStatusComponent,
   FooterComponent,
 } from '../../../components';
 
@@ -17,8 +15,6 @@ import { HeroFormComponent, RecentHeroesComponent } from '../../../heroes';
   styleUrls: ['./hero-create-page.component.scss'],
   imports: [
     NavBarComponent,
-    AnnouncementBarComponent,
-    AuthStatusComponent,
     FooterComponent,
     HeroFormComponent,
     RecentHeroesComponent,

@@ -6,7 +6,7 @@ import { RouterModule } from '@angular/router';
 import { MatButtonModule } from '@angular/material/button';
 
 // shared components
-import { NavBarComponent, AnnouncementBarComponent, FooterComponent } from '../../components';
+import { NavBarComponent, FooterComponent } from '../../components';
 
 @Component({
   standalone: true,
@@ -19,7 +19,6 @@ import { NavBarComponent, AnnouncementBarComponent, FooterComponent } from '../.
     RouterModule,
     MatButtonModule,
     NavBarComponent,
-    AnnouncementBarComponent,
     FooterComponent,
   ],
 })

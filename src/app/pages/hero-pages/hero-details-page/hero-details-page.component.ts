@@ -5,7 +5,7 @@ import { Breakpoints, BreakpointObserver } from '@angular/cdk/layout';
 import { MatGridListModule } from '@angular/material/grid-list';
 
 // shared components
-import { NavBarComponent, AnnouncementBarComponent, FooterComponent } from '../../../components';
+import { NavBarComponent, FooterComponent } from '../../../components';
 
 // hero components
 import { HeroDetailsComponent, HeroDescriptionComponent } from '../../../heroes';
@@ -19,7 +19,6 @@ import { HeroDetailsComponent, HeroDescriptionComponent } from '../../../heroes'
   imports: [
     MatGridListModule,
     NavBarComponent,
-    AnnouncementBarComponent,
     FooterComponent,
     HeroDetailsComponent,
     HeroDescriptionComponent,

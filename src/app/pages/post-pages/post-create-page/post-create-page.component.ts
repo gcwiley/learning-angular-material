@@ -1,7 +1,7 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
 
 // shared components
-import { AuthStatusComponent, NavBarComponent, AnnouncementBarComponent, FooterComponent } from '../../../components';
+import { NavBarComponent, FooterComponent } from '../../../components';
 
 // post components
 import { PostFormComponent, RecentPostsComponent } from '../../../posts';
@@ -13,9 +13,7 @@ import { PostFormComponent, RecentPostsComponent } from '../../../posts';
   styleUrl: './post-create-page.component.scss',
   changeDetection: ChangeDetectionStrategy.OnPush,
   imports: [
-    AuthStatusComponent,
     NavBarComponent,
-    AnnouncementBarComponent,
     FooterComponent,
     PostFormComponent,
     RecentPostsComponent,

@@ -1,7 +1,7 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
 
 // shared components
-import { NavBarComponent, AnnouncementBarComponent, FooterComponent } from '../../../components';
+import { NavBarComponent, FooterComponent } from '../../../components';
 
 // album components
 import { AlbumDescriptionComponent, AlbumDetailsComponent } from '../../../albums';
@@ -14,7 +14,6 @@ import { AlbumDescriptionComponent, AlbumDetailsComponent } from '../../../album
   changeDetection: ChangeDetectionStrategy.OnPush,
   imports: [
     NavBarComponent,
-    AnnouncementBarComponent,
     FooterComponent,
     AlbumDescriptionComponent,
     AlbumDetailsComponent,

@@ -31,10 +31,9 @@
          <button mat-icon-button (click)="sidenav.toggle()" aria-label="Toggle sidenav" matTooltip="Toggle Sidenav">
             <mat-icon aria-label="Side nav toggle icon">menu</mat-icon>
          </button>
-         <!-- title -->
+         
          <span>Admin Dashboard</span>
 
-         <!-- spacer -->
          <span class="spacer"></span>
 
          <!-- button - add menu - fix this! -->
@@ -44,10 +43,10 @@
       </mat-toolbar>
       <mat-tab-group>
          <mat-tab label="Album List">
-            <app-album-table />
+            <app-album-table></app-album-table>
          </mat-tab>
          <mat-tab label="Hero List">
-            <app-hero-table />
+            <app-hero-table></app-hero-table>
          </mat-tab>
       </mat-tab-group>
    </mat-sidenav-content>

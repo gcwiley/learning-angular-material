@@ -1,5 +1,4 @@
 import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
-import { CommonModule } from '@angular/common';
 import { FormBuilder, Validators, FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { ActivatedRoute, ParamMap, Router } from '@angular/router';
 
@@ -30,7 +29,6 @@ import { ALBUM_GENRES } from '../../../assets/data/album-data';
   styleUrl: './album-form.component.scss',
   changeDetection: ChangeDetectionStrategy.OnPush,
   imports: [
-    CommonModule,
     MatCardModule,
     MatButtonModule,
     MatFormFieldModule,
@@ -97,14 +95,43 @@ export class AlbumFormComponent implements OnInit {
   // saves new album to database
   onSaveAlbum() {
     if (this.mode === 'create') {
-      this.albumService.addAlbum(this.albumForm.value as AlbumInput).subscribe(() => {
-        // naivates user back to the home page
-        this.router.navigateByUrl('/admin');
-      });
+      this.albumService
+        .addAlbum(this.albumForm.value as AlbumInput)
+        .pipe(first())
+        .subscribe({
+          next: (album) => {
+            // reset the album form
+            this.albumForm.reset(album);
+            // display a success message
+            this.snackBar.open('Album created', 'CLOSE', {
+              duration: 5000,
+            });
+            // navigates user back to homepage
+            this.router.navigateByUrl('/');
+          },
+          error: () => {
+            // display an error message
+            this.snackBar.open('Error creating album', 'CLOSE', {
+              duration: 5000,
+            });
+          },
+        });
     } else {
-      this.albumService.updateAlbumById(this.id!, this.albumForm.value as AlbumInput).subscribe(() => {
-        // navigates user back to the home page
-        this.router.navigateByUrl('/admin');
+      this.albumService.updateAlbumById(this.id!, this.albumForm.value as AlbumInput).subscribe({
+        next: (album) => {
+          // reset the album form
+          this.albumForm.reset(album);
+          // display a success message
+          this.snackBar.open('Album updated', 'CLOSE', {
+            duration: 5000,
+          });
+        },
+        error: () => {
+          // display an error message
+          this.snackBar.open('Error updating album.', 'CLOSE', {
+            duration: 5000,
+          });
+        },
       });
     }
   }

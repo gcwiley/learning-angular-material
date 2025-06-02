@@ -2,7 +2,7 @@
   <span mat-subheader>Recent Posts</span>
   @if (recentPosts$ | async; as posts) {
   <!-- use the @for loop to iterate over this array -->
-  @for (post of posts; track post) {
+  @for (post of posts; track post.id) {
   <mat-list-item lines="2">
     <span matListItemTitle>{{ post.title }}</span>
     <span matListItemLine>{{ post.author }}</span>

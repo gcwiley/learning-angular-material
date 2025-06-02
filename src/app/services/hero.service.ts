@@ -39,12 +39,12 @@ export class HeroService {
       .pipe(catchError(this.handleError));
   }
 
-  // GET: count the heroes from database  - HERO COUNT
+  // GET: count the heroes from database  - HERO COUNT - fix this!
   public getHeroesCount(): Observable<number> {
     return this.http.get<number>('/api/heroes/count').pipe(catchError(this.handleError));
   }
 
-  // GET: recent heroes added - RECENT HEROES
+  // GET: recent heroes added - RECENT HEROES - fix this!
   public getRecentlyCreatedHeroes(): Observable<Hero[]> {
     return this.http.get<Hero[]>('/api/heroes/recent').pipe(catchError(this.handleError));
   }
@@ -71,9 +71,9 @@ export class HeroService {
   }
 
   // PUT: update the hero in the database - UPDATE HERO BY ID
-  public updateHeroById(id: string, body: Partial<Hero>): Observable<object> {
+  public updateHeroById(id: string, body: Partial<Hero>): Observable<Hero> {
     const url = `${this.heroesUrl}/${id}`;
-    return this.http.patch(url, body, { headers: headers }).pipe(catchError(this.handleError));
+    return this.http.patch<Hero>(url, body, { headers: headers }).pipe(catchError(this.handleError));
   }
 
   // enhanced error handler that centralized error handling - HANDLE ERROR

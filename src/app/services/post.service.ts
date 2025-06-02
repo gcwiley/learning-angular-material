@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpErrorResponse, HttpHeaders } from '@angular/common/http';
-import { catchError, Observable, of, throwError } from 'rxjs';
+import { catchError, Observable, of, throwError, map } from 'rxjs';
 
 // post interfaces
 import { Post, PostInput } from '../types/post.interface';
@@ -19,10 +19,10 @@ export class PostService {
 
   // GET: all posts from the server - GET POSTS
   public getPosts(): Observable<Post[]> {
-    return this.http.get<Post[]>(this.postsUrl).pipe(catchError(this.handleError))
+    return this.http.get<Post[]>(this.postsUrl).pipe(catchError(this.handleError));
   }
 
-  // GET: a individual post by ID. Will 404 error if the ID is not found
+  // GET: a individual post by ID. Returns 404 is the ID is not found.
   public getPostById(id: string): Observable<Post> {
     const url = `${this.postsUrl}/${id}`;
     return this.http.get<Post>(url).pipe(catchError(this.handleError));
@@ -35,18 +35,24 @@ export class PostService {
       return of([]);
     }
     return this.http
-      .get<Post[]>(`${this.postsUrl}/?name=${term}`)
+      .get<Post[]>(`${this.postsUrl}/search?query=${term}`)
       .pipe(catchError(this.handleError));
   }
 
-  // GET: count the heroes from database  - GET COUNT
+  // GET: count the posts from database  - GET POST COUNT
   public getPostsCount(): Observable<number> {
-    return this.http.get<number>('/api/posts/count').pipe(catchError(this.handleError));
+    return this.http.get<{ data: number }>('/api/posts/count').pipe(
+      map((res) => res.data), // extract the array
+      catchError(this.handleError)
+    );
   }
 
-  // GET: recent heroes added - GET RECENT POSTS
+  // GET: recent posts added - GET RECENT POSTS
   public getRecentlyCreatedPosts(): Observable<Post[]> {
-    return this.http.get<Post[]>('/api/posts/count').pipe(catchError(this.handleError));
+    return this.http.get<{ data: Post[] }>('/api/posts/recent').pipe(
+      map((res) => res.data), // extract the array
+      catchError(this.handleError)
+    );
   }
 
   // SAVE METHODS
@@ -64,10 +70,10 @@ export class PostService {
     return this.http.delete<Post>(url, { headers: headers }).pipe(catchError(this.handleError));
   }
 
-  // PUT: update the hero in the database - UPDATE POST BY ID
-  public updatePostById(id: string, body: Partial<Post>): Observable<object> {
+  // PUT: update the post in the database - UPDATE POST BY ID
+  public updatePostById(id: string, body: Partial<Post>): Observable<Post> {
     const url = `${this.postsUrl}/${id}`;
-    return this.http.patch(url, body, { headers: headers }).pipe(catchError(this.handleError));
+    return this.http.patch<Post>(url, body, { headers: headers }).pipe(catchError(this.handleError));
   }
 
   // enhanced error handler that centralized error handling - HANDLE ERROR
@@ -78,9 +84,11 @@ export class PostService {
       errorMessage = `A client-side error occurred: ${error.error.message}`;
     } else {
       // backend error
-      errorMessage = `Backend returned code ${error.status}, body was ${JSON.stringify(error.error)}`
+      errorMessage = `Backend returned code ${error.status}, body was ${JSON.stringify(
+        error.error
+      )}`;
     }
     console.error('There was an error:', errorMessage);
-    return throwError(() => new Error(errorMessage))
+    return throwError(() => new Error(errorMessage));
   }
 }

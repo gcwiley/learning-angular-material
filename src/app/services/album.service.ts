@@ -38,12 +38,12 @@ export class AlbumService {
     return this.http.get<Album[]>(this.albumsUrl, { params }).pipe(catchError(this.handleError));
   }
 
-  // GET: album count from database - GET ALBUM COUNT
+  // GET: album count from database - GET ALBUM COUNT - fix this!
   public getAlbumCount(): Observable<number> {
     return this.http.get<number>('/api/albums/count').pipe(catchError(this.handleError));
   }
 
-  // GET: recent album created in database - GET RECENT ALBUMS
+  // GET: recent album created in database - GET RECENT ALBUMS - fix this!
   public getRecentlyCreatedAlbums(): Observable<Album[]> {
     return this.http.get<Album[]>('/api/albums/recent').pipe(catchError(this.handleError));
   }
@@ -66,9 +66,9 @@ export class AlbumService {
   }
 
   // PUT: update the album on the database - UPDATE ALBUM BY ID
-  public updateAlbumById(id: string, body: Partial<Album>): Observable<object> {
+  public updateAlbumById(id: string, body: Partial<Album>): Observable<Album> {
     const url = `${this.albumsUrl}/${id}`;
-    return this.http.patch(url, body, { headers: headers }).pipe(catchError(this.handleError));
+    return this.http.patch<Album>(url, body, { headers: headers }).pipe(catchError(this.handleError));
   }
 
   // enhanced error handler that centralized error handling - HANDLE ERROR

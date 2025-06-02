@@ -4,14 +4,52 @@ import { filter, first, switchMap } from 'rxjs';
 // angular material
 import { MatSnackBar } from '@angular/material/snack-bar';
 
-// hero service
+// hero and confirm dialog service
 import { HeroService } from '../services/hero.service';
+import {
+  CustomConfirmDialog,
+  CustomConfirmDialogService,
+} from '../services/custom-confirm-dialog.service';
 
 @Directive({
   selector: '[appHeroDelete]',
+  standalone: true,
 })
-export class HeroDeleteDirective {
-  // sets upa required input that expects a string value and provides an alias 'appHeroDelete' to used when the directive is being used.
-  public id = input
-  constructor() {}
+export class AlbumDeleteDirective {
+  public id = input.required<string>({ alias: 'appHeroDelete' });
+
+  @Output() public deleted = new EventEmitter<string>();
+
+  // initializes the directive dependencies
+  constructor(
+    private heroService: HeroService,
+    private confirm: CustomConfirmDialogService,
+    private snackbar: MatSnackBar
+  ) {}
+
+  @HostListener('click')
+  public onClick(): void {
+    this.confirm
+      .openCustomConfirmDialog(CustomConfirmDialog.Delete)
+      .pipe(
+        first(),
+        filter((res) => !!res),
+        switchMap(() => this.heroService.deleteHeroById(this.id()))
+      )
+      .subscribe({
+        next: () => {
+          this.deleted.emit(this.id());
+          // opens a success snackbar
+          this.snackbar.open('Hero deleted successfully', 'CLOSE', { duration: 5000 });
+        },
+        // if the deletion fails, it opens a 'failed' snackbar
+        error: (error) => {
+          this.snackbar.open(
+            'Deletion failed: ' + (error?.error?.message || 'Unknown error'),
+            'CLOSE',
+            { duration: 5000 }
+          );
+        },
+      });
+  }
 }

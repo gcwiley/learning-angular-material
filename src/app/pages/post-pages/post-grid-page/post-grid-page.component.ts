@@ -4,7 +4,7 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
 import { MatDividerModule } from '@angular/material/divider';
 
 // shared components
-import { NavBarComponent, AnnouncementBarComponent, FooterComponent } from '../../../components';
+import { NavBarComponent, FooterComponent } from '../../../components';
 
 // post components
 import { PostGridComponent } from '../../../posts';
@@ -18,7 +18,6 @@ import { PostGridComponent } from '../../../posts';
   imports: [
     MatDividerModule,
     NavBarComponent,
-    AnnouncementBarComponent,
     FooterComponent,
     PostGridComponent,
   ],

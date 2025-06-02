@@ -1,5 +1,5 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
-import { CommonModule } from '@angular/common';
+
 import { RouterModule, Router } from '@angular/router';
 
 // auth service
@@ -22,15 +22,14 @@ import { AppLogoComponent } from '../logo/logo.component';
    styleUrls: ['./navbar.component.scss'],
    changeDetection: ChangeDetectionStrategy.OnPush,
    imports: [
-      CommonModule,
-      RouterModule,
-      MatIconModule,
-      MatButtonModule,
-      MatMenuModule,
-      MatToolbarModule,
-      MatDividerModule,
-      AppLogoComponent,
-   ],
+    RouterModule,
+    MatIconModule,
+    MatButtonModule,
+    MatMenuModule,
+    MatToolbarModule,
+    MatDividerModule,
+    AppLogoComponent
+],
 })
 export class NavBarComponent {
    constructor(public authService: AuthService, private router: Router) {}

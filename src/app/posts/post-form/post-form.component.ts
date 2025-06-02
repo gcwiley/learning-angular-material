@@ -1,5 +1,4 @@
 import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
-import { CommonModule } from '@angular/common';
 import { FormBuilder, Validators, FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { ActivatedRoute, ParamMap, Router } from '@angular/router';
 
@@ -30,7 +29,6 @@ import { POST_CATEGORIES } from '../../../assets/data/post-category';
   styleUrl: './post-form.component.scss',
   changeDetection: ChangeDetectionStrategy.OnPush,
   imports: [
-    CommonModule,
     FormsModule,
     ReactiveFormsModule,
     MatCardModule,
@@ -39,8 +37,8 @@ import { POST_CATEGORIES } from '../../../assets/data/post-category';
     MatInputModule,
     MatSelectModule,
     MatDatepickerModule,
-    MatNativeDateModule,
-  ],
+    MatNativeDateModule
+],
 })
 export class PostFormComponent implements OnInit {
   public mode = 'create';
@@ -92,7 +90,7 @@ export class PostFormComponent implements OnInit {
     });
   }
 
-  // saves a new post
+  // saves a new post to database
   public onSavePost(): void {
     if (this.mode === 'create') {
       this.postService
@@ -104,12 +102,13 @@ export class PostFormComponent implements OnInit {
             this.postForm.reset(post);
             // display a success message
             this.snackBar.open('Post created', 'CLOSE', {
-              duration: 3000,
+              duration: 5000,
             });
             // navigates user back to homepage
             this.router.navigateByUrl('/');
           },
           error: () => {
+            // display an error message
             this.snackBar.open('Error creating post', 'CLOSE', {
               duration: 5000,
             });
@@ -126,6 +125,7 @@ export class PostFormComponent implements OnInit {
           });
         },
         error: () => {
+          // display an error message
           this.snackBar.open('Error updating post.', 'CLOSE', {
             duration: 5000,
           });

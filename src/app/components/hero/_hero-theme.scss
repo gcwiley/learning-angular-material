@@ -13,7 +13,7 @@
 // typography mixin
 @mixin typography($theme) {
    .title {
-      font: mat.get-theme-typography($theme, body-large);
+      font: mat.get-theme-typography($theme, display-small);
    }
    .subtitle {
       font: mat.get-theme-typography($theme, body-large);

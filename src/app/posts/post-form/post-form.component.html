@@ -5,48 +5,57 @@
     </mat-card-header>
 
     <mat-card-content>
-      <!-- post title -->
-      <mat-form-field class="full-width" appearance="outline">
-        <mat-label>Title</mat-label>
-        <input matInput type="text" formControlName="title" placeholder="title" />
-        @if (this.postForm.controls['title'].hasError('required')) {
-        <mat-error>Please enter a post title.</mat-error>
-        }
-      </mat-form-field>
-
       <div class="row">
         <div class="col">
-          <!-- post category -->
+          <!-- title -->
           <mat-form-field class="full-width" appearance="outline">
-            <mat-label>Category</mat-label>
-            <mat-select formControlName="category">
-              <!-- fix this! -->
-              <mat-option *ngFor="let category of categories" [value]="category.value">{{
-                category.viewValue
-              }}</mat-option>
-            </mat-select>
-            @if (this.postForm.controls['category'].hasError('required')) {
-                <mat-error>Please select a post category.</mat-error>
-              }
+            <mat-label>Title</mat-label>
+            <input matInput type="text" formControlName="title" placeholder="Title" />
+            @if (this.postForm.controls['title'].hasError('required')) {
+            <mat-error>Please enter a post title.</mat-error>
+            }
           </mat-form-field>
         </div>
       </div>
 
       <div class="row">
         <div class="col">
+          <!-- author -->
+          <mat-form-field class="full-width" appearance="outline">
+            <mat-label>Author</mat-label>
+            <input matInput type="text" formControlName="author" placeholder="Author" />
+            @if (this.postForm.controls['author'].hasError('required')) {
+            <mat-error>Please enter an author.</mat-error>
+            }
+          </mat-form-field>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col">
+          <!-- category -->
+          <mat-form-field class="full-width" appearance="outline">
+            <mat-label>Category</mat-label>
+            <mat-select formControlName="category">
+              @for (category of categories; track category) {
+              <mat-option [value]="category.value">{{ category.viewValue }}</mat-option>
+              }
+            </mat-select>
+            @if (this.postForm.controls['category'].hasError('required')) {
+            <mat-error>Please select a post category.</mat-error>
+            }
+          </mat-form-field>
+        </div>
+        <div class="col">
           <!-- date -->
           <mat-form-field class="full-width" appearance="outline">
             <mat-label>Date</mat-label>
-            <input
-              matInput
-              [matDatepicker]="picker"
-              formControlName="date"
-              placeholder="Date" />
+            <input matInput [matDatepicker]="picker" formControlName="date" placeholder="Date" />
             <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
             <mat-datepicker #picker></mat-datepicker>
             @if (this.postForm.controls['date'].hasError('required')) {
-                <mat-error>Please select a date.</mat-error>
-              }
+            <mat-error>Please select a date.</mat-error>
+            }
           </mat-form-field>
         </div>
       </div>
@@ -55,15 +64,11 @@
         <div class="col">
           <!-- body -->
           <mat-form-field class="full-width" appearance="outline">
-            <mat-label>Description</mat-label>
-            <textarea
-              matInput
-              rows="8"
-              formControlName="body"
-              title="Body"></textarea>
-              @if (this.postForm.controls['body'].hasError('required')) {
-                <mat-error>Please provide content for your post.</mat-error>
-              }
+            <mat-label>Content</mat-label>
+            <textarea matInput rows="8" formControlName="body" title="Body"></textarea>
+            @if (this.postForm.controls['body'].hasError('required')) {
+            <mat-error>Please provide content for your post.</mat-error>
+            }
           </mat-form-field>
         </div>
       </div>
@@ -79,4 +84,3 @@
     </mat-card-actions>
   </mat-card>
 </form>
-

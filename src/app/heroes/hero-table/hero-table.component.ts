@@ -1,6 +1,6 @@
 import { AfterViewInit, Component, ViewChild, ChangeDetectionStrategy } from '@angular/core';
 import { Router, RouterModule } from '@angular/router';
-import { CommonModule } from '@angular/common';
+
 
 // angular material
 import { MatRippleModule } from '@angular/material/core';
@@ -23,16 +23,15 @@ import { Hero } from '../../types/hero.interface';
     styleUrls: ['./hero-table.component.scss'],
     changeDetection: ChangeDetectionStrategy.OnPush,
     imports: [
-        CommonModule,
-        MatRippleModule,
-        MatTableModule,
-        MatIconModule,
-        MatButtonModule,
-        MatTooltipModule,
-        MatProgressSpinnerModule,
-        RouterModule,
-        MatPaginator,
-    ]
+    MatRippleModule,
+    MatTableModule,
+    MatIconModule,
+    MatButtonModule,
+    MatTooltipModule,
+    MatProgressSpinnerModule,
+    RouterModule,
+    MatPaginator
+]
 })
 export class HeroTableComponent implements AfterViewInit {
    

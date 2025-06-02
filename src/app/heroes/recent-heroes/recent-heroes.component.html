@@ -2,7 +2,7 @@
   <span mat-subheader>Recent Heroes</span>
   @if (recentHeroes$ | async; as heroes) {
   <!-- use the @for loop to iterate over this array -->
-  @for (hero of heroes; track hero) {
+  @for (hero of heroes; track hero.id) {
   <mat-list-item lines="2">
     <span matListItemTitle>{{ hero.name }}</span>
     <span matListItemLine>Added: {{ hero.createdAt | date }}</span>

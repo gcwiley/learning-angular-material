@@ -1,8 +1,8 @@
-<mat-list class="recent-albums">
+<mat-list class="recent-albums" aria-label="Recent Albums">
   <span mat-subheader>Recent Albums</span>
   @if (recentAlbums$ | async; as albums) {
   <!-- use the @for loop to iterate over this array -->
-  @for (album of albums; track album) {
+  @for (album of albums; track album.id) {
   <mat-list-item lines="2">
     <span matListItemTitle>{{ album.title }}</span>
     <span matListItemLine>Added: {{ album.createdAt | date }}</span>

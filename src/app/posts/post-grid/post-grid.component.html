@@ -1,1 +1,33 @@
-<!-- fix this! -->
+<mat-grid-list [cols]="cols | async" [rowHeight]="rowHeight" [gutterSize]="gutterSize">
+  <!-- Use async pipe for posts and add trackBy -->
+  @for (post of posts | async; track trackByPostId($index, post)) {
+    <mat-grid-tile
+      [colspan]="colspan"
+      [rowspan]="rowspan">
+      <mat-card appearance="outlined" class="post-card">
+        <mat-card-header>
+          <mat-card-title>{{ post.title }}</mat-card-title>
+        </mat-card-header>
+        <mat-card-content>
+          <p>{{ post.body }}</p>
+        </mat-card-content>
+        <mat-card-actions>
+          <a mat-button routerLink="/posts/{{ post.id }}">OPEN</a>
+        </mat-card-actions>
+      </mat-card>
+    </mat-grid-tile>
+  }
+</mat-grid-list>
+
+<!-- Handle loading/empty states (optional but recommended) -->
+
+@if ((posts | async) === null) {
+  <ng-container>
+    <p>Loading posts...</p>
+    <!-- add angular material spinner -->
+  </ng-container>
+  } @if ((posts | async)?.length === 0) {
+  <ng-container>
+    <p>No Posts found.</p>
+  </ng-container>
+}

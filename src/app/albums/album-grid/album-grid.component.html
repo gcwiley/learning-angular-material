@@ -1,5 +1,5 @@
 <mat-grid-list [cols]="cols | async" [rowHeight]="rowHeight" [gutterSize]="gutterSize">
-  <!-- Use async pipe for projects and add trackBy -->
+  <!-- Use async pipe for albums and add trackBy -->
   @for (album of albums | async; track trackByAlbumId($index, album)) {
     <mat-grid-tile
       [colspan]="colspan"
@@ -20,10 +20,9 @@
 </mat-grid-list>
 
 <!-- Handle loading/empty states (optional but recommended) -->
-
 @if ((albums | async) === null) {
   <ng-container>
-    <p>Loading heroes...</p>
+    <p>Loading albums...</p>
     <!-- add angular material spinner -->
   </ng-container>
   } @if ((albums | async)?.length === 0) {

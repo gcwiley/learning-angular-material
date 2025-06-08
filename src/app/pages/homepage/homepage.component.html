@@ -2,18 +2,19 @@
   <app-navbar></app-navbar>
 </header>
 
-<section>
+<section aria-label="Hero Section">
   <app-clock></app-clock>
   <app-hero></app-hero>
 </section>
 
-<main class="home-page-container">
-  <article class="post-grid">
-    <h2 id="post-grid-title">Current Posts</h2>
+<main class="home-page-container" role="main" aria-label="Homepage Main Content">
+  <!-- main content -->
+  <article class="main-content">
     <app-post-grid></app-post-grid>
   </article>
 
-  <aside class="recent-posts">
+  <!-- side content -->
+  <aside class="side-content">
     <app-calendar></app-calendar>
     <app-recent-posts></app-recent-posts>
   </aside>

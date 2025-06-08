@@ -19,13 +19,19 @@ export class PostService {
 
   // GET: all posts from the server - GET POSTS
   public getPosts(): Observable<Post[]> {
-    return this.http.get<Post[]>(this.postsUrl).pipe(catchError(this.handleError));
+    return this.http.get<{ data: Post[] }>(this.postsUrl).pipe(
+      map((res) => res.data), // extract the array
+      catchError(this.handleError)
+    );
   }
 
   // GET: a individual post by ID. Returns 404 is the ID is not found.
   public getPostById(id: string): Observable<Post> {
     const url = `${this.postsUrl}/${id}`;
-    return this.http.get<Post>(url).pipe(catchError(this.handleError));
+    return this.http.get<{ data: Post }>(url).pipe(
+      map((res) => res.data), // extract the array
+      catchError(this.handleError)
+    );
   }
 
   // GET posts whose name contains search term - SEARCH POST
@@ -73,7 +79,9 @@ export class PostService {
   // PUT: update the post in the database - UPDATE POST BY ID
   public updatePostById(id: string, body: Partial<Post>): Observable<Post> {
     const url = `${this.postsUrl}/${id}`;
-    return this.http.patch<Post>(url, body, { headers: headers }).pipe(catchError(this.handleError));
+    return this.http
+      .patch<Post>(url, body, { headers: headers })
+      .pipe(catchError(this.handleError));
   }
 
   // enhanced error handler that centralized error handling - HANDLE ERROR

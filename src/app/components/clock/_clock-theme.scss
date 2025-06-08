@@ -4,7 +4,7 @@
 @mixin color($theme) {
    .clock-banner {
       color: mat.get-theme-color($theme, primary, 30);
-      background-color: mat.get-theme-color($theme, primary, 90);
+      background-color: mat.get-theme-color($theme, secondary, 99);
    }
 }
 // typography mixin

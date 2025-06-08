@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders, HttpErrorResponse } from '@angular/common/http';
-import { catchError, Observable, of, throwError } from 'rxjs';
+import { catchError, Observable, of, throwError, map } from 'rxjs';
 
 // hero interface
 import { Hero, HeroInput } from '../types/hero.interface';
@@ -15,11 +15,9 @@ export class HeroService {
   // inject the "HttpClient" into the Hero service
   constructor(private http: HttpClient) {}
 
-  // GET: all heroes from the server - GET HEREOS
+  // GET: all heroes from the server - GET HEREOS - fix this!
   public getHeroes(): Observable<Hero[]> {
-    return this.http
-      .get<Hero[]>(this.heroesUrl)
-      .pipe(catchError(this.handleError));
+    return this.http.get<Hero[]>(this.heroesUrl).pipe(catchError(this.handleError));
   }
 
   // GET: a individual hero by ID. Will 404 error if the ID is not found
@@ -28,7 +26,7 @@ export class HeroService {
     return this.http.get<Hero>(url).pipe(catchError(this.handleError));
   }
 
-  // GET: heroes whose name contains search term - SEARCH HERO
+  // GET: heroes whose name contains search term - SEARCH HERO - fix this!
   public searchHeroes(term: string): Observable<Hero[]> {
     if (!term.trim()) {
       // if no search term, return an empty hero arrary
@@ -41,7 +39,10 @@ export class HeroService {
 
   // GET: count the heroes from database  - HERO COUNT - fix this!
   public getHeroesCount(): Observable<number> {
-    return this.http.get<number>('/api/heroes/count').pipe(catchError(this.handleError));
+    return this.http.get<{ data: number }>('/api/heroes/count').pipe(
+      map((res) => res.data),
+      catchError(this.handleError)
+    );
   }
 
   // GET: recent heroes added - RECENT HEROES - fix this!
@@ -73,7 +74,9 @@ export class HeroService {
   // PUT: update the hero in the database - UPDATE HERO BY ID
   public updateHeroById(id: string, body: Partial<Hero>): Observable<Hero> {
     const url = `${this.heroesUrl}/${id}`;
-    return this.http.patch<Hero>(url, body, { headers: headers }).pipe(catchError(this.handleError));
+    return this.http
+      .patch<Hero>(url, body, { headers: headers })
+      .pipe(catchError(this.handleError));
   }
 
   // enhanced error handler that centralized error handling - HANDLE ERROR

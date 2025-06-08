@@ -1,7 +1,6 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
 import { RouterModule } from '@angular/router';
 
-
 // angular material
 import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatListModule } from '@angular/material/list';
@@ -12,10 +11,10 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatTabsModule } from '@angular/material/tabs';
 import { MatTooltip } from '@angular/material/tooltip';
 
-// import the album list component
+// album list component
 import { AlbumTableComponent } from '../../albums';
 
-// import the heroes list component
+// heroes list component
 import { HeroTableComponent } from '../../heroes';
 
 @Component({

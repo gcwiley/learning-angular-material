@@ -1,10 +1,10 @@
 <div class="clock-banner" aria-label="Clock Banner">
   <div class="clock-banner-content">
-    <p>{{ currentTime | date : 'EEEE, d MMMM y' : 'GMT-5' }}</p>
+    <p aria-live="polite">{{ currentTime | date : 'EEEE, d MMMM y' : 'GMT-5' }}</p>
     <span class="flex-spacer"></span>
     <mat-chip-set>
       @for (zone of timeZones; track zone) {
-      <mat-chip>
+      <mat-chip aria-label="Time in {{ zone.label }}">
         <strong>{{ zone.label }}</strong>
         {{ currentTime | date : 'HH:mm a z' : zone.offset }}
       </mat-chip>

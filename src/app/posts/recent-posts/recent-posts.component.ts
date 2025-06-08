@@ -5,6 +5,7 @@ import { Observable, catchError, of } from 'rxjs';
 // angular material
 import { MatListModule } from '@angular/material/list';
 import { MatIconModule } from '@angular/material/icon';
+import { MatDividerModule } from '@angular/material/divider';
 
 // post service and interface
 import { PostService } from '../../services/post.service';
@@ -16,7 +17,7 @@ import { Post } from '../../types/post.interface';
   templateUrl: './recent-posts.component.html',
   styleUrl: './recent-posts.component.scss',
   changeDetection: ChangeDetectionStrategy.OnPush,
-  imports: [CommonModule, MatListModule, MatIconModule],
+  imports: [CommonModule, MatListModule, MatIconModule, MatDividerModule],
 })
 export class RecentPostsComponent implements OnInit {
   public recentPosts$!: Observable<Post[]>;

@@ -1,26 +1,23 @@
-<mat-list class="hero-details" role="list">
+<mat-list class="hero-details" role="list" aria-label="Hero Details">
   <span mat-subheader>Hero Details</span>
   <!-- name -->
   <mat-list-item lines="2" role="listitem">
     <span matListItemTitle>Name</span>
     <span matListItemLine>{{ hero.name }}</span>
   </mat-list-item>
-
-  <!-- age -->
+  <!-- alter ego -->
   <mat-list-item lines="2" role="listitem">
     <span matListItemTitle>Alter Ego</span>
     <span matListItemLine>{{ hero.alterEgo }}</span>
   </mat-list-item>
-
   <!-- place of orgin -->
   <mat-list-item lines="2" role="listitem">
     <span matListItemTitle>Place of Origin</span>
     <span matListItemLine>{{ hero.placeOfOrgin }}</span>
   </mat-list-item>
-
   <!-- abilities -->
   <mat-list-item lines="2" role="listitem">
-    <span matListItemTitle>Superpower</span>
+    <span matListItemTitle>Abilities</span>
     <span matListItemLine>{{ hero.abilities }}</span>
   </mat-list-item>
 </mat-list>

@@ -3,7 +3,7 @@ import { FormBuilder, Validators, FormsModule, ReactiveFormsModule } from '@angu
 import { ActivatedRoute, ParamMap, Router } from '@angular/router';
 
 // rxjs
-import { first } from 'rxjs';
+import { first, take } from 'rxjs';
 
 // angular material
 import { MatCardModule } from '@angular/material/card';
@@ -68,24 +68,26 @@ export class AlbumFormComponent implements OnInit {
 
   ngOnInit(): void {
     // find out if we have an id in the url
-    this.route.paramMap.subscribe((paramMap: ParamMap) => {
+    this.route.paramMap.pipe(take(1)).subscribe((paramMap: ParamMap) => {
       if (paramMap.has('id')) {
         this.mode = 'edit';
         this.id = paramMap.get('id')!;
-        this.albumService.getAlbumById(this.id!).subscribe((album) => {
-          this.album = album;
-          // overrides the value of initial form controls
-          this.albumForm.setValue({
-            // set the value of the form controls
-            title: this.album.title,
-            artist: this.album.artist,
-            releaseDate: this.album.releaseDate,
-            label: this.album.label,
-            studio: this.album.studio,
-            genre: this.album.genre,
-            summary: this.album.summary,
+        this.albumService
+          .getAlbumById(this.id!)
+          .pipe(take(1))
+          .subscribe((album) => {
+            this.album = album;
+            // overrides the value of initial form controls
+            this.albumForm.setValue({
+              title: this.album.title,
+              artist: this.album.artist,
+              releaseDate: this.album.releaseDate,
+              label: this.album.label,
+              studio: this.album.studio,
+              genre: this.album.genre,
+              summary: this.album.summary,
+            });
           });
-        });
       } else {
         this.mode = 'create';
       }
@@ -99,35 +101,35 @@ export class AlbumFormComponent implements OnInit {
         .addAlbum(this.albumForm.value as AlbumInput)
         .pipe(first())
         .subscribe({
-          next: (album) => {
-            // reset the album form
-            this.albumForm.reset(album);
-            // display a success message
-            this.snackBar.open('Album created', 'CLOSE', {
+          next: () => {
+            // reset the album form after album creation
+            this.albumForm.reset();
+            // display a success message to user
+            this.snackBar.open('Album created.', 'CLOSE', {
               duration: 5000,
             });
-            // navigates user back to homepage
+            // navigates user back to the homepage
             this.router.navigateByUrl('/');
           },
-          error: () => {
-            // display an error message
-            this.snackBar.open('Error creating album', 'CLOSE', {
+          error: (error) => {
+            console.error('Error creating album:', error);
+            // display an error message to user
+            this.snackBar.open('Error creating album.', 'CLOSE', {
               duration: 5000,
             });
           },
         });
     } else {
       this.albumService.updateAlbumById(this.id!, this.albumForm.value as AlbumInput).subscribe({
-        next: (album) => {
-          // reset the album form
-          this.albumForm.reset(album);
-          // display a success message
-          this.snackBar.open('Album updated', 'CLOSE', {
+        next: () => {
+          // display a success message to user
+          this.snackBar.open('Album updated.', 'CLOSE', {
             duration: 5000,
           });
         },
-        error: () => {
-          // display an error message
+        error: (error) => {
+          console.error('Error updating album:', error);
+          // display an error message to user
           this.snackBar.open('Error updating album.', 'CLOSE', {
             duration: 5000,
           });
@@ -136,7 +138,7 @@ export class AlbumFormComponent implements OnInit {
     }
   }
 
-  // reset the form
+  // reset the album form
   public onReset(event: Event): void {
     event.preventDefault();
     this.albumForm.reset();

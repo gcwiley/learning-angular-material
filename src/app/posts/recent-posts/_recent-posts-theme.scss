@@ -4,6 +4,9 @@
 @mixin color($theme) {
    .recent-posts {
       color: mat.get-theme-color($theme, primary, 50);
+      // background-color: mat.get-theme-color($theme, primary, 90);
+   }
+   mat-list {
       background-color: mat.get-theme-color($theme, primary, 90);
    }
 }

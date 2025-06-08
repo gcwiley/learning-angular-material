@@ -1,20 +1,21 @@
 @use '../../../styles/helpers/constants';
 
 .home-page-container {
-   max-width: constants.$max-width; // contrains the width to 1300 pixels
-   margin: auto; // centers the content on the page
-   display: flex; // set up flexbox layout for the container
-   flex-direction: row;
-   min-height: 100vh;
+  max-width: constants.$max-width;
+  margin: auto;
+  display: flex;
+  flex-direction: row;
+  min-height: 100vh;
 }
 
-.post-grid {
-   flex-basis: 70%;
-   max-width: 70%;
-   margin-right: 2rem;
+.main-content {
+  flex-basis: 70%;
+  max-width: 70%;
+  margin-right: 2rem;
 }
 
-.recent-posts {
-   flex-basis: 30%;
-   max-width: 30%;
+.side-content {
+  flex-basis: 30%;
+  max-width: 30%;
+  padding: 1rem;
 }

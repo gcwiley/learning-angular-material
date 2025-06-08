@@ -1,6 +1,11 @@
 @use '../../../styles/helpers/constants';
 
 .recent-posts {
-  margin: constants.$margin;
-  padding: constants.$padding;
+  width: 100%;
+  margin-top: 2rem;
+  // margin: constants.$margin;
+  // padding: constants.$padding;
+  // border-style: constants.$border-style;
+  border-width: constants.$border-width;
+  border-radius: constants.$border-radius;
 }

@@ -3,7 +3,7 @@ import { FormBuilder, Validators, FormsModule, ReactiveFormsModule } from '@angu
 import { ActivatedRoute, ParamMap, Router } from '@angular/router';
 
 // rxjs
-import { first } from 'rxjs';
+import { first, take } from 'rxjs';
 
 // angular material
 import { MatCardModule } from '@angular/material/card';
@@ -37,8 +37,8 @@ import { POST_CATEGORIES } from '../../../assets/data/post-category';
     MatInputModule,
     MatSelectModule,
     MatDatepickerModule,
-    MatNativeDateModule
-],
+    MatNativeDateModule,
+  ],
 })
 export class PostFormComponent implements OnInit {
   public mode = 'create';
@@ -67,23 +67,25 @@ export class PostFormComponent implements OnInit {
 
   public ngOnInit(): void {
     // find out if an 'id' exists or not
-    this.route.paramMap.subscribe((paramMap: ParamMap) => {
+    this.route.paramMap.pipe(take(1)).subscribe((paramMap: ParamMap) => {
       if (paramMap.has('id')) {
         this.mode = 'edit';
         this.id = paramMap.get('id')!;
-        this.postService.getPostById(this.id!).subscribe((post) => {
-          this.post = post;
-          // overrides values of initial form controls
-          this.postForm.setValue({
-            // set value for every form control
-            title: this.post.title,
-            author: this.post.author,
-            body: this.post.body,
-            category: this.post.category,
-            favorite: this.post.favorite,
-            date: this.post.date,
+        this.postService
+          .getPostById(this.id!)
+          .pipe(take(1))
+          .subscribe((post) => {
+            this.post = post;
+            // overrides values of initial form controls
+            this.postForm.setValue({
+              title: this.post.title,
+              author: this.post.author,
+              body: this.post.body,
+              category: this.post.category,
+              favorite: this.post.favorite,
+              date: this.post.date,
+            });
           });
-        });
       } else {
         this.mode = 'create';
       }
@@ -116,15 +118,14 @@ export class PostFormComponent implements OnInit {
         });
     } else {
       this.postService.updatePostById(this.id!, this.postForm.value as PostInput).subscribe({
-        next: (post) => {
-          // reset the post form
-          this.postForm.reset(post);
+        next: () => {
           // display a success message
           this.snackBar.open('Post updated', 'CLOSE', {
             duration: 5000,
           });
         },
-        error: () => {
+        error: (error) => {
+          console.error('Error updating post:', error);
           // display an error message
           this.snackBar.open('Error updating post.', 'CLOSE', {
             duration: 5000,
@@ -134,7 +135,7 @@ export class PostFormComponent implements OnInit {
     }
   }
 
-  // reset the form
+  // reset the post form
   public onReset(event: Event): void {
     event.preventDefault();
     this.postForm.reset();

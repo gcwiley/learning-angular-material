@@ -15,42 +15,52 @@ export class HeroService {
   // inject the "HttpClient" into the Hero service
   constructor(private http: HttpClient) {}
 
-  // GET: all heroes from the server - GET HEREOS - fix this!
+  // GET: all heroes from the server - GET HEREOS
   public getHeroes(): Observable<Hero[]> {
-    return this.http.get<Hero[]>(this.heroesUrl).pipe(catchError(this.handleError));
+    return this.http.get<{ data: Hero[] }>(this.heroesUrl).pipe(
+      map((res) => res.data), // extract the array
+      catchError(this.handleError)
+    );
   }
 
   // GET: a individual hero by ID. Will 404 error if the ID is not found
   public getHeroById(id: string): Observable<Hero> {
     const url = `${this.heroesUrl}/${id}`;
-    return this.http.get<Hero>(url).pipe(catchError(this.handleError));
+    return this.http.get<{ data: Hero }>(url).pipe(
+      map((res) => res.data), // extract the array
+      catchError(this.handleError)
+    );
   }
 
-  // GET: heroes whose name contains search term - SEARCH HERO - fix this!
+  // GET: heroes whose name contains search term - SEARCH HERO
   public searchHeroes(term: string): Observable<Hero[]> {
     if (!term.trim()) {
       // if no search term, return an empty hero arrary
       return of([]);
     }
-    return this.http
-      .get<Hero[]>(`${this.heroesUrl}/?name=${term}`)
-      .pipe(catchError(this.handleError));
-  }
-
-  // GET: count the heroes from database  - HERO COUNT - fix this!
-  public getHeroesCount(): Observable<number> {
-    return this.http.get<{ data: number }>('/api/heroes/count').pipe(
-      map((res) => res.data),
+    return this.http.get<{ data: Hero[] }>(`${this.heroesUrl}/?name=${term}`).pipe(
+      map((res) => res.data), // extract the array
       catchError(this.handleError)
     );
   }
 
-  // GET: recent heroes added - RECENT HEROES - fix this!
-  public getRecentlyCreatedHeroes(): Observable<Hero[]> {
-    return this.http.get<Hero[]>('/api/heroes/recent').pipe(catchError(this.handleError));
+  // GET: count the heroes from database  - HERO COUNT
+  public getHeroesCount(): Observable<number> {
+    return this.http.get<{ data: number }>('/api/heroes/count').pipe(
+      map((res) => res.data), // extract the array
+      catchError(this.handleError)
+    );
   }
 
-  // GET: featured heroes for carousel - FEATURED HEROES
+  // GET: recent heroes added - RECENT HEROES
+  public getRecentlyCreatedHeroes(): Observable<Hero[]> {
+    return this.http.get<{ data: Hero[] }>('/api/heroes/recent').pipe(
+      map((res) => res.data), // extract the array
+      catchError(this.handleError)
+    );
+  }
+
+  // GET: featured heroes for carousel - FEATURED HEROES - fix this!
   public getFeaturedHeroes(): Observable<Hero[]> {
     return this.http.get<Hero[]>('/api/favorite-heroes').pipe(catchError(this.handleError));
   }
@@ -66,7 +76,6 @@ export class HeroService {
 
   // DELETE: a hero by ID from the server - DELETE HERO BY ID
   public deleteHeroById(id: string): Observable<Hero> {
-    // create the url
     const url = `${this.heroesUrl}/${id}`;
     return this.http.delete<Hero>(url, { headers: headers }).pipe(catchError(this.handleError));
   }

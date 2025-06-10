@@ -4,7 +4,7 @@ export { AlbumCreatePageComponent, AlbumDetailsPageComponent, AlbumGridPageCompo
 export { ErrorPageComponent } from './error-page/error-page.component';
 export { HeroCreatePageComponent, HeroDetailsPageComponent, HeroGridPageComponent } from '../pages/hero-pages';
 export { HomepageComponent } from './homepage/homepage.component';
-export { ImageGalleryPageComponent } from './image-gallery-page/image-gallery-page.component';
+export { GalleryPageComponent } from './gallery-page/gallery-page.component';
 export { NotFoundPageComponent } from './not-found-page/not-found-page.component';
 export { PostCreatePageComponent, PostDetailsPageComponent, PostGridPageComponent } from './post-pages';
 export { SigninPageComponent } from './signin-page/signin-page.component';

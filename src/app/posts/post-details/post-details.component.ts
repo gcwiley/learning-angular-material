@@ -21,9 +21,7 @@ import { Post } from '../../types/post.interface';
 export class PostDetailsComponent implements OnInit, OnDestroy {
   post!: Post; // initialisze explicitly
   private destroy$ = new Subject<void>(); // subject to signal destruction
-  public hasError = false;
-  public isLoading = false;
-
+  
   constructor(private route: ActivatedRoute, private postService: PostService) {}
 
   public ngOnInit(): void {
@@ -39,8 +37,6 @@ export class PostDetailsComponent implements OnInit, OnDestroy {
     const id = this.route.snapshot.paramMap.get('id');
     if (!id) {
       console.error('Post ID not found in route paramaters.');
-      this.hasError = true;
-      this.isLoading = false;
       return;
     }
     this.postService
@@ -51,7 +47,6 @@ export class PostDetailsComponent implements OnInit, OnDestroy {
           this.post = post;
         },
         error: (error) => {
-          this.hasError = true;
           console.error('Error fetching post details:', error);
         },
       });

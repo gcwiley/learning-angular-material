@@ -3,7 +3,7 @@
 // color mixin
 @mixin color($theme) {
    .post-grid-page-container {
-      color: mat.get-theme-color($theme, primary, 900);
+      color: mat.get-theme-color($theme, primary, 90);
       background-color: mat.get-theme-color($theme, primary, 50);
    }
 }
@@ -11,7 +11,7 @@
 // typography mixin
 @mixin typography($theme) {
    .post-grid-page-container {
-      font: mat.get-theme-typography($theme, subtitle-1);
+      font: mat.get-theme-typography($theme, body-medium);
    }
 }
 

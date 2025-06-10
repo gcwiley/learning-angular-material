@@ -2,9 +2,12 @@
 
 // color mixin
 @mixin color($theme) {
-   .post-details-page-container {
+   .main-content {
       color: mat.get-theme-color($theme, primary, 10);
-      background-color: mat.get-theme-color($theme, primary, 50);
+      // background-color: lightblue
+   }
+   .side-content {
+      // background-color: lightgrey;
    }
 }
 

@@ -1,0 +1,13 @@
+@use '../../../styles/helpers/constants';
+
+.post-menu-container {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  gap: 0.5rem;
+
+  border: .5px solid lightgray;
+  border-radius: .5rem;
+  padding: .5rem;
+}

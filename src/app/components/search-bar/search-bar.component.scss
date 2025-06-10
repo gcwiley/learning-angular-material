@@ -1,0 +1,12 @@
+@use '../../../styles/helpers/constants';
+
+.search-bar-container {
+    max-width: constants.$max-width;
+    margin: auto;
+    padding: 1rem;
+}
+
+.search-bar {
+    width: 100%;
+    // max-width: 400px;
+}

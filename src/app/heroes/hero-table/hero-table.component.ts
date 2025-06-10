@@ -1,7 +1,6 @@
 import { AfterViewInit, Component, ViewChild, ChangeDetectionStrategy } from '@angular/core';
 import { Router, RouterModule } from '@angular/router';
 
-
 // angular material
 import { MatRippleModule } from '@angular/material/core';
 import { MatTableModule, MatTableDataSource } from '@angular/material/table';
@@ -52,14 +51,14 @@ export class HeroTableComponent implements AfterViewInit {
    constructor(private heroService: HeroService, private router: Router) {}
 
    // a callback method that is invoked immediately after angular has completed initialization of a component's view
-   ngAfterViewInit(): void {
+   public ngAfterViewInit(): void {
       this.dataSource.sort = this.sort;
       this.dataSource.paginator = this.paginator;
       this.getHeroes();
    }
 
    // gets all heroes from the hero service
-   getHeroes(): void {
+   public getHeroes(): void {
       this.heroService.getHeroes().subscribe((heroes) => {
          this.dataSource.data = heroes;
          // set the loading results to false
@@ -68,7 +67,7 @@ export class HeroTableComponent implements AfterViewInit {
    }
 
    // deletes a hero by ID
-   onDeleteHero(id: string): void {
+   public onDeleteHero(id: string): void {
       this.heroService.deleteHeroById(id).subscribe(() => {
          // navigates admin back to the admin page
          this.router.navigateByUrl('/admin');

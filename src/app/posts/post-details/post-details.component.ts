@@ -6,6 +6,7 @@ import { takeUntil } from 'rxjs';
 
 // angular material
 import { MatListModule } from '@angular/material/list';
+import { MatIconModule } from '@angular/material/icon';
 
 // post service and interface
 import { PostService } from '../../services/post.service';
@@ -16,7 +17,7 @@ import { Post } from '../../types/post.interface';
   templateUrl: './post-details.component.html',
   styleUrl: './post-details.component.scss',
   changeDetection: ChangeDetectionStrategy.OnPush,
-  imports: [RouterModule, DatePipe, MatListModule],
+  imports: [RouterModule, DatePipe, MatListModule, MatIconModule],
 })
 export class PostDetailsComponent implements OnInit, OnDestroy {
   post!: Post; // initialisze explicitly

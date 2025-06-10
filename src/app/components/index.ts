@@ -11,3 +11,4 @@ export { FooterComponent } from '../components/footer/footer.component';
 export { HeroComponent } from './hero/hero.component';
 export { AppLogoComponent } from '../components/logo/logo.component';
 export { NavBarComponent } from './navbar/navbar.component';
+export { SearchBarComponent } from './search-bar/search-bar.component';

@@ -21,6 +21,7 @@
 @use '../app/components/hero/hero-theme';
 @use '../app/components/logo/logo-theme';
 @use '../app/components/navbar/navbar-theme';
+@use '../app/components/search-bar/search-bar-theme';
 
 // HERO COMPONENT THEMES
 @use '../app/heroes/hero-description/hero-description-theme';
@@ -40,8 +41,11 @@
 @use '../app/pages/hero-pages/hero-details-page/hero-details-page-theme';
 @use '../app/pages/hero-pages/hero-grid-page/hero-grid-page-theme';
 @use '../app/pages/homepage/homepage-theme';
-@use '../app/pages/image-gallery-page/image-gallery-page-theme';
+@use '../app/pages/gallery-page/gallery-page-theme';
 @use '../app/pages/not-found-page/not-found-page-theme';
+@use '../app/pages/post-pages/post-create-page/post-create-page-theme';
+@use '../app/pages/post-pages/post-details-page/post-details-page-theme';
+@use '../app/pages/post-pages/post-grid-page/post-grid-page-theme';
 @use '../app/pages/signin-page/signin-page-theme';
 
 // POST THEMES
@@ -49,6 +53,7 @@
 @use '../app/posts/post-details/post-details-theme';
 @use '../app/posts/post-form/post-form-theme';
 @use '../app/posts/post-grid/post-grid-theme';
+@use '../app/posts/post-menu/post-menu-theme';
 @use '../app/posts/post-table/post-table-theme';
 @use '../app/posts/recent-posts/recent-posts-theme';
 
@@ -74,6 +79,7 @@
   @include hero-theme.theme($theme);
   @include logo-theme.theme($theme);
   @include navbar-theme.theme($theme);
+  @include search-bar-theme.theme($theme);
 
   // hero components
   @include hero-description-theme.theme($theme);
@@ -88,8 +94,11 @@
   @include hero-create-page-theme.theme($theme);
   @include hero-details-page-theme.theme($theme);
   @include homepage-theme.theme($theme);
-  @include image-gallery-page-theme.theme($theme);
+  @include gallery-page-theme.theme($theme);
   @include not-found-page-theme.theme($theme);
+  @include post-create-page-theme.theme($theme);
+  @include post-details-page-theme.theme($theme);
+  @include post-grid-page-theme.theme($theme);
   @include signin-page-theme.theme($theme);
 
   // post themes
@@ -97,6 +106,7 @@
   @include post-details-theme.theme($theme);
   @include post-form-theme.theme($theme);
   @include post-grid-theme.theme($theme);
+  @include post-menu-theme.theme($theme);
   @include post-table-theme.theme($theme);
   @include recent-posts-theme.theme($theme);
 }

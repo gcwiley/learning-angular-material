@@ -32,7 +32,7 @@ export class AlbumDeleteDirective {
     this.confirm
       .openCustomConfirmDialog(CustomConfirmDialog.Delete)
       .pipe(
-        first(),
+        first(), // this ensures the observable completes after the first value
         filter((res) => !!res),
         switchMap(() => this.albumService.deleteAlbumById(this.id()))
       )
@@ -44,11 +44,9 @@ export class AlbumDeleteDirective {
         },
         // if the deletion fails, it opens a 'failed' snackbar
         error: (error) => {
-          this.snackbar.open(
-            'Deletion failed: ' + (error?.error?.message || 'Unknown error'),
-            'CLOSE',
-            { duration: 5000 }
-          );
+          // log error to console
+          console.error('Unable to delete album:', error);
+          this.snackbar.open('Unable to delete album.', 'CLOSE', { duration: 5000 });
         },
       });
   }

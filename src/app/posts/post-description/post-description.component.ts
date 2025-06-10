@@ -1,7 +1,11 @@
 import { ChangeDetectionStrategy, Component, OnInit, OnDestroy } from '@angular/core';
+import { DatePipe } from '@angular/common';
 import { ActivatedRoute, RouterModule } from '@angular/router';
 import { Subject } from 'rxjs';
 import { takeUntil } from 'rxjs';
+
+// angular material
+import { MatDividerModule } from '@angular/material/divider';
 
 // post service and interface
 import { PostService } from '../../services/post.service';
@@ -13,7 +17,7 @@ import { Post } from '../../types/post.interface';
   templateUrl: './post-description.component.html',
   styleUrl: './post-description.component.scss',
   changeDetection: ChangeDetectionStrategy.OnPush,
-  imports: [RouterModule],
+  imports: [RouterModule, MatDividerModule, DatePipe],
 })
 export class PostDescriptionComponent implements OnInit, OnDestroy {
   post!: Post; // initialize explicitly

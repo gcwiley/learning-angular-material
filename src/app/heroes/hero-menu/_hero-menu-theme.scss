@@ -2,16 +2,15 @@
 
 // color mixin
 @mixin color($theme) {
-   .post-menu-container {
+   .hero-menu {
       color: mat.get-theme-color($theme, primary, 50);
-      // background-color: mat.get-theme-color($theme, secondary, 90);
    }
 }
 
 // typography mixin
 @mixin typography($theme) {
-   .post-menu-container {
-      font: mat.get-theme-typography($theme, body-medium);
+   .hero-menu {
+      font: mat.get-theme-typography($theme, body-small);
    }
 }
 

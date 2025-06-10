@@ -1,1 +1,14 @@
-<p>search-bar works!</p>
+<div class="search-bar-container">
+  <mat-form-field class="search-bar" appearance="outline">
+    <mat-label>Search</mat-label>
+    <input
+      matInput
+      [formControl]="searchControl"
+      (keyup.enter)="onSearch()"
+      placeholder="Search Posts"
+      aria-label="Search Posts" />
+    <button mat-icon-button matSuffix type="button" aria-label="Search" (click)="onSearch()">
+      <mat-icon>search</mat-icon>
+    </button>
+  </mat-form-field>
+</div>

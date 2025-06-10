@@ -1,13 +1,28 @@
-import { ChangeDetectionStrategy, Component } from '@angular/core';
+import { ChangeDetectionStrategy, Component, Input } from '@angular/core';
+import { RouterModule } from '@angular/router';
+
+// angular material
+import { MatButtonModule } from '@angular/material/button';
+import { MatIconModule } from '@angular/material/icon';
+import { MatTooltipModule } from '@angular/material/tooltip';
+
+// post directive
+import { PostDeleteDirective } from '../../directives/post-delete.directive'
 
 @Component({
   standalone: true,
   selector: 'app-post-menu',
-  imports: [],
   templateUrl: './post-menu.component.html',
   styleUrl: './post-menu.component.scss',
   changeDetection: ChangeDetectionStrategy.OnPush,
+  imports: [RouterModule, MatButtonModule, MatIconModule, MatTooltipModule, PostDeleteDirective],
 })
 export class PostMenuComponent {
+  @Input() postId!: string;
+  isFavorite = false;
 
+  public toggleFavorite() {
+    this.isFavorite = !this.isFavorite;
+    // optionally, call a service to persist favorite state
+  }
 }

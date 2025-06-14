@@ -1,0 +1,9 @@
+@use '../../../styles/helpers/constants';
+
+.gallery-page-container {
+  max-width: constants.$max-width;
+  margin: auto;
+  display: flex;
+  flex-direction: row;
+  min-height: 100vh;
+}

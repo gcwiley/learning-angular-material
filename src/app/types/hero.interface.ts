@@ -3,7 +3,7 @@ export interface Hero {
   id: string;
   name: string;
   alterEgo: string;
-  placeOfOrgin: string;
+  placeOfOrigin: string;
   abilities: string;
   biography: string;
   createdAt: string;

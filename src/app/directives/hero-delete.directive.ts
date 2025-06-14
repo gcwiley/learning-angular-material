@@ -15,7 +15,7 @@ import {
   selector: '[appHeroDelete]',
   standalone: true,
 })
-export class AlbumDeleteDirective {
+export class HeroDeleteDirective {
   public id = input.required<string>({ alias: 'appHeroDelete' });
 
   @Output() public deleted = new EventEmitter<string>();
@@ -32,7 +32,7 @@ export class AlbumDeleteDirective {
     this.confirm
       .openCustomConfirmDialog(CustomConfirmDialog.Delete)
       .pipe(
-        first(),
+        first(), // this ensure the observable completes after the first value
         filter((res) => !!res),
         switchMap(() => this.heroService.deleteHeroById(this.id()))
       )
@@ -40,15 +40,13 @@ export class AlbumDeleteDirective {
         next: () => {
           this.deleted.emit(this.id());
           // opens a success snackbar
-          this.snackbar.open('Hero deleted successfully', 'CLOSE', { duration: 5000 });
+          this.snackbar.open('Hero deleted successfully', 'Close', { duration: 5000 });
         },
         // if the deletion fails, it opens a 'failed' snackbar
         error: (error) => {
-          this.snackbar.open(
-            'Deletion failed: ' + (error?.error?.message || 'Unknown error'),
-            'CLOSE',
-            { duration: 5000 }
-          );
+          // log error to console
+          console.error('Unable to delete album:', error);
+          this.snackbar.open('Unable to delete album', 'CLOSE', { duration: 5000 });
         },
       });
   }

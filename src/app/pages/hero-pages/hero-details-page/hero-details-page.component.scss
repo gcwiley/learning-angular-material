@@ -1,18 +1,19 @@
 @use '../../../../styles/helpers/constants';
 
 .hero-details-page-container {
-   max-width: constants.$max-width;
-   margin: auto;
-   display: flex;
-   min-height: 100vh;
+  max-width: constants.$max-width;
+  margin: auto;
+  display: flex;
+  flex-direction: row;
+  min-height: 100vh;
 }
 
 .hero-description {
-   flex-basis: 70%;
-   max-width: 70%;
+  flex-basis: constants.$main-content-flex-basis;
+  max-width: constants.$main-content-max-width;
 }
 
 .hero-details {
-   flex-basis: 30%;
-   max-width: 30%;
+  flex-basis: constants.$side-content-flex-basis;
+  max-width: constants.$side-content-max-width;
 }

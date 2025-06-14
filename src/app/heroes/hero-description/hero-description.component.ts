@@ -18,8 +18,6 @@ import { Hero } from '../../types/hero.interface';
 export class HeroDescriptionComponent implements OnInit, OnDestroy {
   hero!: Hero; // initialize explicity
   private destroy$ = new Subject<void>(); // subject to signal destruction
-  public hasError = false;
-  public isLoading = false;
 
   constructor(private route: ActivatedRoute, private heroService: HeroService) {}
 
@@ -36,8 +34,6 @@ export class HeroDescriptionComponent implements OnInit, OnDestroy {
     const id = this.route.snapshot.paramMap.get('id');
     if (!id) {
       console.error('Hero ID not found in route parameters.');
-      this.hasError = true;
-      this.isLoading = false;
       return;
     }
     this.heroService
@@ -48,7 +44,6 @@ export class HeroDescriptionComponent implements OnInit, OnDestroy {
           this.hero = hero;
         },
         error: (error) => {
-          this.hasError = true;
           console.error('Error fetching hero description:', error);
         },
       });

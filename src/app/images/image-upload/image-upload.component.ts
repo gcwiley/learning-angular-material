@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { ChangeDetectionStrategy, Component } from '@angular/core';
 import { Router } from '@angular/router';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
@@ -6,31 +6,32 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { ImageService } from '../../services/image.service';
 
 @Component({
-   standalone: true,
-   selector: 'app-image-upload',
-   templateUrl: './image-upload.component.html',
-   styleUrls: ['./image-upload.component.scss'],
-   imports: [ReactiveFormsModule, FormsModule],
+  standalone: true,
+  selector: 'app-image-upload',
+  templateUrl: './image-upload.component.html',
+  styleUrls: ['./image-upload.component.scss'],
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  imports: [ReactiveFormsModule, FormsModule],
 })
 export class ImageUploadComponent {
-   titleValue = '';
+  titleValue = '';
 
-   selectedFile: File | null = null;
+  selectedFile: File | null = null;
 
-   constructor(private imageService: ImageService, private router: Router) {}
+  constructor(private imageService: ImageService, private router: Router) {}
 
-   onFileSelect(): void {
-      // this.selectedFile = event.target.files[0];
-   }
+  public onFileSelect(): void {
+    this.selectedFile = event.target.files[0];
+  }
 
-   onClickUpload(): void {
-      if (this.selectedFile) {
-         const formData = new FormData();
+  public onClickUpload(): void {
+    if (this.selectedFile) {
+      const formData = new FormData();
 
-         formData.append('title', this.titleValue);
-         formData.append('file', this.selectedFile);
+      formData.append('title', this.titleValue);
+      formData.append('file', this.selectedFile);
 
-         this.imageService.uploadImage(formData).subscribe(() => this.router.navigateByUrl('/'));
-      }
-   }
+      this.imageService.uploadImage(formData).subscribe(() => this.router.navigateByUrl('/'));
+    }
+  }
 }

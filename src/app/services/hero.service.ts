@@ -23,7 +23,7 @@ export class HeroService {
     );
   }
 
-  // GET: a individual hero by ID. Will 404 error if the ID is not found
+  // GET: an individual hero by ID. Will 404 error if the ID is not found
   public getHeroById(id: string): Observable<Hero> {
     const url = `${this.heroesUrl}/${id}`;
     return this.http.get<{ data: Hero }>(url).pipe(

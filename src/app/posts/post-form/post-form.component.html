@@ -10,9 +10,14 @@
           <!-- title -->
           <mat-form-field class="full-width" appearance="outline">
             <mat-label>Title</mat-label>
-            <input matInput type="text" formControlName="title" placeholder="Title" />
+            <input
+              matInput
+              type="text"
+              formControlName="title"
+              placeholder="Title"
+              aria-describedby="title-error" />
             @if (this.postForm.controls['title'].hasError('required')) {
-            <mat-error>Please enter a post title.</mat-error>
+            <mat-error id="title-error">Please enter a post title.</mat-error>
             }
           </mat-form-field>
         </div>
@@ -65,9 +70,9 @@
           <!-- body -->
           <mat-form-field class="full-width" appearance="outline">
             <mat-label>Content</mat-label>
-            <textarea matInput rows="8" formControlName="body" title="Body"></textarea>
+            <textarea matInput rows="8" formControlName="body" title="Body" aria-describedby="body-error"></textarea>
             @if (this.postForm.controls['body'].hasError('required')) {
-            <mat-error>Please provide content for your post.</mat-error>
+            <mat-error id="body-error">Please provide content for your post.</mat-error>
             }
           </mat-form-field>
         </div>
@@ -80,7 +85,7 @@
       } @else {
       <button mat-flat-button type="submit" [disabled]="!postForm.valid">Update</button>
       }
-      <button mat-flat-button type="button">Clear</button>
+      <button mat-flat-button type="button" (click)="postForm.reset()">Clear</button>
     </mat-card-actions>
   </mat-card>
 </form>

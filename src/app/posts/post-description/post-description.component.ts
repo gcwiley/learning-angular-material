@@ -22,8 +22,6 @@ import { Post } from '../../types/post.interface';
 export class PostDescriptionComponent implements OnInit, OnDestroy {
   post!: Post; // initialize explicitly
   private destroy$ = new Subject<void>(); // subject to signal destruction
-  public hasError = false;
-  public isLoading = false;
 
   constructor(private route: ActivatedRoute, private postService: PostService) {}
 
@@ -40,8 +38,6 @@ export class PostDescriptionComponent implements OnInit, OnDestroy {
     const id = this.route.snapshot.paramMap.get('id');
     if (!id) {
       console.error('Post ID not found in route parameters.');
-      this.hasError = true;
-      this.isLoading = false;
       return;
     }
     this.postService
@@ -52,7 +48,6 @@ export class PostDescriptionComponent implements OnInit, OnDestroy {
           this.post = post;
         },
         error: (error) => {
-          this.hasError = true;
           console.error('Error fetching post description:', error);
         },
       });

@@ -2,22 +2,18 @@ import { AfterViewInit, Component, ViewChild, ChangeDetectionStrategy } from '@a
 import { Router, RouterModule } from '@angular/router';
 import { CommonModule } from '@angular/common';
 
-// import the angular material modules
+// angular material
 import { MatRippleModule } from '@angular/material/core';
 import { MatTableModule, MatTableDataSource } from '@angular/material/table';
 import { MatIconModule } from '@angular/material/icon';
 import { MatButtonModule } from '@angular/material/button';
 import { MatTooltipModule } from '@angular/material/tooltip';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
-
-// import mat paginator and mat sort
 import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
 
-// ablum service
+// ablum service and interface
 import { AlbumService } from '../../services/album.service';
-
-// album interface
 import { Album } from '../../types/album.interface';
 
 @Component({
@@ -67,14 +63,14 @@ export class AlbumTableComponent implements AfterViewInit {
    constructor(private albumService: AlbumService, private router: Router) {}
 
    // A callback method that is invoked immediately after Angular has completed initialization of a component's view.
-   ngAfterViewInit(): void {
+   public ngAfterViewInit(): void {
       this.dataSource.sort = this.sort;
       this.dataSource.paginator = this.paginator;
       this.getAlbums();
    }
 
    // gets all heroes from hero service
-   getAlbums(): void {
+   public getAlbums(): void {
       this.albumService.getAlbums().subscribe((albums) => {
          this.dataSource.data = albums;
          this.isLoadingResults = false;

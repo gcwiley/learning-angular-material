@@ -4,7 +4,11 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
 import { NavBarComponent, FooterComponent } from '../../../components';
 
 // album components
-import { AlbumDescriptionComponent, AlbumDetailsComponent } from '../../../albums';
+import {
+  AlbumDescriptionComponent,
+  AlbumMenuComponent,
+  AlbumDetailsComponent,
+} from '../../../albums';
 
 @Component({
   standalone: true,
@@ -12,11 +16,6 @@ import { AlbumDescriptionComponent, AlbumDetailsComponent } from '../../../album
   templateUrl: './album-details-page.component.html',
   styleUrl: './album-details-page.component.scss',
   changeDetection: ChangeDetectionStrategy.OnPush,
-  imports: [
-    NavBarComponent,
-    FooterComponent,
-    AlbumDescriptionComponent,
-    AlbumDetailsComponent,
-  ],
+  imports: [NavBarComponent, FooterComponent, AlbumDescriptionComponent, AlbumDetailsComponent, AlbumMenuComponent],
 })
 export class AlbumDetailsPageComponent {}

@@ -73,7 +73,7 @@ export class HeroFormComponent implements OnInit {
             // set value for every form control
             name: this.hero.name,
             alterEgo: this.hero.alterEgo,
-            placeOfOrigin: this.hero.placeOfOrgin,
+            placeOfOrigin: this.hero.placeOfOrigin,
             abilities: this.hero.abilities,
             biography: this.hero.biography,
           });

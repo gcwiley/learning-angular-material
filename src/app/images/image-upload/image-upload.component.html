@@ -1,12 +1,12 @@
 <div class="container">
-   <h1>Upload a New Image</h1>
+  <h1>Upload a New Image</h1>
 
-   <label
-      >Title:
-      <input type="text" placeholder="Enter a title for the new image" [(ngModel)]="titleValue" />
-   </label>
+  <label
+    >Title:
+    <input type="text" placeholder="Enter a title for the new image" [(ngModel)]="titleValue" />
+  </label>
 
-   <input type="file" accept="image/png, image/jpeg" (change)="onFileSelect($event)" placeholder="File" />
+  <input type="file" accept="image/png, image/jpeg" (change)="onFileSelect()" placeholder="File" />
 
-   <button (click)="onClickUpload()">Upload</button>
+  <button (click)="onClickUpload()">Upload</button>
 </div>

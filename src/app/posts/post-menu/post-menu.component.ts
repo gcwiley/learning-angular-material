@@ -6,16 +6,13 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
 import { MatTooltipModule } from '@angular/material/tooltip';
 
-// post directive
-import { PostDeleteDirective } from '../../directives/post-delete.directive'
-
 @Component({
   standalone: true,
   selector: 'app-post-menu',
   templateUrl: './post-menu.component.html',
   styleUrl: './post-menu.component.scss',
   changeDetection: ChangeDetectionStrategy.OnPush,
-  imports: [RouterModule, MatButtonModule, MatIconModule, MatTooltipModule, PostDeleteDirective],
+  imports: [RouterModule, MatButtonModule, MatIconModule, MatTooltipModule ],
 })
 export class PostMenuComponent {
   @Input() postId!: string;

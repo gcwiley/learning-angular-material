@@ -23,8 +23,6 @@ import { Album } from '../../types/album.interface';
 export class AlbumDetailsComponent implements OnInit, OnDestroy {
   album!: Album; // initialize explicitly
   private destroy$ = new Subject<void>(); // subject to signal destruction
-  public hasError = false;
-  public isLoading = false;
 
   constructor(private route: ActivatedRoute, private albumService: AlbumService) {}
 
@@ -41,8 +39,6 @@ export class AlbumDetailsComponent implements OnInit, OnDestroy {
     const id = this.route.snapshot.paramMap.get('id');
     if (!id) {
       console.error('Album ID not found in route parameter.');
-      this.hasError = true;
-      this.isLoading = false;
       return;
     }
     this.albumService
@@ -53,7 +49,6 @@ export class AlbumDetailsComponent implements OnInit, OnDestroy {
           this.album = album;
         },
         error: (error) => {
-          this.hasError = true;
           console.error('Error fetching album details:', error);
         },
       });

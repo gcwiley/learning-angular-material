@@ -10,9 +10,9 @@
           <!-- title -->
           <mat-form-field class="full-width" appearance="outline">
             <mat-label>Title</mat-label>
-            <input matInput type="text" formControlName="title" placeholder="Title" />
+            <input matInput type="text" formControlName="title" placeholder="Title" aria-describedby="title-error"/>
             @if (this.albumForm.controls['title'].hasError('required')) {
-              <mat-error>Please provide an album title.</mat-error>
+              <mat-error id="title-error">Please provide an album title.</mat-error>
             }
           </mat-form-field>
         </div>
@@ -78,6 +78,7 @@
           <mat-form-field class="full-width" appearance="outline">
             <mat-label>Genre</mat-label>
             <mat-select formControlName="genre">
+              <mat-option value="" disabled>Select Genre</mat-option>
               @for (genre of genres; track genre) {
                 <mat-option [value]="genre.value">{{
                   genre.viewValue
@@ -115,7 +116,7 @@
       } @else {
         <button mat-flat-button type="submit" [disabled]="!albumForm.valid">Update</button>
       }
-      <button mat-flat-button type="button">Clear</button>
+      <button mat-flat-button type="button" (click)="albumForm.reset()">Clear</button>
     </mat-card-actions>
   </mat-card>
 </form>

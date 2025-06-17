@@ -1,14 +1,11 @@
 <nav class="post-menu-container" aria-label="Post Menu">
-  <a mat-icon-button routerLink="/" matTooltip="Go Home" aria-label="Go Home">
+  <a mat-icon-button routerLink="/" matTooltip="Go to Home" aria-label="Go Home">
     <mat-icon>home</mat-icon>
   </a>
   <a mat-icon-button [routerLink]="['/posts', postId, 'edit']" matTooltip="Edit Post" aria-label="Edit Post">
     <mat-icon>edit</mat-icon>
   </a>
-  <button mat-icon-button matTooltip="Delete Post" aria-label="Delete Post" [appPostDelete]="postId">
-    <mat-icon>delete</mat-icon>
-  </button>
-  <button mat-icon-button matTooltip="{{ isFavorite ? 'Unforite Post' : 'Favorte Post' }}" aria-label="Favorite Post" (click)="toggleFavorite()">
+  <button mat-icon-button matTooltip="{{ isFavorite ? 'Unfavorite Post' : 'Favorite Post' }}" aria-label="Favorite Post" (click)="toggleFavorite()">
     <mat-icon>{{ isFavorite ? 'star' : 'star_border' }}</mat-icon>
   </button>
 </nav>

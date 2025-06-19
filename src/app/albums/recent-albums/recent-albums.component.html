@@ -5,7 +5,7 @@
   @for (album of albums; track album.id) {
   <mat-list-item lines="2">
     <span matListItemTitle>{{ album.title }}</span>
-    <span matListItemLine>Added: {{ album.createdAt | date }}</span>
+    <span matListItemLine>Added: {{ album.createdAt | date : 'medium' }}</span>
   </mat-list-item>
   } } @else {
   <mat-list-item lines="1">

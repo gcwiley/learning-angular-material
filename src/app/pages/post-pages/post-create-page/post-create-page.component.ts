@@ -1,7 +1,7 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
 
 // shared components
-import { NavBarComponent, FooterComponent } from '../../../components';
+import { NavBarComponent, ClockComponent, FooterComponent } from '../../../components';
 
 // post components
 import { PostFormComponent, RecentPostsComponent } from '../../../posts';
@@ -14,6 +14,7 @@ import { PostFormComponent, RecentPostsComponent } from '../../../posts';
   changeDetection: ChangeDetectionStrategy.OnPush,
   imports: [
     NavBarComponent,
+    ClockComponent,
     FooterComponent,
     PostFormComponent,
     RecentPostsComponent,

@@ -1,8 +1,6 @@
 @use '../../../styles/helpers/constants';
 
 .recent-posts {
-  width: 100%;
-  // margin-top: 2rem;
   margin: constants.$margin;
   padding: constants.$padding;
   border-style: constants.$border-style;

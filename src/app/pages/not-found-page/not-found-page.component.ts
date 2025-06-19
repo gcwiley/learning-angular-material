@@ -5,9 +5,6 @@ import { RouterModule } from '@angular/router';
 // angular material
 import { MatButtonModule } from '@angular/material/button';
 
-// shared components
-import { NavBarComponent, FooterComponent } from '../../components';
-
 @Component({
   standalone: true,
   selector: 'app-not-found-page',
@@ -18,8 +15,6 @@ import { NavBarComponent, FooterComponent } from '../../components';
     CommonModule,
     RouterModule,
     MatButtonModule,
-    NavBarComponent,
-    FooterComponent,
   ],
 })
 export class NotFoundPageComponent {}

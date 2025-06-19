@@ -1,3 +1,4 @@
+/* eslint-disable @angular-eslint/prefer-inject */
 import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
 import {
   FormBuilder,
@@ -18,9 +19,6 @@ import { MatCheckboxModule } from '@angular/material/checkbox';
 import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
 import { MatSnackBar } from '@angular/material/snack-bar';
-
-// shared components
-import { FooterComponent } from '../../components';
 
 // auth service
 import { AuthService } from '../../services/auth.service';
@@ -46,7 +44,6 @@ const ERROR_MESSAGES = {
     MatCheckboxModule,
     MatButtonModule,
     MatIconModule,
-    FooterComponent,
     FormsModule,
   ],
 })
@@ -57,12 +54,12 @@ export class SigninPageComponent implements OnInit {
 
   constructor(
     private formBuilder: FormBuilder,
-    private authService: AuthService,
     private router: Router,
-    private snackbar: MatSnackBar
+    private authService: AuthService,
+    private snackbar: MatSnackBar,
   ) {}
 
-  ngOnInit(): void {
+  public ngOnInit(): void {
     this.initializeForm();
   }
 

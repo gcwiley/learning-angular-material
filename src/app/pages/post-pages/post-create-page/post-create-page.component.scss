@@ -8,12 +8,12 @@
   flex-direction: row;
 }
 
-.post-form {
+.main-content {
   flex-basis: constants.$main-content-flex-basis;
   max-width: constants.$main-content-max-width;
 }
 
-.recent-posts {
+.side-content {
   flex-basis: constants.$side-content-flex-basis;
   max-width: constants.$side-content-max-width;
 }

@@ -8,9 +8,9 @@
       <!-- name -->
       <mat-form-field class="full-width" appearance="outline">
         <mat-label>Name</mat-label>
-        <input matInput type="text" formControlName="name" placeholder="name" />
+        <input matInput type="text" formControlName="name" placeholder="name" aria-describedby="name-error"/>
         @if (this.heroForm.controls['name'].hasError('required')) {
-        <mat-error>Please enter a hero name.</mat-error>
+        <mat-error id="name-error">Please enter a hero name.</mat-error>
         }
       </mat-form-field>
 
@@ -47,9 +47,9 @@
           <!-- abilities -->
           <mat-form-field class="full-width" appearance="outline">
             <mat-label>Abilities</mat-label>
-            <input matInput type="text" formControlName="abilties" placeholder="Abilities" />
+            <input matInput type="text" formControlName="abilties" placeholder="Abilities" aria-describedby="abilities-error"/>
             @if (this.heroForm.controls['abilities'].hasError('required')) {
-            <mat-error>Please provide abilties.</mat-error>
+            <mat-error id="abilities-error">Please provide abilties.</mat-error>
             }
           </mat-form-field>
         </div>

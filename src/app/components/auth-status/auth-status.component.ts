@@ -20,6 +20,7 @@ import { MatButtonModule } from '@angular/material/button';
   imports: [CommonModule, RouterModule, MatToolbarModule, MatButtonModule],
 })
 export class AuthStatusComponent {
+  // inject dependencies
   private authService = inject(AuthService);
   private router = inject(Router);
 

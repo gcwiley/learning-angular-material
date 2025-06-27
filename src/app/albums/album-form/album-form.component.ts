@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
+import { ChangeDetectionStrategy, Component, OnInit, inject } from '@angular/core';
 import { FormBuilder, Validators, FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { ActivatedRoute, ParamMap, Router } from '@angular/router';
 
@@ -15,7 +15,7 @@ import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatNativeDateModule } from '@angular/material/core';
 import { MatSnackBar } from '@angular/material/snack-bar';
 
-// album service and interface
+// album service and interfaces
 import { AlbumService } from '../../services/album.service';
 import { Album, AlbumInput, AlbumGenre } from '../../types/album.interface';
 
@@ -47,13 +47,12 @@ export class AlbumFormComponent implements OnInit {
 
   genres: AlbumGenre[] = ALBUM_GENRES;
 
-  constructor(
-    private formBuilder: FormBuilder,
-    private router: Router,
-    public route: ActivatedRoute,
-    private albumService: AlbumService,
-    private snackBar: MatSnackBar
-  ) {}
+  // inject dependencies
+  private formBuilder = inject(FormBuilder);
+  private router = inject(Router);
+  private route = inject(ActivatedRoute);
+  private albumService = inject(AlbumService);
+  private snackBar = inject(MatSnackBar);
 
   // create the album form
   albumForm = this.formBuilder.group({

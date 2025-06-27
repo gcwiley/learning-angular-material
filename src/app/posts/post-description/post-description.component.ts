@@ -1,8 +1,9 @@
-import { ChangeDetectionStrategy, Component, OnInit, OnDestroy } from '@angular/core';
+import { ChangeDetectionStrategy, Component, OnInit, OnDestroy, inject } from '@angular/core';
 import { DatePipe } from '@angular/common';
 import { ActivatedRoute, RouterModule } from '@angular/router';
-import { Subject } from 'rxjs';
-import { takeUntil } from 'rxjs';
+
+// rxjs
+import { Subject, takeUntil } from 'rxjs';
 
 // angular material
 import { MatDividerModule } from '@angular/material/divider';
@@ -23,7 +24,9 @@ export class PostDescriptionComponent implements OnInit, OnDestroy {
   post!: Post; // initialize explicitly
   private destroy$ = new Subject<void>(); // subject to signal destruction
 
-  constructor(private route: ActivatedRoute, private postService: PostService) {}
+  // inject dependencies
+  private route = inject(ActivatedRoute);
+  private postService = inject(PostService);
 
   public ngOnInit(): void {
     this.getPostById();

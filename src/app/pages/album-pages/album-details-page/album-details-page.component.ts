@@ -19,3 +19,5 @@ import {
   imports: [NavBarComponent, FooterComponent, AlbumDescriptionComponent, AlbumDetailsComponent, AlbumMenuComponent],
 })
 export class AlbumDetailsPageComponent {}
+
+// fix this!

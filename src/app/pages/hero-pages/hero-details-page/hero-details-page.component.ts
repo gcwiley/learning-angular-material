@@ -6,6 +6,8 @@ import { NavBarComponent, FooterComponent } from '../../../components';
 // hero components
 import { HeroDetailsComponent, HeroDescriptionComponent, HeroMenuComponent } from '../../../heroes';
 
+
+
 @Component({
   standalone: true,
   selector: 'app-hero-details-page',

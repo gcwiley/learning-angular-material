@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, Component } from '@angular/core';
+import { ChangeDetectionStrategy, Component, inject } from '@angular/core';
 import { Router } from '@angular/router';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
@@ -15,10 +15,11 @@ import { ImageService } from '../../services/image.service';
 })
 export class ImageUploadComponent {
   titleValue = '';
-
   selectedFile: File | null = null;
 
-  constructor(private imageService: ImageService, private router: Router) {}
+  // inject dependencies
+  private imageService = inject(ImageService);
+  private router = inject(Router);
 
   public onFileSelect(): void {
     this.selectedFile = event.target.files[0];

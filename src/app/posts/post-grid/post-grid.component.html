@@ -20,10 +20,10 @@
 </mat-grid-list>
 
 <!-- Handle loading/empty states (optional but recommended) -->
-
 @if ((posts | async) === null) {
   <ng-container>
     <p>Loading posts...</p>
+    <!-- fix this! -->
     <!-- add angular material spinner -->
   </ng-container>
   } @if ((posts | async)?.length === 0) {

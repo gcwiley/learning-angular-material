@@ -1,5 +1,3 @@
-@use '@angular/material' as mat;
-
 // ALBUM COMPONENT THEMES
 @use '../app/albums/album-description/album-description-theme';
 @use '../app/albums/album-details/album-details-theme';
@@ -59,14 +57,16 @@
 
 // styles for the app that are based on the current theme
 @mixin theme($theme) {
-  // album components
+  // album components themes
   @include album-description-theme.theme($theme);
   @include album-details-theme.theme($theme);
   @include album-form-theme.theme($theme);
+  @include album-grid-theme.theme($theme);
+  @include album-menu-theme.theme($theme);
   @include album-table-theme.theme($theme);
   @include recent-albums-theme.theme($theme);
 
-  // shared components
+  // shared components themes
   @include action-bar-theme.theme($theme);
   @include announcement-bar-theme.theme($theme);
   @include auth-status-theme.theme($theme);

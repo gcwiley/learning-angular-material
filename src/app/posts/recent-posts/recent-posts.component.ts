@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
+import { ChangeDetectionStrategy, Component, OnInit, inject } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { Observable, catchError, of } from 'rxjs';
 
@@ -22,7 +22,8 @@ import { Post } from '../../types/post.interface';
 export class RecentPostsComponent implements OnInit {
   public recentPosts$!: Observable<Post[]>;
 
-  constructor(private postService: PostService) {}
+  // inject dependencies
+  private postService = inject(PostService);
 
   public ngOnInit(): void {
       // get the observable stream of recently added posts

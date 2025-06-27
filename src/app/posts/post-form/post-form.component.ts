@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
+import { ChangeDetectionStrategy, Component, OnInit, inject } from '@angular/core';
 import { FormBuilder, Validators, FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { ActivatedRoute, ParamMap, Router } from '@angular/router';
 
@@ -47,6 +47,13 @@ export class PostFormComponent implements OnInit {
 
   categories: PostCategory[] = POST_CATEGORIES;
 
+  // inject dependencies
+  private formBuilder = inject(FormBuilder);
+  private router = inject(Router);
+  private route = inject(ActivatedRoute);
+  private postService = inject(PostService);
+  private snackBar = inject(MatSnackBar);
+
   // create the post form
   postForm = this.formBuilder.group({
     title: ['', Validators.required],
@@ -56,14 +63,6 @@ export class PostFormComponent implements OnInit {
     favorite: [false, Validators.required],
     date: ['', Validators.required],
   });
-
-  constructor(
-    private formBuilder: FormBuilder,
-    private router: Router,
-    public route: ActivatedRoute,
-    private postService: PostService,
-    private snackBar: MatSnackBar
-  ) {}
 
   public ngOnInit(): void {
     // find out if an 'id' exists or not

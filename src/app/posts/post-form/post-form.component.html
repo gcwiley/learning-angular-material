@@ -1,4 +1,4 @@
-<form [formGroup]="postForm" novalidate (ngSubmit)="onSavePost()">
+<form [formGroup]="postForm" novalidate (ngSubmit)="onSavePost()" aria-label="Post Form">
   <mat-card class="post-form" appearance="outlined">
     <mat-card-header>
       <mat-card-title>New Post</mat-card-title>
@@ -28,9 +28,14 @@
           <!-- author -->
           <mat-form-field class="full-width" appearance="outline">
             <mat-label>Author</mat-label>
-            <input matInput type="text" formControlName="author" placeholder="Author" />
+            <input
+              matInput
+              type="text"
+              formControlName="author"
+              placeholder="Author"
+              aria-describedby="author-error" />
             @if (this.postForm.controls['author'].hasError('required')) {
-            <mat-error>Please enter an author.</mat-error>
+            <mat-error id="author-error">Please enter an author.</mat-error>
             }
           </mat-form-field>
         </div>
@@ -42,6 +47,7 @@
           <mat-form-field class="full-width" appearance="outline">
             <mat-label>Category</mat-label>
             <mat-select formControlName="category">
+              <mat-option value="" disabled>Select Category</mat-option>
               @for (category of categories; track category) {
               <mat-option [value]="category.value">{{ category.viewValue }}</mat-option>
               }
@@ -70,7 +76,12 @@
           <!-- body -->
           <mat-form-field class="full-width" appearance="outline">
             <mat-label>Content</mat-label>
-            <textarea matInput rows="8" formControlName="body" title="Body" aria-describedby="body-error"></textarea>
+            <textarea
+              matInput
+              rows="8"
+              formControlName="body"
+              title="Body"
+              aria-describedby="body-error"></textarea>
             @if (this.postForm.controls['body'].hasError('required')) {
             <mat-error id="body-error">Please provide content for your post.</mat-error>
             }

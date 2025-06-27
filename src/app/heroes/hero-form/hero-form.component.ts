@@ -1,5 +1,4 @@
-import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
-
+import { ChangeDetectionStrategy, Component, OnInit, inject } from '@angular/core';
 import { FormBuilder, Validators, FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { ActivatedRoute, ParamMap, Router } from '@angular/router';
 
@@ -52,6 +51,7 @@ export class HeroFormComponent implements OnInit {
     biography: ['', Validators.required],
   });
 
+  // fix this!
   constructor(
     private formBuilder: FormBuilder,
     private router: Router,
@@ -98,7 +98,7 @@ export class HeroFormComponent implements OnInit {
             this.snackBar.open('Hero created', 'CLOSE', {
               duration: 5000,
             });
-            // navigates user back to homepage
+            // navigates user back to the homepage
             this.router.navigateByUrl('/');
           },
           error: () => {
@@ -116,7 +116,7 @@ export class HeroFormComponent implements OnInit {
           this.snackBar.open('Hero updated', 'CLOSE', {
             duration: 5000,
           });
-          // navigates user back to homepage
+          // navigates user back to the homepage
           this.router.navigateByUrl('/');
         },
         error: () => {

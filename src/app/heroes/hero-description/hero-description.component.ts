@@ -1,7 +1,8 @@
-import { ChangeDetectionStrategy, Component, OnInit, OnDestroy } from '@angular/core';
+import { ChangeDetectionStrategy, Component, OnInit, OnDestroy, inject } from '@angular/core';
 import { ActivatedRoute, RouterModule } from '@angular/router';
-import { Subject } from 'rxjs';
-import { takeUntil } from 'rxjs';
+
+// rxjs
+import { Subject, takeUntil } from 'rxjs';
 
 // hero service and interface
 import { HeroService } from '../../services/hero.service';
@@ -19,7 +20,9 @@ export class HeroDescriptionComponent implements OnInit, OnDestroy {
   hero!: Hero; // initialize explicity
   private destroy$ = new Subject<void>(); // subject to signal destruction
 
-  constructor(private route: ActivatedRoute, private heroService: HeroService) {}
+  // inject dependencies
+  private route = inject(ActivatedRoute);
+  private heroService = inject(HeroService);
 
   public ngOnInit(): void {
     this.getHeroById();

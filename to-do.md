@@ -1,3 +1,3 @@
-1. google logo icon
+1. add google logo icon - add sign in with social feature
 
-3. update npm global packages
+2. 

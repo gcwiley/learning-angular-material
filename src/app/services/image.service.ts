@@ -1,4 +1,4 @@
-import { Injectable } from '@angular/core';
+import { Injectable, inject } from '@angular/core';
 import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { catchError, Observable, of, throwError, map } from 'rxjs';
 
@@ -15,7 +15,7 @@ export class ImageService {
   private imagesUrl = '/api/images'; // URL to web api
 
   // inject 'HttpClient" into the image service
-  constructor(private http: HttpClient) {}
+  private http = inject(HttpClient);
 
   // GET: all images from the server - GET IMAGES
   public getImages(): Observable<Image[]> {

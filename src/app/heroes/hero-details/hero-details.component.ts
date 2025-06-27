@@ -1,7 +1,8 @@
-import { ChangeDetectionStrategy, Component, OnInit, OnDestroy } from '@angular/core';
+import { ChangeDetectionStrategy, Component, OnInit, OnDestroy, inject } from '@angular/core';
 import { ActivatedRoute, RouterModule } from '@angular/router';
-import { Subject } from 'rxjs';
-import { takeUntil } from 'rxjs';
+
+// rxjs
+import { Subject, takeUntil } from 'rxjs';
 
 // angular material
 import { MatListModule } from '@angular/material/list';
@@ -21,9 +22,10 @@ import { Hero } from '../../types/hero.interface';
 export class HeroDetailsComponent implements OnInit, OnDestroy {
   hero!: Hero; // initialisze explicitly
   private destroy$ = new Subject<void>(); // subject to signal destruction
-  public isLoading = false;
 
-  constructor(private route: ActivatedRoute, private heroService: HeroService) {}
+  // inject dependencies
+  private route = inject(ActivatedRoute);
+  private heroService = inject(HeroService);
 
   public ngOnInit(): void {
     this.getHeroById();
@@ -38,7 +40,6 @@ export class HeroDetailsComponent implements OnInit, OnDestroy {
     const id = this.route.snapshot.paramMap.get('id');
     if (!id) {
       console.error('Hero ID not found in route parameters.');
-      this.isLoading = false;
       return;
     }
     this.heroService

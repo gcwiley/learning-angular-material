@@ -1,14 +1,18 @@
 <nav class="post-menu-container" aria-label="Album Menu">
+  <!-- home -->
   <a mat-icon-button routerLink="/" matTooltip="Go to Home" aria-label="Go Home">
     <mat-icon>home</mat-icon>
   </a>
+  <!-- edit album -->
   <a mat-icon-button [routerLink]="['/albums', albumId, 'edit']" matTooltip="Edit Post" aria-label="Edit Album">
     <mat-icon>edit</mat-icon>
   </a>
-  <button mat-icon-button matTooltip="Delete Album" aria-label="Delete Post" [appAlbumDelete]="albumId">
+  <!-- delete album -->
+  <button mat-icon-button matTooltip="Delete Album" aria-label="Delete Album" [appAlbumDelete]="albumId">
     <mat-icon>delete</mat-icon>
   </button>
-  <button mat-icon-button matTooltip="{{ isFavorite ? 'Unfarovite Album' : 'Favorte Album' }}" aria-label="Favorite Album" (click)="toggleFavorite()">
+  <!-- favorite album -->
+  <button mat-icon-button matTooltip="{{ isFavorite ? 'Unfarovite Album' : 'Favorite Album' }}" aria-label="Favorite Album" (click)="toggleFavorite()">
     <mat-icon>{{ isFavorite ? 'star' : 'star_border' }}</mat-icon>
   </button>
 </nav>

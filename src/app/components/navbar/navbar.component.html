@@ -9,16 +9,31 @@
     <!-- provide flexible space between title and icons -->
     <span class="flex-spacer"></span>
 
-    <button mat-icon-button class="icon" [matMenuTriggerFor]="menu" aria-label="Open navigation menu">
+    <button
+      mat-icon-button
+      class="icon"
+      [matMenuTriggerFor]="menu"
+      aria-label="Open navigation menu">
       <mat-icon>person</mat-icon>
     </button>
 
-    <!-- fix this - add icons -->
     <!-- draft nav menu for testing each page -->
     <mat-menu #menu="matMenu">
-      <a mat-menu-item routerLink="/" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">Home Page</a>
-      <a mat-menu-item routerLink="/about" routerLinkActive="active">About Page</a>
-      <a mat-menu-item routerLink="/admin" routerLinkActive="active">Admin Page</a>
+      <a
+        mat-menu-item
+        routerLink="/"
+        routerLinkActive="active"
+        [routerLinkActiveOptions]="{ exact: true }"
+        >Home Page</a
+      >
+      <a mat-menu-item routerLink="/about" routerLinkActive="active">
+        <mat-icon>home</mat-icon>
+        <span>About Page</span>
+      </a>
+      <a mat-menu-item routerLink="/admin" routerLinkActive="active">
+        <mat-icon>home</mat-icon>
+        <span>Admin Page</span>
+      </a>
       <mat-divider></mat-divider>
       <a mat-menu-item routerLink="/albums/create" routerLinkActive="active">Create Album</a>
       <a mat-menu-item routerLink="/heroes/create" routerLinkActive="active">Create Hero</a>

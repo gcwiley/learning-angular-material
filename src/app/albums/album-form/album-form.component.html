@@ -10,7 +10,7 @@
           <!-- title -->
           <mat-form-field class="full-width" appearance="outline">
             <mat-label>Title</mat-label>
-            <input matInput type="text" formControlName="title" placeholder="Title" aria-describedby="title-error"/>
+            <input matInput type="text" formControlName="title" placeholder="Title" aria-describedby="title-error" autocomplete="off"/>
             @if (this.albumForm.controls['title'].hasError('required')) {
               <mat-error id="title-error">Please provide an album title.</mat-error>
             }
@@ -55,7 +55,7 @@
             <mat-label>Label</mat-label>
             <input matInput type="text" formControlName="label" placeholder="Label" />
             @if (this.albumForm.controls['label'].hasError('required')) {
-              <mat-error>Please provide an album lable.</mat-error>
+              <mat-error>Please provide an album label.</mat-error>
             }
           </mat-form-field>
         </div>

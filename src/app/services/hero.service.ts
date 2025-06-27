@@ -1,4 +1,4 @@
-import { Injectable } from '@angular/core';
+import { Injectable, inject } from '@angular/core';
 import { HttpClient, HttpHeaders, HttpErrorResponse } from '@angular/common/http';
 import { catchError, Observable, of, throwError, map } from 'rxjs';
 
@@ -13,7 +13,7 @@ export class HeroService {
   private heroesUrl = '/api/heroes'; // URL to web api
 
   // inject the "HttpClient" into the Hero service
-  constructor(private http: HttpClient) {}
+  private http = inject(HttpClient);
 
   // GET: all heroes from the server - GET HEREOS
   public getHeroes(): Observable<Hero[]> {

@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
+import { ChangeDetectionStrategy, Component, OnInit, inject } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { Observable, catchError, of } from 'rxjs';
 
@@ -21,7 +21,8 @@ import { Album } from '../../types/album.interface';
 export class RecentAlbumsComponent implements OnInit {
   public recentAlbums$!: Observable<Album[]>;
 
-  constructor(private albumService: AlbumService) {}
+  // inject dependencies
+  private albumService = inject(AlbumService);
 
   public ngOnInit(): void {
     // get the observable stream of recently added albums

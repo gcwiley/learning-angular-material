@@ -34,13 +34,20 @@ import { Hero, HeroInput } from '../../types/hero.interface';
     MatDatepickerModule,
     MatNativeDateModule,
     FormsModule,
-    ReactiveFormsModule
-],
+    ReactiveFormsModule,
+  ],
 })
 export class HeroFormComponent implements OnInit {
   public mode = 'create';
   private id!: string;
   private hero!: Hero;
+
+  // inject dependencies
+  private formBuilder = inject(FormBuilder);
+  private router = inject(Router);
+  private route = inject(ActivatedRoute);
+  private heroService = inject(HeroService);
+  private snackBar = inject(MatSnackBar);
 
   // create the hero form
   heroForm = this.formBuilder.group({
@@ -50,15 +57,6 @@ export class HeroFormComponent implements OnInit {
     abilities: ['', Validators.required],
     biography: ['', Validators.required],
   });
-
-  // fix this!
-  constructor(
-    private formBuilder: FormBuilder,
-    private router: Router,
-    public route: ActivatedRoute,
-    private heroService: HeroService,
-    private snackBar: MatSnackBar
-  ) {}
 
   public ngOnInit(): void {
     // find out if we have a "id" or not

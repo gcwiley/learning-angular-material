@@ -11,6 +11,7 @@ import {
    QueryList,
    ViewChild,
    ViewEncapsulation,
+   inject
 } from '@angular/core';
 
 // import interface for focusable items
@@ -37,9 +38,9 @@ export class CarouselItemDirective implements FocusableOption {
    @HostBinding('attr.role') readonly role = 'listitem';
    @HostBinding('tabindex') tabindex = '-1';
 
-   constructor(readonly element: ElementRef<HTMLElement>) {}
+   readonly element = inject(ElementRef<HTMLElement>)
 
-   focus(): void {
+   public focus(): void {
       this.element.nativeElement.focus({ preventScroll: true });
    }
 }
@@ -67,7 +68,7 @@ export class CarouselComponent implements AfterContentInit {
    index = 0;
    private _keyManager!: FocusKeyManager<CarouselItemDirective>;
 
-   onKeydown({ keyCode }: KeyboardEvent) {
+   public onKeydown({ keyCode }: KeyboardEvent) {
       const manager = this._keyManager;
       const previousActiveIndex = manager.activeItemIndex; // index of the currently active item
 

@@ -1,4 +1,4 @@
-import { Directive, EventEmitter, HostListener, Output, input } from '@angular/core';
+import { Directive, EventEmitter, HostListener, Output, input, inject } from '@angular/core';
 import { filter, first, switchMap } from 'rxjs';
 
 // angular material
@@ -21,11 +21,9 @@ export class AlbumDeleteDirective {
   @Output() public deleted = new EventEmitter<string>();
 
   // initializes the directive dependencies
-  constructor(
-    private albumService: AlbumService,
-    private confirm: CustomConfirmDialogService,
-    private snackbar: MatSnackBar
-  ) {}
+  private albumService = inject(AlbumService);
+  private confirm = inject(CustomConfirmDialogService);
+  private snackBar = inject(MatSnackBar);
 
   @HostListener('click')
   public onClick(): void {
@@ -40,13 +38,13 @@ export class AlbumDeleteDirective {
         next: () => {
           this.deleted.emit(this.id());
           // opens a success snackbar
-          this.snackbar.open('Album deleted successfully', 'Close', { duration: 3000 });
+          this.snackBar.open('Album deleted successfully', 'Close', { duration: 3000 });
         },
         // if the deletion fails, it opens a 'failed' snackbar
         error: (error) => {
           // log error to console
           console.error('Unable to delete album:', error);
-          this.snackbar.open('Unable to delete album.', 'CLOSE', { duration: 5000 });
+          this.snackBar.open('Unable to delete album.', 'CLOSE', { duration: 5000 });
         },
       });
   }

@@ -1,4 +1,4 @@
-import { Directive, EventEmitter, HostListener, Output, input } from '@angular/core';
+import { Directive, EventEmitter, HostListener, Output, input, inject } from '@angular/core';
 import { filter, first, switchMap } from 'rxjs';
 
 // angular material
@@ -21,11 +21,9 @@ export class PostDeleteDirective {
   @Output() public deleted = new EventEmitter<string>();
 
   // intitialize the directive dependencies
-  constructor(
-    private postService: PostService,
-    private confirm: CustomConfirmDialogService,
-    private snackbar: MatSnackBar
-  ) {}
+  private postService = inject(PostService);
+  private confirm = inject(CustomConfirmDialogService);
+  private snackBar = inject(MatSnackBar);
 
   @HostListener('click')
   public onClick(): void {
@@ -40,7 +38,7 @@ export class PostDeleteDirective {
         next: () => {
           this.deleted.emit(this.id());
           // opens a success snackbar
-          this.snackbar.open('Post deleted successfully', 'Close', {
+          this.snackBar.open('Post deleted successfully', 'Close', {
             duration: 5000,
           });
         },
@@ -48,7 +46,7 @@ export class PostDeleteDirective {
         error: (error) => {
           // log error to console
           console.error('Unable to delete post:', error);
-          this.snackbar.open('Unable to delete post.', 'Close', {
+          this.snackBar.open('Unable to delete post.', 'Close', {
             duration: 5000,
           });
         },

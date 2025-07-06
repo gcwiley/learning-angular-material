@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
+import { ChangeDetectionStrategy, Component, OnInit, inject } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { Observable, catchError, of } from 'rxjs';
 
@@ -21,7 +21,8 @@ import { Hero } from '../../types/hero.interface';
 export class RecentHeroesComponent implements OnInit {
   public recentHeroes$!: Observable<Hero[]>;
 
-  constructor(private heroService: HeroService) {}
+  // inject dependencies
+  private heroService = inject(HeroService);
 
   public ngOnInit(): void {
     // get the observable stream of recently added heroes

@@ -1,16 +1,16 @@
 .hero-container {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    padding-top: 1rem;
-    padding-bottom: 1rem;
-    text-align: center;
-    background-image: url(../../../assets/images/banner_image.jpg);
-    background-size: cover;
-    background-position: center;
-    height: 250px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding-top: 1rem;
+  padding-bottom: 1rem;
+  text-align: center;
+  background-image: url(../../../assets/images/banner_image.jpg);
+  background-size: cover;
+  background-position: center;
+  height: 250px;
 }
 
 .hero-actions a {
-    margin: .5rem;
+  margin: 0.5rem;
 }

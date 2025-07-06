@@ -10,9 +10,14 @@
           <!-- title -->
           <mat-form-field class="full-width" appearance="outline">
             <mat-label>Title</mat-label>
-            <input matInput type="text" formControlName="title" placeholder="Title" aria-describedby="title-error" autocomplete="off"/>
+            <input
+              matInput
+              type="text"
+              formControlName="title"
+              placeholder="Title"
+              aria-describedby="title-error" />
             @if (this.albumForm.controls['title'].hasError('required')) {
-              <mat-error id="title-error">Please provide an album title.</mat-error>
+            <mat-error id="title-error">Please provide an album title.</mat-error>
             }
           </mat-form-field>
         </div>
@@ -23,9 +28,14 @@
           <!-- artist -->
           <mat-form-field class="full-width" appearance="outline">
             <mat-label>Artist</mat-label>
-            <input matInput type="text" formControlName="artist" placeholder="Artist" />
+            <input
+              matInput
+              type="text"
+              formControlName="artist"
+              placeholder="Artist"
+              aria-describedby="arist-error" />
             @if (this.albumForm.controls['artist'].hasError('required')) {
-              <mat-error>Please provide an artist.</mat-error>
+            <mat-error id="artist-error">Please provide an artist.</mat-error>
             }
           </mat-form-field>
         </div>
@@ -44,7 +54,7 @@
             <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
             <mat-datepicker #picker></mat-datepicker>
             @if (this.albumForm.controls['releaseDate'].hasError('required')) {
-              <mat-error>Please provide the release date of the album.</mat-error>
+            <mat-error>Please provide the release date of the album.</mat-error>
             }
           </mat-form-field>
         </div>
@@ -55,7 +65,7 @@
             <mat-label>Label</mat-label>
             <input matInput type="text" formControlName="label" placeholder="Label" />
             @if (this.albumForm.controls['label'].hasError('required')) {
-              <mat-error>Please provide an album label.</mat-error>
+            <mat-error>Please provide an album label.</mat-error>
             }
           </mat-form-field>
         </div>
@@ -68,7 +78,7 @@
             <mat-label>Studio</mat-label>
             <input matInput type="text" formControlName="studio" placeholder="Studio" />
             @if (this.albumForm.controls['studio'].hasError('required')) {
-              <mat-error>Please provide the studio.</mat-error>
+            <mat-error>Please provide the studio.</mat-error>
             }
           </mat-form-field>
         </div>
@@ -80,13 +90,11 @@
             <mat-select formControlName="genre">
               <mat-option value="" disabled>Select Genre</mat-option>
               @for (genre of genres; track genre) {
-                <mat-option [value]="genre.value">{{
-                  genre.viewValue
-                }}</mat-option>
+              <mat-option [value]="genre.value">{{ genre.viewValue }}</mat-option>
               }
             </mat-select>
             @if (this.albumForm.controls['genre'].hasError('required')) {
-              <mat-error>Please select a genre for the album.</mat-error>
+            <mat-error>Please select a genre for the album.</mat-error>
             }
           </mat-form-field>
         </div>
@@ -101,9 +109,9 @@
               matInput
               rows="8"
               formControlName="summary"
-            placeholder="About the album."></textarea>
+              placeholder="About the album."></textarea>
             @if (this.albumForm.controls['summary'].hasError('required')) {
-              <mat-error>Please provide a summary.</mat-error>
+            <mat-error>Please provide a summary.</mat-error>
             }
           </mat-form-field>
         </div>
@@ -112,9 +120,9 @@
 
     <mat-card-actions class="card-actions">
       @if (this.mode === 'create') {
-        <button mat-flat-button type="submit" [disabled]="!albumForm.valid">Create</button>
+      <button mat-flat-button type="submit" [disabled]="!albumForm.valid">Create</button>
       } @else {
-        <button mat-flat-button type="submit" [disabled]="!albumForm.valid">Update</button>
+      <button mat-flat-button type="submit" [disabled]="!albumForm.valid">Update</button>
       }
       <button mat-flat-button type="button" (click)="albumForm.reset()">Clear</button>
     </mat-card-actions>

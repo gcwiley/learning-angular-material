@@ -10,6 +10,7 @@ import { AuthService } from '../../services/auth.service';
 // angular material
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatButtonModule } from '@angular/material/button';
+import { MatChipsModule } from '@angular/material/chips';
 
 @Component({
   standalone: true,
@@ -17,7 +18,7 @@ import { MatButtonModule } from '@angular/material/button';
   templateUrl: './auth-status.component.html',
   styleUrl: './auth-status.component.scss',
   changeDetection: ChangeDetectionStrategy.OnPush,
-  imports: [CommonModule, RouterModule, MatToolbarModule, MatButtonModule],
+  imports: [CommonModule, RouterModule, MatToolbarModule, MatButtonModule, MatChipsModule],
 })
 export class AuthStatusComponent {
   // inject dependencies

@@ -1,4 +1,4 @@
-import { AfterViewInit, Component, ViewChild, ChangeDetectionStrategy } from '@angular/core';
+import { AfterViewInit, Component, ViewChild, ChangeDetectionStrategy, inject } from '@angular/core';
 import { Router, RouterModule } from '@angular/router';
 import { CommonModule } from '@angular/common';
 
@@ -60,7 +60,9 @@ export class AlbumTableComponent implements AfterViewInit {
       'openDialog',
    ];
 
-   constructor(private albumService: AlbumService, private router: Router) {}
+   // inject dependencies
+   private albumService = inject(AlbumService);
+   private router = inject(Router);
 
    // A callback method that is invoked immediately after Angular has completed initialization of a component's view.
    public ngAfterViewInit(): void {

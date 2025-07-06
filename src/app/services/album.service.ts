@@ -1,4 +1,4 @@
-import { Injectable } from '@angular/core';
+import { Injectable, inject } from '@angular/core';
 import { HttpClient, HttpHeaders, HttpErrorResponse, HttpParams } from '@angular/common/http';
 import { catchError, Observable, of, throwError, map } from 'rxjs';
 
@@ -15,7 +15,7 @@ export class AlbumService {
   private albumsUrl = '/api/albums'; // URL to web api
 
   // inject 'HttpClient" in the album service
-  constructor(private http: HttpClient) {}
+  private http = inject(HttpClient);
 
   // GET: albums from the database - GET ALL ALBUMS
   public getAlbums(): Observable<Album[]> {

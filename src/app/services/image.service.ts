@@ -1,12 +1,9 @@
 import { Injectable, inject } from '@angular/core';
 import { HttpClient, HttpErrorResponse } from '@angular/common/http';
-import { catchError, Observable, of, throwError, map } from 'rxjs';
+import { catchError, Observable, throwError, map } from 'rxjs';
 
 // image interfacees
-import { Image, ImageInput } from '../types/image.interface';
-
-// set up headers
-const headers = new HttpHeaders().set('Content-Type', 'application/json');
+import { Image } from '../types/image.interface';
 
 @Injectable({
   providedIn: 'root',

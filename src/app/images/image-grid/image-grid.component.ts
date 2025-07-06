@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
+import { ChangeDetectionStrategy, Component, OnInit, inject } from '@angular/core';
 import { CommonModule, AsyncPipe } from '@angular/common';
 import { Breakpoints, BreakpointObserver, BreakpointState } from '@angular/cdk/layout';
 import { RouterModule } from '@angular/router';
@@ -7,9 +7,6 @@ import { map, takeUntil } from 'rxjs/operators';
 
 // angular material
 import { MatGridListModule } from '@angular/material/grid-list';
-import { MatCardModule } from '@angular/material/card';
-import { MatIconModule } from '@angular/material/icon';
-import { MatButtonModule } from '@angular/material/button';
 
 // image interface - fix this!
 import { Image } from '../../types/image.interface';
@@ -35,7 +32,7 @@ export class ImageGridComponent implements OnInit {
    colspan = 1;
    rowspan = 1;
 
-   constructor(private breakpointObserver: BreakpointObserver) {}
+   private breakpointObserver = inject(BreakpointObserver);
 
    // this method controls the responsiveness of the grid
    layoutChanges(): void {

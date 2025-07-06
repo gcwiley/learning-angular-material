@@ -1,4 +1,4 @@
-import { Injectable, NgZone } from '@angular/core';
+import { Injectable, NgZone, inject } from '@angular/core';
 
 // angular material
 import { MatSnackBar } from '@angular/material/snack-bar';
@@ -7,7 +7,9 @@ import { MatSnackBar } from '@angular/material/snack-bar';
    providedIn: 'root',
 })
 export class CustomErrorHandlerService {
-   constructor(private ngZone: NgZone, private snackBar: MatSnackBar) {}
+   // inject dependencies
+   private ngZone = inject(NgZone);
+   private snackBar = inject(MatSnackBar);
 
    public handleError(error: unknown): void {
       this.ngZone.run(() => {

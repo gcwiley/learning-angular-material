@@ -8,7 +8,12 @@
       <!-- name -->
       <mat-form-field class="full-width" appearance="outline">
         <mat-label>Name</mat-label>
-        <input matInput type="text" formControlName="name" placeholder="name" aria-describedby="name-error"/>
+        <input
+          matInput
+          type="text"
+          formControlName="name"
+          placeholder="name"
+          aria-describedby="name-error" />
         @if (this.heroForm.controls['name'].hasError('required')) {
         <mat-error id="name-error">Please enter a hero name.</mat-error>
         }
@@ -19,9 +24,14 @@
           <!-- alter ego -->
           <mat-form-field class="full-width" appearance="outline">
             <mat-label>Alter Ego</mat-label>
-            <input matInput type="text" formControlName="alterEgo" placeholder="Alter Ego" />
+            <input
+              matInput
+              type="text"
+              formControlName="alterEgo"
+              placeholder="Alter Ego"
+              aria-describedby="alter-ego-error" />
             @if (this.heroForm.controls['alterEgo'].hasError('required')) {
-            <mat-error>Please provide an alter ego.</mat-error>
+            <mat-error id="alter-ego-error">Please provide an alter ego.</mat-error>
             }
           </mat-form-field>
         </div>
@@ -34,9 +44,10 @@
               matInput
               type="text"
               formControlName="placeOfOrigin"
-              placeholder="Place of Origin" />
+              placeholder="Place of Origin"
+              aria-describedby="place-of-orgin-error" />
             @if (this.heroForm.controls['placeOfOrigin'].hasError('required')) {
-            <mat-error>Please provide a place of origin.</mat-error>
+            <mat-error id="place-of-orgin-error">Please provide a place of origin.</mat-error>
             }
           </mat-form-field>
         </div>
@@ -47,7 +58,12 @@
           <!-- abilities -->
           <mat-form-field class="full-width" appearance="outline">
             <mat-label>Abilities</mat-label>
-            <input matInput type="text" formControlName="abilties" placeholder="Abilities" aria-describedby="abilities-error"/>
+            <input
+              matInput
+              type="text"
+              formControlName="abilties"
+              placeholder="Abilities"
+              aria-describedby="abilities-error" />
             @if (this.heroForm.controls['abilities'].hasError('required')) {
             <mat-error id="abilities-error">Please provide abilties.</mat-error>
             }
@@ -64,9 +80,10 @@
               matInput
               rows="8"
               formControlName="biography"
-              placeholder="Biography"></textarea>
+              placeholder="Biography"
+              aria-describedby="biography-error"></textarea>
             @if (this.heroForm.controls['biography'].hasError('required')) {
-            <mat-error>Please provide a biography.</mat-error>
+            <mat-error id="biography-error">Please provide a biography.</mat-error>
             }
           </mat-form-field>
         </div>

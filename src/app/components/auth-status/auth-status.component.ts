@@ -1,8 +1,9 @@
 import { ChangeDetectionStrategy, Component, inject } from '@angular/core';
 import { RouterModule, Router } from '@angular/router';
-import { CommonModule } from '@angular/common';
-import { Observable } from 'rxjs';
-import { map } from 'rxjs';
+import { AsyncPipe } from '@angular/common';
+
+// rxjs
+import { Observable, map } from 'rxjs';
 
 // auth service
 import { AuthService } from '../../services/auth.service';
@@ -18,7 +19,7 @@ import { MatChipsModule } from '@angular/material/chips';
   templateUrl: './auth-status.component.html',
   styleUrl: './auth-status.component.scss',
   changeDetection: ChangeDetectionStrategy.OnPush,
-  imports: [CommonModule, RouterModule, MatToolbarModule, MatButtonModule, MatChipsModule],
+  imports: [AsyncPipe, RouterModule, MatToolbarModule, MatButtonModule, MatChipsModule],
 })
 export class AuthStatusComponent {
   // inject dependencies
@@ -33,7 +34,7 @@ export class AuthStatusComponent {
     map((user) => user?.email ?? null)
   );
 
-  // signs out current user
+  // signs out current user - add snack bar feature
   public onClickSignOut(): void {
     this.authService.signOutUser().subscribe({
       next: () => {

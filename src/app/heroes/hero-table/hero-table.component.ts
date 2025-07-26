@@ -8,7 +8,6 @@ import {
 import { Router, RouterModule } from '@angular/router';
 
 // angular material
-import { MatRippleModule } from '@angular/material/core';
 import { MatTableModule, MatTableDataSource } from '@angular/material/table';
 import { MatIconModule } from '@angular/material/icon';
 import { MatButtonModule } from '@angular/material/button';
@@ -28,14 +27,13 @@ import { Hero } from '../../types/hero.interface';
   styleUrls: ['./hero-table.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
   imports: [
-    MatRippleModule,
     MatTableModule,
     MatIconModule,
     MatButtonModule,
     MatTooltipModule,
     MatProgressSpinnerModule,
-    RouterModule,
     MatPaginator,
+    RouterModule,
   ],
 })
 export class HeroTableComponent implements AfterViewInit {
@@ -72,7 +70,7 @@ export class HeroTableComponent implements AfterViewInit {
     this.getHeroes();
   }
 
-  // gets all heroes from the hero service
+  // get all heroes from the hero service
   public getHeroes(): void {
     this.heroService.getHeroes().subscribe((heroes) => {
       this.dataSource.data = heroes;
@@ -81,7 +79,7 @@ export class HeroTableComponent implements AfterViewInit {
     });
   }
 
-  // deletes a hero by ID
+  // delete a hero by ID
   public onDeleteHero(id: string): void {
     this.heroService.deleteHeroById(id).subscribe(() => {
       // navigates admin back to the admin page

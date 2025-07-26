@@ -1,17 +1,17 @@
-<div class="auth-status-banner" aria-label="Authentication Status" aria-live="polite">
+<div class="auth-status-banner" aria-label="Authentication Banner" aria-live="polite">
   <div class="auth-status-banner-content">
     @if (isUserLoggedIn$ | async) {
     <!-- user is logged in -->
     @if (userEmail$ | async; as email) {
     <mat-chip-set>
-      <mat-chip>Logged in as <span>{{ email }}</span></mat-chip>
+      <mat-chip>Signed in as <span>{{ email }}</span></mat-chip>
     </mat-chip-set>
     <p>
-      Logged in as <span>{{ email }}</span>
+      Signed in as <span>{{ email }}</span>
     </p>
     } @else {
     <mat-chip-set>
-      <mat-chip>Logged in</mat-chip>
+      <mat-chip>Lin</mat-chip>
     </mat-chip-set>
     }
 
@@ -23,7 +23,7 @@
     </button>
     } @else {
     <!-- user is currently logged out -->
-    <p>Logged Out</p>
+    <p>Signed Out</p>
 
     <span class="flex-spacer"></span>
     <a mat-flat-button routerLink="/signin" aria-label="Sign in">Sign In</a>

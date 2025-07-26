@@ -38,13 +38,13 @@ export class AlbumDeleteDirective {
         next: () => {
           this.deleted.emit(this.id());
           // opens a success snackbar
-          this.snackBar.open('Album deleted successfully', 'Close', { duration: 3000 });
+          this.snackBar.open('Album deleted successfully', 'Close', { duration: 5000 });
         },
         // if the deletion fails, it opens a 'failed' snackbar
         error: (error) => {
           // log error to console
           console.error('Unable to delete album:', error);
-          this.snackBar.open('Unable to delete album.', 'CLOSE', { duration: 5000 });
+          this.snackBar.open('Unable to delete album.', 'Close', { duration: 5000 });
         },
       });
   }

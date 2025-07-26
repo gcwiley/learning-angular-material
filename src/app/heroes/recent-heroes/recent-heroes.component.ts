@@ -1,5 +1,7 @@
 import { ChangeDetectionStrategy, Component, OnInit, inject } from '@angular/core';
 import { CommonModule } from '@angular/common';
+
+// rxjs
 import { Observable, catchError, of } from 'rxjs';
 
 // angular material

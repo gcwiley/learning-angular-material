@@ -80,12 +80,22 @@ export class AlbumService {
     return this.http.delete<Album>(url, { headers: headers }).pipe(catchError(this.handleError));
   }
 
-  // PUT: update the album on the database - UPDATE ALBUM BY ID
+  // PATCH: update the album on the database - UPDATE ALBUM BY ID
   public updateAlbumById(id: string, body: Partial<Album>): Observable<Album> {
     const url = `${this.albumsUrl}/${id}`;
-    return this.http
-      .patch<Album>(url, body, { headers: headers })
-      .pipe(catchError(this.handleError));
+    return this.http.patch<{ data: Album }>(url, body, { headers: headers }).pipe(
+      map((res) => res.data),
+      catchError(this.handleError)
+    );
+  }
+
+  // PATCH: set a album as a favorite or not - FAVORITE ALBUM
+  public setAlbumFavorite(id: string, favorite: boolean): Observable<Album> {
+    const url = `${this.albumsUrl}/${id}`;
+    return this.http.patch<{ data: Album }>(url, { favorite }, { headers }).pipe(
+      map((res) => res.data),
+      catchError(this.handleError)
+    );
   }
 
   // enhanced error handler that centralized error handling - HANDLE ERROR

@@ -9,7 +9,7 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatButtonModule } from '@angular/material/button';
 import { MatMenuModule } from '@angular/material/menu';
 import { MatDividerModule } from '@angular/material/divider';
-import { MatToolbarModule } from '@angular/material/toolbar';
+import { MatSnackBar } from '@angular/material/snack-bar';
 
 // angular logo
 import { AppLogoComponent } from '../logo/logo.component';
@@ -25,7 +25,6 @@ import { AppLogoComponent } from '../logo/logo.component';
     MatIconModule,
     MatButtonModule,
     MatMenuModule,
-    MatToolbarModule,
     MatDividerModule,
     AppLogoComponent
 ],
@@ -34,12 +33,27 @@ export class NavBarComponent {
    // inject dependencies
    private authService = inject(AuthService);
    private router = inject(Router);
+   private snackBar = inject(MatSnackBar);
 
-   // signs out current user - fix this!
-   public onClickSignOut(): void {
-      this.authService.signOutUser().subscribe(() => {
-         // redirects user to signin page
-         this.router.navigateByUrl('/signin');
-      });
-   }
+   // loading state
+   public isSigningOut = false;
+
+   // signs out current user
+  public onClickSignOut(): void {
+    if (this.isSigningOut) return;
+    this.isSigningOut = false;
+    this.authService.signOutUser().subscribe({
+      next: () => {
+        // redirects user to signin page
+        this.router.navigateByUrl('/signin');
+      },
+      error: (error) => {
+        this.isSigningOut = false;
+        console.error(error);
+        this.snackBar.open('Error signing out.', 'Close', {
+          duration: 5000,
+        });
+      },
+    });
+  }
 }

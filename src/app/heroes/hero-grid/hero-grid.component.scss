@@ -10,3 +10,22 @@
 .spacer {
   flex: 1 1 auto;
 }
+
+// during loading of heroes
+.spinner-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 60vh; // adjust as needed
+  width: 100%;
+}
+
+// when no heroes are found
+.empty-message {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 40vh; // adjust as needed
+  width: 100%;
+  text-align: center;
+}

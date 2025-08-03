@@ -1,45 +1,32 @@
 .album-card {
-   position: relative;
-   top: 1rem;
-   left: 1rem;
-   right: 1rem;
-   bottom: 1rem;
-   padding: 0.5rem;
+  position: absolute;
+  top: 1rem;
+  left: 1rem;
+  right: 1rem;
+  bottom: 1rem;
+  padding: 0.5rem;
 }
 
+// sets up space
 .spacer {
-   flex: 1 1 auto;
+  flex: 1 1 auto;
 }
 
-
-// use this for post grid
-:host, .post-grid-container {
-   display: flex;
-   flex-direction: column;
-   flex-grow: 1;
+// when albums are loading
+.spinner-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 60vh;
+  width: 100%;
 }
 
-.post-card {
-   margin-top: 1rem;
-   margin-bottom: 1rem;
-   padding: 1rem;
-}
-
-.mat-mdc-card-subtitle {
-   padding-bottom: .5rem
-}
-
-.spacer {
-   flex: 1 1 auto;
-}
-
-.more-button {
-   position: absolite;
-   top: 5px;
-   right: 10px
-}
-
-.card-footer {
-   margin-top: 1rem;
-   padding: 1rem;
+// when no albums are found
+.empty-message {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 40vh;
+  width: 100%;
+  text-align: center;
 }

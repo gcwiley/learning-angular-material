@@ -1,33 +1,31 @@
 <mat-grid-list [cols]="cols | async" [rowHeight]="rowHeight" [gutterSize]="gutterSize">
   <!-- Use async pipe for projects and add trackBy -->
   @for (hero of heroes | async; track trackByHeroId($index, hero)) {
-    <mat-grid-tile
-      [colspan]="colspan"
-      [rowspan]="rowspan">
-      <mat-card appearance="outlined" class="project-card">
-        <mat-card-header>
-          <mat-card-title>{{ hero.name }}</mat-card-title>
-        </mat-card-header>
-        <mat-card-content>
-          <p>{{ hero.biography }}</p>
-        </mat-card-content>
-        <mat-card-actions>
-          <button mat-button>OPEN</button>
-        </mat-card-actions>
-      </mat-card>
-    </mat-grid-tile>
+  <mat-grid-tile [colspan]="colspan" [rowspan]="rowspan">
+    <mat-card appearance="outlined" class="project-card">
+      <mat-card-header>
+        <mat-card-title>{{ hero.name }}</mat-card-title>
+      </mat-card-header>
+      <mat-card-content>
+        <p>{{ hero.biography }}</p>
+      </mat-card-content>
+
+      
+      <mat-card-actions>
+        <button mat-button routerLink="/heroes/{{ hero.id }}">OPEN</button>
+      </mat-card-actions>
+    </mat-card>
+  </mat-grid-tile>
   }
 </mat-grid-list>
 
-<!-- Handle loading/empty states (optional but recommended) -->
-
+<!-- Handle loading/empty states -->
 @if ((heroes | async) === null) {
-  <ng-container>
-    <p>Loading heroes...</p>
-    <!-- add angular material spinner -->
-  </ng-container>
-  } @if ((heroes | async)?.length === 0) {
-  <ng-container>
-    <p>No Heroes found.</p>
-  </ng-container>
+<div class="spinner-container">
+  <mat-spinner></mat-spinner>
+</div>
+} @if ((heroes | async)?.length === 0) {
+<div class="empty-message">
+  <p>No Projects found.</p>
+</div>
 }

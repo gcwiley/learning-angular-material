@@ -1,35 +1,33 @@
 <mat-grid-list [cols]="cols | async" [rowHeight]="rowHeight" [gutterSize]="gutterSize">
   <!-- Use async pipe for albums and add trackBy -->
   @for (album of albums | async; track trackByAlbumId($index, album)) {
-    <mat-grid-tile
-      [colspan]="colspan"
-      [rowspan]="rowspan">
-      <mat-card appearance="outlined" class="project-card">
-        <mat-card-header>
-          <mat-card-title>{{ album.title }}</mat-card-title>
-        </mat-card-header>
-        
-        <mat-card-content>
-          <p>{{ album.summary }}</p>
-        </mat-card-content>
+  <mat-grid-tile [colspan]="colspan" [rowspan]="rowspan">
+    <mat-card appearance="outlined" class="project-card">
+      <mat-card-header>
+        <mat-card-title>{{ album.title }}</mat-card-title>
+      </mat-card-header>
 
-        <mat-card-actions>
-          <button mat-button>OPEN</button>
-        </mat-card-actions>
-      </mat-card>
-    </mat-grid-tile>
+      <mat-card-content>
+        <p>{{ album.summary }}</p>
+      </mat-card-content>
+
+      <span class="flex-spacer"></span>
+
+      <mat-card-actions>
+        <button matButton routerLink="/albums/{{ album.id }}">OPEN</button>
+      </mat-card-actions>
+    </mat-card>
+  </mat-grid-tile>
   }
 </mat-grid-list>
 
-<!-- Handle loading/empty states (optional but recommended) -->
+<!-- Handle loading/empty states -->
 @if ((albums | async) === null) {
-  <ng-container>
-    <div>
-      <!-- add loading spinner -->
-    </div>
-  </ng-container>
-  } @if ((albums | async)?.length === 0) {
-  <ng-container>
-    <p>No Albums found.</p>
-  </ng-container>
+<div class="spinner-container">
+  <mat-spinner></mat-spinner>
+</div>
+} @if ((albums | async)?.length === 0) {
+<div class="empty-message">
+  <p>No Albums found.</p>
+</div>
 }

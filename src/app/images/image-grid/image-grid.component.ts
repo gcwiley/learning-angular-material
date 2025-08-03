@@ -1,69 +1,83 @@
-import { ChangeDetectionStrategy, Component, OnInit, inject } from '@angular/core';
+import { ChangeDetectionStrategy, Component, OnDestroy, OnInit, inject } from '@angular/core';
 import { CommonModule, AsyncPipe } from '@angular/common';
 import { Breakpoints, BreakpointObserver, BreakpointState } from '@angular/cdk/layout';
 import { RouterModule } from '@angular/router';
-import { Observable, Subject } from 'rxjs';
-import { map, takeUntil } from 'rxjs/operators';
+import { Observable, Subject, of } from 'rxjs';
+import { catchError, map, takeUntil } from 'rxjs/operators';
 
 // angular material
 import { MatGridListModule } from '@angular/material/grid-list';
 
-// image interface - fix this!
+// image service and interface
+import { ImageService } from '../../services/image.service';
 import { Image } from '../../types/image.interface';
 
 @Component({
-   standalone: true,
-   selector: 'app-image-grid-page',
-   templateUrl: './image-grid.component.html',
-   styleUrls: ['./image-grid.component.scss'],
-   changeDetection: ChangeDetectionStrategy.OnPush,
-   imports: [MatGridListModule],
+  standalone: true,
+  selector: 'app-image-grid-page',
+  templateUrl: './image-grid.component.html',
+  styleUrls: ['./image-grid.component.scss'],
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  imports: [CommonModule, RouterModule, MatGridListModule, AsyncPipe],
 })
-export class ImageGridComponent implements OnInit {
-   // create member variables
-   images: Image[] = [];
+export class ImageGridComponent implements OnInit, OnDestroy {
+  // inject dependencies
+  private imageService = inject(ImageService);
+  private breakpointObserver = inject(BreakpointObserver);
 
-   // set up the grid list demensions
-   cols = 4; // ammount of columns in the grid list
-   rowHeight = '300px'; // row height
-   gutterSize = '0px';
+  // observables for AsyncPipe
+  public images!: Observable<Image[]>;
+  // observable for columns based on breakpoints
+  public cols!: Observable<number>;
 
-   // fix this!
-   colspan = 1;
-   rowspan = 1;
+  // static grid properties
+  rowHeight = '1:1';
+  gutterSize = '0px';
+  colspan = 1;
+  rowspan = 1;
 
-   private breakpointObserver = inject(BreakpointObserver);
+  // lifecycle management - subject to manage subscription cleanup
+  private destroy = new Subject<void>();
 
-   // this method controls the responsiveness of the grid
-   layoutChanges(): void {
-      this.breakpointObserver
-         .observe([Breakpoints.TabletPortrait, Breakpoints.TabletLandscape, Breakpoints.HandsetPortrait, Breakpoints.HandsetLandscape])
-         .subscribe((result) => {
-            // set the default values
-            this.cols = 4;
-            this.rowHeight = '300px';
+  public ngOnInit(): void {
+    this.images = this.imageService.getImages().pipe(
+      catchError(() => {
+        // optionally, set the error flag or return an empty array
+        return of([]);
+      })
+    );
 
-            const breakpoints = result.breakpoints;
+    this.cols = this.breakpointObserver
+      .observe([
+        // define breakpoints to observe
+        Breakpoints.XSmall,
+        Breakpoints.Small,
+        Breakpoints.Medium,
+        Breakpoints.Large,
+        Breakpoints.XLarge,
+      ])
+      .pipe(
+        takeUntil(this.destroy),
+        map((state: BreakpointState) => {
+          // map breakpoints state to number of columns
+          if (state.breakpoints[Breakpoints.XSmall]) {
+            return 1; // e.g. handset portrait
+          }
+          if (state.breakpoints[Breakpoints.Small]) {
+            return 2; // e.g. handset landscape / tablet portrait
+          }
+          if (state.breakpoints[Breakpoints.Medium]) {
+            return 3; // e.g. tablet landscape
+          }
+          // default for large/x-large or none of the above match
+          return 4;
+        })
+      );
+  }
 
-            // check to see if in table portrait mode
-            if (breakpoints[Breakpoints.TabletPortrait]) {
-               // set the number of cols to 1
-               this.cols = 1;
-            } else if (breakpoints[Breakpoints.HandsetPortrait]) {
-               // set the number of cols to 1
-               this.cols = 1;
-               this.rowHeight = '300px';
-            } else if (breakpoints[Breakpoints.HandsetLandscape]) {
-               // set the number of cols to 1
-               this.cols = 1;
-            } else if (breakpoints[Breakpoints.TabletLandscape]) {
-               // set the number of cols to 2
-               this.cols = 2;
-            }
-         });
-   }
-
-   ngOnInit(): void {
-      this.layoutChanges();
-   }
+  public ngOnDestroy(): void {
+    // signal component destruction
+    this.destroy.next();
+    this.destroy.complete();
+  }
 }

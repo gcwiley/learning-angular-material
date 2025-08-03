@@ -80,13 +80,15 @@ export class HeroService {
     return this.http.delete<Hero>(url, { headers: headers }).pipe(catchError(this.handleError));
   }
 
-  // PUT: update the hero in the database - UPDATE HERO BY ID
+  // PATCH: update the hero in the database - UPDATE HERO BY ID - fix this!
   public updateHeroById(id: string, body: Partial<Hero>): Observable<Hero> {
     const url = `${this.heroesUrl}/${id}`;
     return this.http
       .patch<Hero>(url, body, { headers: headers })
       .pipe(catchError(this.handleError));
   }
+
+  // PATCH: favorite hero - fix this!
 
   // enhanced error handler that centralized error handling - HANDLE ERROR
   private handleError(error: HttpErrorResponse): Observable<never> {

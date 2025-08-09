@@ -15,9 +15,8 @@
             type="email"
             formControlName="email"
             placeholder="name@example.com"
-            autocomplete="username" 
-            aria-describedby="Fix this!"
-            />
+            autocomplete="username"
+            aria-describedby="Fix this!" />
           @if (formControls['email'].hasError('required')) {
           <mat-error id="fix this!">Email is required.</mat-error>
           } @if (formControls['email'].hasError('email')) {
@@ -33,9 +32,8 @@
             type="password"
             formControlName="password"
             placeholder="Password"
-            autocomplete="current-password" 
-            aria-describedby="fix this"
-            />
+            autocomplete="current-password"
+            aria-describedby="fix this" />
           @if (formControls['password'].hasError('required')) {
           <mat-error id="fix this!">A password is required</mat-error>
           } @if (formControls['password'].hasError('minlength')) {
@@ -52,5 +50,3 @@
     </mat-card-content>
   </mat-card>
 </main>
-
-

@@ -1,5 +1,5 @@
 import { Injectable, inject } from '@angular/core';
-import { HttpClient, HttpErrorResponse, HttpHeaders } from '@angular/common/http';
+import { HttpClient, HttpErrorResponse, HttpHeaders, HttpParams } from '@angular/common/http';
 import { catchError, Observable, of, throwError, map } from 'rxjs';
 
 // post interfaces
@@ -40,9 +40,12 @@ export class PostService {
       // if no search term, return an empty post arrary
       return of([]);
     }
+    const params = new HttpParams().set('query', term);
     return this.http
-      .get<Post[]>(`${this.postsUrl}/search?query=${term}`)
-      .pipe(catchError(this.handleError));
+      .get<{ data: Post[] }>(`${this.postsUrl}/search`, { params })
+      .pipe(
+        map((res) => res.data), catchError(this.handleError)
+      );
   }
 
   // GET: count the posts from database  - GET POST COUNT
@@ -66,22 +69,27 @@ export class PostService {
   // POST: add a new post to the server - ADD POST
   public addPost(newPost: PostInput): Observable<Post> {
     return this.http
-      .post<Post>(this.postsUrl, newPost, { headers: headers })
-      .pipe(catchError(this.handleError));
+      .post<{ data: Post }>(this.postsUrl, newPost, { headers: headers })
+      .pipe(
+        map((res) => res.data),
+        catchError(this.handleError)
+      );
   }
 
   // DELETE: a post by ID from the server - DELETE POST BY ID
   public deletePostById(id: string): Observable<Post> {
     const url = `${this.postsUrl}/${id}`;
-    return this.http.delete<Post>(url, { headers: headers }).pipe(catchError(this.handleError));
+    return this.http.delete<{ data: Post }>(url, { headers: headers }).pipe(
+      map((res) => res.data),
+      catchError(this.handleError));
   }
 
   // PUT: update the post in the database - UPDATE POST BY ID
   public updatePostById(id: string, body: Partial<Post>): Observable<Post> {
     const url = `${this.postsUrl}/${id}`;
     return this.http
-      .patch<Post>(url, body, { headers: headers })
-      .pipe(catchError(this.handleError));
+      .patch<{ data: Post }>(url, body, { headers: headers })
+      .pipe(map((res) => res.data), catchError(this.handleError));
   }
 
   // enhanced error handler that centralized error handling - HANDLE ERROR

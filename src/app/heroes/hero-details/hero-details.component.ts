@@ -20,7 +20,7 @@ import { Hero } from '../../types/hero.interface';
   imports: [RouterModule, MatListModule],
 })
 export class HeroDetailsComponent implements OnInit, OnDestroy {
-  hero!: Hero; // initialisze explicitly
+  hero!: Hero | undefined; // initialisze explicitly
   private destroy$ = new Subject<void>(); // subject to signal destruction
 
   // inject dependencies

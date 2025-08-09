@@ -44,7 +44,7 @@ export class HeroDeleteDirective {
         error: (error) => {
           // log error to console
           console.error('Unable to delete album:', error);
-          this.snackBar.open('Unable to delete album', 'CLOSE', { duration: 5000 });
+          this.snackBar.open('Unable to delete album', 'Close', { duration: 5000 });
         },
       });
   }

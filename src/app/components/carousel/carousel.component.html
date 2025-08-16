@@ -1,0 +1,29 @@
+<div class="carousel-container" *ngIf="slides.length > 0">
+
+  <div class="carousel-arrow left-arrow" (click)="goToPrevious()">
+    &#10094;
+  </div>
+
+  <div class="carousel-arrow right-arrow" (click)="goToNext()">
+    &#10095;
+  </div>
+
+  <div class="slide">
+    <img [src]="slides[currentIndex].src" alt="{{ slides[currentIndex].title }}">
+  </div>
+  
+  <div class="slide-text" *ngIf="slides[currentIndex].title">
+    <h3>{{ slides[currentIndex].title }}</h3>
+    <p *ngIf="slides[currentIndex].subtitle">{{ slides[currentIndex].subtitle }}</p>
+  </div>
+
+  <div class="dots-container">
+    <div 
+      class="dot"
+      *ngFor="let slide of slides; let i = index"
+      [class.active]="i === currentIndex"
+      (click)="goToSlide(i)">
+    </div>
+  </div>
+
+</div>

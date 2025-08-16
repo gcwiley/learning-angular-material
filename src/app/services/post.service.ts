@@ -25,7 +25,7 @@ export class PostService {
     );
   }
 
-  // GET: a individual post by ID. Returns 404 is the ID is not found.
+  // GET: a individual post by ID. GET POST BY ID
   public getPostById(id: string): Observable<Post> {
     const url = `${this.postsUrl}/${id}`;
     return this.http.get<{ data: Post }>(url).pipe(
@@ -34,7 +34,7 @@ export class PostService {
     );
   }
 
-  // GET posts whose name contains search term - SEARCH POST
+  // GET posts whose name contains search term - SEARCH POSTS
   public searchPosts(term: string): Observable<Post[]> {
     if (!term.trim()) {
       // if no search term, return an empty post arrary

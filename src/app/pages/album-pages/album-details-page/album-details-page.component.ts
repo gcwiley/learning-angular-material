@@ -4,11 +4,7 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
 import { NavBarComponent, FooterComponent } from '../../../components';
 
 // album components
-import {
-  AlbumDescriptionComponent,
-  AlbumMenuComponent,
-  AlbumDetailsComponent,
-} from '../../../albums';
+import { AlbumDescriptionComponent, AlbumDetailsComponent } from '../../../albums';
 
 @Component({
   standalone: true,
@@ -16,8 +12,6 @@ import {
   templateUrl: './album-details-page.component.html',
   styleUrl: './album-details-page.component.scss',
   changeDetection: ChangeDetectionStrategy.OnPush,
-  imports: [NavBarComponent, FooterComponent, AlbumDescriptionComponent, AlbumDetailsComponent, AlbumMenuComponent],
+  imports: [NavBarComponent, FooterComponent, AlbumDescriptionComponent, AlbumDetailsComponent],
 })
 export class AlbumDetailsPageComponent {}
-
-// fix this!

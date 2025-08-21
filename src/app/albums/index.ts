@@ -1,3 +1,4 @@
+export { AlbumCarouselComponent } from './album-carousel/album-carousel.component';
 export { AlbumDescriptionComponent } from './album-description/album-description.component';
 export { AlbumDetailsComponent } from './album-details/album-details.component';
 export { AlbumFormComponent } from './album-form/album-form.component';

@@ -4,7 +4,7 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
 import { NavBarComponent, ClockComponent, FooterComponent } from '../../../components';
 
 // post components
-import { PostDescriptionComponent, PostMenuComponent, PostDetailsComponent } from '../../../posts';
+import { PostDescriptionComponent, PostDetailsComponent } from '../../../posts';
 
 @Component({
   standalone: true,
@@ -17,7 +17,6 @@ import { PostDescriptionComponent, PostMenuComponent, PostDetailsComponent } fro
     ClockComponent,
     FooterComponent,
     PostDescriptionComponent,
-    PostMenuComponent,
     PostDetailsComponent,
   ],
 })

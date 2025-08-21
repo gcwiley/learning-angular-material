@@ -17,6 +17,6 @@ export interface ConfirmDialogData {
 })
 export class ConfirmDialogComponent {
    // inject dependencies
-   public data = inject<ConfirmDialogComponent>(MAT_DIALOG_DATA);
+   public data = inject<ConfirmDialogData>(MAT_DIALOG_DATA);
    public dialogRef = inject<MatDialogRef<ConfirmDialogComponent>>(MatDialogRef);
 }

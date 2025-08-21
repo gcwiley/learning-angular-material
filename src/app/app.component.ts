@@ -5,11 +5,12 @@ import { RouterOutlet } from '@angular/router';
 import { AuthStatusComponent, AnnouncementBarComponent } from './components';
 
 @Component({
+  standalone: true,
   selector: 'app-root',
   templateUrl: './app.component.html',
   styleUrl: './app.component.scss',
   imports: [RouterOutlet, AuthStatusComponent, AnnouncementBarComponent],
 })
 export class AppComponent {
-  title = 'learning-angular-material';
+  title = 'Learning Angular Material';
 }

@@ -19,13 +19,13 @@
   }
 </mat-grid-list>
 
-<!-- Handle loading/empty states -->
+<!-- handle loading/empty states -->
 @if ((heroes | async) === null) {
 <div class="spinner-container">
   <mat-spinner></mat-spinner>
 </div>
 } @if ((heroes | async)?.length === 0) {
 <div class="empty-message">
-  <p>No Projects found.</p>
+  <p>No heroes found.</p>
 </div>
 }

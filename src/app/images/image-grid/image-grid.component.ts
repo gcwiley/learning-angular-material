@@ -1,12 +1,15 @@
 import { ChangeDetectionStrategy, Component, OnDestroy, OnInit, inject } from '@angular/core';
-import { CommonModule, AsyncPipe } from '@angular/common';
+import { AsyncPipe } from '@angular/common';
 import { Breakpoints, BreakpointObserver, BreakpointState } from '@angular/cdk/layout';
 import { RouterModule } from '@angular/router';
+
+// rxjs
 import { Observable, Subject, of } from 'rxjs';
 import { catchError, map, takeUntil } from 'rxjs/operators';
 
 // angular material
 import { MatGridListModule } from '@angular/material/grid-list';
+import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 
 // image service and interface
 import { ImageService } from '../../services/image.service';
@@ -18,7 +21,7 @@ import { Image } from '../../types/image.interface';
   templateUrl: './image-grid.component.html',
   styleUrls: ['./image-grid.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
-  imports: [CommonModule, RouterModule, MatGridListModule, AsyncPipe],
+  imports: [RouterModule, MatGridListModule, MatProgressSpinnerModule, AsyncPipe],
 })
 export class ImageGridComponent implements OnInit, OnDestroy {
   // inject dependencies

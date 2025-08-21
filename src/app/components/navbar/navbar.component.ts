@@ -11,8 +11,8 @@ import { MatMenuModule } from '@angular/material/menu';
 import { MatDividerModule } from '@angular/material/divider';
 import { MatSnackBar } from '@angular/material/snack-bar';
 
-// angular logo
-import { AppLogoComponent } from '../logo/logo.component';
+// web app logo
+import { LogoComponent } from '../logo/logo.component';
 
 @Component({
    standalone: true,
@@ -26,7 +26,7 @@ import { AppLogoComponent } from '../logo/logo.component';
     MatButtonModule,
     MatMenuModule,
     MatDividerModule,
-    AppLogoComponent
+    LogoComponent
 ],
 })
 export class NavBarComponent {

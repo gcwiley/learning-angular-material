@@ -11,6 +11,5 @@ import { VERSION } from '@angular/core';
 })
 export class FooterComponent {
   version = VERSION.full;
-
   year = new Date().getFullYear();
 }

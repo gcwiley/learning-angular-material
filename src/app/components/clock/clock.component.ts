@@ -1,4 +1,4 @@
-import { Component, OnInit, OnDestroy } from '@angular/core';
+import { ChangeDetectionStrategy, Component, OnInit, OnDestroy,  } from '@angular/core';
 import { DatePipe } from '@angular/common';
 import { Subscription, interval } from 'rxjs';
 
@@ -11,6 +11,7 @@ import { MatToolbarModule } from '@angular/material/toolbar';
   selector: 'app-clock',
   templateUrl: './clock.component.html',
   styleUrl: './clock.component.scss',
+  changeDetection: ChangeDetectionStrategy.OnPush,
   imports: [DatePipe, MatToolbarModule, MatChipsModule],
 })
 export class ClockComponent implements OnInit, OnDestroy {

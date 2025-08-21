@@ -4,9 +4,7 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
 import { NavBarComponent, FooterComponent } from '../../../components';
 
 // hero components
-import { HeroDetailsComponent, HeroDescriptionComponent, HeroMenuComponent } from '../../../heroes';
-
-
+import { HeroDetailsComponent, HeroDescriptionComponent } from '../../../heroes';
 
 @Component({
   standalone: true,
@@ -19,7 +17,6 @@ import { HeroDetailsComponent, HeroDescriptionComponent, HeroMenuComponent } fro
     FooterComponent,
     HeroDetailsComponent,
     HeroDescriptionComponent,
-    HeroMenuComponent,
   ],
 })
 export class HeroDetailsPageComponent {}

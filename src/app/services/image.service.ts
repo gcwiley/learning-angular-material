@@ -1,5 +1,7 @@
 import { Injectable, inject } from '@angular/core';
 import { HttpClient, HttpErrorResponse } from '@angular/common/http';
+
+// rxjs
 import { catchError, Observable, throwError, map } from 'rxjs';
 
 // image interfacees
@@ -22,7 +24,7 @@ export class ImageService {
     );
   }
 
-  // GET: an individual image by ID
+  // GET: an individual image by ID - GET IMAGE BY ID
   public getImageById(id: string): Observable<Image> {
     const url = `${this.imagesUrl}/${id}`;
     return this.http.get<{ data: Image }>(url).pipe(

@@ -1,3 +1,12 @@
-<mat-grid-list>
-  
-</mat-grid-list>
+<mat-grid-list [cols]="cols | async"> </mat-grid-list>
+
+<!-- handle loading / empty states -->
+@if ((images | async) === null) {
+<div class="spinner-container">
+  <mat-spinner></mat-spinner>
+</div>
+} @if ((images | async)?.length === 0) {
+<div class="empty-messsage">
+  <p>No images found.</p>
+</div>
+}

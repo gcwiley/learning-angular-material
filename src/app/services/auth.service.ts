@@ -1,6 +1,7 @@
 import { Injectable, inject } from '@angular/core';
 import { Observable, catchError, from, throwError, map } from 'rxjs';
 
+// firebase auth
 import {
   Auth,
   signInWithEmailAndPassword,
@@ -12,6 +13,8 @@ import {
   signInAnonymously,
   user,
   User,
+  updatePassword,
+  sendPasswordResetEmail,
 } from '@angular/fire/auth';
 
 @Injectable({
@@ -63,11 +66,29 @@ export class AuthService {
     return from(signOut(this.auth)).pipe(catchError(this.handleError));
   }
 
-  // private method the centralizes error handling
+  // send a password reset email to a user - RESET PASSWORD
+  public sendPasswordResetEmail(email: string): Observable<void> {
+    return from(sendPasswordResetEmail(this.auth, email)).pipe(catchError(this.handleError));
+  }
+
+  // allow authenticated users to change thier password - CHANGE PASSWORD
+  public changePassword(newPassword: string): Observable<void> {
+    // get the current user
+    const currentUser = this.auth.currentUser;
+
+    if (currentUser) {
+      // use the updatePassword function with the current user and new password
+      return from(updatePassword(currentUser, newPassword)).pipe(
+        catchError(this.handleError)// handle error
+      )
+    } else {
+      // if there's no current user, throw an error
+      return throwError(() => new Error('No user is currently logged in.'))
+    }
+  }
+
+  // private method the centralizes error handling - HANDLE ERROR
   private handleError(error: Error): Observable<never> {
-    // NOTE: use a logging service instead of console.error
-    // replace this with a more robust logging mechcanism - a dedicated logging service
-    // logs error to console
     console.error('There was an error', error);
     // throws the error again, so the subscriber can catch it and handle the error
     return throwError(() => error);

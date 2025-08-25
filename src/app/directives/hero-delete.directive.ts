@@ -12,12 +12,11 @@ import {
 } from '../services/custom-confirm-dialog.service';
 
 @Directive({
-  selector: '[appHeroDelete]',
   standalone: true,
+  selector: '[appHeroDelete]',
 })
 export class HeroDeleteDirective {
   public id = input.required<string>({ alias: 'appHeroDelete' });
-
   @Output() public deleted = new EventEmitter<string>();
 
   // initializes the directive dependencies
@@ -30,8 +29,8 @@ export class HeroDeleteDirective {
     this.confirm
       .openCustomConfirmDialog(CustomConfirmDialog.Delete)
       .pipe(
-        first(), // this ensure the observable completes after the first value
-        filter((res) => !!res),
+        first(),
+        filter((confirmed) => !!confirmed),
         switchMap(() => this.heroService.deleteHeroById(this.id()))
       )
       .subscribe({

@@ -1,3 +1,4 @@
+export { HeroCarouselComponent } from './hero-carousel/hero-carousel.component';
 export { HeroDescriptionComponent } from './hero-description/hero-description.component';
 export { HeroDetailsComponent } from './hero-details/hero-details.component';
 export { HeroFormComponent } from './hero-form/hero-form.component';

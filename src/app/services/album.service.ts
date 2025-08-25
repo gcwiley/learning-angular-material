@@ -1,5 +1,6 @@
 import { Injectable, inject } from '@angular/core';
 import { HttpClient, HttpHeaders, HttpErrorResponse, HttpParams } from '@angular/common/http';
+// rxjs
 import { catchError, Observable, of, throwError, map } from 'rxjs';
 
 // album interfaces
@@ -14,10 +15,10 @@ const headers = new HttpHeaders().set('Content-Type', 'application/json');
 export class AlbumService {
   private albumsUrl = '/api/albums'; // URL to web api
 
-  // inject 'HttpClient" in the album service
+  // inject dependencies
   private http = inject(HttpClient);
 
-  // GET: albums from the database - GET ALL ALBUMS
+  // GET: all albums from the database - GET ALBUMS
   public getAlbums(): Observable<Album[]> {
     return this.http.get<{ data: Album[] }>(this.albumsUrl).pipe(
       map((res) => res.data), // extract the array
@@ -25,7 +26,7 @@ export class AlbumService {
     );
   }
 
-  // GET: album by ID from the database - GET ALBUM BY ID
+  // GET: album by ID from server - GET ALBUM BY ID
   public getAlbumById(id: string): Observable<Album> {
     const url = `${this.albumsUrl}/${id}`;
     return this.http.get<{ data: Album }>(url).pipe(

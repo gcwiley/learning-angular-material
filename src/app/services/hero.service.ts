@@ -1,5 +1,6 @@
 import { Injectable, inject } from '@angular/core';
-import { HttpClient, HttpHeaders, HttpErrorResponse } from '@angular/common/http';
+import { HttpClient, HttpHeaders, HttpErrorResponse, HttpParams } from '@angular/common/http';
+// rxjs
 import { catchError, Observable, of, throwError, map } from 'rxjs';
 
 // hero interface
@@ -8,11 +9,13 @@ import { Hero, HeroInput } from '../types/hero.interface';
 // set up headers
 const headers = new HttpHeaders().set('Content-Type', 'application/json');
 
-@Injectable({ providedIn: 'root' })
+@Injectable({
+  providedIn: 'root',
+})
 export class HeroService {
   private heroesUrl = '/api/heroes'; // URL to web api
 
-  // inject the "HttpClient" into the Hero service
+  // inject dependencies
   private http = inject(HttpClient);
 
   // GET: all heroes from the server - GET HEREOS
@@ -23,7 +26,7 @@ export class HeroService {
     );
   }
 
-  // GET: an individual hero by ID. Will 404 error if the ID is not found
+  // GET: hero by ID from server - GET HERO BY ID
   public getHeroById(id: string): Observable<Hero> {
     const url = `${this.heroesUrl}/${id}`;
     return this.http.get<{ data: Hero }>(url).pipe(
@@ -38,7 +41,8 @@ export class HeroService {
       // if no search term, return an empty hero arrary
       return of([]);
     }
-    return this.http.get<{ data: Hero[] }>(`${this.heroesUrl}/?name=${term}`).pipe(
+    const params = new HttpParams().set('name', term);
+    return this.http.get<{ data: Hero[] }>(this.heroesUrl, { params }).pipe(
       map((res) => res.data), // extract the array
       catchError(this.handleError)
     );

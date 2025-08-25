@@ -19,7 +19,6 @@ import {
 })
 export class PostDeleteDirective {
   public id = input.required<string>({ alias: 'appPostDelete' });
-
   @Output() public deleted = new EventEmitter<string>();
 
   // inject dependencies
@@ -32,8 +31,8 @@ export class PostDeleteDirective {
     this.confirm
       .openCustomConfirmDialog(CustomConfirmDialog.Delete)
       .pipe(
-        first(), // this ensures the observable completes after the first value
-        filter((res) => !!res),
+        first(),
+        filter((confirmed) => !!confirmed),
         switchMap(() => this.postService.deletePostById(this.id()))
       )
       .subscribe({
@@ -41,13 +40,6 @@ export class PostDeleteDirective {
           this.deleted.emit(this.id());
           // opens a success snackbar
           this.snackBar.open('Post deleted successfully', 'Close', {
-            duration: 5000,
-          });
-        },
-        // if the deletion fails, open a 'failed' snackbar
-        error: (error) => {
-          console.error('Unable to delete post:', error);
-          this.snackBar.open('Unable to delete post.', 'Close', {
             duration: 5000,
           });
         },

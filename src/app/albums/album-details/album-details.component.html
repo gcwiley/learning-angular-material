@@ -1,27 +1,29 @@
+@if (album) {
 <mat-list class="album-details" role="list" aria-label="Album Details">
-   <span mat-subheader>Album Details</span>
-   <!-- release date -->
-   <mat-list-item lines="2" role="listitem">
-      <mat-icon matListItemIcon>home</mat-icon>
-      <span matListItemTitle>Date Released</span>
-      <span matListItemLine>{{ album.releaseDate | date }}</span>
-   </mat-list-item>
-   <!-- label -->
-   <mat-list-item lines="2" role="listitem">
-      <mat-icon matListItemIcon>home</mat-icon>
-      <span matListItemTitle>Label</span>
-      <span matListItemLine>{{ album.label }}</span>
-   </mat-list-item>
-   <!-- studio -->
-   <mat-list-item lines="2" role="listitem">
-      <mat-icon matListItemIcon>home</mat-icon>
-      <span matListItemTitle>Studio</span>
-      <span matListItemLine>{{ album.studio }}</span>
-   </mat-list-item>
-   <!-- genre -->
-   <mat-list-item lines="2" role="listitem">
-      <mat-icon matListItemIcon>home</mat-icon>
-      <span matListItemTitle>Genre</span>
-      <span matListItemLine>{{ album.genre }}</span>
-   </mat-list-item>
+  <span mat-subheader>Album Details</span>
+  <!-- release date -->
+  <mat-list-item lines="2" role="listitem">
+    <mat-icon matListItemIcon>home</mat-icon>
+    <span matListItemTitle>Date Released</span>
+    <span matListItemLine>{{ album.releaseDate | date }}</span>
+  </mat-list-item>
+  <!-- label -->
+  <mat-list-item lines="2" role="listitem">
+    <mat-icon matListItemIcon>home</mat-icon>
+    <span matListItemTitle>Label</span>
+    <span matListItemLine>{{ album.label }}</span>
+  </mat-list-item>
+  <!-- studio -->
+  <mat-list-item lines="2" role="listitem">
+    <mat-icon matListItemIcon>home</mat-icon>
+    <span matListItemTitle>Studio</span>
+    <span matListItemLine>{{ album.studio }}</span>
+  </mat-list-item>
+  <!-- genre -->
+  <mat-list-item lines="2" role="listitem">
+    <mat-icon matListItemIcon>home</mat-icon>
+    <span matListItemTitle>Genre</span>
+    <span matListItemLine>{{ album.genre }}</span>
+  </mat-list-item>
 </mat-list>
+}

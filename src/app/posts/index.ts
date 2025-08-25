@@ -1,3 +1,4 @@
+export { PostCarouselComponent } from "./post-carousel/post-carousel.component";
 export { PostDescriptionComponent } from "./post-description/post-description.component";
 export { PostDetailsComponent } from "./post-details/post-details.component";
 export { PostFormComponent } from "./post-form/post-form.component";

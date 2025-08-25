@@ -1,4 +1,9 @@
 .signin-page-container {
+   background: var(--mat-sys-primary-container);
+   background-image: url(../../../assets/images/sign_in_graphic.jpg);
+   background-size: cover;
+   background-position: center;
+   color: var(--mat-sys-on-primary-container);
    display: flex;
    justify-content: center;
    align-items: center;
@@ -7,7 +12,6 @@
 
 .signin-form {
    width: 400px;
-   border: 0px;
    padding: 2rem;
 }
 
@@ -16,20 +20,8 @@
    margin: 0.4rem 0;
 }
 
-.card-actions {
-   display: flex;
-   flex-direction: row;
-}
-
-button {
-   flex: 1;
-   margin-top: 1rem;
+.sign-in-button {
    width: 100%;
-}
-
-.form-check {
-   display: flex;
-   flex-direction: row;
 }
 
 .spacer {
@@ -38,8 +30,8 @@ button {
 
 .title-text {
    text-align: center;
+   font: var(--mat-sys-label-large)
 }
 
-.copyright-text {
-   text-align: center;
-}
+
+

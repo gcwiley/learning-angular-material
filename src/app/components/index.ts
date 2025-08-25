@@ -1,7 +1,6 @@
 export { AnnouncementBarComponent } from './announcement-bar/announcement-bar.component';
 export { AuthStatusComponent } from './auth-status/auth-status.component';
 export { CalendarComponent } from './calendar/calendar.component';
-export { CarouselComponent } from '../components/carousel/carousel.component';
 export { ClockComponent } from './clock/clock.component';
 export { FooterComponent } from '../components/footer/footer.component';
 export { HeroComponent } from './hero/hero.component';

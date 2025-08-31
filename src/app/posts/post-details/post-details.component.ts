@@ -21,8 +21,8 @@ import { Post } from '../../types/post.interface';
   imports: [RouterModule, DatePipe, MatListModule, MatIconModule],
 })
 export class PostDetailsComponent implements OnInit, OnDestroy {
-  post!: Post; // initialisze explicitly
-  private destroy$ = new Subject<void>(); // subject to signal destruction
+  post!: Post;
+  private destroy$ = new Subject<void>(); 
   
   // inject dependencies
   private route = inject(ActivatedRoute);
@@ -39,6 +39,7 @@ export class PostDetailsComponent implements OnInit, OnDestroy {
 
   public getPostById(): void {
     const id = this.route.snapshot.paramMap.get('id');
+    // error checking
     if (!id) {
       console.error('Post ID not found in route paramaters.');
       return;

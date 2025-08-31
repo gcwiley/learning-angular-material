@@ -1,4 +1,10 @@
-import { ChangeDetectionStrategy, Component, OnInit, OnDestroy, inject } from '@angular/core';
+import {
+  ChangeDetectionStrategy,
+  Component,
+  OnInit,
+  OnDestroy,
+  inject,
+} from '@angular/core';
 import { ActivatedRoute, RouterModule } from '@angular/router';
 import { Subject, takeUntil } from 'rxjs';
 
@@ -15,8 +21,8 @@ import { Album } from '../../types/album.interface';
   imports: [RouterModule],
 })
 export class AlbumDescriptionComponent implements OnInit, OnDestroy {
-  album!: Album; // initialize explicitly
-  private destroy$ = new Subject<void>(); // subject to signal destruction
+  album: Album | undefined = undefined;
+  private destroy$ = new Subject<void>();
 
   // inject dependencies
   private route = inject(ActivatedRoute);
@@ -33,6 +39,7 @@ export class AlbumDescriptionComponent implements OnInit, OnDestroy {
 
   public getAlbumById(): void {
     const id = this.route.snapshot.paramMap.get('id');
+    // error checking
     if (!id) {
       console.error('Album ID not found in route parameters.');
       return;

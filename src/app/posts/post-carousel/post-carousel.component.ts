@@ -1,6 +1,6 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
 
-// angular material
+// angular material - fix this!
 
 @Component({
   standalone: true,

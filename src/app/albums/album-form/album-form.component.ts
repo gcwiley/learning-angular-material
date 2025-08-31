@@ -44,6 +44,7 @@ export class AlbumFormComponent implements OnInit {
   public mode = 'create';
   private id!: string;
   private album!: Album;
+  private readonly snackBarDuration = 5000;
 
   genres: AlbumGenre[] = ALBUM_GENRES;
 
@@ -101,36 +102,29 @@ export class AlbumFormComponent implements OnInit {
         .pipe(first())
         .subscribe({
           next: () => {
-            // reset the album form after album creation
-            this.albumForm.reset();
-            // display a success message to user
-            this.snackBar.open('Album created.', 'CLOSE', {
-              duration: 5000,
+            this.snackBar.open('Album successfully created.', 'Close', {
+              duration: this.snackBarDuration,
             });
-            // navigates user back to the homepage
             this.router.navigateByUrl('/');
           },
           error: (error) => {
             console.error('Error creating album:', error);
-            // display an error message to user
-            this.snackBar.open('Error creating album.', 'CLOSE', {
-              duration: 5000,
+            this.snackBar.open('Error creating album.', 'Close', {
+              duration: this.snackBarDuration,
             });
           },
         });
     } else {
       this.albumService.updateAlbumById(this.id!, this.albumForm.value as AlbumInput).subscribe({
         next: () => {
-          // display a success message to user
-          this.snackBar.open('Album updated.', 'CLOSE', {
-            duration: 5000,
+          this.snackBar.open('Album updated.', 'Close', {
+            duration: this.snackBarDuration,
           });
         },
         error: (error) => {
           console.error('Error updating album:', error);
-          // display an error message to user
-          this.snackBar.open('Error updating album.', 'CLOSE', {
-            duration: 5000,
+          this.snackBar.open('Error updating album.', 'Close', {
+            duration: this.snackBarDuration,
           });
         },
       });

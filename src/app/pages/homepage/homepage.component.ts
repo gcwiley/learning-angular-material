@@ -10,6 +10,7 @@ import { MatCardModule } from '@angular/material/card';
 import {
   NavBarComponent,
   ClockComponent,
+  MenuComponent,
   CalendarComponent,
   HeroComponent,
   FooterComponent,
@@ -30,6 +31,7 @@ import { PostGridComponent, RecentPostsComponent } from '../../posts';
     NavBarComponent,
     CalendarComponent,
     ClockComponent,
+    MenuComponent,
     FooterComponent,
     HeroComponent,
     PostGridComponent,

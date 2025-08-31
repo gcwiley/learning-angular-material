@@ -98,11 +98,9 @@ export class PostFormComponent implements OnInit {
         .addPost(this.postForm.value as PostInput)
         .pipe(first())
         .subscribe({
-          next: (post) => {
-            // reset the post form
-            this.postForm.reset(post);
+          next: () => {
             // display a success message
-            this.snackBar.open('Post created', 'CLOSE', {
+            this.snackBar.open('Post created', 'Close', {
               duration: 5000,
             });
             // navigates user back to homepage
@@ -110,7 +108,7 @@ export class PostFormComponent implements OnInit {
           },
           error: () => {
             // display an error message
-            this.snackBar.open('Error creating post', 'CLOSE', {
+            this.snackBar.open('Error creating post', 'Close', {
               duration: 5000,
             });
           },
@@ -119,14 +117,14 @@ export class PostFormComponent implements OnInit {
       this.postService.updatePostById(this.id!, this.postForm.value as PostInput).subscribe({
         next: () => {
           // display a success message
-          this.snackBar.open('Post updated', 'CLOSE', {
+          this.snackBar.open('Post updated', 'Close', {
             duration: 5000,
           });
         },
         error: (error) => {
           console.error('Error updating post:', error);
           // display an error message
-          this.snackBar.open('Error updating post.', 'CLOSE', {
+          this.snackBar.open('Error updating post.', 'Close', {
             duration: 5000,
           });
         },

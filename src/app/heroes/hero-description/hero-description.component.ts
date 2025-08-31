@@ -17,8 +17,8 @@ import { Hero } from '../../types/hero.interface';
   imports: [RouterModule],
 })
 export class HeroDescriptionComponent implements OnInit, OnDestroy {
-  hero!: Hero; // initialize explicity
-  private destroy$ = new Subject<void>(); // subject to signal destruction
+  hero: Hero | undefined = undefined;
+  private destroy$ = new Subject<void>();
 
   // inject dependencies
   private route = inject(ActivatedRoute);
@@ -35,6 +35,7 @@ export class HeroDescriptionComponent implements OnInit, OnDestroy {
 
   public getHeroById(): void {
     const id = this.route.snapshot.paramMap.get('id');
+    // error checking
     if (!id) {
       console.error('Hero ID not found in route parameters.');
       return;

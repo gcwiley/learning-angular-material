@@ -1,9 +1,10 @@
 import { ChangeDetectionStrategy, Component, OnInit, inject } from '@angular/core';
-import { FormBuilder, Validators, FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { FormBuilder, Validators, ReactiveFormsModule } from '@angular/forms';
 import { ActivatedRoute, ParamMap, Router } from '@angular/router';
 
 // rxjs
-import { first, take } from 'rxjs';
+import { of } from 'rxjs';
+import { first, switchMap } from 'rxjs';
 
 // angular material
 import { MatCardModule } from '@angular/material/card';
@@ -17,7 +18,7 @@ import { MatSnackBar } from '@angular/material/snack-bar';
 
 // album service and interfaces
 import { AlbumService } from '../../services/album.service';
-import { Album, AlbumInput, AlbumGenre } from '../../types/album.interface';
+import { AlbumInput, AlbumGenre } from '../../types/album.interface';
 
 // album data values
 import { ALBUM_GENRES } from '../../../assets/data/album-data';
@@ -36,14 +37,12 @@ import { ALBUM_GENRES } from '../../../assets/data/album-data';
     MatSelectModule,
     MatDatepickerModule,
     MatNativeDateModule,
-    FormsModule,
     ReactiveFormsModule,
   ],
 })
 export class AlbumFormComponent implements OnInit {
-  public mode = 'create';
-  private id!: string;
-  private album!: Album;
+  public mode: 'create' | 'edit' = 'create';
+  private id!: string | null;
   private readonly snackBarDuration = 5000;
 
   genres: AlbumGenre[] = ALBUM_GENRES;
@@ -66,39 +65,44 @@ export class AlbumFormComponent implements OnInit {
     summary: ['', Validators.required],
   });
 
-  ngOnInit(): void {
-    // find out if we have an id in the url
-    this.route.paramMap.pipe(take(1)).subscribe((paramMap: ParamMap) => {
-      if (paramMap.has('id')) {
-        this.mode = 'edit';
-        this.id = paramMap.get('id')!;
-        this.albumService
-          .getAlbumById(this.id!)
-          .pipe(take(1))
-          .subscribe((album) => {
-            this.album = album;
-            // overrides the value of initial form controls
-            this.albumForm.setValue({
-              title: this.album.title,
-              artist: this.album.artist,
-              releaseDate: this.album.releaseDate,
-              label: this.album.label,
-              studio: this.album.studio,
-              genre: this.album.genre,
-              summary: this.album.summary,
-            });
+  public ngOnInit(): void {
+    this.route.paramMap
+      .pipe(
+        first(),
+        switchMap((paramMap: ParamMap) => {
+          if (paramMap.has('id')) {
+            this.mode = 'edit';
+            this.id = paramMap.get('id');
+            return this.albumService.getAlbumById(this.id!);
+          } else {
+            this.mode = 'create';
+            return of(undefined);
+          }
+        })
+      )
+      .subscribe((album) => {
+        if (album) {
+          // use patchValue for safety, and map the data correctly
+          this.albumForm.patchValue({
+            ...album,
+            releaseDate: album.releaseDate ? new Date(album.releaseDate).toISOString() : '',
           });
-      } else {
-        this.mode = 'create';
-      }
-    });
+        }
+      });
   }
 
   // saves new album to database
-  onSaveAlbum() {
+  public onSaveAlbum() {
+    // error checking
+    if (!this.albumForm.valid) {
+      return;
+    }
+
+    const formValue = this.albumForm.value as AlbumInput;
+
     if (this.mode === 'create') {
       this.albumService
-        .addAlbum(this.albumForm.value as AlbumInput)
+        .addAlbum(formValue)
         .pipe(first())
         .subscribe({
           next: () => {
@@ -115,7 +119,7 @@ export class AlbumFormComponent implements OnInit {
           },
         });
     } else {
-      this.albumService.updateAlbumById(this.id!, this.albumForm.value as AlbumInput).subscribe({
+      this.albumService.updateAlbumById(this.id!, formValue).subscribe({
         next: () => {
           this.snackBar.open('Album updated.', 'Close', {
             duration: this.snackBarDuration,
@@ -131,9 +135,8 @@ export class AlbumFormComponent implements OnInit {
     }
   }
 
-  // reset the album form
-  public onReset(event: Event): void {
-    event.preventDefault();
-    this.albumForm.reset();
+  // cancels out of the form and return to album details page
+  public onCancel(): void {
+    this.router.navigateByUrl(this.mode === 'edit' ? `/albums/${this.id}` : '/');
   }
 }

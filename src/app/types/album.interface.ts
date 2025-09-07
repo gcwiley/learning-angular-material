@@ -12,7 +12,7 @@ export interface Album {
   updatedAt: string;
 }
 
-export type AlbumInput = Omit<Album, 'id'>
+export type AlbumInput = Omit<Album, 'id'>;
 
 // define the album genre interface
 export interface AlbumGenre {

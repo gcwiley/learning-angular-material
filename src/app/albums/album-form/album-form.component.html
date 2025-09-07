@@ -1,5 +1,6 @@
 <form [formGroup]="albumForm" novalidate (ngSubmit)="onSaveAlbum()" aria-label="Album Form">
   <mat-card class="album-form" appearance="outlined">
+    
     <mat-card-header>
       <mat-card-title>New Album</mat-card-title>
     </mat-card-header>
@@ -14,7 +15,7 @@
               matInput
               type="text"
               formControlName="title"
-              placeholder="Title"
+              title="Title"
               aria-describedby="title-error" />
             @if (this.albumForm.controls['title'].hasError('required')) {
             <mat-error id="title-error">Please provide an album title.</mat-error>
@@ -32,7 +33,7 @@
               matInput
               type="text"
               formControlName="artist"
-              placeholder="Artist"
+              title="Artist"
               aria-describedby="arist-error" />
             @if (this.albumForm.controls['artist'].hasError('required')) {
             <mat-error id="artist-error">Please provide an artist.</mat-error>
@@ -50,11 +51,14 @@
               matInput
               [matDatepicker]="picker"
               formControlName="releaseDate"
-              placeholder="Release Date" />
+              title="Release Date"
+              aria-describedby="releaseDate-error" />
             <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
             <mat-datepicker #picker></mat-datepicker>
             @if (this.albumForm.controls['releaseDate'].hasError('required')) {
-            <mat-error>Please provide the release date of the album.</mat-error>
+            <mat-error id="releaseDate-error" aria-live="polite"
+              >Please provide the release date of the album.</mat-error
+            >
             }
           </mat-form-field>
         </div>
@@ -63,9 +67,16 @@
           <!-- label -->
           <mat-form-field class="full-width" appearance="outline">
             <mat-label>Label</mat-label>
-            <input matInput type="text" formControlName="label" placeholder="Label" />
+            <input
+              matInput
+              type="text"
+              formControlName="label"
+              title="Label"
+              aria-describedby="label-error" />
             @if (this.albumForm.controls['label'].hasError('required')) {
-            <mat-error>Please provide an album label.</mat-error>
+            <mat-error id="label-error" aria-live="polite"
+              >Please provide an album label.</mat-error
+            >
             }
           </mat-form-field>
         </div>
@@ -76,9 +87,16 @@
           <!-- studio -->
           <mat-form-field class="full-width" appearance="outline">
             <mat-label>Studio</mat-label>
-            <input matInput type="text" formControlName="studio" placeholder="Studio" />
+            <input
+              matInput
+              type="text"
+              formControlName="studio"
+              title="Studio"
+              aria-describedby="studio-error" />
             @if (this.albumForm.controls['studio'].hasError('required')) {
-            <mat-error>Please provide the studio.</mat-error>
+            <mat-error id="studio-error" aria-live="polite"
+              >Please provide the name of the studio.</mat-error
+            >
             }
           </mat-form-field>
         </div>
@@ -109,7 +127,7 @@
               matInput
               rows="8"
               formControlName="summary"
-              placeholder="About the album."></textarea>
+              title="About the album."></textarea>
             @if (this.albumForm.controls['summary'].hasError('required')) {
             <mat-error>Please provide a summary.</mat-error>
             }
@@ -124,7 +142,7 @@
       } @else {
       <button mat-flat-button type="submit" [disabled]="!albumForm.valid">Update</button>
       }
-      <button mat-flat-button type="button" (click)="albumForm.reset()">Clear</button>
+      <button mat-flat-button type="button" (click)="onCancel()">Cancel</button>
     </mat-card-actions>
   </mat-card>
 </form>

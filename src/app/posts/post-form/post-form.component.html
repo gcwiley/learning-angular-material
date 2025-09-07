@@ -1,6 +1,7 @@
 <form [formGroup]="postForm" novalidate (ngSubmit)="onSavePost()" aria-label="Post Form">
   <mat-card class="post-form" appearance="outlined">
     <mat-card-header>
+      <!-- fix this! -->
       <mat-card-title>New Post</mat-card-title>
     </mat-card-header>
 
@@ -14,7 +15,7 @@
               matInput
               type="text"
               formControlName="title"
-              placeholder="Title"
+              title="Title"
               aria-describedby="title-error" />
             @if (this.postForm.controls['title'].hasError('required')) {
             <mat-error id="title-error">Please enter a post title.</mat-error>

@@ -1,9 +1,10 @@
 import { ChangeDetectionStrategy, Component, OnInit, inject } from '@angular/core';
-import { FormBuilder, Validators, FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { FormBuilder, Validators, ReactiveFormsModule } from '@angular/forms';
 import { ActivatedRoute, ParamMap, Router } from '@angular/router';
 
 // rxjs
-import { first, take } from 'rxjs';
+import { of } from 'rxjs';
+import { first, switchMap } from 'rxjs';
 
 // angular material
 import { MatCardModule } from '@angular/material/card';
@@ -17,7 +18,7 @@ import { MatSnackBar } from '@angular/material/snack-bar';
 
 // post service and interface
 import { PostService } from '../../services/post.service';
-import { Post, PostInput, PostCategory } from '../../types/post.interface';
+import { PostInput, PostCategory } from '../../types/post.interface';
 
 // import the post categories
 import { POST_CATEGORIES } from '../../../assets/data/post-category';
@@ -29,7 +30,6 @@ import { POST_CATEGORIES } from '../../../assets/data/post-category';
   styleUrl: './post-form.component.scss',
   changeDetection: ChangeDetectionStrategy.OnPush,
   imports: [
-    FormsModule,
     ReactiveFormsModule,
     MatCardModule,
     MatButtonModule,
@@ -41,9 +41,9 @@ import { POST_CATEGORIES } from '../../../assets/data/post-category';
   ],
 })
 export class PostFormComponent implements OnInit {
-  public mode = 'create';
-  private id!: string;
-  private post!: Post;
+  public mode: 'create' | 'edit' = 'create';
+  private id!: string | null;
+  private readonly snackBarDuration = 5000;
 
   categories: PostCategory[] = POST_CATEGORIES;
 
@@ -65,76 +65,75 @@ export class PostFormComponent implements OnInit {
   });
 
   public ngOnInit(): void {
-    // find out if an 'id' exists or not
-    this.route.paramMap.pipe(take(1)).subscribe((paramMap: ParamMap) => {
-      if (paramMap.has('id')) {
-        this.mode = 'edit';
-        this.id = paramMap.get('id')!;
-        this.postService
-          .getPostById(this.id!)
-          .pipe(take(1))
-          .subscribe((post) => {
-            this.post = post;
-            // overrides values of initial form controls
-            this.postForm.setValue({
-              title: this.post.title,
-              author: this.post.author,
-              body: this.post.body,
-              category: this.post.category,
-              favorite: this.post.favorite,
-              date: this.post.date,
-            });
+    this.route.paramMap
+      .pipe(
+        first(),
+        switchMap((paramMap: ParamMap) => {
+          if (paramMap.has('id')) {
+            this.mode = 'edit';
+            this.id = paramMap.get('id');
+            return this.postService.getPostById(this.id!);
+          } else {
+            this.mode = 'create';
+            return of(undefined);
+          }
+        })
+      )
+      .subscribe((post) => {
+        if (post) {
+          this.postForm.patchValue({
+            ...post,
+            date: post.date ? new Date(post.date).toISOString() : '',
           });
-      } else {
-        this.mode = 'create';
-      }
-    });
+        }
+      });
   }
 
   // saves a new post to database
   public onSavePost(): void {
+    // error checking
+    if (!this.postForm.valid) {
+      return;
+    }
+
+    const formValue = this.postForm.value as PostInput
+
     if (this.mode === 'create') {
       this.postService
-        .addPost(this.postForm.value as PostInput)
+        .addPost(formValue)
         .pipe(first())
         .subscribe({
           next: () => {
-            // display a success message
-            this.snackBar.open('Post created', 'Close', {
-              duration: 5000,
+            this.snackBar.open('Post successfully created.', 'Close', {
+              duration: this.snackBarDuration,
             });
-            // navigates user back to homepage
             this.router.navigateByUrl('/');
           },
           error: () => {
-            // display an error message
-            this.snackBar.open('Error creating post', 'Close', {
-              duration: 5000,
+            this.snackBar.open('Error creating post.', 'Close', {
+              duration: this.snackBarDuration,
             });
           },
         });
     } else {
       this.postService.updatePostById(this.id!, this.postForm.value as PostInput).subscribe({
         next: () => {
-          // display a success message
-          this.snackBar.open('Post updated', 'Close', {
-            duration: 5000,
+          this.snackBar.open('Post successfully updated', 'Close', {
+            duration: this.snackBarDuration,
           });
         },
         error: (error) => {
           console.error('Error updating post:', error);
-          // display an error message
           this.snackBar.open('Error updating post.', 'Close', {
-            duration: 5000,
+            duration: this.snackBarDuration,
           });
         },
       });
     }
   }
 
-  // reset the post form
-  public onReset(event: Event): void {
-    event.preventDefault();
-    this.postForm.reset();
+  // cancels out of the form and returns to post details page
+  public onCancel(): void {
+    this.router.navigateByUrl(this.mode === 'edit' ? `/posts/${this.id}` : '/');
   }
 }

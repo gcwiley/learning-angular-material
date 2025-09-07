@@ -21,7 +21,7 @@ import { Album } from '../../types/album.interface';
   imports: [RouterModule],
 })
 export class AlbumDescriptionComponent implements OnInit, OnDestroy {
-  album: Album | undefined = undefined;
+  album: Album | undefined;
   private destroy$ = new Subject<void>();
 
   // inject dependencies

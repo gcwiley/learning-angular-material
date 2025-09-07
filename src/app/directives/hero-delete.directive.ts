@@ -49,7 +49,7 @@ export class HeroDeleteDirective {
       .subscribe({
         next: () => {
           this.deleted.emit(this.id());
-          this.snackBar.open('Hero deleted successfully.', 'Close', { duration: 5000 });
+          this.snackBar.open('Hero deleted successfully.', 'Close', { duration: this.snackBarDuration });
         },
       });
   }

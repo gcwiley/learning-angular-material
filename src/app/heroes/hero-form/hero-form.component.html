@@ -13,7 +13,7 @@
           matInput
           type="text"
           formControlName="name"
-          placeholder="name"
+          title="Name"
           aria-describedby="name-error" />
         @if (this.heroForm.controls['name'].hasError('required')) {
         <mat-error id="name-error">Please enter a hero name.</mat-error>
@@ -29,7 +29,7 @@
               matInput
               type="text"
               formControlName="alterEgo"
-              placeholder="Alter Ego"
+              title="Alter Ego"
               aria-describedby="alter-ego-error" />
             @if (this.heroForm.controls['alterEgo'].hasError('required')) {
             <mat-error id="alter-ego-error">Please provide an alter ego.</mat-error>
@@ -48,7 +48,7 @@
               placeholder="Place of Origin"
               aria-describedby="place-of-orgin-error" />
             @if (this.heroForm.controls['placeOfOrigin'].hasError('required')) {
-            <mat-error id="place-of-orgin-error">Please provide a place of origin.</mat-error>
+            <mat-error id="place-of-orgin-error" aria-live="polite">Please provide a place of origin.</mat-error>
             }
           </mat-form-field>
         </div>

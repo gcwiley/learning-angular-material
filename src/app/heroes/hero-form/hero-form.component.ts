@@ -125,10 +125,4 @@ export class HeroFormComponent implements OnInit {
       });
     }
   }
-
-  // reset the hero form
-  public onReset(event: Event): void {
-    event.preventDefault();
-    this.heroForm.reset();
-  }
 }

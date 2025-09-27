@@ -138,9 +138,9 @@
 
     <mat-card-actions class="card-actions">
       @if (this.mode === 'create') {
-      <button mat-flat-button type="submit" [disabled]="!albumForm.valid">Create</button>
+      <button matButton="filled" type="submit" aria-label="Create Album" [disabled]="!albumForm.valid">Create</button>
       } @else {
-      <button mat-flat-button type="submit" [disabled]="!albumForm.valid">Update</button>
+      <button matButton="filled" type="submit" aria-label="Update Album" [disabled]="!albumForm.valid">Update</button>
       }
       <button mat-flat-button type="button" (click)="onCancel()">Cancel</button>
     </mat-card-actions>

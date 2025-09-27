@@ -21,7 +21,7 @@ import { Post } from '../../types/post.interface';
   imports: [RouterModule, MatDividerModule, DatePipe],
 })
 export class PostDescriptionComponent implements OnInit, OnDestroy {
-  post!: Post; // initialize explicitly
+  post: Post | undefined;
   private destroy$ = new Subject<void>(); // subject to signal destruction
 
   // inject dependencies

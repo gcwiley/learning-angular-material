@@ -1,11 +1,9 @@
 import { ChangeDetectionStrategy, Component, inject } from '@angular/core';
 import { ActivatedRoute, RouterModule } from '@angular/router';
+import { CommonModule } from '@angular/common';
 
 // rxjs
 import { Subject, takeUntil } from 'rxjs';
-
-// angular material
-import { MatListModule } from '@angular/material/list';
 
 // hero service and interface
 import { HeroService } from '../../services/hero.service';
@@ -13,10 +11,16 @@ import { Hero } from '../../types/hero.interface';
 
 @Component({
   standalone: true,
-  selector: 'app-hero-details',
-  templateUrl: './hero-details.component.html',
-  styleUrls: ['./hero-details.component.scss'],
+  selector: 'app-hero-description',
+  templateUrl: './hero-description.component.html',
+  styleUrls: ['./hero-description.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
-  imports: [RouterModule, MatListModule],
+  imports: [CommonModule, RouterModule],
 })
-export class HeroDetailsComponent {}
+export class HeroDescriptionComponent {
+  // inject dependencies
+  private route = inject(ActivatedRoute);
+  private heroService = inject(HeroService);
+
+
+}

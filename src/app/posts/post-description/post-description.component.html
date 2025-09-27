@@ -1,6 +1,8 @@
+@if (post) {
 <section class="post-description" aria-label="Post Description">
   <h2>{{ post.date | date }}</h2>
   <h1>{{ post.title }}</h1>
   <mat-divider></mat-divider>
   <p>{{ post.body }}</p>
 </section>
+}

@@ -48,7 +48,9 @@
               placeholder="Place of Origin"
               aria-describedby="place-of-orgin-error" />
             @if (this.heroForm.controls['placeOfOrigin'].hasError('required')) {
-            <mat-error id="place-of-orgin-error" aria-live="polite">Please provide a place of origin.</mat-error>
+            <mat-error id="place-of-orgin-error" aria-live="polite"
+              >Please provide a place of origin.</mat-error
+            >
             }
           </mat-form-field>
         </div>
@@ -93,11 +95,15 @@
 
     <mat-card-actions class="card-actions">
       @if (this.mode === 'create') {
-      <button mat-flat-button type="submit" [disabled]="!heroForm.valid">Create</button>
+      <button matButton="filled" type="submit" aria-label="Create Hero" [disabled]="!heroForm.valid">
+        Create
+      </button>
       } @else {
-      <button mat-flat-button type="submit" [disabled]="!heroForm.valid">Update</button>
+      <button matButton="filled" type="submit" aria-label="Update Hero" [disabled]="!heroForm.valid">
+        Update
+      </button>
       }
-      <button mat-flat-button type="button" class="button" (click)="heroForm.reset()">Clear</button>
+      <button matButton="outlined" type="button" class="button" (click)="heroForm.reset()">Clear</button>
     </mat-card-actions>
   </mat-card>
 </form>

@@ -1,3 +1,3 @@
-export { ImageCarouselComponent } from "./image-carousel/image-carousel.component";
-export { ImageGridComponent } from "./image-grid/image-grid.component";
-export { ImageUploadComponent } from "./image-upload/image-upload.component";
+export { ImageCarousel } from "./image-carousel/image-carousel";
+export { ImageGrid } from "./image-grid/image-grid";
+export { ImageUpload } from "./image-upload/image-upload";

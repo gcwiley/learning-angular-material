@@ -1,4 +1,4 @@
-@if (album) {
+@if (album$ | async; as album) {
 <mat-list class="album-details" role="list" aria-label="Album Details">
   <span mat-subheader>Album Details</span>
   <!-- release date -->

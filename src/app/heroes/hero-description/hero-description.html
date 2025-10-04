@@ -1,4 +1,4 @@
-@if (hero) {
+@if (hero$ | async; as hero) {
 <section class="hero-description" aria-label="Hero Description">
   <h1>{{ hero.name }}</h1>
   <p>{{ hero.biography }}</p>

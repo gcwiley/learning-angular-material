@@ -8,34 +8,34 @@ import { MatCardModule } from '@angular/material/card';
 
 // shared components
 import {
-  NavBarComponent,
-  ClockComponent,
-  MenuComponent,
-  CalendarComponent,
-  HeroComponent,
-  FooterComponent,
+  NavBar,
+  Clock,
+  Menu,
+  Calendar,
+  Hero,
+  Footer,
 } from '../../components/index';
 
 // post components
-import { PostGridComponent, RecentPostsComponent } from '../../posts';
+import { PostGrid, RecentPosts } from '../../posts';
 
 @Component({
   selector: 'app-homepage',
-  templateUrl: './homepage.component.html',
-  styleUrls: ['./homepage.component.scss'],
+  templateUrl: './homepage.html',
+  styleUrls: ['./homepage.scss'],
   imports: [
     MatButtonModule,
     MatIconModule,
     MatDividerModule,
     MatCardModule,
-    NavBarComponent,
-    CalendarComponent,
-    ClockComponent,
-    MenuComponent,
-    FooterComponent,
-    HeroComponent,
-    PostGridComponent,
-    RecentPostsComponent,
+    NavBar,
+    Calendar,
+    Clock,
+    Menu,
+    Footer,
+    Hero,
+    PostGrid,
+    RecentPosts,
   ],
 })
-export class HomepageComponent {}
+export class Homepage {}

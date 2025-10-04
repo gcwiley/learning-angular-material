@@ -1,9 +1,9 @@
-import { ChangeDetectionStrategy, Component, OnInit, OnDestroy, inject } from '@angular/core';
-import { DatePipe } from '@angular/common';
+import { ChangeDetectionStrategy, Component, inject } from '@angular/core';
 import { ActivatedRoute, RouterModule } from '@angular/router';
+import { CommonModule } from '@angular/common';
 
 // rxjs
-import { Subject, takeUntil } from 'rxjs';
+import { of, Observable, map, filter, switchMap, catchError } from 'rxjs';
 
 // angular material
 import { MatDividerModule } from '@angular/material/divider';
@@ -18,41 +18,23 @@ import { Post } from '../../types/post.interface';
   templateUrl: './post-description.html',
   styleUrl: './post-description.scss',
   changeDetection: ChangeDetectionStrategy.OnPush,
-  imports: [RouterModule, MatDividerModule, DatePipe],
+  imports: [CommonModule, RouterModule, MatDividerModule],
 })
-export class PostDescription implements OnInit, OnDestroy {
-  post: Post | undefined;
-  private destroy$ = new Subject<void>(); // subject to signal destruction
-
+export class PostDescription {
   // inject dependencies
   private route = inject(ActivatedRoute);
   private postService = inject(PostService);
 
-  public ngOnInit(): void {
-    this.getPostById();
-  }
-
-  public ngOnDestroy(): void {
-    this.destroy$.next();
-    this.destroy$.complete();
-  }
-
-  public getPostById(): void {
-    const id = this.route.snapshot.paramMap.get('id');
-    if (!id) {
-      console.error('Post ID not found in route parameters.');
-      return;
-    }
-    this.postService
-      .getPostById(id)
-      .pipe(takeUntil(this.destroy$))
-      .subscribe({
-        next: (post) => {
-          this.post = post;
-        },
-        error: (error) => {
-          console.error('Error fetching post description:', error);
-        },
-      });
-  }
+  public post$: Observable<Post | undefined> = this.route.paramMap.pipe(
+    map((pm) => pm.get('id')),
+    filter((id): id is string => !!id),
+    switchMap((id) =>
+      this.postService.getPostById(id).pipe(
+        catchError((error) => {
+          console.error('Error fetching post:', error);
+          return of(undefined); // signal not found/error to template
+        })
+      )
+    )
+  );
 }

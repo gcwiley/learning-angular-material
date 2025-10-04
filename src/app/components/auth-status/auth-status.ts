@@ -16,12 +16,12 @@ import { MatChipsModule } from '@angular/material/chips';
 @Component({
   standalone: true,
   selector: 'app-auth-status',
-  templateUrl: './auth-status.component.html',
-  styleUrl: './auth-status.component.scss',
+  templateUrl: './auth-status.html',
+  styleUrl: './auth-status.scss',
   changeDetection: ChangeDetectionStrategy.OnPush,
   imports: [AsyncPipe, RouterModule, MatToolbarModule, MatButtonModule, MatChipsModule],
 })
-export class AuthStatusComponent {
+export class AuthStatus {
   // inject dependencies
   private authService = inject(AuthService);
   private router = inject(Router);

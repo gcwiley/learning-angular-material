@@ -8,7 +8,7 @@ export const routes: Routes = [
     title: 'About Page',
     canActivate: [authGuard],
     loadComponent: () =>
-      import('./pages/about-page/about-page.component').then((m) => m.AboutPageComponent),
+      import('./pages/about-page/about-page').then((m) => m.AboutPage),
   },
   // admin page
   {
@@ -16,7 +16,7 @@ export const routes: Routes = [
     title: 'Admin Page',
     canActivate: [authGuard],
     loadComponent: () =>
-      import('./pages/admin-page/admin-page.component').then((m) => m.AdminPageComponent),
+      import('./pages/admin-page/admin-page').then((m) => m.AdminPage),
   },
   // homepage
   {
@@ -25,21 +25,21 @@ export const routes: Routes = [
     pathMatch: 'full',
     canActivate: [authGuard],
     loadComponent: () =>
-      import('./pages/homepage/homepage.component').then((m) => m.HomepageComponent),
+      import('./pages/homepage/homepage').then((m) => m.Homepage),
   },
   // sign in page
   {
     path: 'signin',
     title: 'Sign In',
     loadComponent: () =>
-      import('./pages/signin-page/signin-page.component').then((m) => m.SigninPageComponent),
+      import('./pages/signin-page/signin-page').then((m) => m.SigninPage),
   },
   // sign up page
   {
     path: 'signup',
     title: 'Sign Up',
     loadComponent: () =>
-      import('./pages/signup-page/signup-page.component').then((m) => m.SignupPageComponent),
+      import('./pages/signup-page/signup-page').then((m) => m.SignupPage),
   },
 
   // GROUPED ALBUM ROUTES
@@ -51,24 +51,24 @@ export const routes: Routes = [
         path: '',
         title: 'Albums Page',
         loadComponent: () =>
-          import('./pages/album-pages/album-grid-page/album-grid-page.component').then(
-            (m) => m.AlbumGridPageComponent
+          import('./pages/album-pages/album-grid-page/album-grid-page').then(
+            (m) => m.AlbumGridPage
           ),
       },
       {
         path: 'create',
         title: 'Create Album',
         loadComponent: () =>
-          import('./pages/album-pages/album-create-page/album-create-page.component').then(
-            (m) => m.AlbumCreatePageComponent
+          import('./pages/album-pages/album-create-page/album-create-page').then(
+            (m) => m.AlbumCreatePage
           ),
       },
       {
         path: ':id',
         title: 'Album Details',
         loadComponent: () =>
-          import('./pages/album-pages/album-details-page/album-details-page.component').then(
-            (m) => m.AlbumDetailsPageComponent
+          import('./pages/album-pages/album-details-page/album-details-page').then(
+            (m) => m.AlbumDetailsPage
           ),
       },
     ],
@@ -82,8 +82,8 @@ export const routes: Routes = [
         path: '',
         title: 'Heroes Page',
         loadComponent: () =>
-          import('./pages/hero-pages/hero-grid-page/hero-grid-page.component').then(
-            (m) => m.HeroGridPageComponent
+          import('./pages/hero-pages/hero-grid-page/hero-grid-page').then(
+            (m) => m.HeroGridPage
           ),
       },
     ],
@@ -97,24 +97,24 @@ export const routes: Routes = [
         path: '',
         title: 'Post Page',
         loadComponent: () =>
-          import('./pages/post-pages/post-grid-page/post-grid-page.component').then(
-            (m) => m.PostGridPageComponent
+          import('./pages/post-pages/post-grid-page/post-grid-page').then(
+            (m) => m.PostGridPage
           ),
       },
       {
         path: 'create',
         title: 'Create Post',
         loadComponent: () =>
-          import('./pages/post-pages/post-create-page/post-create-page.component').then(
-            (m) => m.PostCreatePageComponent
+          import('./pages/post-pages/post-create-page/post-create-page').then(
+            (m) => m.PostCreatePage
           ),
       },
       {
         path: ':id',
         title: 'Post Details',
         loadComponent: () =>
-          import('./pages/post-pages/post-details-page/post-details-page.component').then(
-            (m) => m.PostDetailsPageComponent
+          import('./pages/post-pages/post-details-page/post-details-page').then(
+            (m) => m.PostDetailsPage
           ),
       },
     ],

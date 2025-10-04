@@ -34,7 +34,7 @@ import { Album } from '../../types/album.interface';
         MatPaginator,
     ]
 })
-export class AlbumTableComponent implements AfterViewInit {
+export class AlbumTable implements AfterViewInit {
    // setup pagination for table
    @ViewChild(MatPaginator) paginator!: MatPaginator;
    // set up sort in table

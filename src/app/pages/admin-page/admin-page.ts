@@ -12,16 +12,16 @@ import { MatTabsModule } from '@angular/material/tabs';
 import { MatTooltip } from '@angular/material/tooltip';
 
 // album list component
-import { AlbumTableComponent } from '../../albums';
+import { AlbumTable } from '../../albums';
 
 // heroes list component
-import { HeroTableComponent } from '../../heroes';
+import { HeroTable } from '../../heroes';
 
 @Component({
     standalone: true,
     selector: 'app-admin-page',
-    templateUrl: './admin-page.component.html',
-    styleUrl: './admin-page.component.scss',
+    templateUrl: './admin-page.html',
+    styleUrl: './admin-page.scss',
     changeDetection: ChangeDetectionStrategy.OnPush,
     imports: [
     MatSidenavModule,
@@ -33,11 +33,11 @@ import { HeroTableComponent } from '../../heroes';
     MatTabsModule,
     MatTooltip,
     RouterModule,
-    AlbumTableComponent,
-    HeroTableComponent
+    AlbumTable,
+    HeroTable
 ]
 })
-export class AdminPageComponent {
+export class AdminPage {
    events: string[] = [];
    opened!: boolean;
 }

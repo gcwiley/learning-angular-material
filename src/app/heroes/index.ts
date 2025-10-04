@@ -1,7 +1,7 @@
-export { HeroCarouselComponent } from './hero-carousel/hero-carousel.component';
-export { HeroDescriptionComponent } from './hero-description/hero-description.component';
-export { HeroDetailsComponent } from './hero-details/hero-details.component';
-export { HeroFormComponent } from './hero-form/hero-form.component';
-export { HeroGridComponent } from './hero-grid/hero-grid.component';
-export { HeroTableComponent } from './hero-table/hero-table.component';
-export { RecentHeroesComponent } from './recent-heroes/recent-heroes.component';
+export { HeroCarousel } from './hero-carousel/hero-carousel';
+export { HeroDescription } from './hero-description/hero-description';
+export { HeroDetails } from './hero-details/hero-details';
+export { HeroForm } from './hero-form/hero-form';
+export { HeroGrid } from './hero-grid/hero-grid';
+export { HeroTable } from './hero-table/hero-table';
+export { RecentHeroes } from './recent-heroes/recent-heroes';

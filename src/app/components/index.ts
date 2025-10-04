@@ -1,5 +1,5 @@
 export { AnnouncementBar } from './announcement-bar/announcement-bar';
-export { AuthStatusComponent } from './auth-status/auth-status';
+export { AuthStatus } from './auth-status/auth-status';
 export { Calendar } from './calendar/calendar';
 export { Clock } from './clock/clock';
 export { Footer } from '../components/footer/footer';

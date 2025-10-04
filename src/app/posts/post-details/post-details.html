@@ -1,4 +1,4 @@
-@if (post) {
+@if (post$ | async; as post) {
 <mat-list class="post-details" role="list" aria-label="Post Details">
   <span mat-subheader>Post Details</span>
   <!-- date -->

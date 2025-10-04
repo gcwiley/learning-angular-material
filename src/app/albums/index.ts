@@ -1,7 +1,7 @@
-export { AlbumCarouselComponent } from './album-carousel/album-carousel.component';
-export { AlbumDescriptionComponent } from './album-description/album-description.component';
-export { AlbumDetailsComponent } from './album-details/album-details.component';
-export { AlbumFormComponent } from './album-form/album-form.component';
-export { AlbumGridComponent } from './album-grid/album-grid.component';
-export { AlbumTableComponent } from './album-table/album-table.component';
-export { RecentAlbumsComponent } from './recent-albums/recent-albums.component';
+export { AlbumCarousel } from './album-carousel/album-carousel';
+export { AlbumDescription } from './album-description/album-description';
+export { AlbumDetails } from './album-details/album-details';
+export { AlbumForm } from './album-form/album-form';
+export { AlbumGrid } from './album-grid/album-grid';
+export { AlbumTable } from './album-table/album-table';
+export { RecentAlbums } from './recent-albums/recent-albums';

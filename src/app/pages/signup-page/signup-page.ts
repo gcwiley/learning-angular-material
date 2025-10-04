@@ -16,8 +16,8 @@ import { AuthService } from '../../services/auth.service';
 @Component({
   standalone: true,
   selector: 'app-signup-page',
-  templateUrl: './signup-page.component.html',
-  styleUrl: './signup-page.component.scss',
+  templateUrl: './signup-page.html',
+  styleUrl: './signup-page.scss',
   changeDetection: ChangeDetectionStrategy.OnPush,
   imports: [
     ReactiveFormsModule,
@@ -29,7 +29,7 @@ import { AuthService } from '../../services/auth.service';
     MatIconModule,
   ],
 })
-export class SignupPageComponent {
+export class SignupPage {
   // inject dependencies
   private formBuilder = inject(FormBuilder);
   private authService = inject(AuthService);

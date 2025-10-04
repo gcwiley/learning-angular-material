@@ -15,12 +15,12 @@ import { Hero } from '../../types/hero.interface';
 @Component({
   standalone: true,
   selector: 'app-recent-heroes',
-  templateUrl: './recent-heroes.component.html',
-  styleUrls: ['./recent-heroes.component.scss'],
+  templateUrl: './recent-heroes.html',
+  styleUrls: ['./recent-heroes.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
   imports: [CommonModule, MatListModule, MatIconModule],
 })
-export class RecentHeroesComponent implements OnInit {
+export class RecentHeroes implements OnInit {
   public recentHeroes$!: Observable<Hero[]>;
 
   // inject dependencies

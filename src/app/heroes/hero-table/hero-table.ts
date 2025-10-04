@@ -23,8 +23,8 @@ import { Hero } from '../../types/hero.interface';
 @Component({
   standalone: true,
   selector: 'app-hero-table',
-  templateUrl: './hero-table.component.html',
-  styleUrls: ['./hero-table.component.scss'],
+  templateUrl: './hero-table.html',
+  styleUrls: ['./hero-table.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
   imports: [
     MatTableModule,
@@ -36,7 +36,7 @@ import { Hero } from '../../types/hero.interface';
     RouterModule,
   ],
 })
-export class HeroTableComponent implements AfterViewInit {
+export class HeroTable implements AfterViewInit {
   // setup pagination for table
   @ViewChild(MatPaginator) paginator!: MatPaginator;
   // set up sort in table

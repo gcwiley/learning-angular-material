@@ -1,3 +1,3 @@
-export { PostCreatePageComponent } from "./post-create-page/post-create-page.component";
-export { PostDetailsPageComponent } from "./post-details-page/post-details-page.component";
-export { PostGridPageComponent } from "./post-grid-page/post-grid-page.component";
+export { PostCreatePage } from "./post-create-page/post-create-page";
+export { PostDetailsPage } from "./post-details-page/post-details-page";
+export { PostGridPage } from "./post-grid-page/post-grid-page";

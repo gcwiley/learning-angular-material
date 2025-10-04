@@ -21,8 +21,8 @@ import { Hero } from '../../types/hero.interface';
 @Component({
   standalone: true,
   selector: 'app-hero-grid',
-  templateUrl: './hero-grid.component.html',
-  styleUrls: ['./hero-grid.component.scss'],
+  templateUrl: './hero-grid.html',
+  styleUrls: ['./hero-grid.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
   imports: [
     RouterModule,
@@ -34,7 +34,7 @@ import { Hero } from '../../types/hero.interface';
     AsyncPipe
   ],
 })
-export class HeroGridComponent implements OnInit, OnDestroy {
+export class HeroGrid implements OnInit, OnDestroy {
   // dependencies
   private heroService = inject(HeroService);
   private breakpointObserver = inject(BreakpointObserver);

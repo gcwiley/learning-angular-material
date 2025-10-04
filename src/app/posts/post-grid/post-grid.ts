@@ -21,8 +21,8 @@ import { Post } from '../../types/post.interface';
 @Component({
   standalone: true,
   selector: 'app-post-grid',
-  templateUrl: './post-grid.component.html',
-  styleUrl: './post-grid.component.scss',
+  templateUrl: './post-grid.html',
+  styleUrl: './post-grid.scss',
   changeDetection: ChangeDetectionStrategy.OnPush,
   imports: [
     CommonModule,
@@ -35,7 +35,7 @@ import { Post } from '../../types/post.interface';
     AsyncPipe,
   ],
 })
-export class PostGridComponent implements OnInit, OnDestroy {
+export class PostGrid implements OnInit, OnDestroy {
   // inject dependencies
   private postService = inject(PostService);
   private breakpointObserver = inject(BreakpointObserver);

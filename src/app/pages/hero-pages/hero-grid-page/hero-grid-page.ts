@@ -4,22 +4,22 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
 import { MatDividerModule } from '@angular/material/divider';
 
 // shared components
-import { NavBarComponent, FooterComponent } from '../../../components';
+import { NavBar, Footer } from '../../../components';
 
 // hero components
-import { HeroGridComponent } from '../../../heroes';
+import { HeroGrid } from '../../../heroes';
 
 @Component({
   standalone: true,
   selector: 'app-hero-grid-page',
-  templateUrl: './hero-grid-page.component.html',
-  styleUrls: ['./hero-grid-page.component.scss'],
+  templateUrl: './hero-grid-page.html',
+  styleUrls: ['./hero-grid-page.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
   imports: [
     MatDividerModule,
-    NavBarComponent,
-    FooterComponent,
-    HeroGridComponent,
+    NavBar,
+    Footer,
+    HeroGrid,
   ],
 })
-export class HeroGridPageComponent {}
+export class HeroGridPage {}

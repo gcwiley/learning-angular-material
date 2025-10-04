@@ -22,8 +22,8 @@ import { Hero, HeroInput } from '../../types/hero.interface';
 @Component({
   standalone: true,
   selector: 'app-hero-form',
-  templateUrl: './hero-form.component.html',
-  styleUrls: ['./hero-form.component.scss'],
+  templateUrl: './hero-form.html',
+  styleUrls: ['./hero-form.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
   imports: [
     MatCardModule,
@@ -37,7 +37,7 @@ import { Hero, HeroInput } from '../../types/hero.interface';
     ReactiveFormsModule,
   ],
 })
-export class HeroFormComponent implements OnInit {
+export class HeroForm implements OnInit {
   public mode = 'create';
   private id!: string;
   private hero!: Hero;

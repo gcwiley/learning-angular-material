@@ -1,4 +1,9 @@
-import { ChangeDetectionStrategy, Component, OnInit, inject } from '@angular/core';
+import {
+  ChangeDetectionStrategy,
+  Component,
+  OnInit,
+  inject,
+} from '@angular/core';
 import {
   FormBuilder,
   FormsModule,
@@ -7,7 +12,11 @@ import {
   ReactiveFormsModule,
   AbstractControl,
 } from '@angular/forms';
-import { Router } from '@angular/router';
+import { CommonModule } from '@angular/common';
+// router
+import { Router, RouterModule } from '@angular/router';
+
+// rxjs
 import { catchError, of } from 'rxjs';
 
 // angular material
@@ -36,6 +45,7 @@ const ERROR_MESSAGES = {
   styleUrls: ['./signin-page.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
   imports: [
+    CommonModule,
     ReactiveFormsModule,
     MatCardModule,
     MatInputModule,
@@ -44,18 +54,54 @@ const ERROR_MESSAGES = {
     MatButtonModule,
     MatIconModule,
     FormsModule,
+    RouterModule,
   ],
 })
 export class SigninPage implements OnInit {
   public signinForm!: FormGroup;
   public isLoading = false;
   public errorMessage: string | null = null;
+  public showPassword = false; // for toggle password on/off
+  public googleLoading = false; // Google OAuth loading flag
+  public readonly year = new Date().getFullYear();
 
   // inject dependencies
   private formBuilder = inject(FormBuilder);
-  private router = inject(Router);
   private authService = inject(AuthService);
+  private router = inject(Router);
   private snackBar = inject(MatSnackBar);
+
+  // Google Sign-In handler
+  public onSignInWithGoogle(): void {
+    if (this.googleLoading) return;
+    this.googleLoading = true;
+
+    this.authService
+      .signInWithGoogle()
+      .pipe(
+        catchError((error) => {
+          console.error('Google sign-in error', error);
+          this.googleLoading = false;
+          this.snackBar.open(
+            'Google sign-in failed. Please try again.',
+            'Close',
+            { duration: 4000 }
+          );
+          return of(null);
+        })
+      )
+      .subscribe({
+        next: (credential) => {
+          this.googleLoading = false;
+          if (credential) {
+            this.router.navigateByUrl('/');
+          }
+        },
+        error: () => {
+          this.googleLoading = false;
+        },
+      });
+  }
 
   public ngOnInit(): void {
     this.initializeForm();
@@ -67,6 +113,10 @@ export class SigninPage implements OnInit {
       email: ['', [Validators.required, Validators.email]],
       password: ['', [Validators.required, Validators.minLength(6)]], // Example: Minimum password length
     });
+  }
+
+  public toggleShowPassword(): void {
+    this.showPassword = !this.showPassword;
   }
 
   // sign in with email and password, if successfull, navigate authenicated user to the home page
@@ -84,7 +134,10 @@ export class SigninPage implements OnInit {
       .pipe(
         catchError((error) => {
           let message = ERROR_MESSAGES.UNKNOWN_ERROR;
-          if (error.code === 'auth/user-not-found' || error.code === 'auth/wrong-password') {
+          if (
+            error.code === 'auth/user-not-found' ||
+            error.code === 'auth/wrong-password'
+          ) {
             message = ERROR_MESSAGES.INVALID_CREDENTIALS;
           } else if (error.code === 'auth/network-request-failed') {
             message = ERROR_MESSAGES.NETWORK_ERROR;
@@ -99,19 +152,18 @@ export class SigninPage implements OnInit {
           if (user) {
             this.router.navigateByUrl('/');
           } else {
-            this.snackBar.open(this.errorMessage!, 'CLOSE');
+            this.snackBar.open(this.errorMessage!, 'Close');
           }
         },
         error: () => {
           this.isLoading = false;
-          this.snackBar.open(ERROR_MESSAGES.UNKNOWN_ERROR, 'CLOSE');
+          this.snackBar.open(ERROR_MESSAGES.UNKNOWN_ERROR, 'Close');
         },
       });
   }
 
   // Getter for easy access to form controls in the template
-  // eslint-disable-next-line @typescript-eslint/consistent-indexed-object-style
-  get formControls(): { [key: string]: AbstractControl } {
+  get formControls(): Record<string, AbstractControl> {
     return this.signinForm.controls;
   }
 }

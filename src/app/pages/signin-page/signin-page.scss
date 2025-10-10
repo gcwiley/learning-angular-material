@@ -1,19 +1,23 @@
 .signin-page-container {
   background: var(--mat-sys-primary-container);
-  background-image: url(../../../assets/images/sign_in_screen.jpg);
+  background-image: url(../../../assets/images/sign_in_graphic.jpg);
   background-size: cover;
   background-position: center;
-  color: var(--mat-sys-on-primary-container);
+  color: var(--mat-sys-primary);
   display: flex;
   justify-content: center;
   align-items: center;
-  height: 100vh;
+  min-height: 100vh; // use min-height to avoid overflow issues on small screens
+  padding: 2rem 1rem;
 }
 
 .signin-form {
-  max-width: 90%;
-  width: 400px;
-  padding: 2rem;
+  max-width: 400px;
+  width: 100%;
+  padding: 1.25rem;
+  background: rgba(255, 255, 255, 1); // white with 92% opacity
+  box-shadow: 0 2px 16px rgba(0, 0, 0, 0.12); // optional for depth
+  border-radius: 10px;
 }
 
 .full-width {
@@ -23,15 +27,108 @@
 
 .sign-in-button {
   width: 100%;
-}
-
-.spacer {
-  flex: 1 1 auto;
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .title-text {
   text-align: center;
-  font: var(--mat-sys-label-large, 'Arial', sans-serif);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.25rem;
+  margin-bottom: 1rem;
 }
 
+.title-text h1 {
+  font: var(--mat-sys-headline-small);
+  margin: 0;
+}
 
+.title-text p {
+  font: var(--mat-sys-body-medium);
+  margin: 0;
+}
+
+.forgot-password {
+  font: var(--mat-sys-label-large);
+  color: var(--mat-sys-primary);
+  text-align: center;
+  margin-bottom: 1rem;
+}
+
+.forgot-password a {
+  text-decoration: none;
+  color: inherit;
+  font-weight: 600;
+}
+
+.oauth-actions {
+  margin-top: 12px;
+  display: flex;
+  justify-content: center;
+  // thin grey divider between sign in and google button
+  border-top: 1px solid #e0e0e0;
+  padding-top: 12px;
+  margin-top: 16px; // give divider breathing room
+}
+
+.google-btn {
+  margin-top: 0.5rem;
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  width: 100%;
+  justify-content: center;
+  background: #fff;
+  color: #202124;
+  border-color: rgba(0, 0, 0, 0.12);
+  box-shadow: none;
+  text-transform: none;
+}
+
+// icon container: force block rendering so baseline issues disappear
+.google-icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 24px;
+  height: 24px;
+  line-height: 0; // prevents baseline gap
+  margin-right: 10px;
+}
+
+.google-icon svg {
+  display: block;
+  width: 18px;
+  height: 18px;
+}
+
+// label
+.google-label {
+  font-weight: 600;
+  display: inline-block;
+}
+
+.signin-footer {
+  font: var(--mat-sys-label-small);
+  margin-top: 12px;
+  text-align: center;
+  width: 100%;
+}
+
+.signin-footer small {
+  color: rgba(0, 0, 0, 0.6);
+  font-size: 0.85rem;
+  display: inline-block;
+  margin-top: 6px;
+}
+
+// reduces padding on smaller screens for better mobile usability
+@media (max-width: 500px) {
+  .signin-form {
+    padding: 1rem;
+    width: 100%;
+  }
+}

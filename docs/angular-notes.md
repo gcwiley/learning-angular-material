@@ -1,4 +1,5 @@
-### What is Angular
+# What is Angular
+
 - Front end library
 - Makes it easier to create web pages
 - Loads data and controls how the UI is updated
@@ -7,12 +8,12 @@
 - All the 'hard' details have been taken care of for us
 - Extremely popular
 
-### Angular vs React vs Vue
+## Angular vs React vs Vue
+
 - Angular - supported by Google
 
-#### pathMatch
+## pathMatch
 
-The 'pathMatch' property is used to control how Angular router matches URLs to 
-routes
+The 'pathMatch' property is used to control how Angular router matches URLs to routes
 
 The setting 'pathMatch: full', you ensure that a route only matches when the entire URL exactly matches the route path.

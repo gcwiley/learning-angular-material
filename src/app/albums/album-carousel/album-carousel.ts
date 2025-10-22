@@ -1,5 +1,7 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
 
+// fix this!
+
 @Component({
   standalone: true,
   selector: 'app-album-carousel',

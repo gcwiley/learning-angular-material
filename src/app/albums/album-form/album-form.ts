@@ -44,6 +44,8 @@ export class AlbumForm implements OnInit {
   public mode: 'create' | 'edit' = 'create';
   private id!: string | null;
   private readonly snackBarDuration = 5000;
+  public isSaving = false;
+  public submitted = false;
 
   genres: AlbumGenre[] = ALBUM_GENRES;
 
@@ -58,7 +60,7 @@ export class AlbumForm implements OnInit {
   albumForm = this.formBuilder.group({
     title: ['', Validators.required],
     artist: ['', Validators.required],
-    releaseDate: ['', Validators.required],
+    releaseDate: [null as Date | null, Validators.required],
     label: ['', Validators.required],
     studio: ['', Validators.required],
     genre: ['', Validators.required],

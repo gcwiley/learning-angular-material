@@ -12,4 +12,7 @@ import { MatButtonModule } from '@angular/material/button';
   changeDetection: ChangeDetectionStrategy.OnPush,
   imports: [RouterModule, MatButtonModule],
 })
-export class Hero {}
+export class Hero {
+  title = 'Learning Web Development';
+  subtitle = 'Best practices, code samples, and ideas';
+}

@@ -1,6 +1,7 @@
 .post-form {
-  margin: 1rem;
+  margin: 2rem auto;
   padding: 1rem;
+  max-width: 980px;
 }
 
 .full-width {
@@ -11,20 +12,24 @@
 .row {
   display: flex;
   flex-direction: row;
+  gap: 20px; // use gap for spacing between columns
 }
 
 .col {
   flex: 1;
-  margin-right: 20px;
+  margin-right: 0;
 }
 
 .card-actions button {
   margin: 0.5rem;
 }
 
-// responsive design - ensure the form layout adapts to smaller screens using CSS media queries
+// responsive design for small screens
 @media (max-width: 600px) {
   .row {
     flex-direction: column;
+  }
+  .col {
+    margin-bottom: 1rem;
   }
 }

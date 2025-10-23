@@ -1,6 +1,7 @@
 .album-form {
-  margin: 1rem;
+  margin: 2rem auto;
   padding: 1rem;
+  max-width: 980px;
 }
 
 .full-width {
@@ -26,7 +27,7 @@
   margin: 0.5rem;
 }
 
-// responsive design - ensure the form layout adapts to smaller screens using CSS media queries
+// responsive design for small screen
 @media (max-width: 600px) {
   .row {
     flex-direction: column;

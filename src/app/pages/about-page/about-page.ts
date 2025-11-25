@@ -8,7 +8,6 @@ import {
 } from '../../components';
 
 @Component({
-  standalone: true,
   selector: 'app-about-page',
   templateUrl: './about-page.html',
   styleUrl: './about-page.scss',

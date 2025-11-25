@@ -1,3 +1,6 @@
+// ISO 8601 date/time string
+export type ISODateString = string;
+
 // define the image interface
 export interface Image {
   id: string;
@@ -7,8 +10,8 @@ export interface Image {
   size: string;
   description: string;
   uploadedBy: string;
-  createdAt: string;
-  updatedAt: string;
+  createdAt: ISODateString;
+  updatedAt: ISODateString;
 }
 
 export type ImageInput = Omit<Image, 'id'>;

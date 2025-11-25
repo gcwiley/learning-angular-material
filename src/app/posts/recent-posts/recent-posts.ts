@@ -12,7 +12,6 @@ import { PostService } from '../../services/post.service';
 import { Post } from '../../types/post.interface';
 
 @Component({
-  standalone: true,
   selector: 'app-recent-posts',
   templateUrl: './recent-posts.html',
   styleUrl: './recent-posts.scss',

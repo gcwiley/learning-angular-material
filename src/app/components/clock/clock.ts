@@ -7,7 +7,6 @@ import { MatChipsModule } from '@angular/material/chips';
 import { MatToolbarModule } from '@angular/material/toolbar';
 
 @Component({
-  standalone: true,
   selector: 'app-clock',
   templateUrl: './clock.html',
   styleUrl: './clock.scss',

@@ -14,7 +14,6 @@ import { MatIconModule } from '@angular/material/icon';
 import { AuthService } from '../../services/auth.service';
 
 @Component({
-  standalone: true,
   selector: 'app-signup-page',
   templateUrl: './signup-page.html',
   styleUrl: './signup-page.scss',

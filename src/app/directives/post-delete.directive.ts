@@ -23,7 +23,7 @@ import {
 } from '../services/custom-confirm-dialog.service';
 
 @Directive({
-  standalone: true,
+  e: true,
   selector: '[appPostDelete]',
 })
 export class PostDeleteDirective {

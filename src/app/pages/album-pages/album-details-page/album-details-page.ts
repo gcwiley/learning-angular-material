@@ -7,7 +7,6 @@ import { NavBar, Footer } from '../../../components';
 import { AlbumDescription, AlbumDetails } from '../../../albums';
 
 @Component({
-  standalone: true,
   selector: 'app-album-details-page',
   templateUrl: './album-details-page.html',
   styleUrl: './album-details-page.scss',

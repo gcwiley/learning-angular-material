@@ -2,6 +2,6 @@
 
 2. Move the `dist` folder into the server side folder
 
-3. Run `npm dev` to test everything.
+3. Run `npm run dev` to test everything.
 
 4. R

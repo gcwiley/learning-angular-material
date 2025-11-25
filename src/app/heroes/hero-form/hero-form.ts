@@ -20,7 +20,6 @@ import { HeroService } from '../../services/hero.service';
 import { Hero, HeroInput } from '../../types/hero.interface';
 
 @Component({
-  standalone: true,
   selector: 'app-hero-form',
   templateUrl: './hero-form.html',
   styleUrls: ['./hero-form.scss'],
@@ -38,9 +37,11 @@ import { Hero, HeroInput } from '../../types/hero.interface';
   ],
 })
 export class HeroForm implements OnInit {
-  public mode = 'create';
-  private id!: string;
-  private hero!: Hero;
+  public mode: 'create' | 'edit' = 'create';
+  private id!: string | null;
+  private readonly snackBarDuration = 5000;
+  public isSaving = false;
+  public submitted = false;
 
   // inject dependencies
   private formBuilder = inject(FormBuilder);

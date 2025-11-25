@@ -4,7 +4,6 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
 import { NavBar, Footer } from '../../components';
 
 @Component({
-    standalone: true,
     selector: 'app-image-gallery-page',
     templateUrl: './gallery-page.html',
     styleUrls: ['./gallery-page.scss'],

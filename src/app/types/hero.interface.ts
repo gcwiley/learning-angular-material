@@ -1,3 +1,6 @@
+// ISO 8601 date/time string
+export type ISODateString = string;
+
 // define the hero interface
 export interface Hero {
   id: string;
@@ -6,6 +9,7 @@ export interface Hero {
   placeOfOrigin: string;
   abilities: string;
   biography: string;
+  imageUrl?: string; // optional
   createdAt: string;
   updatedAt: string;
 }

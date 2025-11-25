@@ -16,7 +16,6 @@ import { ImageService } from '../../services/image.service';
 import { Image } from '../../types/image.interface';
 
 @Component({
-  standalone: true,
   selector: 'app-image-grid-page',
   templateUrl: './image-grid.html',
   styleUrls: ['./image-grid.scss'],

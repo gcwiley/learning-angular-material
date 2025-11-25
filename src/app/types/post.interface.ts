@@ -1,3 +1,6 @@
+// ISO 8601 date/time string
+export type ISODateString = string;
+
 // define the post interface
 export interface Post {
     id: string;
@@ -6,9 +9,9 @@ export interface Post {
     body: string;
     category: string;
     favorite: boolean;
-    date: string;
-    createdAt: string;
-    updatedAt: string;
+    date: ISODateString;
+    createdAt: ISODateString;
+    updatedAt: ISODateString;
 }
 
 export type PostInput = Omit<Post, 'id'>

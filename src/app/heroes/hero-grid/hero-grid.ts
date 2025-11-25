@@ -19,7 +19,6 @@ import { HeroService } from '../../services/hero.service';
 import { Hero } from '../../types/hero.interface';
 
 @Component({
-  standalone: true,
   selector: 'app-hero-grid',
   templateUrl: './hero-grid.html',
   styleUrls: ['./hero-grid.scss'],

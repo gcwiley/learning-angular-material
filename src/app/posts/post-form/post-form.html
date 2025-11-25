@@ -1,10 +1,9 @@
-<form [formGroup]="postForm" novalidate (ngSubmit)="onSavePost()" aria-label="Post Form">
+<form
+  [formGroup]="postForm"
+  novalidate
+  (ngSubmit)="onSavePost()"
+  aria-label="Post Form">
   <mat-card class="post-form" appearance="outlined">
-    <mat-card-header>
-      <!-- fix this! -->
-      <mat-card-title>New Post</mat-card-title>
-    </mat-card-header>
-
     <mat-card-content>
       <div class="row">
         <div class="col">
@@ -50,7 +49,9 @@
             <mat-select formControlName="category">
               <mat-option value="" disabled>Select Category</mat-option>
               @for (category of categories; track category) {
-              <mat-option [value]="category.value">{{ category.viewValue }}</mat-option>
+              <mat-option [value]="category.value"
+                >{{ category.viewValue }}</mat-option
+              >
               }
             </mat-select>
             @if (this.postForm.controls['category'].hasError('required')) {
@@ -62,8 +63,14 @@
           <!-- date -->
           <mat-form-field class="full-width" appearance="outline">
             <mat-label>Date</mat-label>
-            <input matInput [matDatepicker]="picker" formControlName="date" placeholder="Date" />
-            <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+            <input
+              matInput
+              [matDatepicker]="picker"
+              formControlName="date"
+              placeholder="Date" />
+            <mat-datepicker-toggle
+              matSuffix
+              [for]="picker"></mat-datepicker-toggle>
             <mat-datepicker #picker></mat-datepicker>
             @if (this.postForm.controls['date'].hasError('required')) {
             <mat-error>Please select a date.</mat-error>
@@ -84,7 +91,9 @@
               title="Body"
               aria-describedby="body-error"></textarea>
             @if (this.postForm.controls['body'].hasError('required')) {
-            <mat-error id="body-error">Please provide content for your post.</mat-error>
+            <mat-error id="body-error"
+              >Please provide content for your post.</mat-error
+            >
             }
           </mat-form-field>
         </div>
@@ -93,11 +102,17 @@
 
     <mat-card-actions class="card-actions">
       @if (this.mode === 'create') {
-      <button mat-flat-button type="submit" [disabled]="!postForm.valid">Create</button>
+      <button mat-flat-button type="submit" [disabled]="!postForm.valid">
+        Create
+      </button>
       } @else {
-      <button mat-flat-button type="submit" [disabled]="!postForm.valid">Update</button>
+      <button mat-flat-button type="submit" [disabled]="!postForm.valid">
+        Update
+      </button>
       }
-      <button mat-flat-button type="button" (click)="postForm.reset()">Clear</button>
+      <button mat-flat-button type="button" (click)="postForm.reset()">
+        Clear
+      </button>
     </mat-card-actions>
   </mat-card>
 </form>

@@ -11,14 +11,18 @@ export interface Album {
   studio: string;
   genre: string;
   summary: string;
-  imageUrl?: string; // optional
+  imageUrl?: string; // optional field
   createdAt: ISODateString;
   updatedAt: ISODateString;
 }
 
-export type AlbumInput = Omit<Album, 'id'>;
+// payload to create an album
+// excludes server-generated fields like id, createdAt, updateAt
+export type AlbumInput = Omit<Album, 'id' | 'createdAt' | 'updateAt'>;
 
-// define the album genre interface
+// --- HELPER INTERFACES FOR UI LIST
+
+// defines the structure for album genre options in a UI dropdown.
 export interface AlbumGenre {
   value: string;
   viewValue: string;

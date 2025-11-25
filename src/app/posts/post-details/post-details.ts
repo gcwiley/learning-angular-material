@@ -15,7 +15,6 @@ import { PostService } from '../../services/post.service';
 import { Post } from '../../types/post.interface';
 
 @Component({
-  standalone: true,
   selector: 'app-post-details',
   templateUrl: './post-details.html',
   styleUrl: './post-details.scss',

@@ -8,7 +8,6 @@ export interface ConfirmDialogData {
 }
 
 @Component({
-   standalone: true,
    selector: 'app-confirm-dialog',
    templateUrl: './confirm-dialog.html',
    styleUrl: './confirm-dialog.scss',

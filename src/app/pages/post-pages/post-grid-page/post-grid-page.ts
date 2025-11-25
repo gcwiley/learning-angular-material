@@ -10,7 +10,6 @@ import { NavBar, Clock, Footer } from '../../../components';
 import { PostGrid } from '../../../posts';
 
 @Component({
-  standalone: true,
   selector: 'app-post-grid-page',
   templateUrl: './post-grid-page.html',
   styleUrl: './post-grid-page.scss',

@@ -24,7 +24,6 @@ import { PostInput, PostCategory } from '../../types/post.interface';
 import { POST_CATEGORIES } from '../../../assets/data/post-category';
 
 @Component({
-  standalone: true,
   selector: 'app-post-form',
   templateUrl: './post-form.html',
   styleUrl: './post-form.scss',
@@ -44,6 +43,8 @@ export class PostForm implements OnInit {
   public mode: 'create' | 'edit' = 'create';
   private id!: string | null;
   private readonly snackBarDuration = 5000;
+  public isSaving = false;
+  public submitted = false;
 
   categories: PostCategory[] = POST_CATEGORIES;
 
@@ -61,7 +62,7 @@ export class PostForm implements OnInit {
     body: ['', Validators.required],
     category: ['', Validators.required],
     favorite: [false, Validators.required],
-    date: ['', Validators.required],
+    date: [null as Date | null, Validators.required],
   });
 
   public ngOnInit(): void {

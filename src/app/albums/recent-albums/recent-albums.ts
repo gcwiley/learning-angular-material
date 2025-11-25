@@ -11,7 +11,6 @@ import { AlbumService } from '../../services/album.service';
 import { Album } from '../../types/album.interface';
 
 @Component({
-  standalone: true,
   selector: 'app-recent-albums',
   templateUrl: './recent-albums.html',
   styleUrl: './recent-albums.scss',

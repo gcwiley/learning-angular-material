@@ -11,14 +11,13 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatTabsModule } from '@angular/material/tabs';
 import { MatTooltip } from '@angular/material/tooltip';
 
-// album list component
+// album table component
 import { AlbumTable } from '../../albums';
 
 // heroes list component
 import { HeroTable } from '../../heroes';
 
 @Component({
-    standalone: true,
     selector: 'app-admin-page',
     templateUrl: './admin-page.html',
     styleUrl: './admin-page.scss',

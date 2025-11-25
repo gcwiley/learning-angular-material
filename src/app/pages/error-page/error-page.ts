@@ -4,7 +4,6 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
 import { NavBar, Footer } from '../../components';
 
 @Component({
-    standalone: true,
     selector: 'app-error-page',
     templateUrl: './error-page.html',
     styleUrl: './error-page.scss',

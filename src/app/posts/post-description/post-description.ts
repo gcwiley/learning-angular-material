@@ -13,7 +13,6 @@ import { PostService } from '../../services/post.service';
 import { Post } from '../../types/post.interface';
 
 @Component({
-  standalone: true,
   selector: 'app-post-description',
   templateUrl: './post-description.html',
   styleUrl: './post-description.scss',

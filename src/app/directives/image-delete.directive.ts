@@ -14,7 +14,6 @@ import {
 } from '../services/custom-confirm-dialog.service';
 
 @Directive({
-  standalone: true,
   selector: '[appImageDelete]',
 })
 export class ImageDeleteDirective {

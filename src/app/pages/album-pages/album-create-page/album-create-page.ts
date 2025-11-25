@@ -7,7 +7,6 @@ import { NavBar, Footer } from '../../../components';
 import { AlbumForm, RecentAlbums } from '../../../albums';
 
 @Component({
-  standalone: true,
   selector: 'app-album-create-page',
   templateUrl: './album-create-page.html',
   styleUrl: './album-create-page.scss',

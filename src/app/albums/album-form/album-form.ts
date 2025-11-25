@@ -24,7 +24,6 @@ import { AlbumInput, AlbumGenre } from '../../types/album.interface';
 import { ALBUM_GENRES } from '../../../assets/data/album-data';
 
 @Component({
-  standalone: true,
   selector: 'app-album-form',
   templateUrl: './album-form.html',
   styleUrl: './album-form.scss',

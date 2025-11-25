@@ -17,7 +17,6 @@ import { AlbumService } from '../../services/album.service';
 import { Album } from '../../types/album.interface';
 
 @Component({
-   standalone: true,
     selector: 'app-album-table',
     templateUrl: './album-table.html',
     styleUrl: './album-table.scss',

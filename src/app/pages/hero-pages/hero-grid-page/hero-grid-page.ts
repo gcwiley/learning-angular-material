@@ -10,7 +10,6 @@ import { NavBar, Footer } from '../../../components';
 import { HeroGrid } from '../../../heroes';
 
 @Component({
-  standalone: true,
   selector: 'app-hero-grid-page',
   templateUrl: './hero-grid-page.html',
   styleUrls: ['./hero-grid-page.scss'],

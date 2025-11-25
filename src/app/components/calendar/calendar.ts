@@ -6,7 +6,6 @@ import { provideNativeDateAdapter } from '@angular/material/core';
 import { MatDatepickerModule } from '@angular/material/datepicker';
 
 @Component({
-  standalone: true,
   selector: 'app-calendar',
   templateUrl: './calendar.html',
   styleUrl: './calendar.scss',

@@ -7,7 +7,6 @@ import { NavBar, Clock, Footer } from '../../../components';
 import { PostForm, RecentPosts } from '../../../posts';
 
 @Component({
-  standalone: true,
   selector: 'app-post-create-page',
   templateUrl: './post-create-page.html',
   styleUrl: './post-create-page.scss',

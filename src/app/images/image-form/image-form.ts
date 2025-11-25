@@ -1,10 +1,10 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
 
 @Component({
-  selector: 'app-logo',
-  templateUrl: './logo.html',
-  styleUrls: ['./logo.scss'],
+  selector: 'app-image-form',
+  templateUrl: './image-form.html',
+  styleUrl: './image-form.scss',
   changeDetection: ChangeDetectionStrategy.OnPush,
   imports: [],
 })
-export class Logo {}
+export class ImageForm {}

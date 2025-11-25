@@ -7,7 +7,6 @@ import { NavBar, Clock, Footer } from '../../../components';
 import { PostDescription, PostDetails } from '../../../posts';
 
 @Component({
-  standalone: true,
   selector: 'app-post-details-page',
   templateUrl: './post-details-page.html',
   styleUrl: './post-details-page.scss',

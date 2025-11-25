@@ -6,7 +6,6 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { ImageService } from '../../services/image.service';
 
 @Component({
-  standalone: true,
   selector: 'app-image-upload',
   templateUrl: './image-upload.html',
   styleUrls: ['./image-upload.scss'],

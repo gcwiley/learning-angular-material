@@ -7,7 +7,6 @@ import { NavBar, Footer } from '../../../components';
 import { HeroDetails, HeroDescription } from '../../../heroes';
 
 @Component({
-  standalone: true,
   selector: 'app-hero-details-page',
   templateUrl: './hero-details-page.html',
   styleUrls: ['./hero-details-page.scss'],

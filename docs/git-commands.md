@@ -1,6 +1,7 @@
-#### Command to add all changes
+# Command to add all change
+
 `git add .`
 
-#### Command to delete a git repo
+## Command to delete a git repo
 
 `rm -rf .git`

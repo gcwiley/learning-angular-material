@@ -8,7 +8,6 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatButtonModule } from '@angular/material/button';
 
 @Component({
-  standalone: true,
   selector: 'app-search-bar',
   templateUrl: './search-bar.html',
   styleUrl: './search-bar.scss',

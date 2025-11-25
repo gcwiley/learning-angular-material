@@ -15,7 +15,6 @@ import { HeroService } from '../../services/hero.service';
 import { Hero } from '../../types/hero.interface';
 
 @Component({
-  standalone: true,
   selector: 'app-hero-details',
   templateUrl: './hero-details.html',
   styleUrls: ['./hero-details.scss'],

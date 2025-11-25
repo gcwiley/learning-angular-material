@@ -19,7 +19,6 @@ import { PostService } from '../../services/post.service';
 import { Post } from '../../types/post.interface';
 
 @Component({
-  standalone: true,
   selector: 'app-post-grid',
   templateUrl: './post-grid.html',
   styleUrl: './post-grid.scss',

@@ -1,11 +1,10 @@
 export { AboutPage } from './about-page/about-page';
 export { AdminPage } from './admin-page/admin-page';
-export { AlbumCreatePage, AlbumDetailsPage, AlbumGridPage } from '../pages/album-pages';
+export { AlbumFormPage, AlbumDetailsPage, AlbumGridPage } from '../pages/album-pages';
 export { ErrorPage } from './error-page/error-page';
-export { HeroCreatePage, HeroDetailsPage, HeroGridPage } from '../pages/hero-pages';
+export { HeroFormPage, HeroDetailsPage, HeroGridPage } from '../pages/hero-pages';
 export { Homepage } from './homepage/homepage';
 export { GalleryPage } from './gallery-page/gallery-page';
 export { NotFoundPage } from './not-found-page/not-found-page';
-export { PostCreatePage, PostDetailsPage, PostGridPage } from './post-pages';
 export { SigninPage } from './signin-page/signin-page';
 export { SignupPage } from './signup-page/signup-page';

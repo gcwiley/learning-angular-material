@@ -4,7 +4,7 @@ import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 // rxjs
 import { catchError, Observable, throwError, map } from 'rxjs';
 
-// image interfacees
+// image interface
 import { Image } from '../types/image.interface';
 
 @Injectable({
@@ -20,7 +20,7 @@ export class ImageService {
   public getImages(): Observable<Image[]> {
     return this.http.get<{ data: Image[] }>(this.imagesUrl).pipe(
       map((res) => res.data), // extract the array
-      catchError(this.handleError)
+      catchError((error) => this.handleError(error))
     );
   }
 

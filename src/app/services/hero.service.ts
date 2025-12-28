@@ -35,7 +35,7 @@ export class HeroService {
     );
   }
 
-  // GET: heroes whose name contains search term - SEARCH HERO
+  // GET: heroes whose name contains search term - SEARCH HEROS
   public searchHeroes(term: string): Observable<Hero[]> {
     if (!term.trim()) {
       // if no search term, return an empty hero arrary
@@ -48,11 +48,11 @@ export class HeroService {
     );
   }
 
-  // GET: count the heroes from database  - HERO COUNT
+  // GET: count the heroes from database  - COUNT HEROES
   public getHeroesCount(): Observable<number> {
     return this.http.get<{ data: number }>('/api/heroes/count').pipe(
       map((res) => res.data), // extract the array
-      catchError(this.handleError)
+      catchError((error) => this.handleError(error))
     );
   }
 

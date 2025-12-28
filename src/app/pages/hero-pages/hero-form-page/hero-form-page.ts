@@ -10,9 +10,9 @@ import {
 import { HeroForm, RecentHeroes } from '../../../heroes';
 
 @Component({
-  selector: 'app-hero-create-page',
-  templateUrl: './hero-create-page.html',
-  styleUrls: ['./hero-create-page.scss'],
+  selector: 'app-hero-form-page',
+  templateUrl: './hero-form-page.html',
+  styleUrls: ['./hero-form-page.scss'],
   imports: [
     NavBar,
     Footer,
@@ -20,4 +20,4 @@ import { HeroForm, RecentHeroes } from '../../../heroes';
     RecentHeroes,
   ],
 })
-export class HeroCreatePage {}
+export class HeroFormPage {}

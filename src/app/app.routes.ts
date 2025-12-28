@@ -59,8 +59,8 @@ export const routes: Routes = [
         path: 'create',
         title: 'Create Album',
         loadComponent: () =>
-          import('./pages/album-pages/album-create-page/album-create-page').then(
-            (m) => m.AlbumCreatePage
+          import('./pages/album-pages/album-form-page/album-form-page').then(
+            (m) => m.AlbumFormPage
           ),
       },
       {
@@ -84,37 +84,6 @@ export const routes: Routes = [
         loadComponent: () =>
           import('./pages/hero-pages/hero-grid-page/hero-grid-page').then(
             (m) => m.HeroGridPage
-          ),
-      },
-    ],
-  },
-  // GROUP POST PAGES
-  {
-    path: 'posts',
-    canActivate: [authGuard],
-    children: [
-      {
-        path: '',
-        title: 'Post Page',
-        loadComponent: () =>
-          import('./pages/post-pages/post-grid-page/post-grid-page').then(
-            (m) => m.PostGridPage
-          ),
-      },
-      {
-        path: 'create',
-        title: 'Create Post',
-        loadComponent: () =>
-          import('./pages/post-pages/post-create-page/post-create-page').then(
-            (m) => m.PostCreatePage
-          ),
-      },
-      {
-        path: ':id',
-        title: 'Post Details',
-        loadComponent: () =>
-          import('./pages/post-pages/post-details-page/post-details-page').then(
-            (m) => m.PostDetailsPage
           ),
       },
     ],

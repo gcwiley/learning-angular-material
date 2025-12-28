@@ -1,5 +1,10 @@
 import { Injectable, inject } from '@angular/core';
-import { HttpClient, HttpHeaders, HttpErrorResponse, HttpParams } from '@angular/common/http';
+import {
+  HttpClient,
+  HttpHeaders,
+  HttpErrorResponse,
+  HttpParams,
+} from '@angular/common/http';
 // rxjs
 import { catchError, Observable, of, throwError, map } from 'rxjs';
 
@@ -22,7 +27,7 @@ export class AlbumService {
   public getAlbums(): Observable<Album[]> {
     return this.http.get<{ data: Album[] }>(this.albumsUrl).pipe(
       map((res) => res.data), // extract the array
-      catchError(this.handleError)
+      catchError((error) => this.handleError(error))
     );
   }
 
@@ -31,7 +36,7 @@ export class AlbumService {
     const url = `${this.albumsUrl}/${id}`;
     return this.http.get<{ data: Album }>(url).pipe(
       map((res) => res.data), // extract the array
-      catchError(this.handleError)
+      catchError((error) => this.handleError(error))
     );
   }
 
@@ -44,7 +49,7 @@ export class AlbumService {
     const params = new HttpParams().set('name', term);
     return this.http.get<{ data: Album[] }>(this.albumsUrl, { params }).pipe(
       map((res) => res.data),
-      catchError(this.handleError)
+      catchError((error) => this.handleError(error))
     );
   }
 
@@ -78,25 +83,31 @@ export class AlbumService {
   // DELETE: album by Id from the server - DELETE ALBUM BY ID
   public deleteAlbumById(id: string): Observable<Album> {
     const url = `${this.albumsUrl}/${id}`;
-    return this.http.delete<Album>(url, { headers: headers }).pipe(catchError(this.handleError));
+    return this.http
+      .delete<Album>(url, { headers: headers })
+      .pipe(catchError(this.handleError));
   }
 
   // PATCH: update the album on the database - UPDATE ALBUM BY ID
   public updateAlbumById(id: string, body: Partial<Album>): Observable<Album> {
     const url = `${this.albumsUrl}/${id}`;
-    return this.http.patch<{ data: Album }>(url, body, { headers: headers }).pipe(
-      map((res) => res.data),
-      catchError(this.handleError)
-    );
+    return this.http
+      .patch<{ data: Album }>(url, body, { headers: headers })
+      .pipe(
+        map((res) => res.data),
+        catchError(this.handleError)
+      );
   }
 
   // PATCH: set a album as a favorite or not - FAVORITE ALBUM
   public setAlbumFavorite(id: string, favorite: boolean): Observable<Album> {
     const url = `${this.albumsUrl}/${id}`;
-    return this.http.patch<{ data: Album }>(url, { favorite }, { headers }).pipe(
-      map((res) => res.data),
-      catchError(this.handleError)
-    );
+    return this.http
+      .patch<{ data: Album }>(url, { favorite }, { headers })
+      .pipe(
+        map((res) => res.data),
+        catchError(this.handleError)
+      );
   }
 
   // enhanced error handler that centralized error handling - HANDLE ERROR
@@ -107,9 +118,9 @@ export class AlbumService {
       errorMessage = `A client-side error occurred: ${error.error.message}`;
     } else {
       // backend error
-      errorMessage = `Backend returned code ${error.status}, body was ${JSON.stringify(
-        error.error
-      )}`;
+      errorMessage = `Backend returned code ${
+        error.status
+      }, body was ${JSON.stringify(error.error)}`;
     }
     console.error('There was an error:', errorMessage);
     return throwError(() => new Error(errorMessage));

@@ -7,10 +7,10 @@ import { NavBar, Footer } from '../../../components';
 import { AlbumForm, RecentAlbums } from '../../../albums';
 
 @Component({
-  selector: 'app-album-create-page',
-  templateUrl: './album-create-page.html',
-  styleUrl: './album-create-page.scss',
+  selector: 'app-album-form-page',
+  templateUrl: './album-form-page.html',
+  styleUrl: './album-form-page.scss',
   changeDetection: ChangeDetectionStrategy.OnPush,
   imports: [NavBar, Footer, AlbumForm, RecentAlbums],
 })
-export class AlbumCreatePage {}
+export class AlbumFormPage {}

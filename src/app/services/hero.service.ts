@@ -1,13 +1,15 @@
 import { Injectable, inject } from '@angular/core';
-import { HttpClient, HttpHeaders, HttpErrorResponse, HttpParams } from '@angular/common/http';
+import {
+  HttpClient,
+  HttpErrorResponse,
+  HttpParams,
+} from '@angular/common/http';
+
 // rxjs
 import { catchError, Observable, of, throwError, map } from 'rxjs';
 
-// hero interface
+// hero interfaces
 import { Hero, HeroInput } from '../types/hero.interface';
-
-// set up headers
-const headers = new HttpHeaders().set('Content-Type', 'application/json');
 
 @Injectable({
   providedIn: 'root',
@@ -18,83 +20,85 @@ export class HeroService {
   // inject dependencies
   private http = inject(HttpClient);
 
-  // GET: all heroes from the server - GET HEREOS
+  // GET: - GET HEROES
   public getHeroes(): Observable<Hero[]> {
     return this.http.get<{ data: Hero[] }>(this.heroesUrl).pipe(
-      map((res) => res.data), // extract the array
-      catchError(this.handleError)
+      map((res) => res.data),
+      catchError((error) => this.handleError(error)),
     );
   }
 
-  // GET: hero by ID from server - GET HERO BY ID
+  // GET: - GET HERO BY ID
   public getHeroById(id: string): Observable<Hero> {
     const url = `${this.heroesUrl}/${id}`;
     return this.http.get<{ data: Hero }>(url).pipe(
-      map((res) => res.data), // extract the array
-      catchError(this.handleError)
+      map((res) => res.data),
+      catchError((error) => this.handleError(error)),
     );
   }
 
-  // GET: heroes whose name contains search term - SEARCH HEROS
+  // GET: - SEARCH HEROES
   public searchHeroes(term: string): Observable<Hero[]> {
     if (!term.trim()) {
-      // if no search term, return an empty hero arrary
+      // if no search term, return an empty hero array
       return of([]);
     }
     const params = new HttpParams().set('name', term);
     return this.http.get<{ data: Hero[] }>(this.heroesUrl, { params }).pipe(
-      map((res) => res.data), // extract the array
-      catchError(this.handleError)
+      map((res) => res.data),
+      catchError((error) => this.handleError(error)),
     );
   }
 
-  // GET: count the heroes from database  - COUNT HEROES
+  // GET: - COUNT HEROES
   public getHeroesCount(): Observable<number> {
     return this.http.get<{ data: number }>('/api/heroes/count').pipe(
-      map((res) => res.data), // extract the array
-      catchError((error) => this.handleError(error))
+      map((res) => res.data),
+      catchError((error) => this.handleError(error)),
     );
   }
 
-  // GET: recent heroes added - RECENT HEROES
+  // GET: - RECENT HEROES
   public getRecentlyCreatedHeroes(): Observable<Hero[]> {
     return this.http.get<{ data: Hero[] }>('/api/heroes/recent').pipe(
-      map((res) => res.data), // extract the array
-      catchError(this.handleError)
+      map((res) => res.data),
+      catchError((error) => this.handleError(error)),
     );
   }
 
-  // GET: featured heroes for carousel - FEATURED HEROES - fix this!
+  // GET: - FEATURED HEROES
   public getFeaturedHeroes(): Observable<Hero[]> {
-    return this.http.get<Hero[]>('/api/favorite-heroes').pipe(catchError(this.handleError));
+    return this.http
+      .get<Hero[]>('/api/favorite-heroes')
+      .pipe(catchError((error) => this.handleError(error)));
   }
 
   // SAVE METHODS //
 
-  // POST: add a new hero to the server - ADD HERO
+  // POST: - ADD HERO
   public addHero(newHero: HeroInput): Observable<Hero> {
     return this.http
-      .post<Hero>(this.heroesUrl, newHero, { headers: headers })
+      .post<Hero>(this.heroesUrl, newHero)
       .pipe(catchError(this.handleError));
   }
 
-  // DELETE: a hero by ID from the server - DELETE HERO BY ID
+  // DELETE: - DELETE HERO BY ID
   public deleteHeroById(id: string): Observable<Hero> {
     const url = `${this.heroesUrl}/${id}`;
-    return this.http.delete<Hero>(url, { headers: headers }).pipe(catchError(this.handleError));
+    return this.http
+      .delete<Hero>(url)
+      .pipe(catchError(this.handleError));
   }
 
-  // PATCH: update the hero in the database - UPDATE HERO BY ID - fix this!
+  // PATCH: - UPDATE HERO BY ID
   public updateHeroById(id: string, body: Partial<Hero>): Observable<Hero> {
     const url = `${this.heroesUrl}/${id}`;
     return this.http
-      .patch<Hero>(url, body, { headers: headers })
+      .patch<Hero>(url, body)
       .pipe(catchError(this.handleError));
   }
 
-  // PATCH: favorite hero - fix this!
-
-  // enhanced error handler that centralized error handling - HANDLE ERROR
+  // HANDLE ERROR
   private handleError(error: HttpErrorResponse): Observable<never> {
     let errorMessage = 'An unknown error occurred!';
     if (error.error instanceof ErrorEvent) {
@@ -102,9 +106,9 @@ export class HeroService {
       errorMessage = `A client-side error occurred: ${error.error.message}`;
     } else {
       // backend error
-      errorMessage = `Backend returned code ${error.status}, body was ${JSON.stringify(
-        error.error
-      )}`;
+      errorMessage = `Backend returned code ${
+        error.status
+      }, body was ${JSON.stringify(error.error)}`;
     }
     console.error('There was an error:', errorMessage);
     return throwError(() => new Error(errorMessage));

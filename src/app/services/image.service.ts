@@ -1,5 +1,8 @@
 import { Injectable, inject } from '@angular/core';
-import { HttpClient, HttpErrorResponse } from '@angular/common/http';
+import {
+  HttpClient,
+  HttpErrorResponse,
+} from '@angular/common/http';
 
 // rxjs
 import { catchError, Observable, throwError, map } from 'rxjs';
@@ -11,31 +14,33 @@ import { Image } from '../types/image.interface';
   providedIn: 'root',
 })
 export class ImageService {
-  private imagesUrl = '/api/images'; // URL to web api
+  private imagesUrl = '/api/images'; 
 
-  // inject 'HttpClient" into the image service
+  // inject dependencies
   private http = inject(HttpClient);
 
-  // GET: all images from the server - GET IMAGES
+  // GET: - GET IMAGES
   public getImages(): Observable<Image[]> {
     return this.http.get<{ data: Image[] }>(this.imagesUrl).pipe(
-      map((res) => res.data), // extract the array
-      catchError((error) => this.handleError(error))
+      map((res) => res.data),
+      catchError((error) => this.handleError(error)),
     );
   }
 
-  // GET: an individual image by ID - GET IMAGE BY ID
+  // GET: - GET IMAGE BY ID
   public getImageById(id: string): Observable<Image> {
     const url = `${this.imagesUrl}/${id}`;
     return this.http.get<{ data: Image }>(url).pipe(
-      map((res) => res.data), // extract the array
-      catchError(this.handleError)
+      map((res) => res.data),
+      catchError((error) => this.handleError(error)),
     );
   }
 
   // POST: upload image to server
   public uploadImage(formData: FormData): Observable<void> {
-    return this.http.post<void>('/api/upload', formData).pipe(catchError(this.handleError));
+    return this.http
+      .post<void>('/api/upload', formData)
+      .pipe(catchError((error) => this.handleError(error)));
   }
 
   // enhanced error handler that centralized error handling - HANDLE ERROR
@@ -46,9 +51,9 @@ export class ImageService {
       errorMessage = `A client-side error occurred: ${error.error.message}`;
     } else {
       // backend error
-      errorMessage = `Backend returned code ${error.status}, body was ${JSON.stringify(
-        error.error
-      )}`;
+      errorMessage = `Backend returned code ${
+        error.status
+      }, body was ${JSON.stringify(error.error)}`;
     }
     console.error('There was an error:', errorMessage);
     return throwError(() => new Error(errorMessage));

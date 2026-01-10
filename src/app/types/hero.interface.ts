@@ -9,9 +9,15 @@ export interface Hero {
   placeOfOrigin: string;
   abilities: string;
   biography: string;
-  imageUrl?: string; // optional
-  createdAt: string;
-  updatedAt: string;
+  imageUrl?: string; // optional field
+  createdAt: ISODateString;
+  updatedAt: ISODateString;
 }
 
-export type HeroInput = Omit<Hero, 'id'>
+// payload to create an hero
+// excludes server-generated fields like id, createdAt, updatedAt
+export type HeroInput = Omit<Hero, 'id' | 'createdAt' | 'updatedAt'>
+
+// ---- HELPER INTERFACES FOR UI LIST ---
+
+

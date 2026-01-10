@@ -17,10 +17,10 @@ export interface Album {
 }
 
 // payload to create an album
-// excludes server-generated fields like id, createdAt, updateAt
+// excludes server-generated fields like id, createdAt, updatedAt
 export type AlbumInput = Omit<Album, 'id' | 'createdAt' | 'updateAt'>;
 
-// --- HELPER INTERFACES FOR UI LIST
+// --- HELPER INTERFACES FOR UI LIST ---
 
 // defines the structure for album genre options in a UI dropdown.
 export interface AlbumGenre {

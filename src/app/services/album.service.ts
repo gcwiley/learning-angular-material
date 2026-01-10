@@ -1,18 +1,13 @@
 import { Injectable, inject } from '@angular/core';
 import {
   HttpClient,
-  HttpHeaders,
   HttpErrorResponse,
   HttpParams,
 } from '@angular/common/http';
-// rxjs
 import { catchError, Observable, of, throwError, map } from 'rxjs';
 
 // album interfaces
 import { Album, AlbumInput } from '../types/album.interface';
-
-// set up headers
-const headers = new HttpHeaders().set('Content-Type', 'application/json');
 
 @Injectable({
   providedIn: 'root',
@@ -23,24 +18,24 @@ export class AlbumService {
   // inject dependencies
   private http = inject(HttpClient);
 
-  // GET: all albums from the database - GET ALBUMS
+  // GET: - GET ALBUMS
   public getAlbums(): Observable<Album[]> {
     return this.http.get<{ data: Album[] }>(this.albumsUrl).pipe(
-      map((res) => res.data), // extract the array
+      map((res) => res.data),
       catchError((error) => this.handleError(error))
     );
   }
 
-  // GET: album by ID from server - GET ALBUM BY ID
+  // GET: - GET ALBUM BY ID
   public getAlbumById(id: string): Observable<Album> {
     const url = `${this.albumsUrl}/${id}`;
     return this.http.get<{ data: Album }>(url).pipe(
-      map((res) => res.data), // extract the array
+      map((res) => res.data),
       catchError((error) => this.handleError(error))
     );
   }
 
-  // GET: search albums in the database - SEARCH ALBUMS
+  // GET: - SEARCH ALBUMS
   public searchAlbums(term: string): Observable<Album[]> {
     if (!term.trim()) {
       // if no search term, return empty album array
@@ -53,19 +48,19 @@ export class AlbumService {
     );
   }
 
-  // GET: album count from database - GET ALBUM COUNT
+  // GET: - GET ALBUM COUNT
   public getAlbumCount(): Observable<number> {
     return this.http.get<{ data: number }>('/api/albums/count').pipe(
-      map((res) => res.data), // extract the array
-      catchError(this.handleError)
+      map((res) => res.data),
+      catchError((error) => this.handleError(error))
     );
   }
 
-  // GET: recent album created in database - GET RECENT ALBUMS - fix this!
+  // GET: - GET RECENT ALBUMS
   public getRecentlyCreatedAlbums(): Observable<Album[]> {
     return this.http.get<{ data: Album[] }>('/api/albums/recent').pipe(
-      map((res) => res.data), // extract the array
-      catchError(this.handleError)
+      map((res) => res.data), 
+      catchError((error) => this.handleError(error))
     );
   }
 
@@ -74,43 +69,41 @@ export class AlbumService {
   // POST: Add a new Album to the server
   public addAlbum(newAlbum: AlbumInput): Observable<Album> {
     return this.http
-      .post<Album>(this.albumsUrl, newAlbum, {
-        headers: headers,
-      })
-      .pipe(catchError(this.handleError));
+      .post<Album>(this.albumsUrl, newAlbum)
+      .pipe(catchError((error) => this.handleError(error)));
   }
 
-  // DELETE: album by Id from the server - DELETE ALBUM BY ID
+  // DELETE: - DELETE ALBUM BY ID
   public deleteAlbumById(id: string): Observable<Album> {
     const url = `${this.albumsUrl}/${id}`;
     return this.http
-      .delete<Album>(url, { headers: headers })
-      .pipe(catchError(this.handleError));
+      .delete<Album>(url)
+      .pipe(catchError((error) => this.handleError(error)));
   }
 
-  // PATCH: update the album on the database - UPDATE ALBUM BY ID
+  // PATCH: - UPDATE ALBUM BY ID
   public updateAlbumById(id: string, body: Partial<Album>): Observable<Album> {
     const url = `${this.albumsUrl}/${id}`;
     return this.http
-      .patch<{ data: Album }>(url, body, { headers: headers })
+      .patch<{ data: Album }>(url, body)
       .pipe(
         map((res) => res.data),
-        catchError(this.handleError)
+        catchError((error) => this.handleError(error))
       );
   }
 
-  // PATCH: set a album as a favorite or not - FAVORITE ALBUM
+  // PATCH: - FAVORITE ALBUM
   public setAlbumFavorite(id: string, favorite: boolean): Observable<Album> {
     const url = `${this.albumsUrl}/${id}`;
     return this.http
-      .patch<{ data: Album }>(url, { favorite }, { headers })
+      .patch<{ data: Album }>(url, { favorite })
       .pipe(
         map((res) => res.data),
         catchError(this.handleError)
       );
   }
 
-  // enhanced error handler that centralized error handling - HANDLE ERROR
+  // HANDLE ERROR
   private handleError(error: HttpErrorResponse): Observable<never> {
     let errorMessage = 'An unknown error occurred!';
     if (error.error instanceof ErrorEvent) {

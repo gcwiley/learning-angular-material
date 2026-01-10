@@ -16,9 +16,6 @@ import {
   Footer,
 } from '../../components/index';
 
-// post components
-import { PostGrid, RecentPosts } from '../../posts';
-
 @Component({
   selector: 'app-homepage',
   templateUrl: './homepage.html',
@@ -34,8 +31,6 @@ import { PostGrid, RecentPosts } from '../../posts';
     Menu,
     Footer,
     Hero,
-    PostGrid,
-    RecentPosts,
   ],
 })
 export class Homepage {}

@@ -4,7 +4,7 @@ export type ISODateString = string;
 // define the image interface
 export interface Image {
   id: string;
-  name: string;
+  title: string;
   url: string;
   mimetype: string;
   size: string;
@@ -14,4 +14,6 @@ export interface Image {
   updatedAt: ISODateString;
 }
 
+// payload to create an image
+// excludes 
 export type ImageInput = Omit<Image, 'id'>;

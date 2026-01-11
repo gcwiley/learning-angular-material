@@ -4,25 +4,28 @@ import {
   HttpErrorResponse,
   HttpParams,
 } from '@angular/common/http';
-
-// rxjs
 import { catchError, Observable, of, throwError, map } from 'rxjs';
 
 // hero interfaces
 import { Hero, HeroInput } from '../types/hero.interface';
 
-@Injectable({
-  providedIn: 'root',
-})
-export class HeroService {
-  private heroesUrl = '/api/heroes'; // URL to web api
+// define a standard wrapper for your backend response
+export interface ApiResponse<T> {
+  success: boolean;
+  message: string;
+  data: T;
+}
 
-  // inject dependencies
+@Injectable({providedIn: 'root',})
+export class HeroService {
+  // ideally, move this to environment.apiUrl
+  private readonly API_URL = '/api/heroes';
+
   private http = inject(HttpClient);
 
   // GET: - GET HEROES
   public getHeroes(): Observable<Hero[]> {
-    return this.http.get<{ data: Hero[] }>(this.heroesUrl).pipe(
+    return this.http.get<ApiResponse<Hero[]>>(this.API_URL).pipe(
       map((res) => res.data),
       catchError((error) => this.handleError(error)),
     );
@@ -30,8 +33,8 @@ export class HeroService {
 
   // GET: - GET HERO BY ID
   public getHeroById(id: string): Observable<Hero> {
-    const url = `${this.heroesUrl}/${id}`;
-    return this.http.get<{ data: Hero }>(url).pipe(
+    const url = `${this.API_URL}/${id}`;
+    return this.http.get<ApiResponse<Hero>>(url).pipe(
       map((res) => res.data),
       catchError((error) => this.handleError(error)),
     );
@@ -44,7 +47,7 @@ export class HeroService {
       return of([]);
     }
     const params = new HttpParams().set('name', term);
-    return this.http.get<{ data: Hero[] }>(this.heroesUrl, { params }).pipe(
+    return this.http.get<{ data: Hero[] }>(this.API_URL, { params }).pipe(
       map((res) => res.data),
       catchError((error) => this.handleError(error)),
     );
@@ -78,24 +81,20 @@ export class HeroService {
   // POST: - ADD HERO
   public addHero(newHero: HeroInput): Observable<Hero> {
     return this.http
-      .post<Hero>(this.heroesUrl, newHero)
+      .post<Hero>(this.API_URL, newHero)
       .pipe(catchError(this.handleError));
   }
 
   // DELETE: - DELETE HERO BY ID
   public deleteHeroById(id: string): Observable<Hero> {
-    const url = `${this.heroesUrl}/${id}`;
-    return this.http
-      .delete<Hero>(url)
-      .pipe(catchError(this.handleError));
+    const url = `${this.API_URL}/${id}`;
+    return this.http.delete<Hero>(url).pipe(catchError(this.handleError));
   }
 
   // PATCH: - UPDATE HERO BY ID
   public updateHeroById(id: string, body: Partial<Hero>): Observable<Hero> {
-    const url = `${this.heroesUrl}/${id}`;
-    return this.http
-      .patch<Hero>(url, body)
-      .pipe(catchError(this.handleError));
+    const url = `${this.API_URL}/${id}`;
+    return this.http.patch<Hero>(url, body).pipe(catchError(this.handleError));
   }
 
   // HANDLE ERROR

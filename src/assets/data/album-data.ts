@@ -1,4 +1,4 @@
-// import the album genre inferface
+// import the album genre interface
 import { AlbumGenre } from '../../app/types/album.interface';
 
 // define the album genre data values

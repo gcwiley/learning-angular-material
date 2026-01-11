@@ -1,15 +1,21 @@
-import { Directive, EventEmitter, HostListener, Output, input, inject } from '@angular/core';
-
-// rxjs
-import { filter, first, switchMap, catchError, throwError } from 'rxjs';
+import {
+  Directive,
+  HostListener,
+  output,
+  input,
+  inject,
+  DestroyRef,
+  signal,
+} from '@angular/core';
+import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
+import { filter, switchMap, catchError, finalize, EMPTY } from 'rxjs';
 
 // angular material
 import { MatSnackBar } from '@angular/material/snack-bar';
 
-// hero and confirm dialog service
+// hero service
 import { HeroService } from '../services/hero.service';
 
-// custom dialog service
 import {
   CustomConfirmDialog,
   CustomConfirmDialogService,
@@ -20,36 +26,42 @@ import {
 })
 export class HeroDeleteDirective {
   public id = input.required<string>({ alias: 'appHeroDelete' });
-  private readonly snackBarDuration = 5000;
 
-  @Output() public deleted = new EventEmitter<string>();
+  public deleted = output<string>();
 
-  // initializes the directive dependencies
   private heroService = inject(HeroService);
   private confirm = inject(CustomConfirmDialogService);
   private snackBar = inject(MatSnackBar);
+  private destroyRef = inject(DestroyRef);
+
+  private isDeleting = signal(false); 
+  private readonly snackBarDuration = 5000;
 
   @HostListener('click')
   public onClick(): void {
-    // opens a custom confirmation dialog of type Delete
+    if (this.isDeleting()) return; 
+    this.isDeleting.set(true);
+
     this.confirm
       .openCustomConfirmDialog(CustomConfirmDialog.Delete)
       .pipe(
-        first(),
+        takeUntilDestroyed(this.destroyRef),
         filter((confirmed) => !!confirmed),
         switchMap(() => this.heroService.deleteHeroById(this.id())),
         catchError((error) => {
-          // error checking code
-          console.error('Error deleting hero:', error); // log the error
-          this.snackBar.open('Unable to delete hero.', 'Close', { duration: this.snackBarDuration});
-          return throwError(() => new Error('Unable to delete hero.')); // re-throw a new error 
-        })
+          console.error('Error deleting hero:', error);
+          this.snackBar.open('Unable to delete hero.', 'Close', {
+            duration: this.snackBarDuration,
+          });
+          return EMPTY;
+        }),
+        finalize(() => this.isDeleting.set(false)),
       )
-      .subscribe({
-        next: () => {
-          this.deleted.emit(this.id());
-          this.snackBar.open('Hero deleted successfully.', 'Close', { duration: this.snackBarDuration });
-        },
+      .subscribe(() => {
+        this.deleted.emit(this.id());
+        this.snackBar.open('Hero successfully deleted.', 'Close', {
+          duration: this.snackBarDuration,
+        });
       });
   }
 }

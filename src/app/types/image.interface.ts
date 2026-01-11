@@ -14,6 +14,14 @@ export interface Image {
   updatedAt: ISODateString;
 }
 
-// payload to create an image
-// excludes 
-export type ImageInput = Omit<Image, 'id'>;
+// payload to create a image (client -> server)
+// excludes server-generated fields like id, createdAt, updatedAt
+export type ImageInput = Omit<Image, 'id' | 'createdAt' | 'updatedAt'>;
+
+// --- HELPER INTERFACES FOR UI LIST ---
+
+// single generic interface
+export interface SelectOption<T = string> {
+  value: T;
+  viewValue: string;
+}

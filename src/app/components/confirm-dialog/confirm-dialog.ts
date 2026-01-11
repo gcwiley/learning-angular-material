@@ -1,10 +1,15 @@
 import { ChangeDetectionStrategy, Component, inject } from '@angular/core';
+
+// angular material
+import { MAT_DIALOG_DATA, MatDialogModule } from '@angular/material/dialog';
 import { MatButtonModule } from '@angular/material/button';
-import { MAT_DIALOG_DATA, MatDialogModule, MatDialogRef } from '@angular/material/dialog';
 
 export interface ConfirmDialogData {
    title: string;
-   content: string;
+   message: string;
+   confirmText: string;
+   cancelText: string;
+   color: 'primary' | 'accent' | 'warn'
 }
 
 @Component({
@@ -17,5 +22,4 @@ export interface ConfirmDialogData {
 export class ConfirmDialog {
    // inject dependencies
    public data = inject<ConfirmDialogData>(MAT_DIALOG_DATA);
-   public dialogRef = inject<MatDialogRef<ConfirmDialog>>(MatDialogRef);
 }

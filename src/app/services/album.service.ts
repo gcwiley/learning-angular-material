@@ -9,11 +9,19 @@ import { catchError, Observable, of, throwError, map } from 'rxjs';
 // album interfaces
 import { Album, AlbumInput } from '../types/album.interface';
 
+// define a standard wrapper for your backend response
+export interface ApiResponse<T> {
+  success: boolean;
+  message: string;
+  data: T;
+}
+
 @Injectable({
   providedIn: 'root',
 })
 export class AlbumService {
-  private albumsUrl = '/api/albums'; // URL to web api
+  // comment
+  private albumsUrl = '/api/albums'; 
 
   // inject dependencies
   private http = inject(HttpClient);

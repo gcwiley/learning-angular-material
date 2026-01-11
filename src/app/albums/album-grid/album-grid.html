@@ -2,7 +2,7 @@
   <!-- Use async pipe for albums and add trackBy -->
   @for (album of albums | async; track trackByAlbumId($index, album)) {
   <mat-grid-tile [colspan]="colspan" [rowspan]="rowspan">
-    <mat-card appearance="outlined" class="project-card">
+    <mat-card appearance="outlined" class="album-card">
       <mat-card-header>
         <mat-card-title>{{ album.title }}</mat-card-title>
       </mat-card-header>

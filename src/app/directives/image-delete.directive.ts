@@ -1,13 +1,21 @@
-import { Directive, EventEmitter, HostListener, Output, input, inject } from '@angular/core';
-
-// rxjs
-import { filter, first } from 'rxjs';
+import {
+  Directive,
+  HostListener,
+  output,
+  input,
+  inject,
+  DestroyRef,
+  signal,
+} from '@angular/core';
+import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
+import { filter, switchMap, catchError, finalize, EMPTY } from 'rxjs';
 
 // angular material
 import { MatSnackBar } from '@angular/material/snack-bar';
 
-// image and confirm dialog service
+// image service
 import { ImageService } from '../services/image.service';
+
 import {
   CustomConfirmDialog,
   CustomConfirmDialogService,
@@ -18,19 +26,42 @@ import {
 })
 export class ImageDeleteDirective {
   public id = input.required<string>({ alias: 'appImageDelete' });
-  @Output() public deleted = new EventEmitter<string>();
 
-  // inject dependencies
+  public deleted = output<string>();
+
   private imageService = inject(ImageService);
   private confirm = inject(CustomConfirmDialogService);
   private snackBar = inject(MatSnackBar);
+  private destroyRef = inject(DestroyRef);
 
-  // fix this!
+  private isDeleting = signal(false); 
+  private readonly snackBarDuration = 5000;
+
   @HostListener('click')
   public onClick(): void {
-    this.confirm.openCustomConfirmDialog(CustomConfirmDialog.Delete).pipe(
-      first(),
-      filter((res) => !!res)
-    );
+    if (this.isDeleting()) return; 
+    this.isDeleting.set(true);
+
+    this.confirm
+      .openCustomConfirmDialog(CustomConfirmDialog.Delete)
+      .pipe(
+        takeUntilDestroyed(this.destroyRef),
+        filter((confirmed) => !!confirmed),
+        switchMap(() => this.imageService.deleteImageById(this.id())),
+        catchError((error) => {
+          console.error('Error deleting image:', error);
+          this.snackBar.open('Unable to delete image.', 'Close', {
+            duration: this.snackBarDuration,
+          });
+          return EMPTY;
+        }),
+        finalize(() => this.isDeleting.set(false)),
+      )
+      .subscribe(() => {
+        this.deleted.emit(this.id());
+        this.snackBar.open('Image successfully deleted.', 'Close', {
+          duration: this.snackBarDuration,
+        });
+      });
   }
 }

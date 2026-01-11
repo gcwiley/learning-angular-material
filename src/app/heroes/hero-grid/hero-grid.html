@@ -1,8 +1,8 @@
 <mat-grid-list [cols]="cols | async" [rowHeight]="rowHeight" [gutterSize]="gutterSize">
-  <!-- Use async pipe for projects and add trackBy -->
+  <!-- Use async pipe for heroes and add trackBy -->
   @for (hero of heroes | async; track trackByHeroId($index, hero)) {
   <mat-grid-tile [colspan]="colspan" [rowspan]="rowspan">
-    <mat-card appearance="outlined" class="project-card">
+    <mat-card appearance="outlined" class="hero-card">
       <mat-card-header>
         <mat-card-title>{{ hero.name }}</mat-card-title>
       </mat-card-header>

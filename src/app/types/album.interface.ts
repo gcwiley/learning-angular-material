@@ -22,8 +22,8 @@ export type AlbumInput = Omit<Album, 'id' | 'createdAt' | 'updateAt'>;
 
 // --- HELPER INTERFACES FOR UI LIST ---
 
-// defines the structure for album genre options in a UI dropdown.
-export interface AlbumGenre {
-  value: string;
+// single generic interface
+export interface SelectOption<T = string> {
+  value: T;
   viewValue: string;
 }

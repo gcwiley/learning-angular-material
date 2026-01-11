@@ -1,14 +1,14 @@
 import {
   Directive,
-  EventEmitter,
   HostListener,
-  Output,
+  output,
   input,
   inject,
+  DestroyRef,
+  signal,
 } from '@angular/core';
-
-// rxjs
-import { filter, first, switchMap, catchError, throwError } from 'rxjs';
+import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
+import { filter, switchMap, catchError, finalize, EMPTY } from 'rxjs';
 
 // angular material
 import { MatSnackBar } from '@angular/material/snack-bar';
@@ -16,7 +16,6 @@ import { MatSnackBar } from '@angular/material/snack-bar';
 // album service
 import { AlbumService } from '../services/album.service';
 
-// custom dialog service
 import {
   CustomConfirmDialog,
   CustomConfirmDialogService,
@@ -27,22 +26,26 @@ import {
 })
 export class AlbumDeleteDirective {
   public id = input.required<string>({ alias: 'appAlbumDelete' });
-  private readonly snackBarDuration = 5000;
 
-  @Output() public deleted = new EventEmitter<string>();
+  public deleted = output<string>();
 
-  // initializes the directive dependencies
   private albumService = inject(AlbumService);
   private confirm = inject(CustomConfirmDialogService);
   private snackBar = inject(MatSnackBar);
+  private destroyRef = inject(DestroyRef);
+
+  private isDeleting = signal(false); 
+  private readonly snackBarDuration = 5000;
 
   @HostListener('click')
   public onClick(): void {
-    // opens a custom confirmation dialog of type Delete
+    if (this.isDeleting()) return; 
+    this.isDeleting.set(true);
+
     this.confirm
       .openCustomConfirmDialog(CustomConfirmDialog.Delete)
       .pipe(
-        first(),
+        takeUntilDestroyed(this.destroyRef),
         filter((confirmed) => !!confirmed),
         switchMap(() => this.albumService.deleteAlbumById(this.id())),
         catchError((error) => {
@@ -50,16 +53,15 @@ export class AlbumDeleteDirective {
           this.snackBar.open('Unable to delete album.', 'Close', {
             duration: this.snackBarDuration,
           });
-          return throwError(() => new Error('Unable to delete album.'));
-        })
+          return EMPTY;
+        }),
+        finalize(() => this.isDeleting.set(false)),
       )
-      .subscribe({
-        next: () => {
-          this.deleted.emit(this.id());
-          this.snackBar.open('Album deleted successfully', 'Close', {
-            duration: this.snackBarDuration,
-          });
-        },
+      .subscribe(() => {
+        this.deleted.emit(this.id());
+        this.snackBar.open('album successfully deleted.', 'Close', {
+          duration: this.snackBarDuration,
+        });
       });
   }
 }

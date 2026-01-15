@@ -1,6 +1,6 @@
 # See https://docs.github.com/get-started/getting-started-with-git/ignoring-files for more about ignoring files.
 
-# enviorment variables
+# environment variables
 src/environments/environment.ts
 src/environments/environment.prod.ts
 

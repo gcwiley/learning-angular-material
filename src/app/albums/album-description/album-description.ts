@@ -18,8 +18,8 @@ import { Album } from '../../types/album.interface';
 })
 export class AlbumDescription {
   // inject dependencies
-  private route = inject(ActivatedRoute);
-  private albumService = inject(AlbumService);
+  private readonly route = inject(ActivatedRoute);
+  private readonly albumService = inject(AlbumService);
 
   public album$: Observable<Album | undefined> = this.route.paramMap.pipe(
     map((pm) => pm.get('id')),

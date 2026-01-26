@@ -49,11 +49,11 @@ export class AlbumForm implements OnInit {
   genres: AlbumGenre[] = ALBUM_GENRES;
 
   // inject dependencies
-  private formBuilder = inject(FormBuilder);
-  private router = inject(Router);
-  private route = inject(ActivatedRoute);
-  private albumService = inject(AlbumService);
-  private snackBar = inject(MatSnackBar);
+  private readonly formBuilder = inject(FormBuilder);
+  private readonly router = inject(Router);
+  private readonly route = inject(ActivatedRoute);
+  private readonly albumService = inject(AlbumService);
+  private readonly snackBar = inject(MatSnackBar);
 
   // create the album form
   albumForm = this.formBuilder.group({

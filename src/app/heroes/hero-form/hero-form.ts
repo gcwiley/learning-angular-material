@@ -44,11 +44,11 @@ export class HeroForm implements OnInit {
   public submitted = false;
 
   // inject dependencies
-  private formBuilder = inject(FormBuilder);
-  private router = inject(Router);
-  private route = inject(ActivatedRoute);
-  private heroService = inject(HeroService);
-  private snackBar = inject(MatSnackBar);
+  private readonly formBuilder = inject(FormBuilder);
+  private readonly router = inject(Router);
+  private readonly route = inject(ActivatedRoute);
+  private readonly heroService = inject(HeroService);
+  private readonly snackBar = inject(MatSnackBar);
 
   // create the hero form
   heroForm = this.formBuilder.group({

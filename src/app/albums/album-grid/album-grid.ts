@@ -34,8 +34,8 @@ import { Album } from '../../types/album.interface';
 })
 export class AlbumGrid implements OnInit, OnDestroy {
   // inject dependencies
-  private albumService = inject(AlbumService);
-  private breakpointObserver = inject(BreakpointObserver);
+  private readonly albumService = inject(AlbumService);
+  private readonly breakpointObserver = inject(BreakpointObserver);
 
   // observables for AsyncPipe
   public albums!: Observable<Album[]>;

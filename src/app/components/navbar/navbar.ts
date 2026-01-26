@@ -30,9 +30,9 @@ import { Logo } from '../logo/logo';
 })
 export class NavBar {
    // inject dependencies
-   private authService = inject(AuthService);
-   private router = inject(Router);
-   private snackBar = inject(MatSnackBar);
+   private readonly authService = inject(AuthService);
+   private readonly router = inject(Router);
+   private readonly snackBar = inject(MatSnackBar);
 
    // loading state
    public isSigningOut = false;

@@ -24,7 +24,7 @@ export class AlbumService {
   private albumsUrl = '/api/albums'; 
 
   // inject dependencies
-  private http = inject(HttpClient);
+  private readonly http = inject(HttpClient);
 
   // GET: - GET ALBUMS
   public getAlbums(): Observable<Album[]> {

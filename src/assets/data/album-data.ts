@@ -1,8 +1,8 @@
-// import the album genre interface
-import { AlbumGenre } from '../../app/types/album.interface';
+// import the selectOption interface
+import { SelectOption } from "../../app/types/album.interface";
 
 // define the album genre data values
-export const ALBUM_GENRES: AlbumGenre[] = [
+export const ALBUM_GENRES: SelectOption[] = [
    { value: 'pop', viewValue: 'Pop' },
    { value: 'hip-hop', viewValue: 'Hip Hop' },
    { value: 'rock', viewValue: 'Rock' },

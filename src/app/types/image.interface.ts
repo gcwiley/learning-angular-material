@@ -19,9 +19,3 @@ export interface Image {
 export type ImageInput = Omit<Image, 'id' | 'createdAt' | 'updatedAt'>;
 
 // --- HELPER INTERFACES FOR UI LIST ---
-
-// single generic interface
-export interface SelectOption<T = string> {
-  value: T;
-  viewValue: string;
-}
